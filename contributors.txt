@@ -1,0 +1,4 @@
+Andrea Zanellato <zanellato.andrea@gmail.com>
+
+    * Major refactoring of code to use namespaces.
+    * Italian translations.

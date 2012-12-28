@@ -1,4 +1,4 @@
-Note: Most of this document applies, but parts of it are outdated.
+Note: Most of this document applies, but parts of it are outdated and incomplete.
 
 # Table of Contents
 
@@ -29,9 +29,9 @@ a page query really fast. The idea of Jaris was during the development of Jaris
 FLV player website on sourceforge.net. Since I could not install a CMS easily I 
 decided to write my own. Also I had experienced so much slowness with well known 
 CMS based on mysql in shared web-hosting environments, that I wanted something 
-lite and fast. But with almost all the features of existing well known CMS. Also
+lite and fast, but with almost all the features of existing well known CMS. Also
 I wanted something were I could launch my favorite text editor and make 
-modifications with out using complicated sql queries.
+modifications without using complicated sql queries.
 
 
 ## Features
@@ -51,15 +51,23 @@ This are some of the features and characteristics implemented on Jaris.
     * Page blocks
     * Content Search
     * Modules
+    * Multiple sites hosting.
 
 
 ## How It Works?
 
-Each page on the CMS is stored on the data directory. Inside the data directory
-you will find 6 folders: blocks, menus, pages, users, groups and settings.
-Each of this directories store sub-directories or database files (discussed
-later on this readme file) with parts of the website. Lets take a look into each
-folder.
+You will find a directory named main inside the data directory. This directory
+gets copied into data/default at install time, and it serves as the site data
+for any domain pointing to the directory where you installed Jaris. The data/main
+directory serves as a template to create more sites on a multi-site environment.
+You can for example have domain1.com and domain2.com, if you want a different site
+for each just make a copy of the data/main into data/domain1.com and data/domain2.com.
+
+For now, lets just focus on a single site setup. Each page on the CMS is stored on 
+the data/default directory. Inside of it you will find more directories, we are 
+going to discuss 6 of them: blocks, menus, pages, users, groups and settings.
+Each of these directories store sub-directories or database files (discussed
+later on this readme file) with parts of the website. Lets take a look into each.
 
 ### Blocks
 
