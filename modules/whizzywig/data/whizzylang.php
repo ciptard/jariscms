@@ -13,11 +13,11 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Whizzywig Language Translator
-	field;
+    field: title
+        Whizzywig Language Translator
+    field;
 
-	field: content
+    field: content
         //Language file for whizzywig
         language = new Array();
         language['Rows']  = "<?php print t("Rows") ?>";
@@ -92,9 +92,9 @@ row: 0
         language['If you already have it, click [Cancel] then right']  = "<?php print t("If you already have it, click [Cancel] then right") ?>";
         language["click in the edit area and select 'Check Spelling'."]  = "<?php print t("click in the edit area and select 'Check Spelling'.") ?>";
         language['Fullscreen']  = "<?php print t("Fullscreen") ?>";
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

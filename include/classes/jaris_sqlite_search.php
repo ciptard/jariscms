@@ -42,8 +42,8 @@ namespace JarisCMS\SQLite;
         
         if(gettype($db) == "object" && class_exists("SQLite3"))
         {
-            $db->createFunction("normalsearch", array (&$this, 'normal_text_search'), 2); 	
-    		$db->createFunction("leftsearch", array (&$this, 'left_text_search'), 2);
+            $db->createFunction("normalsearch", array (&$this, 'normal_text_search'), 2);     
+            $db->createFunction("leftsearch", array (&$this, 'left_text_search'), 2);
             $db->createFunction("dateformat", array (&$this, 'date_format'), 2);
             $db->createFunction("hascategories", array (&$this, 'has_categories'), 2);
             $db->createFunction("haspermission", array (&$this, 'has_permission'), 2);
@@ -51,8 +51,8 @@ namespace JarisCMS\SQLite;
             
         elseif(gettype($db) == "object")
         {
-            $db->sqliteCreateFunction("normalsearch", array (&$this, 'normal_text_search'), 2); 	
-    		$db->sqliteCreateFunction("leftsearch", array (&$this, 'left_text_search'), 2);
+            $db->sqliteCreateFunction("normalsearch", array (&$this, 'normal_text_search'), 2);     
+            $db->sqliteCreateFunction("leftsearch", array (&$this, 'left_text_search'), 2);
             $db->sqliteCreateFunction("dateformat", array (&$this, 'date_format'), 2);
             $db->sqliteCreateFunction("hascategories", array (&$this, 'has_categories'), 2);
             $db->sqliteCreateFunction("haspermission", array (&$this, 'has_permission'), 2);
@@ -60,8 +60,8 @@ namespace JarisCMS\SQLite;
             
         else
         {
-            sqlite_create_function($db, "normalsearch", array (&$this, 'normal_text_search'), 2); 	
-    		sqlite_create_function($db, "leftsearch", array (&$this, 'left_text_search'), 2);
+            sqlite_create_function($db, "normalsearch", array (&$this, 'normal_text_search'), 2);     
+            sqlite_create_function($db, "leftsearch", array (&$this, 'left_text_search'), 2);
             sqlite_create_function($db, "dateformat", array (&$this, 'date_format'), 2);
             sqlite_create_function($db, "hascategories", array (&$this, 'has_categories'), 2);
             sqlite_create_function($db, "haspermission", array (&$this, 'has_permission'), 2);
@@ -126,24 +126,24 @@ namespace JarisCMS\SQLite;
      * @return float The keywords density on the text.
      */
     private function get_matching_percent($text, $keywords)
-    {		
-		$matching_sum = 0;
-		foreach($keywords["words"] as $keyword)
+    {        
+        $matching_sum = 0;
+        foreach($keywords["words"] as $keyword)
         {
-			foreach($text["words"] as $position=>$text_word)
+            foreach($text["words"] as $position=>$text_word)
             {
-				$position += 1;
-				if($text_word == $keyword)
+                $position += 1;
+                if($text_word == $keyword)
                 {
-					$matching_sum += ($position * $position) / $text["count"];
-				}
-			}
-		}
-		
-		$divisor = ($text["count"] + 1) * ($text["count"] / 2);
-		
-		return $matching_sum / $divisor;				
-	}
+                    $matching_sum += ($position * $position) / $text["count"];
+                }
+            }
+        }
+        
+        $divisor = ($text["count"] + 1) * ($text["count"] / 2);
+        
+        return $matching_sum / $divisor;                
+    }
     
     /**
      * To perform a normal text search.
@@ -165,17 +165,17 @@ namespace JarisCMS\SQLite;
             return 0;
         }
                         
-		$matching_percent = 0;
-	
+        $matching_percent = 0;
+    
         $keywords = $this->text_to_array($keywords, true);
         $keywords_count = $keywords["count"];
         $keywords = $keywords["words"];
-				
-		$keywords_string = "";
+                
+        $keywords_string = "";
         
-		for ($i=0; $i < $keywords_count; $i++)
+        for ($i=0; $i < $keywords_count; $i++)
         {
-			$keywords_string .= $keywords[$i] . " ";
+            $keywords_string .= $keywords[$i] . " ";
             
             $substring_count = substr_count($text_string, $keywords_string);
             
@@ -183,10 +183,10 @@ namespace JarisCMS\SQLite;
             {
                 $matching_percent += ($substring_count * ($i + 1));
             } 
-		}	
-	
-		return $matching_percent;
-	}
+        }    
+    
+        return $matching_percent;
+    }
 
     /**
      * Perform a text search with priority to the starting words.
@@ -197,7 +197,7 @@ namespace JarisCMS\SQLite;
      * 
      * @return float Matching percent.
      */
-	public function left_text_search($text, $keywords, $input_format="php_code")
+    public function left_text_search($text, $keywords, $input_format="php_code")
     {
         /*Slowers down search
         $text = \JarisCMS\InputFormat\FilterData($text, $input_format);
@@ -209,43 +209,43 @@ namespace JarisCMS\SQLite;
         }
         
         $keywords = $this->text_to_array($keywords, true);
-		
-		$keyword_count = $keywords["count"];
+        
+        $keyword_count = $keywords["count"];
         $keywords = $keywords["words"];
         
         $long_word = 0;
-		foreach($keywords as $word)
-		{
-			$len = strlen($word);
-			if($len > $long_word)
-			{
-				$long_word = $len;
-			}
-		}
+        foreach($keywords as $word)
+        {
+            $len = strlen($word);
+            if($len > $long_word)
+            {
+                $long_word = $len;
+            }
+        }
         
-		for($i=$keyword_count-1; $i>=0; $i--)
-		{
-			$keywords_array = array();
-			for($y=0; $y<=$i; $y++)
-			{
-				$keywords_array[] = $keywords[$y];
-			}
-			
-			$keywords_string = implode(" ", $keywords_array);
-			
-			$len = strlen($keywords_string);
-			if($len > 1 && $len >= $long_word)
-			{
-				//First search for exact matches on title
-				if("" . stripos($text, $keywords_string) . "" != "")
-				{
-					return $i+$keyword_count;
-				}
-			}
-		}
+        for($i=$keyword_count-1; $i>=0; $i--)
+        {
+            $keywords_array = array();
+            for($y=0; $y<=$i; $y++)
+            {
+                $keywords_array[] = $keywords[$y];
+            }
+            
+            $keywords_string = implode(" ", $keywords_array);
+            
+            $len = strlen($keywords_string);
+            if($len > 1 && $len >= $long_word)
+            {
+                //First search for exact matches on title
+                if("" . stripos($text, $keywords_string) . "" != "")
+                {
+                    return $i+$keyword_count;
+                }
+            }
+        }
         
         return 0;
-	}
+    }
     
     /**
      * To format a given timestamp.
@@ -313,8 +313,8 @@ namespace JarisCMS\SQLite;
             $categories = unserialize($categories);
             
             foreach($this->categories_to_check as $machine_name=>$sub_categories)
-    		{
-    			if(count($sub_categories) > 1)
+            {
+                if(count($sub_categories) > 1)
                 {
                     if(isset($categories[$machine_name]))
                     {
@@ -346,7 +346,7 @@ namespace JarisCMS\SQLite;
                         }
                     }
                 }   
-    		}
+            }
             
             return 0;
         }
@@ -361,18 +361,18 @@ namespace JarisCMS\SQLite;
      */
     public function has_permission($groups, $current_group)
     {
-    	//Groups is null or groups array is empty
-    	if("" . strpos($groups, "N;") . "" != "" || "" . strpos($groups, "a:0") . "" != "")
-    	{
-    		return 1;
-    	}
-    	
-    	if("" . strpos($groups, '"'. $current_group. '"') . "" != "")
-    	{
-    		return 1;
-    	}
-    	
-    	return 0;
+        //Groups is null or groups array is empty
+        if("" . strpos($groups, "N;") . "" != "" || "" . strpos($groups, "a:0") . "" != "")
+        {
+            return 1;
+        }
+        
+        if("" . strpos($groups, '"'. $current_group. '"') . "" != "")
+        {
+            return 1;
+        }
+        
+        return 0;
     }
  }
  

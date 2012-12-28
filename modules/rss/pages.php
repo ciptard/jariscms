@@ -13,13 +13,13 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		rss/selector
-	field;
+    field: uri
+        rss/selector
+    field;
 row;
 
 row: 1
-	field: uri
-		rss
-	field;
+    field: uri
+        rss
+    field;
 row;

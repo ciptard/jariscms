@@ -13,11 +13,11 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Rating script
-	field;
+    field: title
+        Rating script
+    field;
 
-	field: content
+    field: content
         <?php 
             $settings = rating_get_settings($_REQUEST["type"]);
             $rating_data = rating_get($_REQUEST["page"]); 
@@ -74,9 +74,9 @@ row: 0
             
         });
         //</script>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

@@ -20,55 +20,55 @@ namespace JarisCMS\Theme;
  */
 function MakeContent($content, $page)
 {
-	global $theme, $theme_path, $content_title;
+    global $theme, $theme_path, $content_title;
 
-	$formatted_page = "";
+    $formatted_page = "";
 
-	foreach($content as $field)
-	{
+    foreach($content as $field)
+    {
 
-		$header_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("header", $page), "order");
-		$footer_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("footer", $page), "order");
-		$left_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("left", $page), "order");
-		$right_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("right", $page), "order");
-		$center_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("center", $page), "order");
+        $header_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("header", $page), "order");
+        $footer_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("footer", $page), "order");
+        $left_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("left", $page), "order");
+        $right_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("right", $page), "order");
+        $center_data = \JarisCMS\PHPDB\Sort(\JarisCMS\Block\GetList("center", $page), "order");
 
-		$header = MakeContentBlocks($header_data, "header", $page, $field["type"]);
-		$footer = MakeContentBlocks($footer_data, "footer", $page, $field["type"]);
-		$left = MakeContentBlocks($left_data, "left", $page, $field["type"]);
-		$right = MakeContentBlocks($right_data, "right", $page, $field["type"]);
-		$center = MakeContentBlocks($center_data, "center", $page, $field["type"]);
+        $header = MakeContentBlocks($header_data, "header", $page, $field["type"]);
+        $footer = MakeContentBlocks($footer_data, "footer", $page, $field["type"]);
+        $left = MakeContentBlocks($left_data, "left", $page, $field["type"]);
+        $right = MakeContentBlocks($right_data, "right", $page, $field["type"]);
+        $center = MakeContentBlocks($center_data, "center", $page, $field["type"]);
 
-		$images = \JarisCMS\Image\GetList($page);
-		$files = \JarisCMS\File\GetList($page);
-		$title = \JarisCMS\Search\StripHTMLTags($field["is_system"]?\JarisCMS\System\PHPEval($field["title"]):$field["title"]);
-		$content_title = $title;
-		$content_data = $field;
+        $images = \JarisCMS\Image\GetList($page);
+        $files = \JarisCMS\File\GetList($page);
+        $title = \JarisCMS\Search\StripHTMLTags($field["is_system"]?\JarisCMS\System\PHPEval($field["title"]):$field["title"]);
+        $content_title = $title;
+        $content_data = $field;
         $views = \JarisCMS\Page\CountView($page);
         $content_data["views"] = $views;
-		
-		$content = "";
-		if($field["is_system"])
-		{
-			$content =  \JarisCMS\System\PHPEval($field['content']);
-		}
-		else
-		{
-			$content = \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
-		}
+        
+        $content = "";
+        if($field["is_system"])
+        {
+            $content =  \JarisCMS\System\PHPEval($field['content']);
+        }
+        else
+        {
+            $content = \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
+        }
         
         $content_data["filtered_content"] = $content;
         
         \JarisCMS\Module\Hook("Theme", "MakeContent", $content, $content_title, $content_data);
 
-		ob_start();
-			include(GetContentTemplateFile($page, trim($field["type"])));
+        ob_start();
+            include(GetContentTemplateFile($page, trim($field["type"])));
 
-			$formatted_page .= ob_get_contents();
-		ob_end_clean();
-	}
+            $formatted_page .= ob_get_contents();
+        ob_end_clean();
+    }
 
-	return $formatted_page;
+    return $formatted_page;
 }
 
 /**
@@ -83,73 +83,73 @@ function MakeContent($content, $page)
  */
 function MakeBlocks($arrData, $position , $page)
 {
-	global $theme;
+    global $theme;
 
-	$block = "";
+    $block = "";
 
-	if($arrData)
-	{
-		foreach($arrData as $id=>$field)
-		{
-			if(trim($field["content"]) != "")
-			{
-				//Unserialize groups string to array
-				$field["groups"] = unserialize($field["groups"]);
-				
-				if($field["return"])
-				{
-					//Execute the code on the block return field to know if the block should be displayed or not
-					$return = \JarisCMS\System\PHPEval($field["return"]);
-	
-					//Skip the block on "false" string
-					if($return == "false")
-					{
-						continue;
-					}
-				}
-	
-				if(\JarisCMS\Block\UserGroupHasAccessTo($field))
-				{
-					if(\JarisCMS\Block\PageHasAccess($field, $page))
-					{
+    if($arrData)
+    {
+        foreach($arrData as $id=>$field)
+        {
+            if(trim($field["content"]) != "")
+            {
+                //Unserialize groups string to array
+                $field["groups"] = unserialize($field["groups"]);
+                
+                if($field["return"])
+                {
+                    //Execute the code on the block return field to know if the block should be displayed or not
+                    $return = \JarisCMS\System\PHPEval($field["return"]);
+    
+                    //Skip the block on "false" string
+                    if($return == "false")
+                    {
+                        continue;
+                    }
+                }
+    
+                if(\JarisCMS\Block\UserGroupHasAccessTo($field))
+                {
+                    if(\JarisCMS\Block\PageHasAccess($field, $page))
+                    {
                         \JarisCMS\Module\Hook("Theme", "MakeBlocks", $position, $page, $field);
                         
-						$content = "";
-						
-						if(\JarisCMS\Group\GetPermission("view_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
-						{
+                        $content = "";
+                        
+                        if(\JarisCMS\Group\GetPermission("view_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
+                        {
                             $url = \JarisCMS\URI\PrintURL("admin/blocks/edit", array("id"=>$id, "position"=>$position));
                             $content = "<a class=\"instant-block-edit\" href=\"$url\">" . t("edit") . "</a>";
                             $content .= "<div style=\"clear: both\"></div>";
-						}
-						
-						if($field["is_system"])
-						{
-							$content .=  \JarisCMS\System\PHPEval($field['content']);
-						}
-						else
-						{
-							$content .= \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
-						}
+                        }
+                        
+                        if($field["is_system"])
+                        {
+                            $content .=  \JarisCMS\System\PHPEval($field['content']);
+                        }
+                        else
+                        {
+                            $content .= \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
+                        }
                         
                         //Dont show block if content is empty
                         if(trim($content) == "")
                         {
                             continue;
                         }
-	
-						ob_start();
-							$title = t($field["title"]);
-							include(GetBlockTemplateFile($position, $page, $id));
-							$block .= ob_get_contents();
-						ob_end_clean();
-					}
-				}
-			}
-		}
-	}
+    
+                        ob_start();
+                            $title = t($field["title"]);
+                            include(GetBlockTemplateFile($position, $page, $id));
+                            $block .= ob_get_contents();
+                        ob_end_clean();
+                    }
+                }
+            }
+        }
+    }
 
-	return $block;
+    return $block;
 }
 
 /**
@@ -165,70 +165,70 @@ function MakeBlocks($arrData, $position , $page)
  */
 function MakeContentBlocks($arrData, $position, $page, $page_type)
 {
-	global $theme;
+    global $theme;
 
-	$block = "";
+    $block = "";
 
-	if($arrData)
-	{
-		foreach($arrData as $id=>$field)
-		{
-			//Unserialize groups string to array
-			$field["groups"] = unserialize($field["groups"]);
-			
-			if($field["return"])
-			{
-				//Execute the code on the block return field to know if the block should be displayed or not
-				$return =  \JarisCMS\System\PHPEval($field["return"]);
+    if($arrData)
+    {
+        foreach($arrData as $id=>$field)
+        {
+            //Unserialize groups string to array
+            $field["groups"] = unserialize($field["groups"]);
+            
+            if($field["return"])
+            {
+                //Execute the code on the block return field to know if the block should be displayed or not
+                $return =  \JarisCMS\System\PHPEval($field["return"]);
 
-				//Skip the block on "false" string
-				if($return == "false")
-				{
-					continue;
-				}
-			}
+                //Skip the block on "false" string
+                if($return == "false")
+                {
+                    continue;
+                }
+            }
 
-			if(\JarisCMS\Block\UserGroupHasAccessTo($field))
-			{
-				if(\JarisCMS\Block\PageHasAccess($field, $page))
-				{
-					$post = false;
-					$content = "";
-					$image = "";
-					$image_path = "";
-					$post_title = "";
-					$post_title_plain = "";
-					$view_more = "";
-					$view_url = "";
+            if(\JarisCMS\Block\UserGroupHasAccessTo($field))
+            {
+                if(\JarisCMS\Block\PageHasAccess($field, $page))
+                {
+                    $post = false;
+                    $content = "";
+                    $image = "";
+                    $image_path = "";
+                    $post_title = "";
+                    $post_title_plain = "";
+                    $view_more = "";
+                    $view_url = "";
                     
                     if(\JarisCMS\Group\GetPermission("view_content_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_content_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
-					{
+                    {
                         $url = \JarisCMS\URI\PrintURL("admin/pages/blocks/edit", array("uri"=>$page, "id"=>$id, "position"=>$position));
                         $content = "<a class=\"instant-content-block-edit\" href=\"$url\">" . t("edit") . "</a>";
                         $content .= "<div style=\"clear: both\"></div>";
-					}
-					
-					if($field["post_block"] && $field["uri"])
-					{
-						$post_fields = \JarisCMS\Block\GeneratePostContent($field["uri"], $page);
-						
-						$post = true;
-						$content .= $post_fields["content"];
-						$image = $post_fields["image"];
-						$image_path = $post_fields["image_path"];
-						$post_title = $post_fields["post_title"];
-						$post_title_plain = $post_fields["post_title_plain"];
-						$view_more = $post_fields["view_more"];
-						$view_url = $post_fields["view_url"];
-					}
-					else if($field["is_system"])
-					{
-						$content .=  \JarisCMS\System\PHPEval($field['content']);
-					}
-					else
-					{
-						$content .= \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
-					}
+                    }
+                    
+                    if($field["post_block"] && $field["uri"])
+                    {
+                        $post_fields = \JarisCMS\Block\GeneratePostContent($field["uri"], $page);
+                        
+                        $post = true;
+                        $content .= $post_fields["content"];
+                        $image = $post_fields["image"];
+                        $image_path = $post_fields["image_path"];
+                        $post_title = $post_fields["post_title"];
+                        $post_title_plain = $post_fields["post_title_plain"];
+                        $view_more = $post_fields["view_more"];
+                        $view_url = $post_fields["view_url"];
+                    }
+                    else if($field["is_system"])
+                    {
+                        $content .=  \JarisCMS\System\PHPEval($field['content']);
+                    }
+                    else
+                    {
+                        $content .= \JarisCMS\InputFormat\FilterData($field['content'], $field["input_format"]);
+                    }
                     
                     //Dont show block if content is empty
                     if(trim($content) == "" && !$field["post_block"])
@@ -236,17 +236,17 @@ function MakeContentBlocks($arrData, $position, $page, $page_type)
                         continue;
                     }
 
-					ob_start();
-						$title = t($field["title"]);
-						include(GetContentBlockTemplateFile($position, $page, $page_type, $id));
-						$block .= ob_get_contents();
-					ob_end_clean();
-				}
-			}
-		}
-	}
+                    ob_start();
+                        $title = t($field["title"]);
+                        include(GetContentBlockTemplateFile($position, $page, $page_type, $id));
+                        $block .= ob_get_contents();
+                    ob_end_clean();
+                }
+            }
+        }
+    }
 
-	return $block;
+    return $block;
 }
 
 
@@ -260,57 +260,57 @@ function MakeContentBlocks($arrData, $position, $page, $page_type)
  */
 function MakeLinks($arrLinks, $menu_name)
 {
-	$position = 1;
-	$count_links = count($arrLinks);
+    $position = 1;
+    $count_links = count($arrLinks);
 
-	if($count_links > 0)
-	{
-		$links = "<ul class=\"menu $menu_name\">";
-	
-		foreach($arrLinks as $link)
-		{
-			$list_class = "";
-	
-			if($position == 1)
-			{
-				$list_class = " class=\"first l$position\"";
-			}
-			elseif($position == $count_links)
-			{
-				$list_class = " class=\"last l$position\"";
-			}
-			else
-			{
-				$list_class = " class=\"l$position\"";
-			}
-	
-			//Translate the title and description using the strings.php file if available.
-			$link['title'] = t($link['title']);
-			$link['description'] = t($link['description']);
-			
-			$active = \JarisCMS\URI\Get() == $link["url"]?"class=\"active\"":"";
+    if($count_links > 0)
+    {
+        $links = "<ul class=\"menu $menu_name\">";
+    
+        foreach($arrLinks as $link)
+        {
+            $list_class = "";
+    
+            if($position == 1)
+            {
+                $list_class = " class=\"first l$position\"";
+            }
+            elseif($position == $count_links)
+            {
+                $list_class = " class=\"last l$position\"";
+            }
+            else
+            {
+                $list_class = " class=\"l$position\"";
+            }
+    
+            //Translate the title and description using the strings.php file if available.
+            $link['title'] = t($link['title']);
+            $link['description'] = t($link['description']);
+            
+            $active = \JarisCMS\URI\Get() == $link["url"]?"class=\"active\"":"";
             
             if(isset($link["target"]))
             {
                 $target = "target=\"{$link['target']}\"";
             }
-	
-			$links .= "<li{$list_class}><span><a $active $target title=\"{$link['description']}\" href=\"" . \JarisCMS\URI\PrintURL($link['url']) . "\">" . $link['title'] . "</a></span>";
-	
-			if($link["expanded"] || $link['url'] == \JarisCMS\URI\Get())
-			{
-				$links .= MakeLinks($link["sub_items"], $menu_name . "-sub-menu");
-			}
+    
+            $links .= "<li{$list_class}><span><a $active $target title=\"{$link['description']}\" href=\"" . \JarisCMS\URI\PrintURL($link['url']) . "\">" . $link['title'] . "</a></span>";
+    
+            if($link["expanded"] || $link['url'] == \JarisCMS\URI\Get())
+            {
+                $links .= MakeLinks($link["sub_items"], $menu_name . "-sub-menu");
+            }
             
             $links .= "</li>\n";
-	
-			$position++;
-		}
-	
-		$links .= "</ul>";
-	}
-	
-	return $links;
+    
+            $position++;
+        }
+    
+        $links .= "</ul>";
+    }
+    
+    return $links;
 }
 
 /**
@@ -324,7 +324,7 @@ function MakeCSSLinks($styles)
 {
     global $theme;
     
-	$styles_code = "";
+    $styles_code = "";
     $theme_dir = "themes/" . $theme;
     
     //Apped theme style.css if exists
@@ -335,15 +335,15 @@ function MakeCSSLinks($styles)
     
     if(count($styles) > 0)
     {
-		foreach($styles as $file)
-		{
-			$styles_code .= "<link href=\"$file\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\n";
-		}
+        foreach($styles as $file)
+        {
+            $styles_code .= "<link href=\"$file\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\n";
+        }
     }
     
     \JarisCMS\Module\Hook("Theme", "MakeCSSLinks", $styles, $styles_code);
 
-	return $styles_code;
+    return $styles_code;
 }
 
 /**
@@ -355,19 +355,19 @@ function MakeCSSLinks($styles)
  */
 function MakeJSLinks($scripts)
 {
-	$scripts_code = "";
+    $scripts_code = "";
 
-	if(count($scripts) > 0)
-	{
-		foreach($scripts as $file)
-		{
-			$scripts_code .= "<script type=\"text/javascript\" src=\"$file\"></script>\n";
-		}
-	}
+    if(count($scripts) > 0)
+    {
+        foreach($scripts as $file)
+        {
+            $scripts_code .= "<script type=\"text/javascript\" src=\"$file\"></script>\n";
+        }
+    }
     
     \JarisCMS\Module\Hook("Theme", "MakeJSLinks", $scripts, $scripts_code);
 
-	return $scripts_code;
+    return $scripts_code;
 }
 
 /**
@@ -379,54 +379,54 @@ function MakeJSLinks($scripts)
  */
 function MakeTabsCode($tabs_array)
 {
-	//Call MakeTabsCode hook before proccessing the array
-	\JarisCMS\Module\Hook("Theme", "MakeTabsCode", $tabs_array);
-	
-	$tabs = "";
+    //Call MakeTabsCode hook before proccessing the array
+    \JarisCMS\Module\Hook("Theme", "MakeTabsCode", $tabs_array);
+    
+    $tabs = "";
 
-	if(count($tabs_array) > 0)
-	{
-		foreach($tabs_array as $position=>$fields)
-		{
-			$tabs .= "<ul class=\"tabs tabs-$position\">\n";
-			
-			$total_tabs = count($fields);
-			$index = 0;
-	
-			if(is_array($fields))
-			{
-				foreach($fields as $name=>$uri)
-				{
-					$list_class = "";
-					if($index == 0)
-					{
-						$list_class = " class=\"first\" ";
-					}
-					else if($index+1 == $total_tabs)
-					{
-						$list_class = " class=\"last\" ";
-					}
-					
-					$url = \JarisCMS\URI\PrintURL($uri['uri'], $uri['arguments']);
-					
-					if($uri["uri"] == \JarisCMS\URI\Get())
-					{
-						$tabs .= "\t<li{$list_class}><span><a class=\"selected\" href=\"$url\">$name</a></span></li>\n";
-					}
-					else
-					{
-						$tabs .= "\t<li{$list_class}><span><a href=\"$url\">$name</a></span></li>\n";
-					}
-				}
-			}
-	
-			$tabs .= "</ul>\n";
-			
-			$tabs .= "<div class=\"clear tabs-clear\"></div>\n";
-		}
-	}
+    if(count($tabs_array) > 0)
+    {
+        foreach($tabs_array as $position=>$fields)
+        {
+            $tabs .= "<ul class=\"tabs tabs-$position\">\n";
+            
+            $total_tabs = count($fields);
+            $index = 0;
+    
+            if(is_array($fields))
+            {
+                foreach($fields as $name=>$uri)
+                {
+                    $list_class = "";
+                    if($index == 0)
+                    {
+                        $list_class = " class=\"first\" ";
+                    }
+                    else if($index+1 == $total_tabs)
+                    {
+                        $list_class = " class=\"last\" ";
+                    }
+                    
+                    $url = \JarisCMS\URI\PrintURL($uri['uri'], $uri['arguments']);
+                    
+                    if($uri["uri"] == \JarisCMS\URI\Get())
+                    {
+                        $tabs .= "\t<li{$list_class}><span><a class=\"selected\" href=\"$url\">$name</a></span></li>\n";
+                    }
+                    else
+                    {
+                        $tabs .= "\t<li{$list_class}><span><a href=\"$url\">$name</a></span></li>\n";
+                    }
+                }
+            }
+    
+            $tabs .= "</ul>\n";
+            
+            $tabs .= "<div class=\"clear tabs-clear\"></div>\n";
+        }
+    }
 
-	return $tabs;
+    return $tabs;
 }
 
 /**
@@ -436,45 +436,45 @@ function MakeTabsCode($tabs_array)
  */
 function MakeMessagesCode()
 {
-	if(isset($_SESSION["messages"]))
-	{
-		$messages_array = $_SESSION["messages"];
-		unset($_SESSION["messages"]);
-	}
-	else
-	{
-		$messages_array = array();
-	}
+    if(isset($_SESSION["messages"]))
+    {
+        $messages_array = $_SESSION["messages"];
+        unset($_SESSION["messages"]);
+    }
+    else
+    {
+        $messages_array = array();
+    }
 
-	$messages = "";
+    $messages = "";
 
-	$marker = "";
-	$separator = "";
-	if(count($messages_array) > 1)
-	{
-		$marker = "* ";
-		$separator = "<br />\n";
-	}
+    $marker = "";
+    $separator = "";
+    if(count($messages_array) > 1)
+    {
+        $marker = "* ";
+        $separator = "<br />\n";
+    }
 
-	foreach($messages_array as $message)
-	{
+    foreach($messages_array as $message)
+    {
 
-		$messages .= $marker;
+        $messages .= $marker;
 
-		if($message["type"] == "error")
-		{
-			$messages .= "<span class=\"error\">\n" . t("error:") . " ";
-		}
+        if($message["type"] == "error")
+        {
+            $messages .= "<span class=\"error\">\n" . t("error:") . " ";
+        }
 
-		$messages .= $message["text"] . $separator . "\n";
+        $messages .= $message["text"] . $separator . "\n";
 
-		if($message["type"] == "error")
-		{
-			$messages .= "</span>\n";
-		}
-	}
+        if($message["type"] == "error")
+        {
+            $messages .= "</span>\n";
+        }
+    }
 
-	return $messages;
+    return $messages;
 }
 
 /**
@@ -492,35 +492,35 @@ function MakeMessagesCode()
  */
 function Display($page, $content, $left, $center, $right, $header, $footer)
 {
-	global $title, $primary_links, $secondary_links, $base_url, $theme,
-	       $theme_path, $slogan, $footer_message, $content_title, $tabs_list;
+    global $title, $primary_links, $secondary_links, $base_url, $theme,
+           $theme_path, $slogan, $footer_message, $content_title, $tabs_list;
 
-	$footer_message = \JarisCMS\System\PHPEval($footer_message);
-	$slogan = \JarisCMS\System\PHPEval($slogan);
-	$meta = \JarisCMS\System\GetPageMetaTags();
-	//$breadcrumb = \JarisCMS\System\PrintBreadcrumb();
-	$tabs = MakeTabsCode($tabs_list);
-	$messages = MakeMessagesCode();
-	$styles = MakeCSSLinks(\JarisCMS\System\GetStyles());
-	$scripts = MakeJSLinks(\JarisCMS\System\GetScripts());
-	$header_info = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n";
-	
-	//Call Display hook before printing the page
-	\JarisCMS\Module\Hook("Theme", "Display", $page);
+    $footer_message = \JarisCMS\System\PHPEval($footer_message);
+    $slogan = \JarisCMS\System\PHPEval($slogan);
+    $meta = \JarisCMS\System\GetPageMetaTags();
+    //$breadcrumb = \JarisCMS\System\PrintBreadcrumb();
+    $tabs = MakeTabsCode($tabs_list);
+    $messages = MakeMessagesCode();
+    $styles = MakeCSSLinks(\JarisCMS\System\GetStyles());
+    $scripts = MakeJSLinks(\JarisCMS\System\GetScripts());
+    $header_info = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n";
+    
+    //Call Display hook before printing the page
+    \JarisCMS\Module\Hook("Theme", "Display", $page);
 
     $html = "";
     
-	ob_start();
-		//This is a file that where user can create custom code for the template
-		if(file_exists("themes/" . $theme . "/functions.php"))
-		{
-			include("themes/" . $theme . "/functions.php");
-		}
+    ob_start();
+        //This is a file that where user can create custom code for the template
+        if(file_exists("themes/" . $theme . "/functions.php"))
+        {
+            include("themes/" . $theme . "/functions.php");
+        }
 
-		include(GetPageTemplateFile($page));
+        include(GetPageTemplateFile($page));
         
         $html = ob_get_contents();
-	ob_end_clean();
+    ob_end_clean();
     
     return $html;
 }
@@ -533,49 +533,49 @@ function Display($page, $content, $left, $center, $right, $header, $footer)
  * @param integer $id The current id of the block
  *
  * @return string The block file to be used.
- *	 It could be one of the followings in the same precedence:
- *		themes/theme/block-page.php
- *		themes/theme/block-position.php
- *		themes/theme/block.php
+ *     It could be one of the followings in the same precedence:
+ *        themes/theme/block-page.php
+ *        themes/theme/block-position.php
+ *        themes/theme/block.php
  */
 function GetBlockTemplateFile($position, $page, $id)
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
 
-	$current_id = "themes/" . $theme . "/block-" . $position . "-" . $id . ".php";
-	$current_page = "themes/" . $theme . "/block-" . $page . ".php";
-	$position_page = "themes/" . $theme . "/block-" . $position . ".php";
-	$default_block = "themes/" . $theme . "/block.php";
-	
-	$template_path = "";
+    $current_id = "themes/" . $theme . "/block-" . $position . "-" . $id . ".php";
+    $current_page = "themes/" . $theme . "/block-" . $page . ".php";
+    $position_page = "themes/" . $theme . "/block-" . $position . ".php";
+    $default_block = "themes/" . $theme . "/block.php";
+    
+    $template_path = "";
 
-	if(file_exists($current_id))
-	{
-		$template_path = $current_id;
-	}
-	else if(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
-	else if(file_exists($position_page))
-	{
-		$template_path = $position_page;
-	}
-	else
-	{
-		$template_path = $default_block;
-	}
+    if(file_exists($current_id))
+    {
+        $template_path = $current_id;
+    }
+    else if(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
+    else if(file_exists($position_page))
+    {
+        $template_path = $position_page;
+    }
+    else
+    {
+        $template_path = $default_block;
+    }
     
     if($id == "")
     {
         $id = "0";
     }
     
-	//Call GetBlockTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetBlockTemplateFile", $position, $page, $id, $template_path);
-	
-	return $template_path;
+    //Call GetBlockTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetBlockTemplateFile", $position, $page, $id, $template_path);
+    
+    return $template_path;
 }
 
 /**
@@ -587,54 +587,54 @@ function GetBlockTemplateFile($position, $page, $id)
  * @param integer $id The current id of the block
  *
  * @return string The block file to be used.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/content-block-page.php
- *		themes/theme/content-block-position.php
- *		themes/theme/content-block.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/content-block-page.php
+ *        themes/theme/content-block-position.php
+ *        themes/theme/content-block.php
  */
 function GetContentBlockTemplateFile($position, $page, $page_type, $id)
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
 
-	$current_id = "themes/" . $theme . "/block-content-" . $position . "-" . $id . ".php";
-	$current_page_position = "themes/" . $theme . "/block-content-" . $page . "-" . $position . ".php";
-	$current_page = "themes/" . $theme . "/block-content-" . $page . ".php";
-	$current_page_type = "themes/" . $theme . "/block-content-" . $page_type . ".php";
-	$position_page = "themes/" . $theme . "/block-content-" . $position . ".php";
-	$default_block = "themes/" . $theme . "/block-content.php";
+    $current_id = "themes/" . $theme . "/block-content-" . $position . "-" . $id . ".php";
+    $current_page_position = "themes/" . $theme . "/block-content-" . $page . "-" . $position . ".php";
+    $current_page = "themes/" . $theme . "/block-content-" . $page . ".php";
+    $current_page_type = "themes/" . $theme . "/block-content-" . $page_type . ".php";
+    $position_page = "themes/" . $theme . "/block-content-" . $position . ".php";
+    $default_block = "themes/" . $theme . "/block-content.php";
 
-	$template_path = "";
+    $template_path = "";
 
-	if(file_exists($current_id))
-	{
-		$template_path = $current_id;
-	}
-	else if(file_exists($current_page_position))
-	{
-		$template_path = $current_page_position;
-	}
-	elseif(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
-	elseif(file_exists($current_page_type))
-	{
-		$template_path = $current_page_type;
-	}
-	else if(file_exists($position_page))
-	{
-		$template_path = $position_page;
-	}
-	else
-	{
-		$template_path = $default_block;
-	}
-	
-	//Call GetContentBlockTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetContentBlockTemplateFile", $position, $page, $template_path);
-	
-	return $template_path;
+    if(file_exists($current_id))
+    {
+        $template_path = $current_id;
+    }
+    else if(file_exists($current_page_position))
+    {
+        $template_path = $current_page_position;
+    }
+    elseif(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
+    elseif(file_exists($current_page_type))
+    {
+        $template_path = $current_page_type;
+    }
+    else if(file_exists($position_page))
+    {
+        $template_path = $position_page;
+    }
+    else
+    {
+        $template_path = $default_block;
+    }
+    
+    //Call GetContentBlockTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetContentBlockTemplateFile", $position, $page, $template_path);
+    
+    return $template_path;
 }
 
 /**
@@ -643,14 +643,14 @@ function GetContentBlockTemplateFile($position, $page, $page_type, $id)
  * @param string $page The page uri.
  *
  * @return string The page file to be used.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/page-uri.php
- *		themes/theme/page.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/page-uri.php
+ *        themes/theme/page.php
  */
 function GetPageTemplateFile($page)
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
     $segments = explode("-", $page);
     
     $one_less_section = "";
@@ -664,28 +664,28 @@ function GetPageTemplateFile($page)
     }
 
     $globa_sections_page = "themes/" . $theme . "/page-" . $one_less_section . ".php";
-	$current_page = "themes/" . $theme . "/page-" . $page . ".php";
-	$default_page = "themes/" . $theme . "/page.php";
-	
-	$template_path = "";
+    $current_page = "themes/" . $theme . "/page-" . $page . ".php";
+    $default_page = "themes/" . $theme . "/page.php";
+    
+    $template_path = "";
 
-	if(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
+    if(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
     else if($one_less_section && file_exists($globa_sections_page))
     {
         $template_path = $globa_sections_page;
     }
-	else
-	{
-		$template_path = $default_page;
-	}
-	
-	//Call GetPageTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetPageTemplateFile", $page, $template_path);
-	
-	return $template_path;
+    else
+    {
+        $template_path = $default_page;
+    }
+    
+    //Call GetPageTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetPageTemplateFile", $page, $template_path);
+    
+    return $template_path;
 }
 
 /**
@@ -695,39 +695,39 @@ function GetPageTemplateFile($page)
  * @param string $type The page type machine name.
  *
  * @return string The page file to be used.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/content-uri.php
- *		themes/theme/content-type.php
- *		themes/theme/content.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/content-uri.php
+ *        themes/theme/content-type.php
+ *        themes/theme/content.php
  */
 function GetContentTemplateFile($page, $type)
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
 
-	$current_page = "themes/" . $theme . "/content-" . $page . ".php";
-	$content_type = "themes/" . $theme . "/content-" . $type . ".php";
-	$default_page = "themes/" . $theme . "/content.php";
-	
-	$template_path = "";
+    $current_page = "themes/" . $theme . "/content-" . $page . ".php";
+    $content_type = "themes/" . $theme . "/content-" . $type . ".php";
+    $default_page = "themes/" . $theme . "/content.php";
+    
+    $template_path = "";
 
-	if(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
-	elseif(file_exists($content_type))
-	{
-		$template_path = $content_type;
-	}
-	else
-	{
-		$template_path = $default_page;
-	}
-	
-	//Call GetContentTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetContentTemplateFile", $page, $type, $template_path);
-	
-	return $template_path;
+    if(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
+    elseif(file_exists($content_type))
+    {
+        $template_path = $content_type;
+    }
+    else
+    {
+        $template_path = $default_page;
+    }
+    
+    //Call GetContentTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetContentTemplateFile", $page, $type, $template_path);
+    
+    return $template_path;
 }
 
 /**
@@ -737,38 +737,38 @@ function GetContentTemplateFile($page, $type)
  * @param string $username The users system username.
  *
  * @return string The user profile template file to be used.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/user-profile-username-username.php
- *		themes/theme/user-profile-group.php
- *		themes/theme/user-profile.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/user-profile-username-username.php
+ *        themes/theme/user-profile-group.php
+ *        themes/theme/user-profile.php
  */
 function GetUserProfileTemplateFile($group, $username)
 {
-	global $theme;
+    global $theme;
 
-	$username_profile = "themes/" . $theme . "/user-profile-username-" . $username . ".php";
-	$group_profile = "themes/" . $theme . "/user-profile-" . $group . ".php";
-	$default_template = "themes/" . $theme . "/user-profile.php";
-	
-	$template_path = "";
+    $username_profile = "themes/" . $theme . "/user-profile-username-" . $username . ".php";
+    $group_profile = "themes/" . $theme . "/user-profile-" . $group . ".php";
+    $default_template = "themes/" . $theme . "/user-profile.php";
+    
+    $template_path = "";
 
-	if(file_exists($username_profile))
-	{
-		$template_path = $username_profile;
-	}
-	elseif(file_exists($group_profile))
-	{
-		$template_path = $group_profile;
-	}
-	else
-	{
-		$template_path = $default_template;
-	}
-	
-	//Call GetContentTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetUserProfileTemplateFile", $group, $username, $template_path);
-	
-	return $template_path;
+    if(file_exists($username_profile))
+    {
+        $template_path = $username_profile;
+    }
+    elseif(file_exists($group_profile))
+    {
+        $template_path = $group_profile;
+    }
+    else
+    {
+        $template_path = $default_template;
+    }
+    
+    //Call GetContentTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetUserProfileTemplateFile", $group, $username, $template_path);
+    
+    return $template_path;
 }
 
 /**
@@ -779,42 +779,42 @@ function GetUserProfileTemplateFile($group, $username)
  * @param string $template_type The type of template to get, can be: result, header, footer.
  *
  * @return string The block file to be used or false if no template was found.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/search-result-page.php
- *		themes/theme/search-result-type.php
- *		themes/theme/content-block.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/search-result-page.php
+ *        themes/theme/search-result-type.php
+ *        themes/theme/content-block.php
  */
 function GetSearchTemplateFile($page, $results_type="all", $template_type="result")
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
 
-	$current_template = "themes/" . $theme . "/search-$template_type.php";
-	$current_page = "themes/" . $theme . "/search-$template_type-" . $page . ".php";
-	$current_results_type = "themes/" . $theme . "/search-$template_type-" . $results_type . ".php";
+    $current_template = "themes/" . $theme . "/search-$template_type.php";
+    $current_page = "themes/" . $theme . "/search-$template_type-" . $page . ".php";
+    $current_results_type = "themes/" . $theme . "/search-$template_type-" . $results_type . ".php";
 
-	$template_path = "";
+    $template_path = "";
 
-	if(file_exists($current_template))
-	{
-		$template_path = $current_template;
-	}
-	elseif(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
-	elseif(file_exists($current_results_type))
-	{
-		$template_path = $current_results_type;
-	}
-	else
-	{
-		$template_path = false;
-	}
-	
-	//Call GetSearchTemplateFile hook before returning the template to use
-	\JarisCMS\Module\Hook("Theme", "GetSearchTemplateFile", $page, $results_type, $template_type, $template_path);
-	
-	return $template_path;
+    if(file_exists($current_template))
+    {
+        $template_path = $current_template;
+    }
+    elseif(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
+    elseif(file_exists($current_results_type))
+    {
+        $template_path = $current_results_type;
+    }
+    else
+    {
+        $template_path = false;
+    }
+    
+    //Call GetSearchTemplateFile hook before returning the template to use
+    \JarisCMS\Module\Hook("Theme", "GetSearchTemplateFile", $page, $results_type, $template_type, $template_path);
+    
+    return $template_path;
 }
 ?>

@@ -14,7 +14,7 @@ namespace JarisCMS\Module\Whizzywig;
 
 function Install()
 {
-	JarisCMS\System\AddMessage(t("Remember to set the whizzywig configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/whizzywig", "whizzywig")) . "\">" . t("Configure Now") . "</a>");
+    JarisCMS\System\AddMessage(t("Remember to set the whizzywig configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/whizzywig", "whizzywig")) . "\">" . t("Configure Now") . "</a>");
 }
 
 ?>

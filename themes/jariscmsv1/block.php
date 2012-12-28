@@ -7,8 +7,8 @@
 */
 ?>
 <div class="block block-<?php print $id ?>">
-	<div class="title"><?php print $title ?></div>
-	<div class="content">
-		<?php print $content ?>
-	</div>
+    <div class="title"><?php print $title ?></div>
+    <div class="content">
+        <?php print $content ?>
+    </div>
 </div>

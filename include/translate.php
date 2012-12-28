@@ -22,30 +22,30 @@ namespace JarisCMS\Language;
 */
 function TranslatePage($page, $data, $language_code)
 {
-	$path = dt(\JarisCMS\Page\GeneratePath($page), $language_code, true);
-	
+    $path = dt(\JarisCMS\Page\GeneratePath($page), $language_code, true);
+    
     $data["groups"] = serialize($data["groups"]);
-	$data["categories"] = serialize($data["categories"]);
+    $data["categories"] = serialize($data["categories"]);
 
-	//Edit translation if already exist
-	if(file_exists($path))
-	{
-		\JarisCMS\PHPDB\Edit(0, $data, $path . "/data.php");
-	}
+    //Edit translation if already exist
+    if(file_exists($path))
+    {
+        \JarisCMS\PHPDB\Edit(0, $data, $path . "/data.php");
+    }
 
-	//Create translation if doesnt exist.
-	else
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-		\JarisCMS\FileSystem\MakeDir($path . "/blocks", 0755, true);
+    //Create translation if doesnt exist.
+    else
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+        \JarisCMS\FileSystem\MakeDir($path . "/blocks", 0755, true);
 
-		if(!\JarisCMS\PHPDB\Add($data, $path . "/data.php"))
-		{
-			return false;
-		}
-	}
+        if(!\JarisCMS\PHPDB\Add($data, $path . "/data.php"))
+        {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -58,33 +58,33 @@ function TranslatePage($page, $data, $language_code)
  */
 function MovePageTranslations($actual_uri, $new_uri)
 {
-	$languages = \JarisCMS\Language\GetAll();
+    $languages = \JarisCMS\Language\GetAll();
 
-	//move all tranaslations of the specified page
-	foreach($languages as $code=>$name)
-	{
-		$actual_path = dt(\JarisCMS\Page\GeneratePath($actual_uri), $code, true);
-		$new_path = dt(\JarisCMS\Page\GeneratePath($new_uri), $code, true);
+    //move all tranaslations of the specified page
+    foreach($languages as $code=>$name)
+    {
+        $actual_path = dt(\JarisCMS\Page\GeneratePath($actual_uri), $code, true);
+        $new_path = dt(\JarisCMS\Page\GeneratePath($new_uri), $code, true);
 
-		if(file_exists($actual_path))
-		{
-			if(\JarisCMS\FileSystem\MakeDir($new_path, 0755, true))
-			{
-				\JarisCMS\FileSystem\MoveDirRecursively($actual_path, $new_path);
+        if(file_exists($actual_path))
+        {
+            if(\JarisCMS\FileSystem\MakeDir($new_path, 0755, true))
+            {
+                \JarisCMS\FileSystem\MoveDirRecursively($actual_path, $new_path);
 
-				//Clears the page directory to be able to delete it
-				\JarisCMS\FileSystem\RemoveDirRecursively($actual_path, true);
+                //Clears the page directory to be able to delete it
+                \JarisCMS\FileSystem\RemoveDirRecursively($actual_path, true);
 
-				RemoveEmptyDirs($actual_path, $code);
-			}
-			else
-			{
-				return false;
-			}
-		}
-	}
+                RemoveEmptyDirs($actual_path, $code);
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -96,26 +96,26 @@ function MovePageTranslations($actual_uri, $new_uri)
  */
 function DeletePageTranslations($page)
 {
-	$languages = \JarisCMS\Language\GetAll();
+    $languages = \JarisCMS\Language\GetAll();
 
-	//Delete all tranaslations of the specified page
-	foreach($languages as $code=>$name)
-	{
-		$path = dt(\JarisCMS\Page\GeneratePath($page), $code, true);
+    //Delete all tranaslations of the specified page
+    foreach($languages as $code=>$name)
+    {
+        $path = dt(\JarisCMS\Page\GeneratePath($page), $code, true);
 
-		if(file_exists($path))
-		{
-			//Clears the page directory to be able to delete it
-			if(!\JarisCMS\FileSystem\RemoveDirRecursively($path, true))
-			{
-				return false;
-			}
+        if(file_exists($path))
+        {
+            //Clears the page directory to be able to delete it
+            if(!\JarisCMS\FileSystem\RemoveDirRecursively($path, true))
+            {
+                return false;
+            }
 
-			RemoveEmptyDirs($path, $code);
-		}
-	}
+            RemoveEmptyDirs($path, $code);
+        }
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -126,30 +126,30 @@ function DeletePageTranslations($page)
  */
 function RemoveEmptyDirs($path, $code)
 {
-	$main_dir = \JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/singles/"; //This is the directory that is not going to be deleted
+    $main_dir = \JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/singles/"; //This is the directory that is not going to be deleted
 
-	//Checks if the path belongs to the sections path
-	$path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/sections/", "", $path, $count);
-	if($count > 0)
-	{
-		$main_dir = \JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/sections/";
-	}
-	else
-	{
-		$path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/singles/", "", $path, $count);
-	}
+    //Checks if the path belongs to the sections path
+    $path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/sections/", "", $path, $count);
+    if($count > 0)
+    {
+        $main_dir = \JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/sections/";
+    }
+    else
+    {
+        $path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "language/$code/pages/singles/", "", $path, $count);
+    }
 
-	$directories = explode("/", $path);
-	$directory_count = count($directories);
+    $directories = explode("/", $path);
+    $directory_count = count($directories);
 
-	for($i=0; $i<$directory_count; $i++){
+    for($i=0; $i<$directory_count; $i++){
 
-		$sub_directory = "";
-		for($c=0; $c < $directory_count- $i; $c++){
-			$sub_directory .= $directories[$c] . "/";
-		}
+        $sub_directory = "";
+        for($c=0; $c < $directory_count- $i; $c++){
+            $sub_directory .= $directories[$c] . "/";
+        }
 
-		rmdir($main_dir . $sub_directory);
-	}
+        rmdir($main_dir . $sub_directory);
+    }
 }
 ?>

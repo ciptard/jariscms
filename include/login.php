@@ -17,29 +17,29 @@ namespace JarisCMS\Security;
  */
 function IsUserLogged()
 {
-	global $base_url;
+    global $base_url;
     static $user_data;
-	
-	if(!isset($_SESSION))
-		return false;
-	
+    
+    if(!isset($_SESSION))
+        return false;
+    
     //To reduce file access
     if(!$user_data)
     {
-	   $user_data = \JarisCMS\User\GetData($_SESSION["logged"]["username"]);
+       $user_data = \JarisCMS\User\GetData($_SESSION["logged"]["username"]);
     }
-	
+    
     //Remove the optional wwww for problems from www and non www links
     $logged_site = str_replace("http://www.", "http://", $_SESSION["logged"]["site"]);
     $base_url_parsed =  str_replace("http://www.", "http://", $base_url);
     
-	if($logged_site == $base_url_parsed && 
+    if($logged_site == $base_url_parsed && 
        $user_data["password"] == $_SESSION["logged"]["password"] &&
        ($_SESSION["logged"]["user_agent"] == $_SERVER["HTTP_USER_AGENT"] || 
         ($_SERVER["HTTP_USER_AGENT"] == "Shockwave Flash" && isset($_FILES)) //Enable flash uploaders that send another agent
        )
       )
-	{
+    {
         //If validation by ip is enabled check if ip the same to continue
         if(\JarisCMS\Setting\Get("validate_ip", "main"))
         {
@@ -52,13 +52,13 @@ function IsUserLogged()
         
         $_SESSION["logged"]["group"] = $user_data["group"];
         
-		return true;
-	}
-	else
-	{
+        return true;
+    }
+    else
+    {
         LogoutUser();
-		return false;
-	}
+        return false;
+    }
 }
 
 /**
@@ -68,14 +68,14 @@ function IsUserLogged()
  */
 function IsAdminLogged()
 {
-	if(IsUserLogged() && GetCurrentUserGroup() == "administrator")
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+    if(IsUserLogged() && GetCurrentUserGroup() == "administrator")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /**
@@ -86,62 +86,62 @@ function IsAdminLogged()
  */
 function LoginUser()
 {
-	global $base_url;
-	
-	$is_logged = false;
+    global $base_url;
+    
+    $is_logged = false;
 
-	if($_SESSION["logged"]["site"] != $base_url)
-	{
-		$user_data = false;
-		
-		if(\JarisCMS\Form\CheckEmail($_REQUEST["username"]))
-		{
-			$user_data = \JarisCMS\User\GetDataByEmail($_REQUEST["username"]);
-			$_REQUEST["username"] = $user_data["username"];
-		}
-		else
-		{
-			$user_data = \JarisCMS\User\GetData($_REQUEST["username"]);
-		}
-		
-		if($user_data && crypt($_REQUEST["password"], $user_data["password"]) == $user_data["password"])
-		{
-			if(\JarisCMS\Setting\Get("registration_needs_approval", "main") && $user_data["status"] == "0")
-			{
-				\JarisCMS\System\AddMessage(t("Your registration is awaiting for approval. If the registration is approved you will receive an email notification."));
-				
-				return $is_logged;
-			}
-			
-			$_SESSION["logged"]["site"] = $base_url;
-			$_SESSION["logged"]["username"] = strtolower($_REQUEST["username"]);
-			$_SESSION["logged"]["password"] = $user_data["password"];
-			$_SESSION["logged"]["group"] = $user_data["group"];
-			$_SESSION["logged"]["ip_address"] = $_SERVER["REMOTE_ADDR"];
-			$_SESSION["logged"]["user_agent"] = $_SERVER["HTTP_USER_AGENT"];
+    if($_SESSION["logged"]["site"] != $base_url)
+    {
+        $user_data = false;
+        
+        if(\JarisCMS\Form\CheckEmail($_REQUEST["username"]))
+        {
+            $user_data = \JarisCMS\User\GetDataByEmail($_REQUEST["username"]);
+            $_REQUEST["username"] = $user_data["username"];
+        }
+        else
+        {
+            $user_data = \JarisCMS\User\GetData($_REQUEST["username"]);
+        }
+        
+        if($user_data && crypt($_REQUEST["password"], $user_data["password"]) == $user_data["password"])
+        {
+            if(\JarisCMS\Setting\Get("registration_needs_approval", "main") && $user_data["status"] == "0")
+            {
+                \JarisCMS\System\AddMessage(t("Your registration is awaiting for approval. If the registration is approved you will receive an email notification."));
+                
+                return $is_logged;
+            }
+            
+            $_SESSION["logged"]["site"] = $base_url;
+            $_SESSION["logged"]["username"] = strtolower($_REQUEST["username"]);
+            $_SESSION["logged"]["password"] = $user_data["password"];
+            $_SESSION["logged"]["group"] = $user_data["group"];
+            $_SESSION["logged"]["ip_address"] = $_SERVER["REMOTE_ADDR"];
+            $_SESSION["logged"]["user_agent"] = $_SERVER["HTTP_USER_AGENT"];
 
-			//Save last ip used
-			$user_data["ip_address"] = $_SERVER["REMOTE_ADDR"];
-			\JarisCMS\User\Edit($_REQUEST["username"], $user_data["group"], $user_data);
-			
-			//Keep user uploads dir clean
-			\JarisCMS\Form\DeleteAllUploads();
+            //Save last ip used
+            $user_data["ip_address"] = $_SERVER["REMOTE_ADDR"];
+            \JarisCMS\User\Edit($_REQUEST["username"], $user_data["group"], $user_data);
+            
+            //Keep user uploads dir clean
+            \JarisCMS\Form\DeleteAllUploads();
 
-			$is_logged = true;
-		}
-		else
-		{
-			$_SESSION["logged"]["site"] = false;			
-			$is_logged = false;
-		}
+            $is_logged = true;
+        }
+        else
+        {
+            $_SESSION["logged"]["site"] = false;            
+            $is_logged = false;
+        }
 
-		if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]) && $is_logged == false)
-		{
-			\JarisCMS\System\AddMessage(t("The username or password you entered is incorrect."), "error");
-		}
-	}
+        if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]) && $is_logged == false)
+        {
+            \JarisCMS\System\AddMessage(t("The username or password you entered is incorrect."), "error");
+        }
+    }
 
-	return $is_logged;
+    return $is_logged;
 }
 
 /**
@@ -149,9 +149,9 @@ function LoginUser()
  */
 function LogoutUser()
 {
-	global $base_url;
-	
-	unset($_SESSION["logged"]);
+    global $base_url;
+    
+    unset($_SESSION["logged"]);
 }
 
 /**
@@ -162,31 +162,31 @@ function LogoutUser()
  */
 function NotifyAdminsForRegApproval($username)
 {
-	$user_data = \JarisCMS\User\GetData($username);
-	
-	$select = "select * from users where user_group='administrator'";
-	
-	$db = \JarisCMS\SQLite\Open("users");
-	
-	$result = \JarisCMS\SQLite\Query($select, $db);
-	
-	$to = array();
-	while($data = \JarisCMS\SQLite\FetchArray($result))
-	{
-		$admin_data = get_user_data($data["username"]);
-		$to[$admin_data["name"]] = $data["email"];
-	}
-	
-	\JarisCMS\SQLite\Close($db);
-	
-	$html_message = t("A new account has been created and is pending for administration approval.") . "<br /><br />";
-	$html_message .= "<b>".t("Fullname:")."</b>" . " " . $user_data["name"] . "<br />";
-	$html_message .= "<b>".t("Username:")."</b>" . " " . $username . "<br />";
-	$html_message .= "<b>".t("E-mail:")."</b>" . " " . $user_data["email"] . "<br /><br />";
-	$html_message .= t("For more details or approve this registration visit the users management page:") . "<br />";
-	$html_message .= "<a target=\"_blank\" href=\"".\JarisCMS\URI\PrintURL("admin/user", array("return"=>"admin/users/list"))."\">" . \JarisCMS\URI\PrintURL("admin/user", array("return"=>"admin/users/list")) . "</a>";
-	
-	\JarisCMS\Email\Send($to, t("New registration pending for approval"), $html_message);
+    $user_data = \JarisCMS\User\GetData($username);
+    
+    $select = "select * from users where user_group='administrator'";
+    
+    $db = \JarisCMS\SQLite\Open("users");
+    
+    $result = \JarisCMS\SQLite\Query($select, $db);
+    
+    $to = array();
+    while($data = \JarisCMS\SQLite\FetchArray($result))
+    {
+        $admin_data = get_user_data($data["username"]);
+        $to[$admin_data["name"]] = $data["email"];
+    }
+    
+    \JarisCMS\SQLite\Close($db);
+    
+    $html_message = t("A new account has been created and is pending for administration approval.") . "<br /><br />";
+    $html_message .= "<b>".t("Fullname:")."</b>" . " " . $user_data["name"] . "<br />";
+    $html_message .= "<b>".t("Username:")."</b>" . " " . $username . "<br />";
+    $html_message .= "<b>".t("E-mail:")."</b>" . " " . $user_data["email"] . "<br /><br />";
+    $html_message .= t("For more details or approve this registration visit the users management page:") . "<br />";
+    $html_message .= "<a target=\"_blank\" href=\"".\JarisCMS\URI\PrintURL("admin/user", array("return"=>"admin/users/list"))."\">" . \JarisCMS\URI\PrintURL("admin/user", array("return"=>"admin/users/list")) . "</a>";
+    
+    \JarisCMS\Email\Send($to, t("New registration pending for approval"), $html_message);
 }
 
 /**
@@ -196,16 +196,16 @@ function NotifyAdminsForRegApproval($username)
  */
 function GetCurrentUserGroup()
 {
-	global $base_url;
-	
-	if(IsUserLogged())
-	{
-		return $_SESSION["logged"]["group"];
-	}
-	else
-	{
-		return "guest";
-	}
+    global $base_url;
+    
+    if(IsUserLogged())
+    {
+        return $_SESSION["logged"]["group"];
+    }
+    else
+    {
+        return "guest";
+    }
 }
 
 /**
@@ -215,16 +215,16 @@ function GetCurrentUserGroup()
  */
 function GetCurrentUser()
 {
-	global $base_url;
-	
-	if(IsUserLogged())
-	{
-		return $_SESSION["logged"]["username"];
-	}
-	else
-	{
-		return "Guest";
-	}
+    global $base_url;
+    
+    if(IsUserLogged())
+    {
+        return $_SESSION["logged"]["username"];
+    }
+    else
+    {
+        return "Guest";
+    }
 }
 
 /**
@@ -236,28 +236,28 @@ function GetCurrentUser()
  */
 function ProtectPage($permissions = "")
 {
-	if(IsAdminLogged())
-	{
-		return;
-	}
-	elseif($permissions != "")
-	{
+    if(IsAdminLogged())
+    {
+        return;
+    }
+    elseif($permissions != "")
+    {
         $group = GetCurrentUserGroup();
         
-		foreach($permissions as $machine_name)
-		{
-			if(!\JarisCMS\Group\GetPermission($machine_name, $group))
-			{
-				\JarisCMS\System\GetHTTPStatusHeader(401);
-				\JarisCMS\System\GoToPage("access-denied");
-			}
-		}
+        foreach($permissions as $machine_name)
+        {
+            if(!\JarisCMS\Group\GetPermission($machine_name, $group))
+            {
+                \JarisCMS\System\GetHTTPStatusHeader(401);
+                \JarisCMS\System\GoToPage("access-denied");
+            }
+        }
 
-		return;
-	}
+        return;
+    }
 
-	\JarisCMS\System\GetHTTPStatusHeader(401);
-	\JarisCMS\System\GoToPage("access-denied");
+    \JarisCMS\System\GetHTTPStatusHeader(401);
+    \JarisCMS\System\GoToPage("access-denied");
 }
 
 /**
@@ -270,8 +270,8 @@ function ProtectPage($permissions = "")
  */
 function HasUserPermissions($permissions, $username=null)
 {
-	if(!IsAdminLogged())
-	{
+    if(!IsAdminLogged())
+    {
         $group = GetCurrentUserGroup();
         
         if($username != null)
@@ -282,13 +282,13 @@ function HasUserPermissions($permissions, $username=null)
         
         foreach($permissions as $machine_name)
         {
-        	if(!\JarisCMS\Group\GetPermission($machine_name, $group))
-        	{
-        		return false;
-        	}
+            if(!\JarisCMS\Group\GetPermission($machine_name, $group))
+            {
+                return false;
+            }
         }
-	}
+    }
 
-	return true;
+    return true;
 }
 ?>

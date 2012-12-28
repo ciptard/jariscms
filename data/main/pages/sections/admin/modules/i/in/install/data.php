@@ -13,32 +13,32 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Install Module") ?>
-	field;
+    field: title
+        <?php print t("Install Module") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_modules", "install_modules"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_modules", "install_modules"));
 
-			if(isset($_REQUEST["path"]))
-			{
+            if(isset($_REQUEST["path"]))
+            {
                 $needs_dependency = false;
-				if(JarisCMS\Module\Install($_REQUEST["path"], $needs_dependency))
-				{
-					JarisCMS\System\AddMessage(t("Module successfully installed."));
-				}
-				else if(!$needs_dependency)
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
-				}
-			}
+                if(JarisCMS\Module\Install($_REQUEST["path"], $needs_dependency))
+                {
+                    JarisCMS\System\AddMessage(t("Module successfully installed."));
+                }
+                else if(!$needs_dependency)
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
+                }
+            }
 
-			JarisCMS\System\GoToPage("admin/modules");
-		?>
-	field;
+            JarisCMS\System\GoToPage("admin/modules");
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

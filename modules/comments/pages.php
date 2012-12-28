@@ -13,67 +13,67 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		add/comment
-	field;
+    field: uri
+        add/comment
+    field;
 row;
 
 row: 1
-	field: uri
-		admin/comments/flags
-	field;
+    field: uri
+        admin/comments/flags
+    field;
 row;
 
 row: 2
-	field: uri
-		admin/comments/flags/delete
-	field;
+    field: uri
+        admin/comments/flags/delete
+    field;
 row;
 
 row: 3
-	field: uri
-		admin/comments/flags/remove
-	field;
+    field: uri
+        admin/comments/flags/remove
+    field;
 row;
 
 row: 4
-	field: uri
-		admin/types/comments
-	field;
+    field: uri
+        admin/types/comments
+    field;
 row;
 
 row: 5
-	field: uri
-		comments-script
-	field;
+    field: uri
+        comments-script
+    field;
 row;
 
 row: 6
-	field: uri
-		delete/comment
-	field;
+    field: uri
+        delete/comment
+    field;
 row;
 
 row: 7
-	field: uri
-		edit/comment
-	field;
+    field: uri
+        edit/comment
+    field;
 row;
 
 row: 8
-	field: uri
-		flag/comment
-	field;
+    field: uri
+        flag/comment
+    field;
 row;
 
 row: 9
-	field: uri
-		navigations/comment
-	field;
+    field: uri
+        navigations/comment
+    field;
 row;
 
 row: 10
-	field: uri
-		user/comments
-	field;
+    field: uri
+        user/comments
+    field;
 row;

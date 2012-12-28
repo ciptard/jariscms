@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Add Rating
-	field;
+    field: title
+        Add Rating
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             if(isset($_REQUEST["s"]) && current_user() == "Guest")
             {
                 session_destroy();
@@ -45,10 +45,10 @@ row: 0
                     print rating_calculate_total_points($rating_data, $type_settings["number_of_points"]);
                 }
             }
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

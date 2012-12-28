@@ -27,31 +27,31 @@ namespace JarisCMS\Page;
 */
 function Create($page, $data, &$uri)
 {
-	$page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
-	
-	$path = GeneratePath($page);
-	$path = \JarisCMS\FileSystem\Rename($path);
+    $page = trim($page);
+    if($page == "")
+    {
+        return false;
+    }
+    
+    $path = GeneratePath($page);
+    $path = \JarisCMS\FileSystem\Rename($path);
 
-	//Returns the page uri to the argument reference.
-	$uri = \JarisCMS\FileSystem\GetURIFromPath(str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/", "", $path));
+    //Returns the page uri to the argument reference.
+    $uri = \JarisCMS\FileSystem\GetURIFromPath(str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/", "", $path));
 
-	\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	\JarisCMS\FileSystem\MakeDir($path . "/files", 0755, true);
-	\JarisCMS\FileSystem\MakeDir($path . "/images", 0755, true);
-	\JarisCMS\FileSystem\MakeDir($path . "/blocks", 0755, true);
+    \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    \JarisCMS\FileSystem\MakeDir($path . "/files", 0755, true);
+    \JarisCMS\FileSystem\MakeDir($path . "/images", 0755, true);
+    \JarisCMS\FileSystem\MakeDir($path . "/blocks", 0755, true);
 
-	//Call create_page hook before creating the page
-	\JarisCMS\Module\Hook("Page", "Create", $uri, $data, $path);
-	
-	$data["groups"] = serialize($data["groups"]);
-	$data["categories"] = serialize($data["categories"]);
+    //Call create_page hook before creating the page
+    \JarisCMS\Module\Hook("Page", "Create", $uri, $data, $path);
+    
+    $data["groups"] = serialize($data["groups"]);
+    $data["categories"] = serialize($data["categories"]);
 
-	if(\JarisCMS\PHPDB\Add($data, $path . "/data.php"))
-	{
+    if(\JarisCMS\PHPDB\Add($data, $path . "/data.php"))
+    {
         //In case a module is installing a system page skip it of the database
         if(!$data["is_system"])
         {
@@ -64,11 +64,11 @@ function Create($page, $data, &$uri)
             }
             file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "cache_events/new_page", "");
         }
-		
-		return true;
-	}
-	
-	return false;
+        
+        return true;
+    }
+    
+    return false;
 }
 
 /**
@@ -80,28 +80,28 @@ function Create($page, $data, &$uri)
  */
 function Delete($page)
 {
-	$page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
-	
-	$page_path = GeneratePath($page);
+    $page = trim($page);
+    if($page == "")
+    {
+        return false;
+    }
+    
+    $page_path = GeneratePath($page);
     
     //Call Delete hook before deleting the page
-	\JarisCMS\Module\Hook("Page", "Delete", $page, $page_path);
+    \JarisCMS\Module\Hook("Page", "Delete", $page, $page_path);
 
-	//Clears the page directory to be able to delete it
-	if(!\JarisCMS\FileSystem\RemoveDirRecursively($page_path, true))
-	{
-		return false;
-	}
+    //Clears the page directory to be able to delete it
+    if(!\JarisCMS\FileSystem\RemoveDirRecursively($page_path, true))
+    {
+        return false;
+    }
 
-	RemoveEmptyDirs($page_path);
-	
-	RemoveURISQLite($page);
+    RemoveEmptyDirs($page_path);
+    
+    RemoveURISQLite($page);
 
-	return true;
+    return true;
 }
 
 /**
@@ -115,21 +115,21 @@ function Delete($page)
  */
 function Edit($page, $new_data)
 {
-	$page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
-	
-	$page_path = GeneratePath($page);
+    $page = trim($page);
+    if($page == "")
+    {
+        return false;
+    }
+    
+    $page_path = GeneratePath($page);
 
-	//Call edit_page_data hook before editing the page
-	\JarisCMS\Module\Hook("Page", "Edit", $page, $new_data, $page_path);
-	
-	$new_data["groups"] = serialize($new_data["groups"]);
-	$new_data["categories"] = serialize($new_data["categories"]);
+    //Call edit_page_data hook before editing the page
+    \JarisCMS\Module\Hook("Page", "Edit", $page, $new_data, $page_path);
+    
+    $new_data["groups"] = serialize($new_data["groups"]);
+    $new_data["categories"] = serialize($new_data["categories"]);
 
-	if(\JarisCMS\PHPDB\Edit(0, $new_data, $page_path . "/data.php"))
+    if(\JarisCMS\PHPDB\Edit(0, $new_data, $page_path . "/data.php"))
     {        
         EditDataURISQLite($page, $new_data);
         
@@ -166,50 +166,50 @@ function CountView($page)
             if(\JarisCMS\SQLite\DBExists("search_engine"))
             {
                 $db = \JarisCMS\SQLite\Open("search_engine");
-				\JarisCMS\SQLite\Turbo($db);
-				
-				$select = "select * from uris where uri='" . str_replace("'", "''", $page) . "'";
+                \JarisCMS\SQLite\Turbo($db);
+                
+                $select = "select * from uris where uri='" . str_replace("'", "''", $page) . "'";
                 
                 $result = \JarisCMS\SQLite\Query($select, $db);
                 
                 if($data = \JarisCMS\SQLite\FetchArray($result))
                 {
                     $search_database_views = $data["views"]+1;
-					
-					$current_day = date("j", time());
-					$current_week = date("W", time());
-					$current_month = date("n", time());
-					
-					if($data["views_day"] != $current_day)
-					{
-						$day_set = "views_day=$current_day, views_day_count=1";
-					}
-					else
-					{
-						$day_set = "views_day_count=views_day_count+1";
-					}
-					
-					if($data["views_week"] != $current_week)
-					{
-						$week_set = "views_week=$current_week, views_week_count=1";
-					}
-					else
-					{
-						$week_set = "views_week_count=views_week_count+1";
-					}
-					
-					if($data["views_month"] != $current_month)
-					{
-						$month_set = "views_month=$current_month, views_month_count=1";
-					}
-					else
-					{
-						$month_set = "views_month_count=views_month_count+1";
-					}
-					
-					$update = "update uris set views=views+1, $day_set, $week_set, $month_set where uri='" . str_replace("'", "''", $page) . "'";
+                    
+                    $current_day = date("j", time());
+                    $current_week = date("W", time());
+                    $current_month = date("n", time());
+                    
+                    if($data["views_day"] != $current_day)
+                    {
+                        $day_set = "views_day=$current_day, views_day_count=1";
+                    }
+                    else
+                    {
+                        $day_set = "views_day_count=views_day_count+1";
+                    }
+                    
+                    if($data["views_week"] != $current_week)
+                    {
+                        $week_set = "views_week=$current_week, views_week_count=1";
+                    }
+                    else
+                    {
+                        $week_set = "views_week_count=views_week_count+1";
+                    }
+                    
+                    if($data["views_month"] != $current_month)
+                    {
+                        $month_set = "views_month=$current_month, views_month_count=1";
+                    }
+                    else
+                    {
+                        $month_set = "views_month_count=views_month_count+1";
+                    }
+                    
+                    $update = "update uris set views=views+1, $day_set, $week_set, $month_set where uri='" . str_replace("'", "''", $page) . "'";
                 
-					\JarisCMS\SQLite\Query($update, $db);
+                    \JarisCMS\SQLite\Query($update, $db);
                 }
                 
                 \JarisCMS\SQLite\Close($db);
@@ -249,30 +249,30 @@ function CountView($page)
  */
 function GetData($page, $language_code = null)
 {
-	$page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
-	
-	$page_path = "";
+    $page = trim($page);
+    if($page == "")
+    {
+        return false;
+    }
+    
+    $page_path = "";
 
-	if(!$language_code)
-	{
-		$page_path = GeneratePath($page);
-	}
-	else
-	{
-		$page_path = dt(GeneratePath($page), $language_code);
-	}
+    if(!$language_code)
+    {
+        $page_path = GeneratePath($page);
+    }
+    else
+    {
+        $page_path = dt(GeneratePath($page), $language_code);
+    }
 
-	if(!file_exists($page_path . "/data.php"))
-	{
-		return null;
-	}
+    if(!file_exists($page_path . "/data.php"))
+    {
+        return null;
+    }
     
     //get page data
-	$data = \JarisCMS\PHPDB\GetData(0, $page_path . "/data.php");
+    $data = \JarisCMS\PHPDB\GetData(0, $page_path . "/data.php");
     
     //get views count data
     $views_data = \JarisCMS\PHPDB\GetData(0, $page_path . "/views.php");
@@ -286,14 +286,14 @@ function GetData($page, $language_code = null)
     {
         $data["views"] = 0;
     }
-	
-	$data["groups"] = unserialize($data["groups"]);
-	$data["categories"] = unserialize($data["categories"]);
+    
+    $data["groups"] = unserialize($data["groups"]);
+    $data["categories"] = unserialize($data["categories"]);
 
-	//Call GetData hook before returning the data
-	\JarisCMS\Module\Hook("Page", "GetData", $page, $data, $language_code);
+    //Call GetData hook before returning the data
+    \JarisCMS\Module\Hook("Page", "GetData", $page, $data, $language_code);
 
-	return $data;
+    return $data;
 }
 
 /**
@@ -305,15 +305,15 @@ function GetData($page, $language_code = null)
  */
 function GetType($page)
 {
-	$page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
-	
-	$data = GetData($page);
-	
-	return $data["type"];
+    $page = trim($page);
+    if($page == "")
+    {
+        return false;
+    }
+    
+    $data = GetData($page);
+    
+    return $data["type"];
 }
 
 /**
@@ -326,10 +326,10 @@ function GetType($page)
 function IsOwner($page)
 {   
     $page = trim($page);
-	if($page == "")
-	{
-		return false;
-	}
+    if($page == "")
+    {
+        return false;
+    }
     
     if(\JarisCMS\Security\IsAdminLogged())
     {
@@ -340,15 +340,15 @@ function IsOwner($page)
     
     if(\JarisCMS\Group\GetPermission("edit_all_user_content", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetTypePermission($data['type'], \JarisCMS\Security\GetCurrentUserGroup()))
     {
-    	return true;
+        return true;
     }
     
     if($data["author"] == \JarisCMS\Security\GetCurrentUser())
     {
         return true;
     }
-	
-	return false;
+    
+    return false;
     
 }
 
@@ -363,36 +363,36 @@ function IsOwner($page)
  */
 function Move($actual_uri, &$new_uri)
 {
-	$actual_uri = trim($actual_uri);
-	$new_uri = trim($new_uri);
-	if($actual_uri == "" || $new_uri == "")
-	{
-		return false;
-	}
-	
-	$actual_path = GeneratePath($actual_uri);
-	$new_path = \JarisCMS\FileSystem\Rename(GeneratePath($new_uri));
+    $actual_uri = trim($actual_uri);
+    $new_uri = trim($new_uri);
+    if($actual_uri == "" || $new_uri == "")
+    {
+        return false;
+    }
+    
+    $actual_path = GeneratePath($actual_uri);
+    $new_path = \JarisCMS\FileSystem\Rename(GeneratePath($new_uri));
 
-	$new_uri = \JarisCMS\FileSystem\GetURIFromPath(str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/", "", $new_path));
+    $new_uri = \JarisCMS\FileSystem\GetURIFromPath(str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/", "", $new_path));
 
-	//Call move_page hook before moving the page
-	\JarisCMS\Module\Hook("Page", "Move", $actual_uri, $new_uri);
+    //Call move_page hook before moving the page
+    \JarisCMS\Module\Hook("Page", "Move", $actual_uri, $new_uri);
 
-	if(\JarisCMS\FileSystem\MakeDir($new_path, 0755, true))
-	{
-		\JarisCMS\FileSystem\MoveDirRecursively($actual_path, $new_path);
+    if(\JarisCMS\FileSystem\MakeDir($new_path, 0755, true))
+    {
+        \JarisCMS\FileSystem\MoveDirRecursively($actual_path, $new_path);
 
-		//Clears the page directory to be able to delete it
-		\JarisCMS\FileSystem\RemoveDirRecursively($actual_path, true);
+        //Clears the page directory to be able to delete it
+        \JarisCMS\FileSystem\RemoveDirRecursively($actual_path, true);
 
-		RemoveEmptyDirs($actual_path);
-		
-		EditURISQLite($actual_uri, $new_uri);
+        RemoveEmptyDirs($actual_path);
+        
+        EditURISQLite($actual_uri, $new_uri);
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -403,24 +403,24 @@ function Move($actual_uri, &$new_uri)
  * @return bool True if has access or false if not
  */
 function UserAccess($page_data)
-{	
-	$current_group = \JarisCMS\Security\GetCurrentUserGroup();
-	
-	//If administrator not selected any group return true or admin logged.
-	if(!$page_data["groups"] || \JarisCMS\Security\IsAdminLogged())
-	{
-		return true;
-	}
-	
-	foreach($page_data["groups"] as $machine_name)
-	{
-		if($machine_name == $current_group)
-		{
-			return true;
-		}
-	}
-	
-	return false;
+{    
+    $current_group = \JarisCMS\Security\GetCurrentUserGroup();
+    
+    //If administrator not selected any group return true or admin logged.
+    if(!$page_data["groups"] || \JarisCMS\Security\IsAdminLogged())
+    {
+        return true;
+    }
+    
+    foreach($page_data["groups"] as $machine_name)
+    {
+        if($machine_name == $current_group)
+        {
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 /**
@@ -430,37 +430,37 @@ function UserAccess($page_data)
  */
 function RemoveEmptyDirs($path)
 {
-	$path = trim($path);
-	if($path == "")
-	{
-		return false;
-	}
-	
-	$main_dir = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/"; //This is the directory that is not going to be deleted
+    $path = trim($path);
+    if($path == "")
+    {
+        return false;
+    }
+    
+    $main_dir = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/"; //This is the directory that is not going to be deleted
 
-	//Checks if the path belongs to the sections path
-	$path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/sections/", "", $path, $count);
-	if($count > 0)
-	{
-		$main_dir = \JarisCMS\Setting\GetDataDirectory() . "pages/sections/";
-	}
-	else
-	{
-		$path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/singles/", "", $path, $count);
-	}
+    //Checks if the path belongs to the sections path
+    $path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/sections/", "", $path, $count);
+    if($count > 0)
+    {
+        $main_dir = \JarisCMS\Setting\GetDataDirectory() . "pages/sections/";
+    }
+    else
+    {
+        $path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/singles/", "", $path, $count);
+    }
 
-	$directories = explode("/", $path);
-	$directory_count = count($directories);
+    $directories = explode("/", $path);
+    $directory_count = count($directories);
 
-	for($i=0; $i<$directory_count; $i++){
+    for($i=0; $i<$directory_count; $i++){
 
-		$sub_directory = "";
-		for($c=0; $c < $directory_count- $i; $c++){
-			$sub_directory .= $directories[$c] . "/";
-		}
+        $sub_directory = "";
+        for($c=0; $c < $directory_count- $i; $c++){
+            $sub_directory .= $directories[$c] . "/";
+        }
 
-		rmdir($main_dir . $sub_directory);
-	}
+        rmdir($main_dir . $sub_directory);
+    }
 }
 
 /**
@@ -470,10 +470,10 @@ function RemoveEmptyDirs($path)
  */
 function AddURISQLite($uri, $data)
 {
-	if(!\JarisCMS\SQLite\DBExists("search_engine"))
-	{
-		$db = \JarisCMS\SQLite\Open("search_engine");
-		\JarisCMS\SQLite\Query("create table uris (
+    if(!\JarisCMS\SQLite\DBExists("search_engine"))
+    {
+        $db = \JarisCMS\SQLite\Open("search_engine");
+        \JarisCMS\SQLite\Query("create table uris (
         title text, 
         content text, 
         description text, 
@@ -487,16 +487,16 @@ function AddURISQLite($uri, $data)
         author text,
         type text,
         views integer,
-		views_day integer,
-		views_day_count integer,
-		views_week integer,
-		views_week_count integer,
-		views_month integer,
-		views_month_count integer,
+        views_day integer,
+        views_day_count integer,
+        views_week integer,
+        views_week_count integer,
+        views_month integer,
+        views_month_count integer,
         uri text, 
         data text)", $db);
         
-		\JarisCMS\SQLite\Query("create index uris_index on uris (
+        \JarisCMS\SQLite\Query("create index uris_index on uris (
         title desc, 
         content desc, 
         description desc, 
@@ -507,13 +507,13 @@ function AddURISQLite($uri, $data)
         author desc,
         type desc,
         views desc,
-		views_day_count desc,
-		views_week_count desc,
-		views_month_count desc,
+        views_day_count desc,
+        views_week_count desc,
+        views_month_count desc,
         uri desc)", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+        
+        \JarisCMS\SQLite\Close($db);
+    }
     
     $all_data = $data;
     $all_data["groups"] = unserialize($all_data["groups"]);
@@ -535,9 +535,9 @@ function AddURISQLite($uri, $data)
     \JarisCMS\SQLite\EscapeArray($data);
     
     $uri = str_replace("'", "''", $uri);
-	
-	$db = \JarisCMS\SQLite\Open("search_engine");
-	\JarisCMS\SQLite\Query("insert into uris 
+    
+    $db = \JarisCMS\SQLite\Open("search_engine");
+    \JarisCMS\SQLite\Query("insert into uris 
     (title, content, description, keywords, groups, categories, input_format, 
      created_date, last_edit_date, last_edit_by, author, type, views, uri, data) 
      
@@ -545,8 +545,8 @@ function AddURISQLite($uri, $data)
     '{$data['groups']}', '{$data['categories']}','{$data['input_format']}','{$data['created_date']}', 
     '{$data['last_edit_date']}', '{$data['last_edit_by']}', '{$data['author']}', '{$data['type']}', 
     {$data['views']}, '$uri', '$all_data')", $db);
-	
-	\JarisCMS\SQLite\Close($db);
+    
+    \JarisCMS\SQLite\Close($db);
 }
 
 /**
@@ -557,17 +557,17 @@ function AddURISQLite($uri, $data)
  */
 function EditURISQLite($old_uri, $new_uri)
 {
-	if(\JarisCMS\SQLite\DBExists("search_engine"))
-	{
-		$db = \JarisCMS\SQLite\Open("search_engine");
+    if(\JarisCMS\SQLite\DBExists("search_engine"))
+    {
+        $db = \JarisCMS\SQLite\Open("search_engine");
         
         $old_uri = str_replace("'", "''", $old_uri);
         $new_uri = str_replace("'", "''", $new_uri);
         
-		\JarisCMS\SQLite\Query("update uris set uri = '$new_uri' where uri = '$old_uri'", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+        \JarisCMS\SQLite\Query("update uris set uri = '$new_uri' where uri = '$old_uri'", $db);
+        
+        \JarisCMS\SQLite\Close($db);
+    }
 }
 
 /**
@@ -578,8 +578,8 @@ function EditURISQLite($old_uri, $new_uri)
  */
 function EditDataURISQLite($uri, $data)
 {
-	if(\JarisCMS\SQLite\DBExists("search_engine"))
-	{
+    if(\JarisCMS\SQLite\DBExists("search_engine"))
+    {
         $all_data = $data;
         $all_data["groups"] = unserialize($all_data["groups"]);
         $all_data["categories"] = unserialize($all_data["categories"]);
@@ -596,11 +596,11 @@ function EditDataURISQLite($uri, $data)
         
         $uri = str_replace("'", "''", $uri);
         
-		$db = \JarisCMS\SQLite\Open("search_engine");
+        $db = \JarisCMS\SQLite\Open("search_engine");
         
         //No need to save views since views are managed by separate
         
-		\JarisCMS\SQLite\Query("update uris set 
+        \JarisCMS\SQLite\Query("update uris set 
         title = '{$data['title']}', 
         content = '{$data['content']}', 
         description = '{$data['description']}', 
@@ -616,9 +616,9 @@ function EditDataURISQLite($uri, $data)
         data = '$all_data' 
         
         where uri = '$uri'", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+        
+        \JarisCMS\SQLite\Close($db);
+    }
 }
 
 /**
@@ -629,15 +629,15 @@ function EditDataURISQLite($uri, $data)
  */
 function RemoveURISQLite($uri)
 {
-	if(\JarisCMS\SQLite\DBExists("search_engine"))
-	{
+    if(\JarisCMS\SQLite\DBExists("search_engine"))
+    {
         $uri = str_replace("'", "''", $uri);
        
-		$db = \JarisCMS\SQLite\Open("search_engine");
-		\JarisCMS\SQLite\Query("delete from uris where uri = '$uri'", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+        $db = \JarisCMS\SQLite\Open("search_engine");
+        \JarisCMS\SQLite\Query("delete from uris where uri = '$uri'", $db);
+        
+        \JarisCMS\SQLite\Close($db);
+    }
 }
 
 /**
@@ -650,38 +650,38 @@ function RemoveURISQLite($uri)
  */
 function GetListSQLite($page=0, $limit=30)
 {
-	$db = null;
-	$page *=  $limit;
-	$pages = array();
-		
-	if(\JarisCMS\SQLite\DBExists("search_engine"))
-	{
-		$db = \JarisCMS\SQLite\Open("search_engine");
-		$result = \JarisCMS\SQLite\Query("select uri from uris order by created_date desc, last_edit_date desc limit $page, $limit", $db);
-	}
-	else
-	{
-		return $pages;
-	}
-	
-	$fields = array();
-	if($fields = \JarisCMS\SQLite\FetchArray($result))
-	{
-		$pages[] = $fields["uri"];
-		
-		while($fields = \JarisCMS\SQLite\FetchArray($result))
-		{
-			$pages[] = $fields["uri"];
-		}
-		
-		\JarisCMS\SQLite\Close($db);
-		return $pages;
-	}
-	else
-	{
-		\JarisCMS\SQLite\Close($db);
-		return $pages;
-	}
+    $db = null;
+    $page *=  $limit;
+    $pages = array();
+        
+    if(\JarisCMS\SQLite\DBExists("search_engine"))
+    {
+        $db = \JarisCMS\SQLite\Open("search_engine");
+        $result = \JarisCMS\SQLite\Query("select uri from uris order by created_date desc, last_edit_date desc limit $page, $limit", $db);
+    }
+    else
+    {
+        return $pages;
+    }
+    
+    $fields = array();
+    if($fields = \JarisCMS\SQLite\FetchArray($result))
+    {
+        $pages[] = $fields["uri"];
+        
+        while($fields = \JarisCMS\SQLite\FetchArray($result))
+        {
+            $pages[] = $fields["uri"];
+        }
+        
+        \JarisCMS\SQLite\Close($db);
+        return $pages;
+    }
+    else
+    {
+        \JarisCMS\SQLite\Close($db);
+        return $pages;
+    }
 }
 
 /**
@@ -693,31 +693,31 @@ function GetListSQLite($page=0, $limit=30)
  */
 function GeneratePath($page)
 {
-	$path = \JarisCMS\Setting\GetDataDirectory() . "pages/";
+    $path = \JarisCMS\Setting\GetDataDirectory() . "pages/";
 
-	$sections = explode("/",$page);
+    $sections = explode("/",$page);
 
-		//Last element of the array is the name of the page, so we substract it.
-		$sections_available = count($sections) - 1;
+        //Last element of the array is the name of the page, so we substract it.
+        $sections_available = count($sections) - 1;
 
-		if($sections_available != 0)
-		{
-			//Here we replace the full $page value with sections stripped out.
-			$page = $sections[count($sections)-1];
-			$path .= "sections/";
+        if($sections_available != 0)
+        {
+            //Here we replace the full $page value with sections stripped out.
+            $page = $sections[count($sections)-1];
+            $path .= "sections/";
 
-			for($i=0; $i<$sections_available; ++$i)
-			{
-				$path .= $sections[$i] . "/";
-			}
+            for($i=0; $i<$sections_available; ++$i)
+            {
+                $path .= $sections[$i] . "/";
+            }
 
-			$path .= substr($page,0,1) . "/" . substr($page,0,2) . "/" . $page;
-		}
-		else
-		{
-			$path .= "singles/" . substr($page,0,1) . "/" . substr($page,0,2) . "/" . $page;
-		}
+            $path .= substr($page,0,1) . "/" . substr($page,0,2) . "/" . $page;
+        }
+        else
+        {
+            $path .= "singles/" . substr($page,0,1) . "/" . substr($page,0,2) . "/" . $page;
+        }
 
-	return $path;
+    return $path;
 }
 ?>

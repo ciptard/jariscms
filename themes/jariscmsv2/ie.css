@@ -1,29 +1,29 @@
 .primary-links
 {
-	display: inline;
+    display: inline;
 }
 
 .primary-links li
 {
-	display: inline;
+    display: inline;
 }
 
 .primary-links a:hover
 {
-	color: #800000;
+    color: #800000;
 }
 
 .secondary-links
 {
-	display: inline;
+    display: inline;
 }
 
 .secondary-links li
 {
-	display: inline;
+    display: inline;
 }
 
 .block .content li
 {
-	display: inline;
+    display: inline;
 }

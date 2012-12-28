@@ -13,8 +13,8 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php 
+    field: title
+        <?php 
             if($user_data = JarisCMS\User\GetData($_REQUEST["user"]))
             {
                 $blog_data = JarisCMS\Module\Blog\GetFromDB($_REQUEST["user"]);
@@ -30,10 +30,10 @@ row: 0
                 print t("My Blog Subscriptions");
             } 
         ?>
-	field;
+    field;
 
-	field: content
-		<?php 
+    field: content
+        <?php 
             JarisCMS\System\AddStyle("modules/blog/styles/list.css");
             
             $user = "";
@@ -82,23 +82,23 @@ row: 0
             }
             
             $page = 1;
-			
-			if(isset($_REQUEST["page"]))
-			{
-				$page = $_REQUEST["page"];
-			}
+            
+            if(isset($_REQUEST["page"]))
+            {
+                $page = $_REQUEST["page"];
+            }
             
             $blog_count = 0;
             $blog_count = JarisCMS\SQLite\CountColumn("blog_subscriptions", "subscriptions", "id", "where subscriber='$user'");
-			
-			print "<h2>" . t("Total Subscriptions:") . " " . $blog_count . "</h2>";
-			
+            
+            print "<h2>" . t("Total Subscriptions:") . " " . $blog_count . "</h2>";
+            
             $blogs = array();
             $blogs = JarisCMS\SQLite\GetDataList("blog_subscriptions", "subscriptions", $page-1, 20, "where subscriber='$user' order by created_timestamp desc");
-			
-			JarisCMS\System\PrintGenericNavigation($blog_count, $page, "blog/subscriptions", "blog", 20, array("user"=>$_REQUEST["user"]));
-			
-			foreach($blogs as $data)
+            
+            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "blog/subscriptions", "blog", 20, array("user"=>$_REQUEST["user"]));
+            
+            foreach($blogs as $data)
             {
                 $user_data = JarisCMS\User\GetData($data["user"]);
                 
@@ -133,12 +133,12 @@ row: 0
             }
             
             print "<div style=\"clear: both\"></div>\n";
-			
-			JarisCMS\System\PrintGenericNavigation($blog_count, $page, "blog/subscriptions", "blog", 20, array("user"=>$_REQUEST["user"]));
+            
+            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "blog/subscriptions", "blog", 20, array("user"=>$_REQUEST["user"]));
         ?>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

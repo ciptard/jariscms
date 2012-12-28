@@ -1,14 +1,14 @@
 .primary-links
 {
-	display: inline;
+    display: inline;
 }
 
 .primary-links li
 {
-	display: inline;
+    display: inline;
 }
 
 .primary-links a:hover
 {
-	color: #800000;
+    color: #800000;
 }

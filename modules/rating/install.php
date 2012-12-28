@@ -18,7 +18,7 @@ function Install()
     if(!JarisCMS\SQLite\DBExists("ratings"))
     {
         $db = JarisCMS\SQLite\Open("ratings");
-		
+        
         JarisCMS\SQLite\Query("create table ratings (id integer primary key, content_timestamp text, last_rate_timestamp text, day integer, month integer, year integer, uri text, type text, points integer, rates_count integer)", $db);
         
         JarisCMS\SQLite\Query("create index ratings_index on ratings (content_timestamp desc, last_rate_timestamp desc, day desc, month desc, year desc, uri desc, type desc, points desc, rates_count desc)", $db);

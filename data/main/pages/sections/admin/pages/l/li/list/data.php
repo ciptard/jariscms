@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Pages List") ?>
-	field;
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_content"));
+    field: title
+        <?php print t("Pages List") ?>
+    field;
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_content"));
             
             JarisCMS\System\AddTab(t("Navigation View"), "admin/pages");
             JarisCMS\System\AddTab(t("Create Page"), "admin/pages/types");
@@ -26,8 +26,8 @@ row: 0
             $type = "";
             if(trim($_REQUEST["type"]) != "")
             {
-            	$type = str_replace("'", "''", $_REQUEST["type"]);
-            	$type = "type='$type'";
+                $type = str_replace("'", "''", $_REQUEST["type"]);
+                $type = "type='$type'";
             }
             
             $types_array = JarisCMS\Type\GetList();
@@ -35,41 +35,41 @@ row: 0
             $author = "";
             if(trim($_REQUEST["author"]) != "")
             {
-            	$username = str_replace("'", "''", $_REQUEST["author"]);
-            	
-            	if($type)
-            		$author = "and ";
+                $username = str_replace("'", "''", $_REQUEST["author"]);
+                
+                if($type)
+                    $author = "and ";
             
-            	$author .= "author='$username'";
+                $author .= "author='$username'";
             }
             
             $where = "";
             if($type || $author)
             {
-            	$where = "where ";
+                $where = "where ";
             }
             
             $page = 1;
             
             if(isset($_REQUEST["page"]))
             {
-            	$page = $_REQUEST["page"];
+                $page = $_REQUEST["page"];
             }
             
             print "<form method=\"get\" action=\"" . JarisCMS\URI\PrintURL("admin/pages/list") . "\">\n";
-			print "<div style=\"float: left\">";
+            print "<div style=\"float: left\">";
             print t("Filter by type:") . " <select onchange=\"javascript: this.form.submit()\" name=\"type\">\n";
             print "<option value=\"\">" . t("All") . "</option>\n";
             foreach($types_array as $machine_name=>$type_data)
             {
-            	$selected = "";
+                $selected = "";
             
-            	if($_REQUEST["type"] == $machine_name)
-            	{
-            		$selected = "selected=\"selected\"";
-            	}
+                if($_REQUEST["type"] == $machine_name)
+                {
+                    $selected = "selected=\"selected\"";
+                }
             
-            	print "<option $selected value=\"$machine_name\">{$type_data['name']}</option>\n";
+                print "<option $selected value=\"$machine_name\">{$type_data['name']}</option>\n";
             }
             print "</select>\n";
             print "</div>";
@@ -82,40 +82,40 @@ row: 0
             print "</form>\n";
             
             print "<div style=\"clear: both\"></div>";
-			
-			$pages_count = JarisCMS\SQLite\CountColumn("search_engine", "uris", "uri", "$where $type $author");
-			
-			print "<h2>" . t("Total content:") . " " . $pages_count . "</h2>";
-			
-			$pages = JarisCMS\SQLite\GetDataList("search_engine", "uris", $page - 1, 20, "$where $type $author order by created_date desc");
+            
+            $pages_count = JarisCMS\SQLite\CountColumn("search_engine", "uris", "uri", "$where $type $author");
+            
+            print "<h2>" . t("Total content:") . " " . $pages_count . "</h2>";
+            
+            $pages = JarisCMS\SQLite\GetDataList("search_engine", "uris", $page - 1, 20, "$where $type $author order by created_date desc");
            
-			JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/pages/list", "", 20, array("type"=>$_REQUEST["type"], "author"=>$_REQUEST["author"]));
-			
-			print "<table class=\"navigation-list\">";
-			print "<thead>";
-			print "<tr>";
-			print "<td>" . t("Title") . "</td>";
-			print "<td>" . t("Author") . "</td>";
+            JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/pages/list", "", 20, array("type"=>$_REQUEST["type"], "author"=>$_REQUEST["author"]));
+            
+            print "<table class=\"navigation-list\">";
+            print "<thead>";
+            print "<tr>";
+            print "<td>" . t("Title") . "</td>";
+            print "<td>" . t("Author") . "</td>";
             print "<td>" . t("Dates") . "</td>";
             print "<td>" . t("Type") . "</td>";
-			print "<td>" . t("Operation") . "</td>";
-			print "</tr>";
-			print "</thead>";
-			
-			foreach($pages as $result_fields)
-			{
-				$uri = $result_fields["uri"];
-				
-				$page_data = JarisCMS\Page\GetData($uri);
+            print "<td>" . t("Operation") . "</td>";
+            print "</tr>";
+            print "</thead>";
+            
+            foreach($pages as $result_fields)
+            {
+                $uri = $result_fields["uri"];
+                
+                $page_data = JarisCMS\Page\GetData($uri);
                 $author = $page_data["author"]?$page_data["author"]:t("system");
                 $type_data = JarisCMS\Type\GetData($page_data["type"]);
                 $type = $page_data["type"]?t($type_data["name"]):t("system");
-				
-				print "<tr>";
-				
-				print "<td>" . JarisCMS\System\PHPEval($page_data["title"]) . "</td>";
-				
-				print "<td>" . $author . "</td>";
+                
+                print "<tr>";
+                
+                print "<td>" . JarisCMS\System\PHPEval($page_data["title"]) . "</td>";
+                
+                print "<td>" . $author . "</td>";
                 
                 print 
                 "<td>" . 
@@ -124,25 +124,25 @@ row: 0
                 "</td>";
                 
                 print "<td>" . $type . "</td>";
-				
-				$edit_url = JarisCMS\URI\PrintURL("admin/pages/edit", array("uri"=>$uri));
-				$delete_url = JarisCMS\URI\PrintURL("admin/pages/delete", array("uri"=>$uri));
-				
-				print "<td>" . 
-				"<a href=\"$edit_url\">" . t("Edit") . "</a> <br />" .
-				"<a href=\"$delete_url\">" . t("Delete") . "</a>" .					
-			 	"</td>";
-				
-				print "</tr>";
-			}
-			
-			print "</table>";
-			
-			JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/pages/list", "", 20, array("type"=>$_REQUEST["type"], "author"=>$_REQUEST["author"]));
-		?>
-	field;
+                
+                $edit_url = JarisCMS\URI\PrintURL("admin/pages/edit", array("uri"=>$uri));
+                $delete_url = JarisCMS\URI\PrintURL("admin/pages/delete", array("uri"=>$uri));
+                
+                print "<td>" . 
+                "<a href=\"$edit_url\">" . t("Edit") . "</a> <br />" .
+                "<a href=\"$delete_url\">" . t("Delete") . "</a>" .                    
+                 "</td>";
+                
+                print "</tr>";
+            }
+            
+            print "</table>";
+            
+            JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/pages/list", "", 20, array("type"=>$_REQUEST["type"], "author"=>$_REQUEST["author"]));
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

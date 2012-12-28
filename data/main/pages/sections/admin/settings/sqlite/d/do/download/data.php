@@ -13,29 +13,29 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Sqlite Backup") ?>
-	field;
+    field: title
+        <?php print t("Sqlite Backup") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
-		?>
-		
-		<?php
-			if(isset($_REQUEST["name"]))
-			{
-				$file = JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $_REQUEST["name"] . ".sql";
-				
-				if(file_exists($file))
-				{
-					JarisCMS\FileSystem\PrintAllFiles($file, $_REQUEST["name"] . ".sql", true, true);
-				}
-			}
-		?>
-	field;
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
+        ?>
+        
+        <?php
+            if(isset($_REQUEST["name"]))
+            {
+                $file = JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $_REQUEST["name"] . ".sql";
+                
+                if(file_exists($file))
+                {
+                    JarisCMS\FileSystem\PrintAllFiles($file, $_REQUEST["name"] . ".sql", true, true);
+                }
+            }
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

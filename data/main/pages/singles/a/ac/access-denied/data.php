@@ -13,20 +13,20 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php 
-			JarisCMS\System\GetHTTPStatusHeader(401);
-			print t("Access Denied") 
-		?>
-	field;
+    field: title
+        <?php 
+            JarisCMS\System\GetHTTPStatusHeader(401);
+            print t("Access Denied") 
+        ?>
+    field;
 
-	field: content
-		<?php
-			print t("You dont have sufficient permissions to access the page.") 
-		?>
-	field;
+    field: content
+        <?php
+            print t("You dont have sufficient permissions to access the page.") 
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

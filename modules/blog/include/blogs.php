@@ -299,23 +299,23 @@ function GetSettings()
  */
 function Theme($post_data)
 {
-	$images = JarisCMS\Image\GetList($post_data["uri"]);
+    $images = JarisCMS\Image\GetList($post_data["uri"]);
                 
     $thumbnail = false;
     
     if(is_array($images))
     {
-    	foreach($images as $image_id=>$image_data)
+        foreach($images as $image_id=>$image_data)
         {
-        	$thumbnail = JarisCMS\URI\PrintURL("image/" . $post_data["uri"] . "/$image_id", array("w"=>100,"h"=>60));
+            $thumbnail = JarisCMS\URI\PrintURL("image/" . $post_data["uri"] . "/$image_id", array("w"=>100,"h"=>60));
             break;
         }
     }
                 
     $page_data = JarisCMS\Page\GetData($post_data["uri"]);
     $page_data_translation = JarisCMS\Page\GetData($post_data["uri"], JarisCMS\Language\GetCurrent());
-	$page_data["title"] = $page_data_translation["title"];
-	$page_data["content"] = $page_data_translation["content"];
+    $page_data["title"] = $page_data_translation["title"];
+    $page_data["content"] = $page_data_translation["content"];
     
     $url = JarisCMS\URI\PrintURL($post_data["uri"]);
     $title = $page_data["title"];
@@ -326,12 +326,12 @@ function Theme($post_data)
     
     $blog_post = "";
 
-	ob_start();
-		include(GetTemplatePath($post_data["uri"]));
-		$blog_post .= ob_get_contents();
-	ob_end_clean();
+    ob_start();
+        include(GetTemplatePath($post_data["uri"]));
+        $blog_post .= ob_get_contents();
+    ob_end_clean();
 
-	return $blog_post;
+    return $blog_post;
 }
 
 /**
@@ -340,33 +340,33 @@ function Theme($post_data)
  *@param $page The page uri that is going to be displayed.
  *
  *@return The template file to be used.
- *	It could be one of the followings in the same precedence:
- *		themes/theme/blog-post-uri.php
- *		themes/theme/blog-post.php
+ *    It could be one of the followings in the same precedence:
+ *        themes/theme/blog-post-uri.php
+ *        themes/theme/blog-post.php
  */
 function GetTemplatePath($page)
 {
-	global $theme;
-	$page = str_replace("/", "-", $page);
+    global $theme;
+    $page = str_replace("/", "-", $page);
 
-	$current_page = "themes/" . $theme . "/blog-post-" . $page . ".php";
-	$default_page = "themes/" . $theme . "/blog-post.php";
-	
-	$template_path = "";
+    $current_page = "themes/" . $theme . "/blog-post-" . $page . ".php";
+    $default_page = "themes/" . $theme . "/blog-post.php";
+    
+    $template_path = "";
 
-	if(file_exists($current_page))
-	{
-		$template_path = $current_page;
-	}
-	elseif(file_exists($default_page))
-	{
-		$template_path = $default_page;
-	}
+    if(file_exists($current_page))
+    {
+        $template_path = $current_page;
+    }
+    elseif(file_exists($default_page))
+    {
+        $template_path = $default_page;
+    }
     else
     {
         $template_path = "modules/blog/templates/blog-post.php";
     }
-	
-	return $template_path;
+    
+    return $template_path;
 }
 ?>

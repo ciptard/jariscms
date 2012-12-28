@@ -21,36 +21,36 @@ namespace JarisCMS\Category;
 */
 function Create($machine_name, $data)
 {
-	$path = GeneratePath($machine_name);
+    $path = GeneratePath($machine_name);
 
-	//First we make category directory
-	if(!file_exists($path))
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	}
-	
-	$category_data_path = $path . "/data.php";
-	
-	//Check if type already exist.
-	if(file_exists($category_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("category_exist");
-	}
-	
-	//Call create_category hook before creating the category
-	\JarisCMS\Module\Hook("Category", "Create", $machine_name, $data);
+    //First we make category directory
+    if(!file_exists($path))
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    }
+    
+    $category_data_path = $path . "/data.php";
+    
+    //Check if type already exist.
+    if(file_exists($category_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("category_exist");
+    }
+    
+    //Call create_category hook before creating the category
+    \JarisCMS\Module\Hook("Category", "Create", $machine_name, $data);
 
-	//Add category data
-	if(\JarisCMS\PHPDB\Add($data, $category_data_path))
-	{
+    //Add category data
+    if(\JarisCMS\PHPDB\Add($data, $category_data_path))
+    {
         AddMenuBlock($machine_name, $data);
         
-		return "true";
-	}
-	else
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+        return "true";
+    }
+    else
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 }
 
 /**
@@ -89,12 +89,12 @@ function Delete($machine_name)
  */
 function Edit($machine_name, $new_data)
 {
-	$path = GeneratePath($machine_name);
+    $path = GeneratePath($machine_name);
 
-	//Call edit_category hook before editing the category
-	\JarisCMS\Module\Hook("Category", "Edit", $machine_name, $new_data, $path);
+    //Call edit_category hook before editing the category
+    \JarisCMS\Module\Hook("Category", "Edit", $machine_name, $new_data, $path);
 
-	return \JarisCMS\PHPDB\Edit(0, $new_data, $path . "/data.php");
+    return \JarisCMS\PHPDB\Edit(0, $new_data, $path . "/data.php");
 }
 
 /**
@@ -111,9 +111,9 @@ function GetData($machine_name)
     
     if(!is_array($data[$machine_name]))
     {
-    	$path = GeneratePath($machine_name);
+        $path = GeneratePath($machine_name);
     
-    	$data[$machine_name] = \JarisCMS\PHPDB\GetData(0, $path . "/data.php");
+        $data[$machine_name] = \JarisCMS\PHPDB\GetData(0, $path . "/data.php");
     }
 
     //Call GetData hook before returning the data
@@ -134,12 +134,12 @@ function GetData($machine_name)
 */
 function AddChild($category, $data)
 {
-	$path = GeneratePath($category);
+    $path = GeneratePath($category);
 
-	//Call create_subcategory hook before creating the category
-	\JarisCMS\Module\Hook("Category", "AddChild", $category, $data);
+    //Call create_subcategory hook before creating the category
+    \JarisCMS\Module\Hook("Category", "AddChild", $category, $data);
 
-	return \JarisCMS\PHPDB\Add($data, $path . "/sub_categories.php");
+    return \JarisCMS\PHPDB\Add($data, $path . "/sub_categories.php");
 }
 
 /**
@@ -152,12 +152,12 @@ function AddChild($category, $data)
  */
 function DeleteChild($category, $id)
 {
-	$path = GeneratePath($category);
+    $path = GeneratePath($category);
 
-	//Call delete_subcategory hook before deleting the category
-	\JarisCMS\Module\Hook("Category", "DeleteChild", $category, $id, $path);
+    //Call delete_subcategory hook before deleting the category
+    \JarisCMS\Module\Hook("Category", "DeleteChild", $category, $id, $path);
 
-	return \JarisCMS\PHPDB\Delete($id, $path . "/sub_categories.php");
+    return \JarisCMS\PHPDB\Delete($id, $path . "/sub_categories.php");
 }
 
 /**
@@ -172,12 +172,12 @@ function DeleteChild($category, $id)
  */
 function EditChild($category, $new_data, $id)
 {
-	$path = GeneratePath($category);
+    $path = GeneratePath($category);
 
-	//Call edit_subcategory hook before editing the page
-	\JarisCMS\Module\Hook("Category", "EditChild", $category, $new_data, $id);
+    //Call edit_subcategory hook before editing the page
+    \JarisCMS\Module\Hook("Category", "EditChild", $category, $new_data, $id);
 
-	return \JarisCMS\PHPDB\Edit($id, $new_data, $path . "/sub_categories.php");
+    return \JarisCMS\PHPDB\Edit($id, $new_data, $path . "/sub_categories.php");
 }
 
 /**
@@ -207,34 +207,34 @@ function GetChildData($category, $id)
  * @param $parent_id the id of the parent item.
  * 
  * @return array The parent subcategory with its subcategories and also 
- *			the subcategories of the subcategories in another array. For example:
- *			$parent_subcategory = array(..., subcategory_values, ..., "subcategories"=>array())
+ *            the subcategories of the subcategories in another array. For example:
+ *            $parent_subcategory = array(..., subcategory_values, ..., "subcategories"=>array())
  */
 function GetChildrenRecursively($category, $parent_id="root")
 {
-	$subcategories = GetChildrenList($category);
-	
-	$subcategory_childrens = array();
-	if($subcategories)
-	{
-		foreach($subcategories as $id=>$fields)
-		{
-			if("" . $fields["parent"] . "" == "" . $parent_id . "")
-			{
-				//get the sub items of this item
-				$sub_items["sub_items"] = \JarisCMS\PHPDB\Sort(GetChildrenRecursively($category, $id), "order");
-				
-				if(count($sub_items["sub_items"]) > 0)
-				{
-					$fields += $sub_items;
-				}
-				
-				$subcategory_childrens[$id] = $fields;
-			}
-		}
-	}
-	
-	return $subcategory_childrens;
+    $subcategories = GetChildrenList($category);
+    
+    $subcategory_childrens = array();
+    if($subcategories)
+    {
+        foreach($subcategories as $id=>$fields)
+        {
+            if("" . $fields["parent"] . "" == "" . $parent_id . "")
+            {
+                //get the sub items of this item
+                $sub_items["sub_items"] = \JarisCMS\PHPDB\Sort(GetChildrenRecursively($category, $id), "order");
+                
+                if(count($sub_items["sub_items"]) > 0)
+                {
+                    $fields += $sub_items;
+                }
+                
+                $subcategory_childrens[$id] = $fields;
+            }
+        }
+    }
+    
+    return $subcategory_childrens;
 }
 
 /**
@@ -243,10 +243,10 @@ function GetChildrenRecursively($category, $parent_id="root")
  * @param string $category The machine name main category.
  *
  * @return array|bool All subcategories in the format categories["id"] =
- *		  array(
- *			"name"=>"string",
- *			"description"=>"string"
- *		  )
+ *          array(
+ *            "name"=>"string",
+ *            "description"=>"string"
+ *          )
  *        or false if no subcategory is found
  */
 function GetChildrenList($category)
@@ -278,10 +278,10 @@ function GetChildrenList($category)
  * @param string $type Optional value to only get the categories available for a content type.
  * 
  * @return array|null All categories in the format categories["machine name"] =
- *		  array(
- *			"name"=>"string",
- *			"description"=>"string"
- *		  )
+ *          array(
+ *            "name"=>"string",
+ *            "description"=>"string"
+ *          )
  *        or null if no category is found.
  */
 function GetList($type=null)
@@ -367,7 +367,7 @@ function GetChildrenInParentOrder($category_name, $parent="root", $position="")
     {
         $subcategories_list = \JarisCMS\PHPDB\Sort(GetChildrenRecursively($category_name, $parent), "title");
     }
-	
+    
     $subcategories = array();
 
     if($subcategories_list)
@@ -408,7 +408,7 @@ function GenerateFieldList($selected=null, $main_category=null, $type=null)
     {
         $categories_list[$main_category] = GetData($main_category);
     }
-	
+    
     foreach($categories_list as $machine_name=>$values)
     {
         $subcategories = GetChildrenInParentOrder($machine_name);
@@ -447,7 +447,7 @@ function GenerateFieldList($selected=null, $main_category=null, $type=null)
         }
 
         if(count($select_values) > 1)
-        {	
+        {    
             if(count($selected) > 0)
             {
                 $fields[] = array("type"=>"select", "multiple"=>$multiple, "selected"=>$selected[$machine_name], "name"=>"{$machine_name}[]", "label"=>t($values["name"]), "id"=>$machine_name, "value"=>$select_values);
@@ -493,48 +493,48 @@ function GetMenuHtml($machine_name)
 {
     $position = 1;
     $subcategories_array = GetChildrenRecursively($machine_name);
-	$count_subcategories = count($subcategories_array);
+    $count_subcategories = count($subcategories_array);
 
-	if($count_subcategories > 0)
-	{
-		$links = "<ul class=\"menu $machine_name\">";
-	
-		foreach($subcategories_array as $subcategory)
-		{
-			$list_class = "";
+    if($count_subcategories > 0)
+    {
+        $links = "<ul class=\"menu $machine_name\">";
+    
+        foreach($subcategories_array as $subcategory)
+        {
+            $list_class = "";
             
             $subcategory["url"] = "category/$machine_name/" . \JarisCMS\URI\FromText($subcategory["title"]);
-	
-			if($position == 1)
-			{
-				$list_class = " class=\"first\"";
-			}
-			elseif($position == $count_subcategories)
-			{
-				$list_class = " class=\"last\"";
-			}
-			else
-			{
-				$list_class = "";
-			}
-	
-			//Translate the title and description using the strings.php file if available.
-			$subcategory['title'] = t($subcategory['title']);
-			$subcategory['description'] = t($subcategory['description']);
-			
-			$active = \JarisCMS\URI\Get() == $subcategory["url"]?"class=\"active\"":"";
-	
-			$links .= "<li{$list_class}><span><a $active title=\"{$subcategory['description']}\" href=\"" . \JarisCMS\URI\PrintURL($subcategory['url']) . "\">" . $subcategory['title'] . "</a></span>";
+    
+            if($position == 1)
+            {
+                $list_class = " class=\"first\"";
+            }
+            elseif($position == $count_subcategories)
+            {
+                $list_class = " class=\"last\"";
+            }
+            else
+            {
+                $list_class = "";
+            }
+    
+            //Translate the title and description using the strings.php file if available.
+            $subcategory['title'] = t($subcategory['title']);
+            $subcategory['description'] = t($subcategory['description']);
+            
+            $active = \JarisCMS\URI\Get() == $subcategory["url"]?"class=\"active\"":"";
+    
+            $links .= "<li{$list_class}><span><a $active title=\"{$subcategory['description']}\" href=\"" . \JarisCMS\URI\PrintURL($subcategory['url']) . "\">" . $subcategory['title'] . "</a></span>";
             
             $links .= "</li>\n";
-	
-			$position++;
-		}
-	
-		$links .= "</ul>";
-	}
-	
-	return $links;
+    
+            $position++;
+        }
+    
+        $links .= "</ul>";
+    }
+    
+    return $links;
 }
 
 /**
@@ -610,8 +610,8 @@ function ShowResults(&$page)
  */
 function GeneratePath($machine_name)
 {
-	$path = \JarisCMS\Setting\GetDataDirectory() . "categories/$machine_name";
+    $path = \JarisCMS\Setting\GetDataDirectory() . "categories/$machine_name";
 
-	return $path;
+    return $path;
 }
 ?>

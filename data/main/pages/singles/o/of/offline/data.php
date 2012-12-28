@@ -13,33 +13,33 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php 
+    field: title
+        <?php 
             if($title = JarisCMS\Setting\Get("site_status_title", "main"))
             {
                 print t($title);
             }
-			else
+            else
             {
                 print t("Under mantainance");
             } 
-		?>
-	field;
+        ?>
+    field;
 
-	field: content
-		<?php
-			if($description = JarisCMS\Setting\Get("site_status_description", "main"))
+    field: content
+        <?php
+            if($description = JarisCMS\Setting\Get("site_status_description", "main"))
             {
                 print t($description);
             }
-			else
+            else
             {
                 print t("The site is down for mantainance, sorry for any inconvenience it may cause you. Try again later.");
             } 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

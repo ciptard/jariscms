@@ -22,46 +22,46 @@ namespace JarisCMS\User;
  */
 function Add($username, $group, $fields, $picture=null)
 {
-	$username = strtolower($username);
-	$user_exist = Exists($username);
+    $username = strtolower($username);
+    $user_exist = Exists($username);
     
     $fields["group"] = $group;
 
-	if(!$user_exist)
-	{
-		//Call \JarisCMS\User\Add hook before adding the user
-		\JarisCMS\Module\Hook("User", "Add", $username, $group, $fields, $picture);
+    if(!$user_exist)
+    {
+        //Call \JarisCMS\User\Add hook before adding the user
+        \JarisCMS\Module\Hook("User", "Add", $username, $group, $fields, $picture);
 
-		$user_data_path = GeneratePath($username, $group);
+        $user_data_path = GeneratePath($username, $group);
 
-		//Create user directory
-		$path = str_replace("data.php", "", $user_data_path);
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
+        //Create user directory
+        $path = str_replace("data.php", "", $user_data_path);
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
 
-		//If uploaded picture save it
-		if(isset($picture["tmp_name"]) && trim($picture["tmp_name"]) != "")
-		{
-			$picture_path = $path . $picture["name"];
+        //If uploaded picture save it
+        if(isset($picture["tmp_name"]) && trim($picture["tmp_name"]) != "")
+        {
+            $picture_path = $path . $picture["name"];
 
-			$picture_name = \JarisCMS\FileSystem\MoveFile($picture["tmp_name"], $picture_path);
+            $picture_name = \JarisCMS\FileSystem\MoveFile($picture["tmp_name"], $picture_path);
 
-			$fields["picture"] = $picture_name;
-		}
+            $fields["picture"] = $picture_name;
+        }
 
-		//Encrypt user password
-		$fields["password"] = crypt($fields["password"]);
+        //Encrypt user password
+        $fields["password"] = crypt($fields["password"]);
 
-		if(!\JarisCMS\PHPDB\Add($fields, $user_data_path))
-		{
-			return \JarisCMS\System\GetErrorMessage("write_error_data");
-		}
-	}
-	else
-	{
-		return \JarisCMS\System\GetErrorMessage("Exists");
-	}
-	
-	AddToDB($username, $fields);
+        if(!\JarisCMS\PHPDB\Add($fields, $user_data_path))
+        {
+            return \JarisCMS\System\GetErrorMessage("write_error_data");
+        }
+    }
+    else
+    {
+        return \JarisCMS\System\GetErrorMessage("Exists");
+    }
+    
+    AddToDB($username, $fields);
     
     //Update cache_events folder
     if(!file_exists(\JarisCMS\Setting\GetDataDirectory() . "cache_events"))
@@ -70,7 +70,7 @@ function Add($username, $group, $fields, $picture=null)
     }
     file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "cache_events/new_user", "");
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -82,34 +82,34 @@ function Add($username, $group, $fields, $picture=null)
  */
 function Delete($username)
 {
-	$username = strtolower($username);
-	$user_exist = Exists($username);
+    $username = strtolower($username);
+    $user_exist = Exists($username);
 
-	if($user_exist)
-	{
-		//Call delete_user hook before deleting the user
-		\JarisCMS\Module\Hook("User", "Delete", $username, $user_exist["group"]);
+    if($user_exist)
+    {
+        //Call delete_user hook before deleting the user
+        \JarisCMS\Module\Hook("User", "Delete", $username, $user_exist["group"]);
 
-		$user_data_path = $user_exist["path"];
+        $user_data_path = $user_exist["path"];
 
-		$user_path = str_replace("/data.php", "", $user_data_path);
+        $user_path = str_replace("/data.php", "", $user_data_path);
 
-		//Remove main user directory
-		if(!\JarisCMS\FileSystem\RemoveDirRecursively($user_path))
-		{
-			return false;
-		}
-		
-		RemoveUserFromDB($username);
+        //Remove main user directory
+        if(!\JarisCMS\FileSystem\RemoveDirRecursively($user_path))
+        {
+            return false;
+        }
+        
+        RemoveUserFromDB($username);
 
-		//Remove old data/users/group_name/X/XX if empty
-		rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1) . "/" . substr($username, 0, 2));
+        //Remove old data/users/group_name/X/XX if empty
+        rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1) . "/" . substr($username, 0, 2));
 
-		//Remove old data/users/group_name/X if empty
-		rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1));
-	}
+        //Remove old data/users/group_name/X if empty
+        rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1));
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -124,69 +124,69 @@ function Delete($username)
  */
 function Edit($username, $group, $new_data, $picture=null)
 {
-	$username = strtolower($username);
-	$user_exist = Exists($username);
+    $username = strtolower($username);
+    $user_exist = Exists($username);
 
-	if($user_exist)
-	{
-		//Call Edit hook before editing the user
-		\JarisCMS\Module\Hook("User", "Edit", $username, $user_exist["group"], $new_data, $picture);
+    if($user_exist)
+    {
+        //Call Edit hook before editing the user
+        \JarisCMS\Module\Hook("User", "Edit", $username, $user_exist["group"], $new_data, $picture);
 
-		$user_data_path = $user_exist["path"];
+        $user_data_path = $user_exist["path"];
 
-		if(strlen($picture["tmp_name"]) > 0)
-		{
-			$path = str_replace("data.php", "", $user_data_path);
-			$picture_path = $path . $picture["name"];
+        if(strlen($picture["tmp_name"]) > 0)
+        {
+            $path = str_replace("data.php", "", $user_data_path);
+            $picture_path = $path . $picture["name"];
 
-			//In case picture already exist delete it.
-			unlink($picture_path);
+            //In case picture already exist delete it.
+            unlink($picture_path);
 
-			//Delete old picture
-			unlink(GetAvatarPath($username));
+            //Delete old picture
+            unlink(GetAvatarPath($username));
 
-			$picture_name = \JarisCMS\FileSystem\MoveFile($picture["tmp_name"], $picture_path);
+            $picture_name = \JarisCMS\FileSystem\MoveFile($picture["tmp_name"], $picture_path);
 
-			$new_data["picture"] = $picture_name;
-		}
+            $new_data["picture"] = $picture_name;
+        }
 
-		if(!\JarisCMS\PHPDB\Edit(0, $new_data, $user_data_path))
-		{
-			return \JarisCMS\System\GetErrorMessage("write_error_data");
-		}
-		
-		EditDB($username, $new_data);
+        if(!\JarisCMS\PHPDB\Edit(0, $new_data, $user_data_path))
+        {
+            return \JarisCMS\System\GetErrorMessage("write_error_data");
+        }
+        
+        EditDB($username, $new_data);
 
-		//Change user group
-		if($group != $user_exist["group"])
-		{
-			$user_path = str_replace("/data.php", "", $user_data_path);
+        //Change user group
+        if($group != $user_exist["group"])
+        {
+            $user_path = str_replace("/data.php", "", $user_data_path);
 
-			$new_path = GeneratePath($username, $group);
-			$new_path = str_replace("/data.php", "", $new_path);
+            $new_path = GeneratePath($username, $group);
+            $new_path = str_replace("/data.php", "", $new_path);
 
-			//Make new user path
-			\JarisCMS\FileSystem\MakeDir($new_path, 0755, true);
+            //Make new user path
+            \JarisCMS\FileSystem\MakeDir($new_path, 0755, true);
 
-			//Move user data to new group
-			\JarisCMS\FileSystem\MoveDirRecursively($user_path, $new_path);
+            //Move user data to new group
+            \JarisCMS\FileSystem\MoveDirRecursively($user_path, $new_path);
 
-			//Remove old main user directory
-			\JarisCMS\FileSystem\RemoveDirRecursively($user_path);
+            //Remove old main user directory
+            \JarisCMS\FileSystem\RemoveDirRecursively($user_path);
 
-			//Remove old data/users/group_name/X/XX if empty
-			rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1) . "/" . substr($username, 0, 2));
+            //Remove old data/users/group_name/X/XX if empty
+            rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1) . "/" . substr($username, 0, 2));
 
-			//Remove old data/users/group_name/X if empty
-			rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1));
-		}
-	}
-	else
-	{
-		return \JarisCMS\System\GetErrorMessage("user_not_exist");
-	}
+            //Remove old data/users/group_name/X if empty
+            rmdir(\JarisCMS\Setting\GetDataDirectory() . "users/{$user_exist['group']}/" . substr($username, 0, 1));
+        }
+    }
+    else
+    {
+        return \JarisCMS\System\GetErrorMessage("user_not_exist");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -198,31 +198,31 @@ function Edit($username, $group, $new_data, $picture=null)
  */
 function GetData($username)
 {
-	$username = strtolower($username);
-	$user_exist = Exists($username);
+    $username = strtolower($username);
+    $user_exist = Exists($username);
 
-	if($user_exist)
-	{
-		$user_data_path = $user_exist["path"];
+    if($user_exist)
+    {
+        $user_data_path = $user_exist["path"];
 
-		$user_data = \JarisCMS\PHPDB\Parse($user_data_path);
+        $user_data = \JarisCMS\PHPDB\Parse($user_data_path);
 
-		if($user_data)
-		{
-			$user_data[0]["password"] = trim($user_data[0]["password"]);
-			$user_data[0]["group"] = $user_exist["group"];
-			$user_data[0]["picture"] = trim($user_data[0]["picture"]);
+        if($user_data)
+        {
+            $user_data[0]["password"] = trim($user_data[0]["password"]);
+            $user_data[0]["group"] = $user_exist["group"];
+            $user_data[0]["picture"] = trim($user_data[0]["picture"]);
 
-			//Call GetData hook before returning the user data
-			\JarisCMS\Module\Hook("User", "GetData", $username, $user_data);
+            //Call GetData hook before returning the user data
+            \JarisCMS\Module\Hook("User", "GetData", $username, $user_data);
 
-			return $user_data[0];
-		}
-	}
-	else
-	{
-		return null;
-	}
+            return $user_data[0];
+        }
+    }
+    else
+    {
+        return null;
+    }
 }
 
 /**
@@ -234,28 +234,28 @@ function GetData($username)
  */
 function GetDataByEmail($email)
 {
-	$email = str_replace("'", "''", $email);
-	
-	if(\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
-		$result = \JarisCMS\SQLite\Query("select * from users where email = '$email'", $db);
-		$user_data_sqlite = \JarisCMS\SQLite\FetchArray($result);
-		\JarisCMS\SQLite\Close($db);
-		
-		if($user_data_sqlite)
-		{
-			$user_data = GetData($user_data_sqlite["username"]);
-			$user_data["username"] = $user_data_sqlite["username"];
-			
-			//Call GetDataByEmail hook before returning the user data
-			\JarisCMS\Module\Hook("User", "GetDataByEmail", $user_data_sqlite["username"], $user_data);
-			
-			return $user_data;
-		}
-	}
-	
-	return false;
+    $email = str_replace("'", "''", $email);
+    
+    if(\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
+        $result = \JarisCMS\SQLite\Query("select * from users where email = '$email'", $db);
+        $user_data_sqlite = \JarisCMS\SQLite\FetchArray($result);
+        \JarisCMS\SQLite\Close($db);
+        
+        if($user_data_sqlite)
+        {
+            $user_data = GetData($user_data_sqlite["username"]);
+            $user_data["username"] = $user_data_sqlite["username"];
+            
+            //Call GetDataByEmail hook before returning the user data
+            \JarisCMS\Module\Hook("User", "GetDataByEmail", $user_data_sqlite["username"], $user_data);
+            
+            return $user_data;
+        }
+    }
+    
+    return false;
 }
 
 /**
@@ -267,26 +267,26 @@ function GetDataByEmail($email)
  */
 function GetAvatarPath($username)
 {
-	$username = strtolower($username);
-	if($user_info = Exists($username))
-	{
-		$user_data = GetData($username);
+    $username = strtolower($username);
+    if($user_info = Exists($username))
+    {
+        $user_data = GetData($username);
 
-		if($user_data && strlen($user_data["picture"]) > 0)
-		{
-			$user_picture = $user_info["path"];
-			$user_picture = str_replace("data.php", "", $user_picture);
-			$user_picture .= $user_data["picture"];
+        if($user_data && strlen($user_data["picture"]) > 0)
+        {
+            $user_picture = $user_info["path"];
+            $user_picture = str_replace("data.php", "", $user_picture);
+            $user_picture .= $user_data["picture"];
 
-			return $user_picture;
-		}
-		else
-		{
-			return false;
-		}
-	}
+            return $user_picture;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -299,19 +299,19 @@ function GetAvatarPath($username)
  */ 
 function GetAvatarURL($username)
 {
-	$username = strtolower($username);
+    $username = strtolower($username);
     if($user_info = Exists($username))
-	{
-		$user_data = GetData($username);
+    {
+        $user_data = GetData($username);
 
-		if($user_data && strlen($user_data["picture"]) > 0)
-		{
-			$user_picture = \JarisCMS\URI\PrintURL("image/user/$username");
+        if($user_data && strlen($user_data["picture"]) > 0)
+        {
+            $user_picture = \JarisCMS\URI\PrintURL("image/user/$username");
 
-			return $user_picture;
-		}
-		else
-		{
+            return $user_picture;
+        }
+        else
+        {
             switch($user_data["gender"])
             {
                 case "m":
@@ -322,10 +322,10 @@ function GetAvatarURL($username)
                     return \JarisCMS\URI\PrintURL("styles/images/male.png");
                     
             }
-		}
-	}
+        }
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -337,27 +337,27 @@ function GetAvatarURL($username)
  */
 function Exists($username)
 {
-	$username = strtolower($username);
-	$dir_handle = opendir(\JarisCMS\Setting\GetDataDirectory() . "users");
+    $username = strtolower($username);
+    $dir_handle = opendir(\JarisCMS\Setting\GetDataDirectory() . "users");
     
     if(!is_bool($dir_handle))
     {
-    	while(($group_directory = readdir($dir_handle)) !== false)
-    	{
-    		//just check directories inside
-    		if(strcmp($group_directory, ".") != 0 && strcmp($group_directory, "..") != 0)
-    		{
-    			$user_data_path = GeneratePath($username, $group_directory);
+        while(($group_directory = readdir($dir_handle)) !== false)
+        {
+            //just check directories inside
+            if(strcmp($group_directory, ".") != 0 && strcmp($group_directory, "..") != 0)
+            {
+                $user_data_path = GeneratePath($username, $group_directory);
     
-    			if(file_exists($user_data_path))
-    			{
-    				return array("path"=>$user_data_path, "group"=>$group_directory);
-    			}
-    		}
-    	}
+                if(file_exists($user_data_path))
+                {
+                    return array("path"=>$user_data_path, "group"=>$group_directory);
+                }
+            }
+        }
      }
 
-	return false;
+    return false;
 }
 
 /**
@@ -370,24 +370,24 @@ function Exists($username)
  */
 function AddToDB($username, $data)
 {
-	$username = strtolower($username);
-	if(!\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
-		\JarisCMS\SQLite\Query("create table users (username text, email text, register_date text, user_group text, picture text, ip_address text, gender text, birth_date text, status text)", $db);
+    $username = strtolower($username);
+    if(!\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
+        \JarisCMS\SQLite\Query("create table users (username text, email text, register_date text, user_group text, picture text, ip_address text, gender text, birth_date text, status text)", $db);
         
         \JarisCMS\SQLite\Query("create index users_index on users (username desc, email desc, register_date desc, user_group asc, gender desc, birth_date desc, status desc)", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
-	
-	$db = \JarisCMS\SQLite\Open("users");
+        
+        \JarisCMS\SQLite\Close($db);
+    }
+    
+    $db = \JarisCMS\SQLite\Open("users");
     $data["username"] = $username;
     \JarisCMS\SQLite\EscapeArray($data);
-	\JarisCMS\SQLite\Query("insert into users (username, email, register_date, user_group, picture, ip_address, gender, birth_date, status) 
+    \JarisCMS\SQLite\Query("insert into users (username, email, register_date, user_group, picture, ip_address, gender, birth_date, status) 
     values ('{$data['username']}','{$data['email']}','{$data['register_date']}','{$data['group']}','{$data['picture']}','{$data['ip_address']}','{$data['gender']}','{$data['birth_date']}','{$data['status']}')", $db);
-	
-	\JarisCMS\SQLite\Close($db);
+    
+    \JarisCMS\SQLite\Close($db);
 }
 
 /**
@@ -400,25 +400,25 @@ function AddToDB($username, $data)
  */
 function EditDB($username, $data)
 {
-	$username = strtolower($username);
-	if(\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
+    $username = strtolower($username);
+    if(\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
         
         \JarisCMS\SQLite\EscapeArray($data);
         
-		\JarisCMS\SQLite\Query("update users set 
+        \JarisCMS\SQLite\Query("update users set 
         email = '{$data['email']}',
         user_group = '{$data['group']}',
         picture = '{$data['picture']}',
         ip_address = '{$data['ip_address']}',
         gender = '{$data['gender']}',
         birth_date = '{$data['birth_date']}',
-		status = '{$data['status']}'
+        status = '{$data['status']}'
         where username = '$username'", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+        
+        \JarisCMS\SQLite\Close($db);
+    }
 }
 
 /**
@@ -433,38 +433,38 @@ function EditDB($username, $data)
  */
 function GetListFromDB($page=0, $limit=30)
 {
-	$db = null;
-	$page *=  $limit;
-	$users = array();
-		
-	if(\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
-		$result = \JarisCMS\SQLite\Query("select username from users order by username asc limit $page, $limit", $db);
-	}
-	else
-	{
-		return $users;
-	}
-	
-	$fields = array();
-	if($fields = \JarisCMS\SQLite\FetchArray($result))
-	{
-		$users[] = $fields["username"];
-		
-		while($fields = \JarisCMS\SQLite\FetchArray($result))
-		{
-			$users[] = $fields["username"];
-		}
-		
-		\JarisCMS\SQLite\Close($db);
-		return $users;
-	}
-	else
-	{
-		\JarisCMS\SQLite\Close($db);
-		return $users;
-	}
+    $db = null;
+    $page *=  $limit;
+    $users = array();
+        
+    if(\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
+        $result = \JarisCMS\SQLite\Query("select username from users order by username asc limit $page, $limit", $db);
+    }
+    else
+    {
+        return $users;
+    }
+    
+    $fields = array();
+    if($fields = \JarisCMS\SQLite\FetchArray($result))
+    {
+        $users[] = $fields["username"];
+        
+        while($fields = \JarisCMS\SQLite\FetchArray($result))
+        {
+            $users[] = $fields["username"];
+        }
+        
+        \JarisCMS\SQLite\Close($db);
+        return $users;
+    }
+    else
+    {
+        \JarisCMS\SQLite\Close($db);
+        return $users;
+    }
 }
 
 /**
@@ -476,14 +476,14 @@ function GetListFromDB($page=0, $limit=30)
  */
 function RemoveUserFromDB($username)
 {
-	$username = strtolower($username);
-	if(\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
-		\JarisCMS\SQLite\Query("delete from users where username = '$username'", $db);
-		
-		\JarisCMS\SQLite\Close($db);
-	}
+    $username = strtolower($username);
+    if(\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
+        \JarisCMS\SQLite\Query("delete from users where username = '$username'", $db);
+        
+        \JarisCMS\SQLite\Close($db);
+    }
 }
 
 /**
@@ -495,13 +495,13 @@ function RemoveUserFromDB($username)
  */
 function GetListStatus()
 {
-	$status = array();
-	
-	$status[t("Active")] = "1";
-	$status[t("Pending Approval")] = "0";
-	$status[t("Blocked")] = "2";
-	
-	return $status;
+    $status = array();
+    
+    $status[t("Active")] = "1";
+    $status[t("Pending Approval")] = "0";
+    $status[t("Blocked")] = "2";
+    
+    return $status;
 }
 
 /**
@@ -513,19 +513,19 @@ function GetListStatus()
  */
 function ResetPasswordByName($username)
 {   
-	$username = strtolower($username);
-	$password = GeneratePassword();
-	$user_data = GetData($username);
-	$user_data["password"] = crypt($password);
-	
-	$message = Edit($username, $user_data["group"], $user_data);
-	
-	if($message == "true")
-	{
-		SendNewPasswordByEmail($username, $user_data, $password);
-	}
-	
-	return $message;
+    $username = strtolower($username);
+    $password = GeneratePassword();
+    $user_data = GetData($username);
+    $user_data["password"] = crypt($password);
+    
+    $message = Edit($username, $user_data["group"], $user_data);
+    
+    if($message == "true")
+    {
+        SendNewPasswordByEmail($username, $user_data, $password);
+    }
+    
+    return $message;
 }
 
 /**
@@ -539,39 +539,39 @@ function ResetPasswordByEmail($email)
 {
     $email = str_replace("'", "''", $email);
     
-	if(\JarisCMS\SQLite\DBExists("users"))
-	{
-		$db = \JarisCMS\SQLite\Open("users");
-		$result = \JarisCMS\SQLite\Query("select username from users where email = '$email'", $db);
-		$data = \JarisCMS\SQLite\FetchArray($result);
-		
-		\JarisCMS\SQLite\Close($db);
-		
-		if(isset($data["username"]) && $data["username"] != "")
-		{
-			$password = GeneratePassword();
-			$username = $data["username"];
-			$user_data = GetData($username);
-			$user_data["password"] = crypt($password);
-	
-			$message = Edit($username, $user_data["group"], $user_data);
-			
-			if($message == "true")
-			{
-				SendNewPasswordByEmail($username, $user_data, $password);
-			}
-			
-			return $message;
-		}
-		else
-		{
-			return \JarisCMS\System\GetErrorMessage("user_not_exist");
-		}
-	}
-	else
-	{
-		return \JarisCMS\System\GetErrorMessage("user_not_exist");
-	}
+    if(\JarisCMS\SQLite\DBExists("users"))
+    {
+        $db = \JarisCMS\SQLite\Open("users");
+        $result = \JarisCMS\SQLite\Query("select username from users where email = '$email'", $db);
+        $data = \JarisCMS\SQLite\FetchArray($result);
+        
+        \JarisCMS\SQLite\Close($db);
+        
+        if(isset($data["username"]) && $data["username"] != "")
+        {
+            $password = GeneratePassword();
+            $username = $data["username"];
+            $user_data = GetData($username);
+            $user_data["password"] = crypt($password);
+    
+            $message = Edit($username, $user_data["group"], $user_data);
+            
+            if($message == "true")
+            {
+                SendNewPasswordByEmail($username, $user_data, $password);
+            }
+            
+            return $message;
+        }
+        else
+        {
+            return \JarisCMS\System\GetErrorMessage("user_not_exist");
+        }
+    }
+    else
+    {
+        return \JarisCMS\System\GetErrorMessage("user_not_exist");
+    }
 }
 
 /**
@@ -581,14 +581,14 @@ function ResetPasswordByEmail($email)
  */
 function GeneratePassword()
 {
-	$password = str_replace(array("\$", ".", "/"), "",crypt(uniqid(rand(),1)));
+    $password = str_replace(array("\$", ".", "/"), "",crypt(uniqid(rand(),1)));
 
-	if(strlen($password) > 10)
-	{
-		$password = substr($password, 0, 10);
-	}
-	
-	return $password;
+    if(strlen($password) > 10)
+    {
+        $password = substr($password, 0, 10);
+    }
+    
+    return $password;
 }
 
 /**
@@ -602,19 +602,19 @@ function GeneratePassword()
  */
 function SendNewPasswordByEmail($username, $user_data, $password)
 {
-	$username = strtolower($username);
-	$to[$user_data["name"]] = $user_data["email"];
-	$subject = t("Your password has been reset.");
-	
-	$url = \JarisCMS\URI\PrintURL("admin/user");
-	
-	$message = t("Hi") . " " . $user_data["name"] . "<br /><br />";
-	$message .= t("Your current username is:") . " <b>" . $username . "</b><br />";
-	$message .= t("The new password for your account is:") . " <b>" . $password . "</b><br />";
-	$message .= t("Is recommended that you log in and change the password as soon as possible.") . "<br />";
-	$message .= t("To log in access the following url:") . " <a href=\"$url\">" . $url . "</a>";
-	
-	return \JarisCMS\Email\Send($to, $subject, $message);
+    $username = strtolower($username);
+    $to[$user_data["name"]] = $user_data["email"];
+    $subject = t("Your password has been reset.");
+    
+    $url = \JarisCMS\URI\PrintURL("admin/user");
+    
+    $message = t("Hi") . " " . $user_data["name"] . "<br /><br />";
+    $message .= t("Your current username is:") . " <b>" . $username . "</b><br />";
+    $message .= t("The new password for your account is:") . " <b>" . $password . "</b><br />";
+    $message .= t("Is recommended that you log in and change the password as soon as possible.") . "<br />";
+    $message .= t("To log in access the following url:") . " <a href=\"$url\">" . $url . "</a>";
+    
+    return \JarisCMS\Email\Send($to, $subject, $message);
 }
 
 /**
@@ -627,11 +627,11 @@ function PrintPage()
     
     $tabs[t("Edit My Account")] = array("uri"=>"admin/users/edit", "arguments"=>array("username"=>\JarisCMS\Security\GetCurrentUser()));
     
-	if(\JarisCMS\Setting\Get("user_profiles", "main"))
+    if(\JarisCMS\Setting\Get("user_profiles", "main"))
     {
         $tabs[t("View My Profile")] = array("uri"=>"user/" . \JarisCMS\Security\GetCurrentUser());
     }
-	
+    
     if(\JarisCMS\Group\GetPermission("add_content", \JarisCMS\Security\GetCurrentUserGroup()))
     {
         $tabs[t("My Content")] = array("uri"=>"admin/user/content");
@@ -639,22 +639,22 @@ function PrintPage()
     
     $content = "";
 
-	if(\JarisCMS\Security\IsAdminLogged())
-	{
-		$tabs[t("Control Center")] = array("uri"=>"admin/start");
-		
-		$content = "
-		". t("Welcome Administrator!") . "
-		<br /><br />
-		" . t("Now that you are logged in you can start modifying the website as you need.");
-	}
-	else
-	{
-		$content = "
-		" . t("Welcome") . " " . \JarisCMS\Security\GetCurrentUser() . "!" . "
-		<br /><br />
-		" . t("Now that you are logged in you can enjoy the privileges of registered users on") . " " . str_replace("http://", "", $base_url) . ".";
-	}
+    if(\JarisCMS\Security\IsAdminLogged())
+    {
+        $tabs[t("Control Center")] = array("uri"=>"admin/start");
+        
+        $content = "
+        ". t("Welcome Administrator!") . "
+        <br /><br />
+        " . t("Now that you are logged in you can start modifying the website as you need.");
+    }
+    else
+    {
+        $content = "
+        " . t("Welcome") . " " . \JarisCMS\Security\GetCurrentUser() . "!" . "
+        <br /><br />
+        " . t("Now that you are logged in you can enjoy the privileges of registered users on") . " " . str_replace("http://", "", $base_url) . ".";
+    }
     
     //Call print user page hooks so modules can modify user page content
     \JarisCMS\Module\Hook("User", "PrintPage", $content, $tabs);
@@ -685,14 +685,14 @@ function PrintPage()
  */
 function ShowProfile(&$page)
 {
-	$sections = explode("/", $page);
-	$username = $sections[1];
-	
-	$_REQUEST["username"] = $username;
-	
-	$page = "user";
-	
-	//Call show user profile intialization hook
+    $sections = explode("/", $page);
+    $username = $sections[1];
+    
+    $_REQUEST["username"] = $username;
+    
+    $page = "user";
+    
+    //Call show user profile intialization hook
     \JarisCMS\Module\Hook("User", "ShowProfile", $page, $username);
 }
 
@@ -706,15 +706,15 @@ function ShowProfile(&$page)
  */
 function GeneratePath($username, $group)
 {
-	$username = strtolower($username);
-	
-	//We use the generate page path function and substitue some values
-	$user_data_path = \JarisCMS\Page\GeneratePath($username) . "/data.php";
+    $username = strtolower($username);
+    
+    //We use the generate page path function and substitue some values
+    $user_data_path = \JarisCMS\Page\GeneratePath($username) . "/data.php";
 
-	//substitute the data page path with the data users path
-	$user_data_path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/singles", \JarisCMS\Setting\GetDataDirectory() . "users/$group", $user_data_path);
+    //substitute the data page path with the data users path
+    $user_data_path = str_replace(\JarisCMS\Setting\GetDataDirectory() . "pages/singles", \JarisCMS\Setting\GetDataDirectory() . "users/$group", $user_data_path);
 
-	return $user_data_path;
+    return $user_data_path;
 }
 
 ?>

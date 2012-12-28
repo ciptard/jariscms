@@ -13,7 +13,7 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		ie-update-script
-	field;
+    field: uri
+        ie-update-script
+    field;
 row;

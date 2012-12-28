@@ -19,9 +19,9 @@ ini_set('max_execution_time', '0');
 //If running in cli mode
 if($_SERVER["PHP_SELF"] != "")
 {
-	chdir(str_replace("cron.php", "", $_SERVER["PHP_SELF"]));
-	
-	$_REQUEST["HTTP_HOST"] = $_SERVER["argv"][0];
+    chdir(str_replace("cron.php", "", $_SERVER["PHP_SELF"]));
+    
+    $_REQUEST["HTTP_HOST"] = $_SERVER["argv"][0];
 }
 
 //File that includes all neccesary system functions
@@ -48,11 +48,11 @@ JarisCMS\System\CheckOffline();
 //Check if cron is already running and if running exit cron script
 if(!file_exists(JarisCMS\Setting\GetDataDirectory() . "cron_running.lock"))
 {
-	file_put_contents(JarisCMS\Setting\GetDataDirectory() . "cron_running.lock", "");
+    file_put_contents(JarisCMS\Setting\GetDataDirectory() . "cron_running.lock", "");
 }
 else
 {
-	exit;
+    exit;
 }
 
 //Calls the cron job function of each module that requires it

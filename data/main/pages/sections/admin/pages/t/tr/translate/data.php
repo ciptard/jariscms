@@ -13,28 +13,28 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Translate Page") ?>
-	field;
+    field: title
+        <?php print t("Translate Page") ?>
+    field;
 
-	field: content
+    field: content
 
-		<?php
-			JarisCMS\Security\ProtectPage(array("translate_languages"));
+        <?php
+            JarisCMS\Security\ProtectPage(array("translate_languages"));
             
             if(!JarisCMS\Page\IsOwner($_REQUEST["uri"]))
             {
                 JarisCMS\Security\ProtectPage();
             }
 
-			$arguments["uri"] = $_REQUEST["uri"];
+            $arguments["uri"] = $_REQUEST["uri"];
 
-			//Tabs
+            //Tabs
             if(JarisCMS\Group\GetPermission("edit_content", JarisCMS\Security\GetCurrentUserGroup()))
             {
                 JarisCMS\System\AddTab(t("Edit"), "admin/pages/edit", $arguments);
             }
-			JarisCMS\System\AddTab(t("View"), $_REQUEST["uri"]);
+            JarisCMS\System\AddTab(t("View"), $_REQUEST["uri"]);
             if(JarisCMS\Group\GetPermission("view_content_blocks", JarisCMS\Security\GetCurrentUserGroup()))
             {
                 JarisCMS\System\AddTab(t("Blocks"), "admin/pages/blocks", $arguments);
@@ -55,46 +55,46 @@ row: 0
             {
                 JarisCMS\System\AddTab(t("Delete"), "admin/pages/delete", $arguments);
             }
-		?>
+        ?>
 
-		<?php
+        <?php
 
-			$languages = JarisCMS\Language\GetAll();
+            $languages = JarisCMS\Language\GetAll();
 
-			print "<table class=\"languages-list\">\n";
+            print "<table class=\"languages-list\">\n";
 
-			print "<thead><tr>\n";
+            print "<thead><tr>\n";
 
-			print "<td>" . t("Code") . "</td>\n";
-			print "<td>" . t("Name") . "</td>\n";
-			print "<td>" . t("Operation") . "</td>\n";
+            print "<td>" . t("Code") . "</td>\n";
+            print "<td>" . t("Name") . "</td>\n";
+            print "<td>" . t("Operation") . "</td>\n";
 
-			print  "</tr></thead>\n";
+            print  "</tr></thead>\n";
 
-			foreach($languages as $code=>$name)
-			{
-				if($code != "en"){
-					print "<tr>\n";
+            foreach($languages as $code=>$name)
+            {
+                if($code != "en"){
+                    print "<tr>\n";
 
-					print "<td>" . $code . "</td>\n";
-					print "<td>" . $name . "</td>\n";
+                    print "<td>" . $code . "</td>\n";
+                    print "<td>" . $name . "</td>\n";
 
-					$edit_url = JarisCMS\URI\PrintURL("admin/languages/translate",array("code"=>$code, "type"=>"page", "uri"=>$_REQUEST["uri"]));
-					$edit_text = t("Translate");
+                    $edit_url = JarisCMS\URI\PrintURL("admin/languages/translate",array("code"=>$code, "type"=>"page", "uri"=>$_REQUEST["uri"]));
+                    $edit_text = t("Translate");
 
-					print "<td>
-							<a href=\"$edit_url\">$edit_text</a>&nbsp;
-						   </td>\n";
+                    print "<td>
+                            <a href=\"$edit_url\">$edit_text</a>&nbsp;
+                           </td>\n";
 
-					print "</tr>\n";
-				}
-			}
+                    print "</tr>\n";
+                }
+            }
 
-			print "</table>\n";
-		?>
-	field;
+            print "</table>\n";
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

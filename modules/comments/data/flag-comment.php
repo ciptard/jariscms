@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Flag comment
-	field;
+    field: title
+        Flag comment
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             if(isset($_REQUEST["s"]) && JarisCMS\Module\Comments\IsFromCurrentUser() == "Guest")
             {
                 session_destroy();
@@ -39,10 +39,10 @@ row: 0
                     print $_REQUEST["id"];
                 }
             }
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

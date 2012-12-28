@@ -7,13 +7,13 @@
 */
 ?>
 <td>
-	<table class="block block-<?php print $id ?>">
-		<tr>
-			<td class="title"><?php print $title ?></td>
-		</tr>
+    <table class="block block-<?php print $id ?>">
+        <tr>
+            <td class="title"><?php print $title ?></td>
+        </tr>
 
-		<tr>
-			<td class="content"><?php print $content ?></td>
-		</tr>
-	</table>
+        <tr>
+            <td class="content"><?php print $content ?></td>
+        </tr>
+    </table>
 </td>

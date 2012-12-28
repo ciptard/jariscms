@@ -13,32 +13,32 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Uninstall Module") ?>
-	field;
+    field: title
+        <?php print t("Uninstall Module") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_modules", "uninstall_modules"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_modules", "uninstall_modules"));
 
-			if(isset($_REQUEST["path"]))
-			{
+            if(isset($_REQUEST["path"]))
+            {
                 $is_dependency = false;
-				if(JarisCMS\Module\Uninstall($_REQUEST["path"], $is_dependency))
-				{
-					JarisCMS\System\AddMessage(t("Module successfully uninstalled."));
-				}
-				else if(!$is_dependency)
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
-				}
-			}
+                if(JarisCMS\Module\Uninstall($_REQUEST["path"], $is_dependency))
+                {
+                    JarisCMS\System\AddMessage(t("Module successfully uninstalled."));
+                }
+                else if(!$is_dependency)
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
+                }
+            }
 
-			JarisCMS\System\GoToPage("admin/modules");
-		?>
-	field;
+            JarisCMS\System\GoToPage("admin/modules");
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

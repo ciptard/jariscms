@@ -12,11 +12,11 @@ exit;
 ?>
 
 row: 0
-	field: name
-		Administrator
-	field;
+    field: name
+        Administrator
+    field;
 
-	field: description
-		Administrator user with full access to all aspects of the page.
-	field;
+    field: description
+        Administrator user with full access to all aspects of the page.
+    field;
 row;

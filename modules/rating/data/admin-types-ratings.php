@@ -13,57 +13,57 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Rating Settings") ?>
-	field;
+    field: title
+        <?php print t("Rating Settings") ?>
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			JarisCMS\Security\ProtectPage(array("view_types", "edit_types"));
+            JarisCMS\Security\ProtectPage(array("view_types", "edit_types"));
 
-			//Get exsiting settings or defualt ones if main settings table doesn't exist
-			$rating_settings = rating_get_settings($_REQUEST["type"]);
+            //Get exsiting settings or defualt ones if main settings table doesn't exist
+            $rating_settings = rating_get_settings($_REQUEST["type"]);
 
-			if(isset($_REQUEST["btnSave"]))
-			{
-			     $data["enabled"] = $_REQUEST["enabled"];
+            if(isset($_REQUEST["btnSave"]))
+            {
+                 $data["enabled"] = $_REQUEST["enabled"];
                  $data["number_of_points"] = $_REQUEST["number_of_points"];
                  $data["on_icon"] = $_REQUEST["on_icon"];
                  $data["off_icon"] = $_REQUEST["off_icon"];
                  $data["half_icon"] = $_REQUEST["half_icon"];
                  $data["hints"] = $_REQUEST["hints"];
                  
-				//Check if write is possible and continue to write settings
-				if(JarisCMS\Setting\Save($_REQUEST["type"], serialize($data), "ratings"))
-				{
-					JarisCMS\System\AddMessage(t("Your rating settings have been successfully saved."));
-				}
-				else
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
-				}
+                //Check if write is possible and continue to write settings
+                if(JarisCMS\Setting\Save($_REQUEST["type"], serialize($data), "ratings"))
+                {
+                    JarisCMS\System\AddMessage(t("Your rating settings have been successfully saved."));
+                }
+                else
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
+                }
 
-				JarisCMS\System\GoToPage("admin/types/edit", array("type"=>$_REQUEST["type"]));
-			}
-			elseif(isset($_REQUEST["btnCancel"]))
-			{
-				JarisCMS\System\GoToPage("admin/types/edit", array("type"=>$_REQUEST["type"]));
-			}
+                JarisCMS\System\GoToPage("admin/types/edit", array("type"=>$_REQUEST["type"]));
+            }
+            elseif(isset($_REQUEST["btnCancel"]))
+            {
+                JarisCMS\System\GoToPage("admin/types/edit", array("type"=>$_REQUEST["type"]));
+            }
             
             JarisCMS\System\AddTab(t("Edit Type"), "admin/types/edit", array("type"=>$_REQUEST["type"]));
 
-			$parameters["name"] = "edit-rating-settings";
-			$parameters["class"] = "edit-rating-settings";
-			$parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/types/ratings", "rating"));
-			$parameters["method"] = "post";
+            $parameters["name"] = "edit-rating-settings";
+            $parameters["class"] = "edit-rating-settings";
+            $parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/types/ratings", "rating"));
+            $parameters["method"] = "post";
             
             $fields[] = array("type"=>"hidden", "name"=>"type", "value"=>$_REQUEST["type"]);
             
             $enabled[t("Enable")] = true;
-			$enabled[t("Disable")] = false;
+            $enabled[t("Disable")] = false;
 
-			$fields[] = array("type"=>"radio", "name"=>"enabled", "id"=>"enabled", "value"=>$enabled, "checked"=>$rating_settings["enabled"]);
+            $fields[] = array("type"=>"radio", "name"=>"enabled", "id"=>"enabled", "value"=>$enabled, "checked"=>$rating_settings["enabled"]);
             
             $fields[] = array("type"=>"text", "name"=>"number_of_points", "label"=>t("Number of points:"), "id"=>"number_of_points", "value"=>$rating_settings["number_of_points"], "description"=>t("The maximun numbers of points user can selecte when rating."));
             $fields[] = array("type"=>"text", "name"=>"on_icon", "label"=>t("On icon:"), "id"=>"on_icon", "value"=>$rating_settings["on_icon"], "description"=>t("The image used to indicate the active points."));
@@ -71,17 +71,17 @@ row: 0
             $fields[] = array("type"=>"text", "name"=>"half_icon", "label"=>t("Half icon:"), "id"=>"half_icon", "value"=>$rating_settings["half_icon"], "description"=>t("The image used to indicate a half point."));
             $fields[] = array("type"=>"textarea", "name"=>"hints", "label"=>t("Hints:"), "id"=>"hints", "value"=>$rating_settings["hints"], "description"=>t("A list of hints seperated by comma that describe each point. An example for 5 points would be: bad, poor, regular, good, gorgeous"));
 
-			$fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
-			$fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
+            $fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

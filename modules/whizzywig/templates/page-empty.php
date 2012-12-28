@@ -20,17 +20,17 @@
 <body>
 
 <table id="content">
-	<tr>
-		<td class="center">
-			<h1><?php print $content_title; ?></h1>
+    <tr>
+        <td class="center">
+            <h1><?php print $content_title; ?></h1>
 
-			<?php if($messages){?>
-			<div id="messages"><?php print $messages; ?></div>
-			<?php } ?>
+            <?php if($messages){?>
+            <div id="messages"><?php print $messages; ?></div>
+            <?php } ?>
 
-			<?php print $content; ?>
-		</td>
-	</tr>
+            <?php print $content; ?>
+        </td>
+    </tr>
 </table>
 
 </body>

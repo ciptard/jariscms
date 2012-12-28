@@ -20,34 +20,34 @@ namespace JarisCMS\Type;
  */
 function Add($name, $fields)
 {
-	$type_data_path = GeneratePath($name);
+    $type_data_path = GeneratePath($name);
 
-	//Create page type directory in case is not present
-	$path = str_replace("$name.php", "", $type_data_path);
-	if(!file_exists($path))
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	}
+    //Create page type directory in case is not present
+    $path = str_replace("$name.php", "", $type_data_path);
+    if(!file_exists($path))
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    }
 
-	//Check if type already exist.
-	if(file_exists($type_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("type_exist");
-	}
+    //Check if type already exist.
+    if(file_exists($type_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("type_exist");
+    }
     
     //Call add type hook before creating the category
-	\JarisCMS\Module\Hook("Type", "Add", $name, $fields);
+    \JarisCMS\Module\Hook("Type", "Add", $name, $fields);
     
     $fields["categories"] = serialize($fields["categories"]);
     $fields["uploads"] = serialize($fields["uploads"]);
-	$fields["posts"] = serialize($fields["posts"]);
+    $fields["posts"] = serialize($fields["posts"]);
 
-	if(!\JarisCMS\PHPDB\Add($fields, $type_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!\JarisCMS\PHPDB\Add($fields, $type_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -59,20 +59,20 @@ function Add($name, $fields)
  */
 function Delete($name)
 {
-	$type_data_path = GeneratePath($name);
+    $type_data_path = GeneratePath($name);
 
-	//Check that user is not deleting the systema type pages
-	if($name == "pages")
-	{
-		return \JarisCMS\System\GetErrorMessage("delete_system_type");
-	}
+    //Check that user is not deleting the systema type pages
+    if($name == "pages")
+    {
+        return \JarisCMS\System\GetErrorMessage("delete_system_type");
+    }
 
-	if(!unlink($type_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!unlink($type_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -85,16 +85,16 @@ function Delete($name)
  */
 function Edit($name, $fields)
 {
-	$type_data_path = GeneratePath($name);
+    $type_data_path = GeneratePath($name);
     
     //Call type edit hook before creating the category
-	\JarisCMS\Module\Hook("Type", "Edit", $name, $fields);
+    \JarisCMS\Module\Hook("Type", "Edit", $name, $fields);
     
     $fields["categories"] = serialize($fields["categories"]);
     $fields["uploads"] = serialize($fields["uploads"]);
-	$fields["posts"] = serialize($fields["posts"]);
+    $fields["posts"] = serialize($fields["posts"]);
 
-	return \JarisCMS\PHPDB\Edit(0, $fields, $type_data_path);
+    return \JarisCMS\PHPDB\Edit(0, $fields, $type_data_path);
 }
 
 /**
@@ -106,15 +106,15 @@ function Edit($name, $fields)
  */
 function GetData($name)
 {
-	$type_data_path = GeneratePath($name);
+    $type_data_path = GeneratePath($name);
 
-	$type = \JarisCMS\PHPDB\Parse($type_data_path);
+    $type = \JarisCMS\PHPDB\Parse($type_data_path);
     
     $type[0]["categories"] = unserialize($type[0]["categories"]);
     $type[0]["uploads"] = unserialize($type[0]["uploads"]);
-	$type[0]["posts"] = unserialize($type[0]["posts"]);
+    $type[0]["posts"] = unserialize($type[0]["posts"]);
 
-	return $type[0];
+    return $type[0];
 }
 
 /**
@@ -127,23 +127,23 @@ function GetData($name)
  * hasnt been reached.
  *
  * @return array All types in the format types["machine name"] =
- *		  array(
- *			"name"=>"string",
- *			"description"=>"string"
- *		  )
+ *          array(
+ *            "name"=>"string",
+ *            "description"=>"string"
+ *          )
  *        or null if no type found.
  */
 function GetList($user_group=null, $username=false)
 {
-	$dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "types");
+    $dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "types");
 
-	$types = null;
+    $types = null;
 
-	while(($file = readdir($dir)) !== false)
-	{
-		if($file != "." && $file != ".." && !is_dir(\JarisCMS\Setting\GetDataDirectory() . "types/$file"))
-		{
-			$machine_name = str_replace(".php", "", $file);
+    while(($file = readdir($dir)) !== false)
+    {
+        if($file != "." && $file != ".." && !is_dir(\JarisCMS\Setting\GetDataDirectory() . "types/$file"))
+        {
+            $machine_name = str_replace(".php", "", $file);
             
             if($user_group)
             {
@@ -157,12 +157,12 @@ function GetList($user_group=null, $username=false)
                 $types[$machine_name] = GetData($machine_name);
             }
             
-		}
-	}
+        }
+    }
 
-	closedir($dir);
+    closedir($dir);
 
-	return $types;
+    return $types;
 }
 
 /**
@@ -175,27 +175,27 @@ function GetList($user_group=null, $username=false)
  * @return bool True if user reached max post allowed false otherwise
  */
 function UserReachedMaxPost($type, $username)
-{	
-	if(\JarisCMS\SQLite\DBExists("search_engine") && !\JarisCMS\Security\IsAdminLogged())
-	{
-		$type_data = GetData($type);
-		$user_data = \JarisCMS\User\GetData($username);
-	
-		if($type_data["posts"][$user_data["group"]] > 0)
-		{
-			$db = \JarisCMS\SQLite\Open("search_engine");
-			$result = \JarisCMS\SQLite\Query("select count(uri) as total_posts from uris where author='$username' and type='$type'", $db);
-			$data = \JarisCMS\SQLite\FetchArray($result);
-			\JarisCMS\SQLite\Close($db);
+{    
+    if(\JarisCMS\SQLite\DBExists("search_engine") && !\JarisCMS\Security\IsAdminLogged())
+    {
+        $type_data = GetData($type);
+        $user_data = \JarisCMS\User\GetData($username);
+    
+        if($type_data["posts"][$user_data["group"]] > 0)
+        {
+            $db = \JarisCMS\SQLite\Open("search_engine");
+            $result = \JarisCMS\SQLite\Query("select count(uri) as total_posts from uris where author='$username' and type='$type'", $db);
+            $data = \JarisCMS\SQLite\FetchArray($result);
+            \JarisCMS\SQLite\Close($db);
 
-			if($data["total_posts"] >= $type_data["posts"][$user_data["group"]])
-			{
-				return true;
-			}
-		}
-	}
-	
-	return false;
+            if($data["total_posts"] >= $type_data["posts"][$user_data["group"]])
+            {
+                return true;
+            }
+        }
+    }
+    
+    return false;
 }
 
 /**
@@ -204,34 +204,34 @@ function UserReachedMaxPost($type, $username)
  * @param array $selected The array of selected categories.
  * 
  * @return array A series of fields that can
- * 		  be used when generating a form.
+ *           be used when generating a form.
  */
 function GenerateCategoryFieldList($selected=null)
 {
-	$fields = array();
-	
-	$categories_list = \JarisCMS\Category\GetList();
-	
-	foreach($categories_list as $machine_name=>$category_data)
-	{
-		$checked = false;
-		if($selected)
-		{
-			foreach($selected as $value)
-			{
-				if($value == $machine_name)
-				{
-					$checked = true;
-					break;
-				}
-			}
-		}
-		
-		$fields[] = array("type"=>"checkbox", "checked"=>$checked, "label"=>t($category_data["name"]), "name"=>"categories[]", "id"=>"types", "description"=>t($category_data["description"]), "value"=>$machine_name);
+    $fields = array();
+    
+    $categories_list = \JarisCMS\Category\GetList();
+    
+    foreach($categories_list as $machine_name=>$category_data)
+    {
+        $checked = false;
+        if($selected)
+        {
+            foreach($selected as $value)
+            {
+                if($value == $machine_name)
+                {
+                    $checked = true;
+                    break;
+                }
+            }
+        }
+        
+        $fields[] = array("type"=>"checkbox", "checked"=>$checked, "label"=>t($category_data["name"]), "name"=>"categories[]", "id"=>"types", "description"=>t($category_data["description"]), "value"=>$machine_name);
         $fields[] = array("type"=>"other", "html_code"=>"<br />");
-	}
-	
-	return $fields;
+    }
+    
+    return $fields;
 }
 
 /**
@@ -240,34 +240,34 @@ function GenerateCategoryFieldList($selected=null)
  * @param array $selected The array of selected types.
  * 
  * @return array A series of fields that can
- * 		   be used when generating a form.
+ *            be used when generating a form.
  */
 function GenerateContentFieldList($selected=null)
 {
-	$fields = array();
-	
-	$types_list = GetList();
-	
-	foreach($types_list as $machine_name=>$type_data)
-	{
-		$checked = false;
-		if($selected)
-		{
-			foreach($selected as $value)
-			{
-				if($value == $machine_name)
-				{
-					$checked = true;
-					break;
-				}
-			}
-		}
-		
-		$fields[] = array("type"=>"checkbox", "checked"=>$checked, "label"=>t($type_data["name"]), "name"=>"types[]", "id"=>"types", "description"=>t($type_data["description"]), "value"=>$machine_name);
+    $fields = array();
+    
+    $types_list = GetList();
+    
+    foreach($types_list as $machine_name=>$type_data)
+    {
+        $checked = false;
+        if($selected)
+        {
+            foreach($selected as $value)
+            {
+                if($value == $machine_name)
+                {
+                    $checked = true;
+                    break;
+                }
+            }
+        }
+        
+        $fields[] = array("type"=>"checkbox", "checked"=>$checked, "label"=>t($type_data["name"]), "name"=>"types[]", "id"=>"types", "description"=>t($type_data["description"]), "value"=>$machine_name);
         $fields[] = array("type"=>"other", "html_code"=>"<br />");
-	}
-	
-	return $fields;
+    }
+    
+    return $fields;
 }
 
 /**
@@ -331,8 +331,8 @@ function GetLabel($type, $label)
  */
 function GeneratePath($name)
 {
-	$type_path = \JarisCMS\Setting\GetDataDirectory() . "types/$name.php";
+    $type_path = \JarisCMS\Setting\GetDataDirectory() . "types/$name.php";
 
-	return $type_path;
+    return $type_path;
 }
 ?>

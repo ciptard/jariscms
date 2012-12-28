@@ -14,47 +14,47 @@ exit;
 
 row: 0
 
-	field: description
-		site search
-	field;
-	
-	field: title
-		Search
-	field;
+    field: description
+        site search
+    field;
+    
+    field: title
+        Search
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			$parameters["class"] = "block-search";
-			$parameters["action"] = JarisCMS\URI\PrintURL("search");
-			$parameters["method"] = "get";
+            $parameters["class"] = "block-search";
+            $parameters["action"] = JarisCMS\URI\PrintURL("search");
+            $parameters["method"] = "get";
 
-			$fields[] = array("type"=>"hidden", "name"=>"search", "value"=>1);
-			$fields[] = array("type"=>"text", "name"=>"keywords", "id"=>"search", "value"=>$_REQUEST["keywords"]);
-			$fields[] = array("type"=>"submit", "value"=>t("Search"));
+            $fields[] = array("type"=>"hidden", "name"=>"search", "value"=>1);
+            $fields[] = array("type"=>"text", "name"=>"keywords", "id"=>"search", "value"=>$_REQUEST["keywords"]);
+            $fields[] = array("type"=>"submit", "value"=>t("Search"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
         ?>
-	field;
+    field;
 
-	field: order
-		0
-	field;
-	
-	field: display_rule
-		all_except_listed
-	field;
+    field: order
+        0
+    field;
+    
+    field: display_rule
+        all_except_listed
+    field;
 
-	field: pages
-	field;
+    field: pages
+    field;
 
-	field: return
-		<?php
-			if(JarisCMS\URI\Get() == "search")
-        	{
+    field: return
+        <?php
+            if(JarisCMS\URI\Get() == "search")
+            {
                print "false";
             }
             else
@@ -62,10 +62,10 @@ row: 0
                print "true";
             }
         ?>
-	field;
-	
-	field: is_system
-		1
-	field;
+    field;
+    
+    field: is_system
+        1
+    field;
 
 row;

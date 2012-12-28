@@ -13,24 +13,24 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("User Logout") ?>
-	field;
+    field: title
+        <?php print t("User Logout") ?>
+    field;
 
-	field: content
+    field: content
 
-		<?php
-			JarisCMS\Security\LogoutUser();
-		?>
+        <?php
+            JarisCMS\Security\LogoutUser();
+        ?>
 
-		<?php print t("Successfully logged out!") ?>
-		<a href="<?php print JarisCMS\URI\PrintURL(""); ?>">
-		<?php print t("Click Here") ?>
-		</a>
-		<?php print t("to go back to home page.") ?>
-	field;
-	
-	field: is_system
-		1
-	field;
+        <?php print t("Successfully logged out!") ?>
+        <a href="<?php print JarisCMS\URI\PrintURL(""); ?>">
+        <?php print t("Click Here") ?>
+        </a>
+        <?php print t("to go back to home page.") ?>
+    field;
+    
+    field: is_system
+        1
+    field;
 row;

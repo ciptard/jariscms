@@ -17,18 +17,18 @@ namespace JarisCMS\System;
  */
 function MakePageNotFound()
 {
-	GetHTTPStatusHeader(404);
-	
-	$page[0]["title"] = t("Page not found");
-	$page[0]["content"] = t("The page you was searching doesn't exists.");
+    GetHTTPStatusHeader(404);
+    
+    $page[0]["title"] = t("Page not found");
+    $page[0]["content"] = t("The page you was searching doesn't exists.");
 
-	if($page_not_found = \JarisCMS\Setting\Get("page_not_found", "main"))
-	{
-		if($page_data = \JarisCMS\Page\GetData($page_not_found, \JarisCMS\Language\GetCurrent()))
-		{
-			$page[0] = $page_data;
-		}
-	}
+    if($page_not_found = \JarisCMS\Setting\Get("page_not_found", "main"))
+    {
+        if($page_data = \JarisCMS\Page\GetData($page_not_found, \JarisCMS\Language\GetCurrent()))
+        {
+            $page[0] = $page_data;
+        }
+    }
     
     $tabs = array();
     
@@ -37,8 +37,8 @@ function MakePageNotFound()
         $tabs[t("Create Page")] = array("uri"=>"admin/pages/types", "arguments"=>array("uri"=>\JarisCMS\URI\Get()));
     }
 
-	//Call MakePageNotFound modules hook before returning data
-	\JarisCMS\Module\Hook("System", "MakePageNotFound", $page, $tabs);
+    //Call MakePageNotFound modules hook before returning data
+    \JarisCMS\Module\Hook("System", "MakePageNotFound", $page, $tabs);
     
     foreach($tabs as $title=>$data)
     {
@@ -52,7 +52,7 @@ function MakePageNotFound()
         }
     }
 
-	return $page;
+    return $page;
 }
 
 /**
@@ -62,28 +62,28 @@ function MakePageNotFound()
  */
 function GetHTTPStatusHeader($code)
 {
-	switch($code)
-	{
-		case 400:
-			header("HTTP/1.1 400 Bad Request", true);
-			break;
-		case 401:
-			 header("HTTP/1.1 401 Unauthorized", true);
-			 break;
-		case 403:
-			header("HTTP/1.1 403 Forbidden", true);
-			break;
-		case 404:
-			header("HTTP/1.1 404 Not Found", true);
-			break;
-		case 500:
-			 header("HTTP/1.1 500 Internal Server Error", true);
-			 break;
-			
-	 	case 200:
-	 	default:
-	 		header( "HTTP/1.1 200 OK", true);
-	}
+    switch($code)
+    {
+        case 400:
+            header("HTTP/1.1 400 Bad Request", true);
+            break;
+        case 401:
+             header("HTTP/1.1 401 Unauthorized", true);
+             break;
+        case 403:
+            header("HTTP/1.1 403 Forbidden", true);
+            break;
+        case 404:
+            header("HTTP/1.1 404 Not Found", true);
+            break;
+        case 500:
+             header("HTTP/1.1 500 Internal Server Error", true);
+             break;
+            
+         case 200:
+         default:
+             header( "HTTP/1.1 200 OK", true);
+    }
 }
 
 /**
@@ -123,35 +123,35 @@ function GetStyles()
 {
     global $additional_styles;
     
-	$styles_dir = "styles/";
-	$dir_handle = opendir($styles_dir);
+    $styles_dir = "styles/";
+    $dir_handle = opendir($styles_dir);
 
-	$styles = array();
+    $styles = array();
 
-	while(($file = readdir($dir_handle)) !== false)
-	{
-		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-		{
-			$style_file = $styles_dir . $file;
+    while(($file = readdir($dir_handle)) !== false)
+    {
+        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+        {
+            $style_file = $styles_dir . $file;
 
-			if(is_file($style_file))
-			{
-				$styles[] = \JarisCMS\URI\PrintURL($style_file);
-			}
-		}
-	}
-	
-	sort($styles);
+            if(is_file($style_file))
+            {
+                $styles[] = \JarisCMS\URI\PrintURL($style_file);
+            }
+        }
+    }
+    
+    sort($styles);
     
     foreach($additional_styles as $url)
     {
         $styles[] = $url;
     }
 
-	//Call GetStyles modules hook before returning data
-	\JarisCMS\Module\Hook("System", "GetStyles", $styles);
+    //Call GetStyles modules hook before returning data
+    \JarisCMS\Module\Hook("System", "GetStyles", $styles);
 
-	return $styles;
+    return $styles;
 }
 
 /**
@@ -193,35 +193,35 @@ function GetScripts()
 {
     global $additional_scripts;
     
-	$scripts_dir = "scripts/";
-	$dir_handle = opendir($scripts_dir);
+    $scripts_dir = "scripts/";
+    $dir_handle = opendir($scripts_dir);
 
-	$scripts = array();
+    $scripts = array();
 
-	while(($file = readdir($dir_handle)) !== false)
-	{
-		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-		{
-			$scripts_file = $scripts_dir . $file;
+    while(($file = readdir($dir_handle)) !== false)
+    {
+        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+        {
+            $scripts_file = $scripts_dir . $file;
 
-			if(is_file($scripts_file))
-			{
-				$scripts[] = \JarisCMS\URI\PrintURL($scripts_file);
-			}
-		}
-	}
+            if(is_file($scripts_file))
+            {
+                $scripts[] = \JarisCMS\URI\PrintURL($scripts_file);
+            }
+        }
+    }
 
-	sort($scripts);
+    sort($scripts);
     
     foreach($additional_scripts as $url)
     {
         $scripts[] = $url;
     }
 
-	//Call GetScripts modules hook before returning data
-	\JarisCMS\Module\Hook("System", "GetScripts", $scripts);
+    //Call GetScripts modules hook before returning data
+    \JarisCMS\Module\Hook("System", "GetScripts", $scripts);
 
-	return $scripts;
+    return $scripts;
 }
 
 /**
@@ -232,31 +232,31 @@ function GetScripts()
  */
 function GetPageMetaTags()
 {
-	$page_data = \JarisCMS\Page\GetData(\JarisCMS\URI\Get(), \JarisCMS\Language\GetCurrent());
+    $page_data = \JarisCMS\Page\GetData(\JarisCMS\URI\Get(), \JarisCMS\Language\GetCurrent());
     
     $page_data["description"] = \JarisCMS\Search\StripHTMLTags($page_data["description"]);
     $page_data["keywords"] = \JarisCMS\Search\StripHTMLTags($page_data["keywords"]);
 
-	$meta_tags = false;
+    $meta_tags = false;
 
-	$meta_tags = "<meta name=\"generator\" content=\"" . t("JarisCMS - Copyright JegoYalu.com. All rights reserved.") . "\" />\n";
+    $meta_tags = "<meta name=\"generator\" content=\"" . t("JarisCMS - Copyright JegoYalu.com. All rights reserved.") . "\" />\n";
 
-	//Get description
-	if($page_data["description"])
-	{
-		$meta_tags .= "<meta name=\"description\" content=\"{$page_data['description']}\" />\n";
-	}
+    //Get description
+    if($page_data["description"])
+    {
+        $meta_tags .= "<meta name=\"description\" content=\"{$page_data['description']}\" />\n";
+    }
 
-	//Get keywords
-	if($page_data["keywords"])
-	{
-		$meta_tags .= "<meta name=\"keywords\" content=\"{$page_data['keywords']}\" />\n";
-	}
+    //Get keywords
+    if($page_data["keywords"])
+    {
+        $meta_tags .= "<meta name=\"keywords\" content=\"{$page_data['keywords']}\" />\n";
+    }
 
-	//Call get meta tags modules hook before returning data
-	\JarisCMS\Module\Hook("System", "GetPageMetaTags", $meta_tags);
+    //Call get meta tags modules hook before returning data
+    \JarisCMS\Module\Hook("System", "GetPageMetaTags", $meta_tags);
 
-	return $meta_tags;
+    return $meta_tags;
 }
 
 /**
@@ -271,34 +271,34 @@ function GetPageMetaTags()
  */
 function MakePagesBlacklist($check_path=null)
 {
-	$list = array();
-	
-	$list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/sections/admin";
-	$list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/s/se/search";
-	$list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/a/ac/access-denied";
-	$list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/h/h/home";
-	$list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/u/us/user";
+    $list = array();
+    
+    $list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/sections/admin";
+    $list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/s/se/search";
+    $list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/a/ac/access-denied";
+    $list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/h/h/home";
+    $list[] = \JarisCMS\Setting\GetDataDirectory() . "pages/singles/u/us/user";
 
-	//Call MakePagesBlacklist hook before returning data
-	\JarisCMS\Module\Hook("System", "MakePagesBlacklist", $list);
+    //Call MakePagesBlacklist hook before returning data
+    \JarisCMS\Module\Hook("System", "MakePagesBlacklist", $list);
 
-	if($check_path)
-	{
-		foreach($list as $value)
-		{
-			$path = strtolower($check_path);
-			$value = strtolower($value);
+    if($check_path)
+    {
+        foreach($list as $value)
+        {
+            $path = strtolower($check_path);
+            $value = strtolower($value);
 
-			if(strstr($path, $value))
-			{
-				return true;
-			}
-		}
+            if(strstr($path, $value))
+            {
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	return $list;
+    return $list;
 }
 
 /**
@@ -310,45 +310,45 @@ function MakePagesBlacklist($check_path=null)
  */
 function URLExists($url)
 {
-	$url = @parse_url($url);
+    $url = @parse_url($url);
 
-	if (!$url)
-	{
-		return false;
-	}
+    if (!$url)
+    {
+        return false;
+    }
 
-	$url = array_map('trim', $url);
-	$url['port'] = (!isset($url['port'])) ? 80 : (int)$url['port'];
-	$path = (isset($url['path'])) ? $url['path'] : '';
+    $url = array_map('trim', $url);
+    $url['port'] = (!isset($url['port'])) ? 80 : (int)$url['port'];
+    $path = (isset($url['path'])) ? $url['path'] : '';
 
-	if ($path == '')
-	{
-		$path = '/';
-	}
+    if ($path == '')
+    {
+        $path = '/';
+    }
 
-	$path .= (isset($url['query'])) ? "?$url[query]" : '';
+    $path .= (isset($url['query'])) ? "?$url[query]" : '';
 
-	if (PHP_VERSION >= 5)
-	{
-		$headers = get_headers("$url[scheme]://$url[host]:$url[port]$path");
-	}
-	else
-	{
-		$fp = fsockopen($url['host'], $url['port'], $errno, $errstr, 30);
+    if (PHP_VERSION >= 5)
+    {
+        $headers = get_headers("$url[scheme]://$url[host]:$url[port]$path");
+    }
+    else
+    {
+        $fp = fsockopen($url['host'], $url['port'], $errno, $errstr, 30);
 
-		if (!$fp)
-		{
-			return false;
-		}
-		
-		fputs($fp, "HEAD $path HTTP/1.1\r\nHost: $url[host]\r\n\r\n");
-		$headers = fread($fp, 4096);
-		fclose($fp);
-	}
-	
-	$headers = (is_array($headers)) ? implode("\n", $headers) : $headers;
-	
-	return (bool)preg_match('#^HTTP/.*\s+[(200|301|302)]+\s#i', $headers);
+        if (!$fp)
+        {
+            return false;
+        }
+        
+        fputs($fp, "HEAD $path HTTP/1.1\r\nHost: $url[host]\r\n\r\n");
+        $headers = fread($fp, 4096);
+        fclose($fp);
+    }
+    
+    $headers = (is_array($headers)) ? implode("\n", $headers) : $headers;
+    
+    return (bool)preg_match('#^HTTP/.*\s+[(200|301|302)]+\s#i', $headers);
 }
 
 /**
@@ -356,13 +356,13 @@ function URLExists($url)
  */
 function CheckInstall()
 {
-	global $base_url;
+    global $base_url;
 
-	if($base_url == "http://localhost" && !file_exists(\JarisCMS\Setting\GetDataDirectory() . "settings/main.php"))
-	{
-		header("Location: http://" . $_SERVER["SERVER_NAME"] . str_replace("index.php", "install/install.php", $_SERVER["PHP_SELF"]));
+    if($base_url == "http://localhost" && !file_exists(\JarisCMS\Setting\GetDataDirectory() . "settings/main.php"))
+    {
+        header("Location: http://" . $_SERVER["SERVER_NAME"] . str_replace("index.php", "install/install.php", $_SERVER["PHP_SELF"]));
         exit;
-	}
+    }
 }
 
 /**
@@ -387,56 +387,56 @@ function CheckOffline()
  */
 function GetErrorMessage($type)
 {
-	switch($type)
-	{
-		case "write_error_data":
-			return t("Check your write permissions on the data directory.");
+    switch($type)
+    {
+        case "write_error_data":
+            return t("Check your write permissions on the data directory.");
 
-		case "write_error_language":
-			return t("Check your write permissions on the language directory.");
+        case "write_error_language":
+            return t("Check your write permissions on the language directory.");
 
-		case "translations_not_moved":
-			return t("Translations could not be repositioned with the new uri. Check your write permissions on the language directory.");
+        case "translations_not_moved":
+            return t("Translations could not be repositioned with the new uri. Check your write permissions on the language directory.");
 
-		case "translations_not_deleted":
-			return t("Translations could not be deleted. Check your write permissions on the language directory.");
+        case "translations_not_deleted":
+            return t("Translations could not be deleted. Check your write permissions on the language directory.");
 
-		case "image_file_type":
-			return t("The file type must be JPEG, PNG or GIF.");
+        case "image_file_type":
+            return t("The file type must be JPEG, PNG or GIF.");
 
-		case "group_exist":
-			return t("The group machine name is already in use.");
+        case "group_exist":
+            return t("The group machine name is already in use.");
 
-		case "delete_system_group":
-			return t("This is a system group and can not be deleted.");
+        case "delete_system_group":
+            return t("This is a system group and can not be deleted.");
 
-		case "edit_system_group":
-			return t("This is a system group and its machine name can not be modified.");
+        case "edit_system_group":
+            return t("This is a system group and its machine name can not be modified.");
 
-		case "menu_exist":
-			return t("The menu machine name is already in use.");
+        case "menu_exist":
+            return t("The menu machine name is already in use.");
 
-		case "type_exist":
-			return t("The type machine name is already in use.");
+        case "type_exist":
+            return t("The type machine name is already in use.");
             
         case "input_format_exist":
-			return t("The input format machine name is already in use.");
-			
-		case "category_exist":
-			return t("The category machine name is already in use.");
+            return t("The input format machine name is already in use.");
+            
+        case "category_exist":
+            return t("The category machine name is already in use.");
 
-		case "delete_system_type":
-			return t("This is a system type and can not be deleted.");
+        case "delete_system_type":
+            return t("This is a system type and can not be deleted.");
 
-		case "user_exist":
-			return t("The username is already in use.");
-			
-		case "user_not_exist":
-			return t("Theres no user that match your criteria on the system.");
+        case "user_exist":
+            return t("The username is already in use.");
+            
+        case "user_not_exist":
+            return t("Theres no user that match your criteria on the system.");
 
-		default:
-			return t("Operation could not be completed.");
-	}
+        default:
+            return t("Operation could not be completed.");
+    }
 }
 
 /**
@@ -448,25 +448,25 @@ function GetErrorMessage($type)
  */
 function IsSystemPage($uri=false)
 {
-	$page = \JarisCMS\URI\Get();
+    $page = \JarisCMS\URI\Get();
 
-	if($uri)
-	{
-		$page = $uri;
-	}
+    if($uri)
+    {
+        $page = $uri;
+    }
 
-	$data_path = \JarisCMS\Page\GeneratePath($page);
+    $data_path = \JarisCMS\Page\GeneratePath($page);
 
-	$data = \JarisCMS\PHPDB\Parse($data_path . "/data.php");
+    $data = \JarisCMS\PHPDB\Parse($data_path . "/data.php");
 
-	$is_system_page = trim($data[0]["is_system"]);
+    $is_system_page = trim($data[0]["is_system"]);
 
-	//Call IsSystemPage hook before returning data
-	\JarisCMS\Module\Hook("System", "IsSystemPage", $page, $is_system_page);
+    //Call IsSystemPage hook before returning data
+    \JarisCMS\Module\Hook("System", "IsSystemPage", $page, $is_system_page);
 
-	unset($data);
+    unset($data);
 
-	return $is_system_page;
+    return $is_system_page;
 }
 
 /**
@@ -477,9 +477,9 @@ function IsSystemPage($uri=false)
  */
 function GoToPage($uri, $arguments = null)
 {
-	header("Location: " . \JarisCMS\URI\PrintURL($uri, $arguments));
+    header("Location: " . \JarisCMS\URI\PrintURL($uri, $arguments));
     ob_clean();
-	exit;
+    exit;
 }
 
 /**
@@ -494,8 +494,8 @@ function GoToPage($uri, $arguments = null)
  */
 function AddTab($name, $uri, $arguments = null, $row=0)
 {
-	global $tabs_list;
-	$tabs_list[$row][$name] = array("uri"=>$uri, "arguments"=>$arguments);
+    global $tabs_list;
+    $tabs_list[$row][$name] = array("uri"=>$uri, "arguments"=>$arguments);
 }
 
 
@@ -509,7 +509,7 @@ function AddTab($name, $uri, $arguments = null, $row=0)
  */
 function AddMessage($message, $type = "normal")
 {
-	$_SESSION["messages"][] = array("text"=>$message, "type"=>$type);
+    $_SESSION["messages"][] = array("text"=>$message, "type"=>$type);
 }
 
 /**
@@ -517,24 +517,24 @@ function AddMessage($message, $type = "normal")
  */
 function AddEditTab()
 {
-	global $page_data;
+    global $page_data;
 
-	//Do not add edit tab to page not found
-	$data_path = \JarisCMS\Page\GeneratePath(\JarisCMS\URI\Get()) . "/data.php";
-	if(!file_exists($data_path))
-	{
-		return;
-	}
+    //Do not add edit tab to page not found
+    $data_path = \JarisCMS\Page\GeneratePath(\JarisCMS\URI\Get()) . "/data.php";
+    if(!file_exists($data_path))
+    {
+        return;
+    }
 
-	if(\JarisCMS\Group\GetPermission("edit_content", \JarisCMS\Security\GetCurrentUserGroup()) && !IsSystemPage())
-	{
+    if(\JarisCMS\Group\GetPermission("edit_content", \JarisCMS\Security\GetCurrentUserGroup()) && !IsSystemPage())
+    {
         $uri = \JarisCMS\URI\Get();
         if(\JarisCMS\Page\IsOwner($uri))
         {
-			AddTab(t("Edit"), "admin/pages/edit", array("uri"=>$uri));
-			AddTab(t("View"), $uri);
+            AddTab(t("Edit"), "admin/pages/edit", array("uri"=>$uri));
+            AddTab(t("View"), $uri);
         }
-	}
+    }
 }
 
 /**
@@ -546,15 +546,15 @@ function AddEditTab()
  */
 function PHPEval($text)
 {
-	//Prepares the text to be evaluated
-	$text = trim($text, "\n\r\t\0\x0B ");
+    //Prepares the text to be evaluated
+    $text = trim($text, "\n\r\t\0\x0B ");
 
-	ob_start();
-		eval('?>' . $text);
-		$content = ob_get_contents();
-	ob_end_clean();
-	
-	return $content;
+    ob_start();
+        eval('?>' . $text);
+        $content = ob_get_contents();
+    ob_end_clean();
+    
+    return $content;
 }
 
 /**
@@ -562,9 +562,9 @@ function PHPEval($text)
  */
 function InitErrorCatch()
 {
-	//Disabled for performance test
-	//error_reporting(E_ALL ^ E_NOTICE);
-	//set_error_handler("ErrorCatchHook");
+    //Disabled for performance test
+    //error_reporting(E_ALL ^ E_NOTICE);
+    //set_error_handler("ErrorCatchHook");
 }
 
 /**
@@ -572,25 +572,25 @@ function InitErrorCatch()
  */
 function ErrorCatchHook($errno, $errmsg, $filename, $linenum, $vars)
 {
-	$errortype[E_ERROR]	= t('Error');
-	$errortype[E_WARNING] = t('Warning');
- 	$errortype[E_PARSE] = t('Parsing Error');
+    $errortype[E_ERROR]    = t('Error');
+    $errortype[E_WARNING] = t('Warning');
+     $errortype[E_PARSE] = t('Parsing Error');
     $errortype[E_NOTICE] = t('Notice');
     $errortype[E_CORE_ERROR] = t('Core Error');
-	$errortype[E_CORE_WARNING] = t('Core Warning');
+    $errortype[E_CORE_WARNING] = t('Core Warning');
     $errortype[E_COMPILE_ERROR] = t('Compile Error');
- 	$errortype[E_COMPILE_WARNING] = t('Compile Warning');
-  	$errortype[E_USER_ERROR] = t('User Error');
-	$errortype[E_USER_WARNING] = t('User Warning');
-	$errortype[E_USER_NOTICE] = t('User Notice');
-	$errortype[E_STRICT] = t('Runtime Notice');
- 	$errortype[E_RECOVERABLE_ERROR] = t('Catchable Fatal Error');          
+     $errortype[E_COMPILE_WARNING] = t('Compile Warning');
+      $errortype[E_USER_ERROR] = t('User Error');
+    $errortype[E_USER_WARNING] = t('User Warning');
+    $errortype[E_USER_NOTICE] = t('User Notice');
+    $errortype[E_STRICT] = t('Runtime Notice');
+     $errortype[E_RECOVERABLE_ERROR] = t('Catchable Fatal Error');          
 
-	if($errno != E_NOTICE && $errno != E_WARNING && $errno != E_STRICT)
-	{
-	    AddMessage("<b>" . $errortype[$errno] . "</b> - $errmsg" .
-	    "  " . t("in") . " $filename " . t("on line") . " $linenum", "error");
- 	}
+    if($errno != E_NOTICE && $errno != E_WARNING && $errno != E_STRICT)
+    {
+        AddMessage("<b>" . $errortype[$errno] . "</b> - $errmsg" .
+        "  " . t("in") . " $filename " . t("on line") . " $linenum", "error");
+     }
 
     /* Don't execute PHP internal error handler */
     return true;
@@ -598,170 +598,170 @@ function ErrorCatchHook($errno, $errmsg, $filename, $linenum, $vars)
 
 function GenerateAdminPageSection()
 {
-	$group = \JarisCMS\Security\GetCurrentUserGroup();
-	$sections = array();
+    $group = \JarisCMS\Security\GetCurrentUserGroup();
+    $sections = array();
 
-	//Content
-	if(\JarisCMS\Group\GetPermission("add_content", $group))
-	{
-		$content[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/pages/types"), "description"=>t("Create new content."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("view_content", $group))
-	{
-		$content[] = array("title"=>t("Navigate"), "url"=>\JarisCMS\URI\PrintURL("admin/pages"), "description"=>t("View and edit existing content."));
-	}
+    //Content
+    if(\JarisCMS\Group\GetPermission("add_content", $group))
+    {
+        $content[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/pages/types"), "description"=>t("Create new content."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("view_content", $group))
+    {
+        $content[] = array("title"=>t("Navigate"), "url"=>\JarisCMS\URI\PrintURL("admin/pages"), "description"=>t("View and edit existing content."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("add_types", $group))
-	{
-		$content[] = array("title"=>t("Add Type"), "url"=>\JarisCMS\URI\PrintURL("admin/types/add"), "description"=>t("Create new content type."));
-	}
+    if(\JarisCMS\Group\GetPermission("add_types", $group))
+    {
+        $content[] = array("title"=>t("Add Type"), "url"=>\JarisCMS\URI\PrintURL("admin/types/add"), "description"=>t("Create new content type."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("view_types", $group))
-	{
-		$content[] = array("title"=>t("Manage Types"), "url"=>\JarisCMS\URI\PrintURL("admin/types"), "description"=>t("View and edit existing content types."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("add_input_formats", $group))
-	{
-		$content[] = array("title"=>t("Add Input Format"), "url"=>\JarisCMS\URI\PrintURL("admin/input-formats/add"), "description"=>t("Create new content input format."));
-	}
+    if(\JarisCMS\Group\GetPermission("view_types", $group))
+    {
+        $content[] = array("title"=>t("Manage Types"), "url"=>\JarisCMS\URI\PrintURL("admin/types"), "description"=>t("View and edit existing content types."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("add_input_formats", $group))
+    {
+        $content[] = array("title"=>t("Add Input Format"), "url"=>\JarisCMS\URI\PrintURL("admin/input-formats/add"), "description"=>t("Create new content input format."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("view_input_formats", $group))
-	{
-		$content[] = array("title"=>t("Manage Input Formats"), "url"=>\JarisCMS\URI\PrintURL("admin/input-formats"), "description"=>t("View and edit existing content input formats."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("add_categories", $group))
-	{
-		$content[] = array("title"=>t("Add Category"), "url"=>\JarisCMS\URI\PrintURL("admin/categories/add"), "description"=>t("Create new content categories."));
-	}
+    if(\JarisCMS\Group\GetPermission("view_input_formats", $group))
+    {
+        $content[] = array("title"=>t("Manage Input Formats"), "url"=>\JarisCMS\URI\PrintURL("admin/input-formats"), "description"=>t("View and edit existing content input formats."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("add_categories", $group))
+    {
+        $content[] = array("title"=>t("Add Category"), "url"=>\JarisCMS\URI\PrintURL("admin/categories/add"), "description"=>t("Create new content categories."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("view_categories", $group))
-	{
-		$content[] = array("title"=>t("Manage Categories"), "url"=>\JarisCMS\URI\PrintURL("admin/categories"), "description"=>t("View and edit existing content categories."));
-	}
+    if(\JarisCMS\Group\GetPermission("view_categories", $group))
+    {
+        $content[] = array("title"=>t("Manage Categories"), "url"=>\JarisCMS\URI\PrintURL("admin/categories"), "description"=>t("View and edit existing content categories."));
+    }
 
-	if($content)
-	{
-		$sections[] = array("class"=>"content", "title"=>t("Content"), "sub_sections"=>$content);
-	}
+    if($content)
+    {
+        $sections[] = array("class"=>"content", "title"=>t("Content"), "sub_sections"=>$content);
+    }
 
-	//Blocks
-	if(\JarisCMS\Group\GetPermission("add_blocks", $group))
-	{
-		$blocks[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/blocks/add"), "description"=>t("Create new blocks."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("view_blocks", $group))
-	{
-		$blocks[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/blocks"), "description"=>t("View and edit existing blocks."));
-	}
+    //Blocks
+    if(\JarisCMS\Group\GetPermission("add_blocks", $group))
+    {
+        $blocks[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/blocks/add"), "description"=>t("Create new blocks."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("view_blocks", $group))
+    {
+        $blocks[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/blocks"), "description"=>t("View and edit existing blocks."));
+    }
 
-	if($blocks)
-	{
-		$sections[] = array("class"=>"blocks", "title"=>t("Blocks"), "sub_sections"=>$blocks);
-	}
+    if($blocks)
+    {
+        $sections[] = array("class"=>"blocks", "title"=>t("Blocks"), "sub_sections"=>$blocks);
+    }
 
-	//Menus
-	if(\JarisCMS\Group\GetPermission("add_menus", $group))
-	{
-		$menus[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/menus/add"), "description"=>t("Create new menu."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("view_menus", $group))
-	{
-		$menus[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/menus"), "description"=>t("View and edit existing menus and its menu items."));
-	}
+    //Menus
+    if(\JarisCMS\Group\GetPermission("add_menus", $group))
+    {
+        $menus[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/menus/add"), "description"=>t("Create new menu."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("view_menus", $group))
+    {
+        $menus[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/menus"), "description"=>t("View and edit existing menus and its menu items."));
+    }
 
-	if($menus)
-	{
-		$sections[] = array("class"=>"menus", "title"=>t("Menus"), "sub_sections"=>$menus);
-	}
+    if($menus)
+    {
+        $sections[] = array("class"=>"menus", "title"=>t("Menus"), "sub_sections"=>$menus);
+    }
 
-	//Users
-	if(\JarisCMS\Group\GetPermission("add_users", $group))
-	{
-		$users[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/users/add"), "description"=>t("Create new user."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("view_users", $group))
-	{
-		$users[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/users"), "description"=>t("View and edit existing users."));
-	}
-	
-	if($users)
-	{
-		$sections[] = array("class"=>"users", "title"=>t("Users"), "sub_sections"=>$users);
-	}
-		
-	//Groups
-	if(\JarisCMS\Group\GetPermission("add_groups", $group))
-	{
-		$groups[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/groups/add"), "description"=>t("Create new group."));
-	}
+    //Users
+    if(\JarisCMS\Group\GetPermission("add_users", $group))
+    {
+        $users[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/users/add"), "description"=>t("Create new user."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("view_users", $group))
+    {
+        $users[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/users"), "description"=>t("View and edit existing users."));
+    }
+    
+    if($users)
+    {
+        $sections[] = array("class"=>"users", "title"=>t("Users"), "sub_sections"=>$users);
+    }
+        
+    //Groups
+    if(\JarisCMS\Group\GetPermission("add_groups", $group))
+    {
+        $groups[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/groups/add"), "description"=>t("Create new group."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("view_groups", $group))
-	{
-		$groups[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/groups"), "description"=>t("View and edit existing groups."));
-	}
+    if(\JarisCMS\Group\GetPermission("view_groups", $group))
+    {
+        $groups[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/groups"), "description"=>t("View and edit existing groups."));
+    }
 
-	if($groups)
-	{
-		$sections[] = array("class"=>"groups", "title"=>t("Groups"), "sub_sections"=>$groups);
-	}
+    if($groups)
+    {
+        $sections[] = array("class"=>"groups", "title"=>t("Groups"), "sub_sections"=>$groups);
+    }
 
-	//Settings
-	if(\JarisCMS\Group\GetPermission("edit_settings", $group))
-	{
-		$settings[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/settings"), "description"=>t("Modify site settings."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("edit_settings", $group))
-	{
-		$settings[] = array("title"=>t("Search Engine"), "url"=>\JarisCMS\URI\PrintURL("admin/settings/search"), "description"=>t("Change the settings of the search page."));
-	}
+    //Settings
+    if(\JarisCMS\Group\GetPermission("edit_settings", $group))
+    {
+        $settings[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/settings"), "description"=>t("Modify site settings."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("edit_settings", $group))
+    {
+        $settings[] = array("title"=>t("Search Engine"), "url"=>\JarisCMS\URI\PrintURL("admin/settings/search"), "description"=>t("Change the settings of the search page."));
+    }
 
-	if(\JarisCMS\Group\GetPermission("select_theme", $group))
-	{
-		$settings[] = array("title"=>t("Theme"), "url"=>\JarisCMS\URI\PrintURL("admin/themes"), "description"=>t("View and choose site theme."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("edit_settings", $group))
-	{
-		$settings[] = array("title"=>t("About JarisCMS"), "url"=>\JarisCMS\URI\PrintURL("admin/settings/about"), "description"=>t("View current jaris version and developer information."));
-	}
+    if(\JarisCMS\Group\GetPermission("select_theme", $group))
+    {
+        $settings[] = array("title"=>t("Theme"), "url"=>\JarisCMS\URI\PrintURL("admin/themes"), "description"=>t("View and choose site theme."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("edit_settings", $group))
+    {
+        $settings[] = array("title"=>t("About JarisCMS"), "url"=>\JarisCMS\URI\PrintURL("admin/settings/about"), "description"=>t("View current jaris version and developer information."));
+    }
 
-	if($settings)
-	{
-		$sections[] = array("class"=>"settings", "title"=>t("Settings"), "sub_sections"=>$settings);
-	}
+    if($settings)
+    {
+        $sections[] = array("class"=>"settings", "title"=>t("Settings"), "sub_sections"=>$settings);
+    }
 
-	//Languages
-	if(\JarisCMS\Group\GetPermission("add_languages", $group))
-	{
-		$language[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/languages/add"), "description"=>t("Add another language to the system."));
-	}
-	
-	if(\JarisCMS\Group\GetPermission("view_languages", $group))
-	{
-		$language[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/languages"), "description"=>t("Manage available languages on the system."));
-	}
+    //Languages
+    if(\JarisCMS\Group\GetPermission("add_languages", $group))
+    {
+        $language[] = array("title"=>t("Add"), "url"=>\JarisCMS\URI\PrintURL("admin/languages/add"), "description"=>t("Add another language to the system."));
+    }
+    
+    if(\JarisCMS\Group\GetPermission("view_languages", $group))
+    {
+        $language[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/languages"), "description"=>t("Manage available languages on the system."));
+    }
 
-	if($language)
-	{
-		$sections[] = array("class"=>"languages", "title"=>t("Languages"), "sub_sections"=>$language);
-	}
+    if($language)
+    {
+        $sections[] = array("class"=>"languages", "title"=>t("Languages"), "sub_sections"=>$language);
+    }
 
-	//Modules
-	if(\JarisCMS\Group\GetPermission("view_modules", $group))
-	{
-		$modules[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/modules"), "description"=>t("Install or uninstall modules to the system."));
+    //Modules
+    if(\JarisCMS\Group\GetPermission("view_modules", $group))
+    {
+        $modules[] = array("title"=>t("Manage"), "url"=>\JarisCMS\URI\PrintURL("admin/modules"), "description"=>t("Install or uninstall modules to the system."));
 
-		$sections[] = array("class"=>"modules", "title"=>t("Modules"), "sub_sections"=>$modules);
-	}
-	
-	return $sections;
+        $sections[] = array("class"=>"modules", "title"=>t("Modules"), "sub_sections"=>$modules);
+    }
+    
+    return $sections;
 }
 
 /**
@@ -769,56 +769,56 @@ function GenerateAdminPageSection()
  *
  * @param array $sections In the format sections[] =
  *                 array(
- *						"class"=>"css class",
- *						"title"=>"string",
- *						"sub_sections"[]=>
- *							array(
- *								"title"=>"string",
- *								"description"=>"string",
- *								"url"=>"string"
- *							)
- *					)
+ *                        "class"=>"css class",
+ *                        "title"=>"string",
+ *                        "sub_sections"[]=>
+ *                            array(
+ *                                "title"=>"string",
+ *                                "description"=>"string",
+ *                                "url"=>"string"
+ *                            )
+ *                    )
  */
 function GenerateAdminPage($sections)
 {
-	//Call GenerateAdminPage hook before generating sections
-	\JarisCMS\Module\Hook("System", "GenerateAdminPage", $sections);
+    //Call GenerateAdminPage hook before generating sections
+    \JarisCMS\Module\Hook("System", "GenerateAdminPage", $sections);
     
     if(count($sections) <= 0)
     {
         AddMessage("No task assigned to you on the control center.");
         GoToPage("admin/user");
     }
-	
-	$html = "<div class=\"administration-list\">\n";
+    
+    $html = "<div class=\"administration-list\">\n";
 
-	foreach($sections as $section_details)
-	{
-		$html .= "<div class=\"section section-{$section_details['class']}\">\n";
-		$html .= "<h2 class=\"section-title\">{$section_details['title']}</h2>\n";
-		$html .= "<div class=\"section-content\">\n";
+    foreach($sections as $section_details)
+    {
+        $html .= "<div class=\"section section-{$section_details['class']}\">\n";
+        $html .= "<h2 class=\"section-title\">{$section_details['title']}</h2>\n";
+        $html .= "<div class=\"section-content\">\n";
 
         if(count($section_details["sub_sections"]) > 0)
         {
-    		foreach($section_details["sub_sections"] as $fields)
-    		{
-    			$html .= "<div class=\"subsection-title\">\n";
-    			$html .= "<a href=\"{$fields['url']}\">{$fields['title']}</a>\n";
-    			$html .= "</div>\n";
+            foreach($section_details["sub_sections"] as $fields)
+            {
+                $html .= "<div class=\"subsection-title\">\n";
+                $html .= "<a href=\"{$fields['url']}\">{$fields['title']}</a>\n";
+                $html .= "</div>\n";
     
-    			$html .= "<div class=\"description\">\n";
-    			$html .= "{$fields['description']}\n";
-    			$html .= "</div>\n";
-    		}
+                $html .= "<div class=\"description\">\n";
+                $html .= "{$fields['description']}\n";
+                $html .= "</div>\n";
+            }
         }
-		
-		$html .= "</div>\n";
-		$html .= "</div>\n";
-	}
+        
+        $html .= "</div>\n";
+        $html .= "</div>\n";
+    }
 
-	$html .= "</div>\n";
+    $html .= "</div>\n";
 
-	print $html;
+    print $html;
 }
 
 /**
@@ -866,67 +866,67 @@ function GetUserBrowser()
  */
 function PrintGenericNavigation($total_count, $page, $uri, $module="", $amount=30, $arguments=array())
 {
-	$page_count = 0;
-	$remainder_pages = 0;
+    $page_count = 0;
+    $remainder_pages = 0;
 
-	if($total_count <= $amount)
-	{
-		$page_count = 1;
-	}
-	else
-	{
-		$page_count = floor($total_count / $amount);
-		$remainder_pages = $total_count % $amount;
+    if($total_count <= $amount)
+    {
+        $page_count = 1;
+    }
+    else
+    {
+        $page_count = floor($total_count / $amount);
+        $remainder_pages = $total_count % $amount;
 
-		if($remainder_pages > 0)
-		{
-			$page_count++;
-		}
-	}
+        if($remainder_pages > 0)
+        {
+            $page_count++;
+        }
+    }
 
-	//In case someone is trying a page out of range or not print if only one page
-	if($page > $page_count || $page < 0 || $page_count == 1)
-	{
-		return false;
-	}
+    //In case someone is trying a page out of range or not print if only one page
+    if($page > $page_count || $page < 0 || $page_count == 1)
+    {
+        return false;
+    }
     
     print "<div class=\"search-results\">\n";
-	print "<div class=\"navigation\">\n";
-	if($page != 1)
-	{
+    print "<div class=\"navigation\">\n";
+    if($page != 1)
+    {
         $arguments["page"] = $page - 1;
-		$previous_page = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
-		$previous_text = t("Previous");
-		print "<a class=\"previous\" href=\"$previous_page\">$previous_text</a>";
-	}
+        $previous_page = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
+        $previous_text = t("Previous");
+        print "<a class=\"previous\" href=\"$previous_page\">$previous_text</a>";
+    }
 
-	$start_page = $page;
-	$end_page = $page + 10;
+    $start_page = $page;
+    $end_page = $page + 10;
 
-	for($start_page; $start_page < $end_page && $start_page <= $page_count; $start_page++)
-	{
-		$text = t($start_page);
+    for($start_page; $start_page < $end_page && $start_page <= $page_count; $start_page++)
+    {
+        $text = t($start_page);
 
-		if($start_page > $page || $start_page < $page)
-		{
+        if($start_page > $page || $start_page < $page)
+        {
             $arguments["page"] = $start_page;
-			$url = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
-			print "<a class=\"page\" href=\"$url\">$text</a>";
-		}
-		else
-		{
-			print "<a class=\"current-page page\">$text</a>";
-		}
-	}
+            $url = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
+            print "<a class=\"page\" href=\"$url\">$text</a>";
+        }
+        else
+        {
+            print "<a class=\"current-page page\">$text</a>";
+        }
+    }
 
-	if($page < $page_count)
-	{
+    if($page < $page_count)
+    {
         $arguments["page"] = $page + 1;
-		$next_page = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
-		$next_text = t("Next");
-		print "<a class=\"next\" href=\"$next_page\">$next_text</a>";
-	}
-	print "</div>\n";
+        $next_page = \JarisCMS\URI\PrintURL(\JarisCMS\Module\GetPageURI($uri, $module), $arguments);
+        $next_text = t("Next");
+        print "<a class=\"next\" href=\"$next_page\">$next_text</a>";
+    }
+    print "</div>\n";
     print "</div>\n";
 }
 
@@ -939,52 +939,52 @@ function PrintGenericNavigation($total_count, $page, $uri, $module="", $amount=3
  */
 function PrintBreadcrumb($separator = "&gt;")
 {
-	$paths = explode("/", \JarisCMS\URI\Get());
-	
-	$breadcrumb = "";
-	
-	$loop_count = 1;
-	$paths_count = count($paths); 
-	$paths_implode = "";
-	$found_sections = 0;
-	
-	if($paths_count > 1)
-	{
-		foreach($paths as $path)
-		{
-			$page_data = \JarisCMS\Page\GetData($paths_implode . $path, \JarisCMS\Language\GetCurrent());
-			
-			if(is_array($page_data))
-			{
-				if($loop_count < $paths_count)
-				{
-					$breadcrumb .= "<a href=\"" . \JarisCMS\URI\PrintURL($paths_implode . $path) . "\">" . PHPEval($page_data['title']) . "</a> &gt; ";
-				}
-				else
-				{
-					$breadcrumb .= "<span class=\"current\">" . PHPEval($page_data['title']) . "</span>";
-				}
-				
-				$found_sections++;
-			}
-			
-			$paths_implode .= $path . "/";
-			$loop_count++;
-		}
-	}
-	
-	\JarisCMS\Module\Hook("System", "PrintBreadcrumb", $breadcrumb, $found_sections);
-	
-	if($found_sections <= 1)
-	{
-		return false;
-	}
-	else
-	{
-		AddHiddenURLParams($_GET);
-	}
-	
-	return $breadcrumb;
+    $paths = explode("/", \JarisCMS\URI\Get());
+    
+    $breadcrumb = "";
+    
+    $loop_count = 1;
+    $paths_count = count($paths); 
+    $paths_implode = "";
+    $found_sections = 0;
+    
+    if($paths_count > 1)
+    {
+        foreach($paths as $path)
+        {
+            $page_data = \JarisCMS\Page\GetData($paths_implode . $path, \JarisCMS\Language\GetCurrent());
+            
+            if(is_array($page_data))
+            {
+                if($loop_count < $paths_count)
+                {
+                    $breadcrumb .= "<a href=\"" . \JarisCMS\URI\PrintURL($paths_implode . $path) . "\">" . PHPEval($page_data['title']) . "</a> &gt; ";
+                }
+                else
+                {
+                    $breadcrumb .= "<span class=\"current\">" . PHPEval($page_data['title']) . "</span>";
+                }
+                
+                $found_sections++;
+            }
+            
+            $paths_implode .= $path . "/";
+            $loop_count++;
+        }
+    }
+    
+    \JarisCMS\Module\Hook("System", "PrintBreadcrumb", $breadcrumb, $found_sections);
+    
+    if($found_sections <= 1)
+    {
+        return false;
+    }
+    else
+    {
+        AddHiddenURLParams($_GET);
+    }
+    
+    return $breadcrumb;
 }
 
 /**
@@ -994,16 +994,16 @@ function PrintBreadcrumb($separator = "&gt;")
  */
 function AddHiddenURLParams($parameters)
 {
-	if(is_array($parameters) && count($parameters) > 0)
-	{
-		foreach($parameters as $name=>$value)
-		{
-			if($name != "p")
-			{
-				$_SESSION["hidden_parameters"][$name] = $value;
-			}
-		}
-	}
+    if(is_array($parameters) && count($parameters) > 0)
+    {
+        foreach($parameters as $name=>$value)
+        {
+            if($name != "p")
+            {
+                $_SESSION["hidden_parameters"][$name] = $value;
+            }
+        }
+    }
 }
 
 /**
@@ -1012,19 +1012,19 @@ function AddHiddenURLParams($parameters)
  */
 function AppendHiddenParams()
 {
-	//Only execute if current breadcrumb generation is valid
-	if(PrintBreadcrumb())
-	{
-		if(isset($_SESSION["hidden_parameters"]))
-		{
-			foreach($_SESSION["hidden_parameters"] as $name=>$value)
-			{
-				$_REQUEST[$name] = $value;
-			} 
-		}
-		
-		unset($_SESSION["hidden_parameters"]);
-	}
+    //Only execute if current breadcrumb generation is valid
+    if(PrintBreadcrumb())
+    {
+        if(isset($_SESSION["hidden_parameters"]))
+        {
+            foreach($_SESSION["hidden_parameters"] as $name=>$value)
+            {
+                $_REQUEST[$name] = $value;
+            } 
+        }
+        
+        unset($_SESSION["hidden_parameters"]);
+    }
 }
 
 /**
@@ -1112,7 +1112,7 @@ function PrintContentPreview($string, $word_count=30, $display_suspensive_points
    //If last character is not a point add points to it.
    if($display_suspensive_points && $string != "" && $string{strlen($string)-1} != ".")
    {
-		$string .= " ...";
+        $string .= " ...";
    }
    
    return $string;
@@ -1256,21 +1256,21 @@ function CachePageIfPossible($uri, $page_data)
                 \JarisCMS\Page\CountView($uri);
                 
                 $file_content = file_get_contents($cache_file);
-				
+                
                 print $file_content;
                 
                 if(\JarisCMS\Setting\Get("view_script_stats", "main"))
                 {
                     global $time_start;
                     
-                	print "<div style=\"clear: both\">";
-                	print "<div style=\"width: 90%; border: solid #f0b656 1px; background-color: #d0dde7; margin: 0 auto 0 auto; padding: 10px\">";
-                	print "<b>Script execution time:</b> " . ceil((microtime(true) - $time_start) * 1000) . " milliseconds<br />";
+                    print "<div style=\"clear: both\">";
+                    print "<div style=\"width: 90%; border: solid #f0b656 1px; background-color: #d0dde7; margin: 0 auto 0 auto; padding: 10px\">";
+                    print "<b>Script execution time:</b> " . ceil((microtime(true) - $time_start) * 1000) . " milliseconds<br />";
                 
-                	print "<b>Peak memory usage:</b> " . number_format(memory_get_peak_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
-                	print "<b>Final memory usage:</b> " . number_format(memory_get_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
+                    print "<b>Peak memory usage:</b> " . number_format(memory_get_peak_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
+                    print "<b>Final memory usage:</b> " . number_format(memory_get_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
                     print "<b>Page retrieved from:</b> cache <br />";
-                	print "</div>";
+                    print "</div>";
                 }
                 exit;
             }

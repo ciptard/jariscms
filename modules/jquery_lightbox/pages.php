@@ -13,7 +13,7 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		admin/settings/jquery/lightbox
-	field;
+    field: uri
+        admin/settings/jquery/lightbox
+    field;
 row;

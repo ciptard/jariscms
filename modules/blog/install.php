@@ -26,7 +26,7 @@ function Install()
     if(!JarisCMS\SQLite\DBExists("blog"))
     {
         $db = JarisCMS\SQLite\Open("blog");
-		
+        
         JarisCMS\SQLite\Query("create table blogs (id integer primary key, created_timestamp text, edited_timestamp text, title text, description text, tags text, views integer, user text, category text)", $db);
         
         JarisCMS\SQLite\Query("create index blogs_index on blogs (created_timestamp desc, title desc, description desc, tags desc, views desc, user desc, category desc)", $db);
@@ -38,7 +38,7 @@ function Install()
     if(!JarisCMS\SQLite\DBExists("blog_subscriptions"))
     {
         $db = JarisCMS\SQLite\Open("blog_subscriptions");
-		
+        
         JarisCMS\SQLite\Query("create table subscriptions (id integer primary key, user text, subscriber text, created_timestamp text)", $db);
         
         JarisCMS\SQLite\Query("create index subscriptions_index on subscriptions (user desc, subscriber desc, created_timestamp desc)", $db);
@@ -48,9 +48,9 @@ function Install()
     
     //Add user blog archive navigation
     $text = t("Blog Archive");
-	$block_blog_archive["description"] = "User Blog Archive";
-	$block_blog_archive["title"] = "Blog Archive";
-	$block_blog_archive["content"] = '<?php  
+    $block_blog_archive["description"] = "User Blog Archive";
+    $block_blog_archive["title"] = "Blog Archive";
+    $block_blog_archive["content"] = '<?php  
       
     $current_year = date("Y", time());
     $current_month = date("n", time());
@@ -124,10 +124,10 @@ function Install()
         }
     }
     ?>';
-	$block_blog_archive["order"] = "-1";
-	$block_blog_archive["display_rule"] = "all_except_listed";
-	$block_blog_archive["pages"] = "";
-	$block_blog_archive["return"] = '<?php 
+    $block_blog_archive["order"] = "-1";
+    $block_blog_archive["display_rule"] = "all_except_listed";
+    $block_blog_archive["pages"] = "";
+    $block_blog_archive["return"] = '<?php 
     if(JarisCMS\Page\GetType(JarisCMS\URI\Get()) == "blog" || "" . strpos(JarisCMS\URI\Get(), "blog/user/") . "" != "")
     {
         print "true";
@@ -137,17 +137,17 @@ function Install()
         print "false";
     }
     ?>';
-	$block_blog_archive["is_system"] = true;
-	$block_blog_archive["block_name"] = "blog_user_archive";
-	
-	JarisCMS\Block\Add($block_blog_archive, "left");
+    $block_blog_archive["is_system"] = true;
+    $block_blog_archive["block_name"] = "blog_user_archive";
+    
+    JarisCMS\Block\Add($block_blog_archive, "left");
     
     
     //Add recent user posts
     $text = t("Recent Posts by This User");
-	$block_recent_post["description"] = "5 Recent User Posts";
-	$block_recent_post["title"] = "Recent Posts by This User";
-	$block_recent_post["content"] = '<?php 
+    $block_recent_post["description"] = "5 Recent User Posts";
+    $block_recent_post["title"] = "Recent Posts by This User";
+    $block_recent_post["content"] = '<?php 
     
     $page_data = JarisCMS\Page\GetData(JarisCMS\URI\Get());
     $username = $page_data["author"];
@@ -163,23 +163,23 @@ function Install()
     
     $result = JarisCMS\SQLite\Query($select, $db);
     
-	print "<div class=\"blog-recent-post\">\n";
-	print "<ul>\n";
+    print "<div class=\"blog-recent-post\">\n";
+    print "<ul>\n";
     while($data = JarisCMS\SQLite\FetchArray($result))
     {
         $post_data = JarisCMS\Page\GetData($data["uri"]);
         
         print "<li><a href=\"" . JarisCMS\URI\PrintURL($data["uri"]) . "\">" . $post_data["title"] . "</a></li>\n";
     }
-	print "</ul>\n";
-	print "</div>\n";
+    print "</ul>\n";
+    print "</div>\n";
     
     JarisCMS\SQLite\Close($db);
     ?>';
-	$block_recent_post["order"] = "-2";
-	$block_recent_post["display_rule"] = "all_except_listed";
-	$block_recent_post["pages"] = "";
-	$block_recent_post["return"] = '<?php
+    $block_recent_post["order"] = "-2";
+    $block_recent_post["display_rule"] = "all_except_listed";
+    $block_recent_post["pages"] = "";
+    $block_recent_post["return"] = '<?php
     if(JarisCMS\Page\GetType(JarisCMS\URI\Get()) == "blog")
     {
         print "true";
@@ -189,17 +189,17 @@ function Install()
         print "false";
     }
     ?>';
-	$block_recent_post["is_system"] = true;
-	$block_recent_post["block_name"] = "blog_recent_user_posts";
-	
-	JarisCMS\Block\Add($block_recent_post, "left");
+    $block_recent_post["is_system"] = true;
+    $block_recent_post["block_name"] = "blog_recent_user_posts";
+    
+    JarisCMS\Block\Add($block_recent_post, "left");
     
     
     //Add new created blogs
     $text = t("New Blogs");
-	$block_new_blogs["description"] = "10 newly created blogs";
-	$block_new_blogs["title"] = "New Blogs";
-	$block_new_blogs["content"] = '<?php 
+    $block_new_blogs["description"] = "10 newly created blogs";
+    $block_new_blogs["title"] = "New Blogs";
+    $block_new_blogs["content"] = '<?php 
     JarisCMS\System\AddStyle("modules/blog/styles/list.css");
     
     $db = JarisCMS\SQLite\Open("blog");
@@ -247,22 +247,22 @@ function Install()
     
     JarisCMS\SQLite\Close($db);
     ?>';
-	$block_new_blogs["order"] = "0";
-	$block_new_blogs["display_rule"] = "all_except_listed";
-	$block_new_blogs["pages"] = "";
-	$block_new_blogs["return"] = '';
-	$block_new_blogs["is_system"] = true;
-	$block_new_blogs["block_name"] = "blog_new_blogs";
-	
-	JarisCMS\Block\Add($block_new_blogs, "none");
+    $block_new_blogs["order"] = "0";
+    $block_new_blogs["display_rule"] = "all_except_listed";
+    $block_new_blogs["pages"] = "";
+    $block_new_blogs["return"] = '';
+    $block_new_blogs["is_system"] = true;
+    $block_new_blogs["block_name"] = "blog_new_blogs";
+    
+    JarisCMS\Block\Add($block_new_blogs, "none");
     
     //Add most viewed blogs block
     $text = t("Most Viewed Blogs");
     $text = t("Views:");
     $text = t("Created by:");
-	$block_most_viewed_blogs["description"] = "Top 10 Most Viewed Blogs";
-	$block_most_viewed_blogs["title"] = "Most Viewed Blogs";
-	$block_most_viewed_blogs["content"] = '<?php 
+    $block_most_viewed_blogs["description"] = "Top 10 Most Viewed Blogs";
+    $block_most_viewed_blogs["title"] = "Most Viewed Blogs";
+    $block_most_viewed_blogs["content"] = '<?php 
     JarisCMS\System\AddStyle("modules/blog/styles/list.css");
     
     $db = JarisCMS\SQLite\Open("blog");
@@ -308,21 +308,21 @@ function Install()
     
     JarisCMS\SQLite\Close($db);
     ?>';
-	$block_most_viewed_blogs["order"] = "0";
-	$block_most_viewed_blogs["display_rule"] = "all_except_listed";
-	$block_most_viewed_blogs["pages"] = "";
-	$block_most_viewed_blogs["return"] = '';
-	$block_most_viewed_blogs["is_system"] = true;
-	$block_most_viewed_blogs["block_name"] = "blog_most_viewed_blogs";
-	
-	JarisCMS\Block\Add($block_most_viewed_blogs, "none");
+    $block_most_viewed_blogs["order"] = "0";
+    $block_most_viewed_blogs["display_rule"] = "all_except_listed";
+    $block_most_viewed_blogs["pages"] = "";
+    $block_most_viewed_blogs["return"] = '';
+    $block_most_viewed_blogs["is_system"] = true;
+    $block_most_viewed_blogs["block_name"] = "blog_most_viewed_blogs";
+    
+    JarisCMS\Block\Add($block_most_viewed_blogs, "none");
     
     
     //Add navigate by categories blogs block
     $text = t("Categories");
-	$block_categories_blog["description"] = "Navigate blogs by categories";
-	$block_categories_blog["title"] = "Categories";
-	$block_categories_blog["content"] = '<?php 
+    $block_categories_blog["description"] = "Navigate blogs by categories";
+    $block_categories_blog["title"] = "Categories";
+    $block_categories_blog["content"] = '<?php 
     $settings = JarisCMS\Module\Blog\GetSettings();
     if($settings["main_category"] != "")
     {
@@ -339,14 +339,14 @@ function Install()
     }
     ?>';
     
-	$block_categories_blog["order"] = "0";
-	$block_categories_blog["display_rule"] = "just_listed";
-	$block_categories_blog["pages"] = "blog/browser";
-	$block_categories_blog["return"] = '';
-	$block_categories_blog["is_system"] = true;
-	$block_categories_blog["block_name"] = "blog_categories_blogs";
-	
-	JarisCMS\Block\Add($block_categories_blog, "left");
+    $block_categories_blog["order"] = "0";
+    $block_categories_blog["display_rule"] = "just_listed";
+    $block_categories_blog["pages"] = "blog/browser";
+    $block_categories_blog["return"] = '';
+    $block_categories_blog["is_system"] = true;
+    $block_categories_blog["block_name"] = "blog_categories_blogs";
+    
+    JarisCMS\Block\Add($block_categories_blog, "left");
     
     JarisCMS\System\AddMessage(t("Remember to set the blog configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog")) . "\">" . t("Configure Now") . "</a>");
 }

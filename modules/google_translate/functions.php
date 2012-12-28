@@ -12,19 +12,19 @@
 
 namespace JarisCMS\Module\GoogleTranslate\Theme
 {
-	use JarisCMS\URI;
-	use JarisCMS\Module;
-	
-	function MakeTabsCode(&$tabs_array)
-	{
-		$uri = URI\Get();
-		
-		switch($uri)
-		{
-			case "admin/settings":
-				$tabs_array[1][t("Google Translate")] = array("uri"=>Module\GetPageURI("admin/settings/google-translate", "google_translate"), "arguments"=>null);
-				break;
-		}
-	}
+    use JarisCMS\URI;
+    use JarisCMS\Module;
+    
+    function MakeTabsCode(&$tabs_array)
+    {
+        $uri = URI\Get();
+        
+        switch($uri)
+        {
+            case "admin/settings":
+                $tabs_array[1][t("Google Translate")] = array("uri"=>Module\GetPageURI("admin/settings/google-translate", "google_translate"), "arguments"=>null);
+                break;
+        }
+    }
 }
 ?>

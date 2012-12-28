@@ -21,18 +21,18 @@ namespace JarisCMS\Block;
  */
 function Add($fields, $position, $page = "")
 {
-	$block_data_path = GeneratePath($position, $page);
+    $block_data_path = GeneratePath($position, $page);
 
-	//Create page block directory in case is not present
-	$path = str_replace("$position.php", "", $block_data_path);
-	if(!file_exists($path))
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	}
-	
-	$fields["groups"] = serialize($fields["groups"]);
+    //Create page block directory in case is not present
+    $path = str_replace("$position.php", "", $block_data_path);
+    if(!file_exists($path))
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    }
+    
+    $fields["groups"] = serialize($fields["groups"]);
 
-	return \JarisCMS\PHPDB\Add($fields, $block_data_path);
+    return \JarisCMS\PHPDB\Add($fields, $block_data_path);
 }
 
 /**
@@ -46,9 +46,9 @@ function Add($fields, $position, $page = "")
  */
 function Delete($id, $position, $page = "")
 {
-	$block_data_path = GeneratePath($position, $page);
+    $block_data_path = GeneratePath($position, $page);
 
-	return \JarisCMS\PHPDB\Delete($id,$block_data_path);
+    return \JarisCMS\PHPDB\Delete($id,$block_data_path);
 }
 
 /**
@@ -61,30 +61,30 @@ function Delete($id, $position, $page = "")
  */
 function DeleteByField($field_name, $value, $page="")
 {
-	$block_positions[] = "header";
-	$block_positions[] = "left";
-	$block_positions[] = "right";
-	$block_positions[] = "center";
-	$block_positions[] = "footer";
-	$block_positions[] = "none";
-	
-	foreach($block_positions as $position)
-	{
-		$blocks = GetList($position, $page);
-		
-		foreach($blocks as $id=>$fields)
-		{
-			if($fields[$field_name] == $value)
-			{
-				if(!Delete($id, $position, $page))
-				{
-					return false;
-				}
-			}
-		}
-	}
-	
-	return true;
+    $block_positions[] = "header";
+    $block_positions[] = "left";
+    $block_positions[] = "right";
+    $block_positions[] = "center";
+    $block_positions[] = "footer";
+    $block_positions[] = "none";
+    
+    foreach($block_positions as $position)
+    {
+        $blocks = GetList($position, $page);
+        
+        foreach($blocks as $id=>$fields)
+        {
+            if($fields[$field_name] == $value)
+            {
+                if(!Delete($id, $position, $page))
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    
+    return true;
 }
 
 /**
@@ -99,11 +99,11 @@ function DeleteByField($field_name, $value, $page="")
  */
 function Edit($id, $position, $new_data, $page = "")
 {
-	$block_data_path = GeneratePath($position, $page);
-	
-	$new_data["groups"] = serialize($new_data["groups"]);
+    $block_data_path = GeneratePath($position, $page);
+    
+    $new_data["groups"] = serialize($new_data["groups"]);
 
-	return \JarisCMS\PHPDB\Edit($id, $new_data, $block_data_path);
+    return \JarisCMS\PHPDB\Edit($id, $new_data, $block_data_path);
 }
 
 /**
@@ -118,30 +118,30 @@ function Edit($id, $position, $new_data, $page = "")
  */
 function EditByField($field_name, $value, $new_data, $page="")
 {
-	$block_positions[] = "header";
-	$block_positions[] = "left";
-	$block_positions[] = "right";
-	$block_positions[] = "center";
-	$block_positions[] = "footer";
-	$block_positions[] = "none";
-	
-	foreach($block_positions as $position)
-	{
-		$blocks = GetList($position, $page);
-		
-		foreach($blocks as $id=>$fields)
-		{
-			if($fields[$field_name] == $value)
-			{
-				if(!Edit($id, $position, $new_data, $page))
-				{
-					return false;
-				}
-			}
-		}
-	}
-	
-	return true;
+    $block_positions[] = "header";
+    $block_positions[] = "left";
+    $block_positions[] = "right";
+    $block_positions[] = "center";
+    $block_positions[] = "footer";
+    $block_positions[] = "none";
+    
+    foreach($block_positions as $position)
+    {
+        $blocks = GetList($position, $page);
+        
+        foreach($blocks as $id=>$fields)
+        {
+            if($fields[$field_name] == $value)
+            {
+                if(!Edit($id, $position, $new_data, $page))
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    
+    return true;
 }
 
 /**
@@ -155,13 +155,13 @@ function EditByField($field_name, $value, $new_data, $page="")
  */
 function GetData($id, $position, $page = "")
 {
-	$block_data_path = GeneratePath($position, $page);
+    $block_data_path = GeneratePath($position, $page);
 
-	$blocks = \JarisCMS\PHPDB\Parse($block_data_path);
-	
-	$blocks[$id]["groups"] = unserialize($blocks[$id]["groups"]);
+    $blocks = \JarisCMS\PHPDB\Parse($block_data_path);
+    
+    $blocks[$id]["groups"] = unserialize($blocks[$id]["groups"]);
 
-	return $blocks[$id];
+    return $blocks[$id];
 }
 
 /**
@@ -175,27 +175,27 @@ function GetData($id, $position, $page = "")
  */
 function GetDataByField($field_name, $value, $page="")
 {
-	$block_positions[] = "header";
-	$block_positions[] = "left";
-	$block_positions[] = "right";
-	$block_positions[] = "center";
-	$block_positions[] = "footer";
-	$block_positions[] = "none";
-	
-	foreach($block_positions as $position)
-	{
-		$blocks = GetList($position, $page);
-		
-		foreach($blocks as $id=>$fields)
-		{
-			if($fields[$field_name] == $value)
-			{
-				return GetData($id, $position, $page);
-			}
-		}
-	}
-	
-	return null;
+    $block_positions[] = "header";
+    $block_positions[] = "left";
+    $block_positions[] = "right";
+    $block_positions[] = "center";
+    $block_positions[] = "footer";
+    $block_positions[] = "none";
+    
+    foreach($block_positions as $position)
+    {
+        $blocks = GetList($position, $page);
+        
+        foreach($blocks as $id=>$fields)
+        {
+            if($fields[$field_name] == $value)
+            {
+                return GetData($id, $position, $page);
+            }
+        }
+    }
+    
+    return null;
 }
 
 /**
@@ -208,18 +208,18 @@ function GetDataByField($field_name, $value, $page="")
  */
 function GetList($position, $page = "")
 {
-	$block_data_path = GeneratePath($position, $page);
+    $block_data_path = GeneratePath($position, $page);
 
-	$blocks = \JarisCMS\PHPDB\Parse($block_data_path);
+    $blocks = \JarisCMS\PHPDB\Parse($block_data_path);
 
-	if($blocks == false)
-	{
-		return null;
-	}
-	else
-	{
-		return $blocks;
-	}
+    if($blocks == false)
+    {
+        return null;
+    }
+    else
+    {
+        return $blocks;
+    }
 }
 
 /**
@@ -234,15 +234,15 @@ function GetList($position, $page = "")
  */
 function Move($id, $current_position, $new_position, $page = "")
 {
-	$block_data_path = GeneratePath($current_position, $page);
+    $block_data_path = GeneratePath($current_position, $page);
 
-	$current_block_data = \JarisCMS\PHPDB\GetData($id, $block_data_path);
+    $current_block_data = \JarisCMS\PHPDB\GetData($id, $block_data_path);
 
-	$new_block_data_path = GeneratePath($new_position, $page);
+    $new_block_data_path = GeneratePath($new_position, $page);
 
-	\JarisCMS\PHPDB\Add($current_block_data, $new_block_data_path);
+    \JarisCMS\PHPDB\Add($current_block_data, $new_block_data_path);
 
-	return \JarisCMS\PHPDB\Delete($id, $block_data_path);
+    return \JarisCMS\PHPDB\Delete($id, $block_data_path);
 }
 
 /**
@@ -253,24 +253,24 @@ function Move($id, $current_position, $new_position, $page = "")
  * @return bool True if has access or false if not.
  */
 function UserGroupHasAccessTo($block)
-{	
-	$current_group = \JarisCMS\Security\GetCurrentUserGroup();
-	
-	//If administrator not selected any group return true or admin logged.
-	if(!$block["groups"] || \JarisCMS\Security\IsAdminLogged())
-	{
-		return true;
-	}
-	
-	foreach($block["groups"] as $machine_name)
-	{
-		if($machine_name == $current_group)
-		{
-			return true;
-		}
-	}
-	
-	return false;
+{    
+    $current_group = \JarisCMS\Security\GetCurrentUserGroup();
+    
+    //If administrator not selected any group return true or admin logged.
+    if(!$block["groups"] || \JarisCMS\Security\IsAdminLogged())
+    {
+        return true;
+    }
+    
+    foreach($block["groups"] as $machine_name)
+    {
+        if($machine_name == $current_group)
+        {
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 /**
@@ -283,47 +283,47 @@ function UserGroupHasAccessTo($block)
  */
 function PageHasAccess($block, $page)
 {
-	$pages = explode(",", $block["pages"]);
-	
-	if($block["display_rule"] == "all_except_listed")
-	{
-		foreach($pages as $page_check)
-		{
-			$page_check = trim($page_check);
-			
-			//Check if no pages listed and display in all pages.
-			if($page_check == "")
-			{
-				return true;
-			}
-			
-			$page_check = str_replace(array("/", "/*"), array("\\/", "/.*"), $page_check);
-			$page_check = "/^$page_check\$/";
-			
-			if(preg_match($page_check, $page))
-			{
-				return false;
-			}
-		}
-	}
-	else if($block["display_rule"] == "just_listed")
-	{
-		foreach($pages as $page_check)
-		{
-			$page_check = trim($page_check);
-			$page_check = str_replace(array("/", "*"), array("\\/", ".*"), $page_check);
-			$page_check = "/^$page_check\$/";
-			
-			if(preg_match($page_check, $page))
-			{
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	return true;
+    $pages = explode(",", $block["pages"]);
+    
+    if($block["display_rule"] == "all_except_listed")
+    {
+        foreach($pages as $page_check)
+        {
+            $page_check = trim($page_check);
+            
+            //Check if no pages listed and display in all pages.
+            if($page_check == "")
+            {
+                return true;
+            }
+            
+            $page_check = str_replace(array("/", "/*"), array("\\/", "/.*"), $page_check);
+            $page_check = "/^$page_check\$/";
+            
+            if(preg_match($page_check, $page))
+            {
+                return false;
+            }
+        }
+    }
+    else if($block["display_rule"] == "just_listed")
+    {
+        foreach($pages as $page_check)
+        {
+            $page_check = trim($page_check);
+            $page_check = str_replace(array("/", "*"), array("\\/", ".*"), $page_check);
+            $page_check = "/^$page_check\$/";
+            
+            if(preg_match($page_check, $page))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    return true;
 }
 
 /**
@@ -336,17 +336,17 @@ function PageHasAccess($block, $page)
  */
 function SetPagePostSettings($settings, $page)
 {
-	$settings_path = \JarisCMS\Page\GeneratePath($page) . "/blocks/post_settings.php";
-	
-	$settings_data[0] = $settings;
-	
-	//Create blocks directory if not exists
-	if(!file_exists(\JarisCMS\Page\GeneratePath($page) . "/blocks"))
-	{
-		\JarisCMS\FileSystem\MakeDir(\JarisCMS\Page\GeneratePath($page) . "/blocks");
-	}
-	
-	return \JarisCMS\PHPDB\Write($settings_data, $settings_path);
+    $settings_path = \JarisCMS\Page\GeneratePath($page) . "/blocks/post_settings.php";
+    
+    $settings_data[0] = $settings;
+    
+    //Create blocks directory if not exists
+    if(!file_exists(\JarisCMS\Page\GeneratePath($page) . "/blocks"))
+    {
+        \JarisCMS\FileSystem\MakeDir(\JarisCMS\Page\GeneratePath($page) . "/blocks");
+    }
+    
+    return \JarisCMS\PHPDB\Write($settings_data, $settings_path);
 }
 
 /**
@@ -358,25 +358,25 @@ function SetPagePostSettings($settings, $page)
  */
 function GetPagePostSettings($page)
 {
-	$settings_path = \JarisCMS\Page\GeneratePath($page) . "/blocks/post_settings.php";
-	
-	$settings = array();
-	if(file_exists($settings_path))
-	{
-		$settings = \JarisCMS\PHPDB\Parse($settings_path);	
-	}
-	else
-	{
-		$fields["display_title"] = false;
-		$fields["display_image"] = false;
-		$fields["thumbnail_width"] = "125";
-		$fields["maximum_words"] = 20;
-		$fields["display_view_more"] = true;
-		
-		$settings[0] = $fields;
-	}
-	
-	return  $settings[0];
+    $settings_path = \JarisCMS\Page\GeneratePath($page) . "/blocks/post_settings.php";
+    
+    $settings = array();
+    if(file_exists($settings_path))
+    {
+        $settings = \JarisCMS\PHPDB\Parse($settings_path);    
+    }
+    else
+    {
+        $fields["display_title"] = false;
+        $fields["display_image"] = false;
+        $fields["thumbnail_width"] = "125";
+        $fields["maximum_words"] = 20;
+        $fields["display_view_more"] = true;
+        
+        $settings[0] = $fields;
+    }
+    
+    return  $settings[0];
 }
 
 /**
@@ -389,71 +389,71 @@ function GetPagePostSettings($page)
  */
 function GeneratePostContent($uri, $page_uri=null)
 {
-	$settings = GetPagePostSettings($page_uri);
-	
-	$page_data = \JarisCMS\Page\GetData($uri, \JarisCMS\Language\GetCurrent());
-	$content = $page_data["content"];
-	$image = "";
-	$image_path = "";
-	$post_title = "";
-	$post_title_plain = "";
-	$view_more = "";
-	$view_url = "";
-	
-	$content = \JarisCMS\InputFormat\FilterData($page_data["content"], $page_data["input_format"]);
-	$content = \JarisCMS\System\PrintContentPreview($content, $settings["maximum_words"], true);
-	
-	if($settings["display_image"])
-	{
-		$images = \JarisCMS\PHPDB\Sort(\JarisCMS\Image\GetList($uri), "order");
-		
-		foreach($images as $id=>$fields)
-		{
-			$image_options["w"] = $settings["thumbnail_width"];
-			
-			if($settings["thumbnail_height"])
-			{
-				$image_options["h"] = $settings["thumbnail_height"];
-			}
-			
-			if($settings["keep_aspect_ratio"])
-			{
-				$image_options["ar"] = "1";
-			}
-			
-			if($settings["thumbnail_background_color"])
-			{
-				$image_options["bg"] = $settings["thumbnail_background_color"];
-			}
-			
-			$image = "<a title=\"{$fields['description']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . "<img alt=\"{$fields['description']}\" src=\"" . \JarisCMS\URI\PrintURL("image/$uri/{$fields["name"]}", $image_options) . "\" />" . "</a>";
-			$image_path = \JarisCMS\URI\PrintURL("image/$uri/$id");
-			
-			break;			
-		}
-	}
-	
-	if($settings["display_title"])
-	{		
-		$post_title = "<a title=\"{$page_data['title']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . $page_data["title"] . "</a>";
-		$post_title_plain = $page_data["title"];
-	}
-	
-	if($settings["display_view_more"])
-	{	
-		$view_more = "<a title=\"{$page_data['title']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . t("view more") . "</a>";
-		$view_url = \JarisCMS\URI\PrintURL("$uri");
-	}
-	
-	$fields["content"] = $content;
-	$fields["image"] = $image;
-	$fields["image_path"] = $image_path;
-	$fields["post_title"] = $post_title;
-	$fields["post_title_plain"] = $post_title_plain;
-	$fields["view_more"] = $view_more;
-	$fields["view_url"] = $view_url;
+    $settings = GetPagePostSettings($page_uri);
+    
+    $page_data = \JarisCMS\Page\GetData($uri, \JarisCMS\Language\GetCurrent());
+    $content = $page_data["content"];
+    $image = "";
+    $image_path = "";
+    $post_title = "";
+    $post_title_plain = "";
+    $view_more = "";
+    $view_url = "";
+    
+    $content = \JarisCMS\InputFormat\FilterData($page_data["content"], $page_data["input_format"]);
+    $content = \JarisCMS\System\PrintContentPreview($content, $settings["maximum_words"], true);
+    
+    if($settings["display_image"])
+    {
+        $images = \JarisCMS\PHPDB\Sort(\JarisCMS\Image\GetList($uri), "order");
+        
+        foreach($images as $id=>$fields)
+        {
+            $image_options["w"] = $settings["thumbnail_width"];
+            
+            if($settings["thumbnail_height"])
+            {
+                $image_options["h"] = $settings["thumbnail_height"];
+            }
+            
+            if($settings["keep_aspect_ratio"])
+            {
+                $image_options["ar"] = "1";
+            }
+            
+            if($settings["thumbnail_background_color"])
+            {
+                $image_options["bg"] = $settings["thumbnail_background_color"];
+            }
+            
+            $image = "<a title=\"{$fields['description']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . "<img alt=\"{$fields['description']}\" src=\"" . \JarisCMS\URI\PrintURL("image/$uri/{$fields["name"]}", $image_options) . "\" />" . "</a>";
+            $image_path = \JarisCMS\URI\PrintURL("image/$uri/$id");
+            
+            break;            
+        }
+    }
+    
+    if($settings["display_title"])
+    {        
+        $post_title = "<a title=\"{$page_data['title']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . $page_data["title"] . "</a>";
+        $post_title_plain = $page_data["title"];
+    }
+    
+    if($settings["display_view_more"])
+    {    
+        $view_more = "<a title=\"{$page_data['title']}\" href=\"" . \JarisCMS\URI\PrintURL("$uri") . "\">" . t("view more") . "</a>";
+        $view_url = \JarisCMS\URI\PrintURL("$uri");
+    }
+    
+    $fields["content"] = $content;
+    $fields["image"] = $image;
+    $fields["image_path"] = $image_path;
+    $fields["post_title"] = $post_title;
+    $fields["post_title_plain"] = $post_title_plain;
+    $fields["view_more"] = $view_more;
+    $fields["view_url"] = $view_url;
 
-	return $fields;
+    return $fields;
 }
 
 /**
@@ -466,21 +466,21 @@ function GeneratePostContent($uri, $page_uri=null)
  */
 function GeneratePath($position, $page = "")
 {
-	$block_path = "";
+    $block_path = "";
 
-	if($page)
-	{
-		//Page block
-		$block_path = \JarisCMS\Page\GeneratePath($page) . "/";
-	}
-	else
-	{
-		//Global block
-		$block_path = \JarisCMS\Setting\GetDataDirectory();
-	}
+    if($page)
+    {
+        //Page block
+        $block_path = \JarisCMS\Page\GeneratePath($page) . "/";
+    }
+    else
+    {
+        //Global block
+        $block_path = \JarisCMS\Setting\GetDataDirectory();
+    }
 
-	$block_path .= "blocks/" . $position . ".php";
+    $block_path .= "blocks/" . $position . ".php";
 
-	return $block_path;
+    return $block_path;
 }
 ?>

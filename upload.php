@@ -29,24 +29,24 @@ JarisCMS\System\CheckOffline();
 
 if(JarisCMS\Form\CanUpload())
 {
-	error_reporting(E_ALL | E_STRICT);
-	require('include/third_party/upload.class.php');
-	
-	$upload_path = str_replace(
-		"data.php", 
-		"uploads/", 
-		JarisCMS\User\GeneratePath(
-			JarisCMS\Security\GetCurrentUser(), 
-			JarisCMS\Security\GetCurrentUserGroup()
-		)
-	);
-	
-	if(!is_dir($upload_path))
-		JarisCMS\FileSystem\MakeDir($upload_path, 0755, true);
-	
-	$upload_handler = new UploadHandler(
-		array('script_url'=>  JarisCMS\URI\PrintURL("upload.php"), "upload_dir"=>$upload_path)
-	);
+    error_reporting(E_ALL | E_STRICT);
+    require('include/third_party/upload.class.php');
+    
+    $upload_path = str_replace(
+        "data.php", 
+        "uploads/", 
+        JarisCMS\User\GeneratePath(
+            JarisCMS\Security\GetCurrentUser(), 
+            JarisCMS\Security\GetCurrentUserGroup()
+        )
+    );
+    
+    if(!is_dir($upload_path))
+        JarisCMS\FileSystem\MakeDir($upload_path, 0755, true);
+    
+    $upload_handler = new UploadHandler(
+        array('script_url'=>  JarisCMS\URI\PrintURL("upload.php"), "upload_dir"=>$upload_path)
+    );
 }
 
 ?>

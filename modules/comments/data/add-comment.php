@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Add comment
-	field;
+    field: title
+        Add comment
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             if(isset($_REQUEST["s"]) && JarisCMS\Security\GetCurrentUser() == "Guest")
             {
                 session_destroy();
@@ -40,21 +40,21 @@ row: 0
                     
                     if(trim($comment) != "" && $page_data)
                     {
-                    	$user_data = JarisCMS\User\GetData($page_data["author"]);
-                    	
+                        $user_data = JarisCMS\User\GetData($page_data["author"]);
+                        
                         $id = JarisCMS\Module\Comments\Add($comment, $_REQUEST["page"], $_REQUEST["rid"]);
                         
                         //Send poster a new comment notification if has this permission
                         if(JarisCMS\Group\GetPermission("notifications_comments", $user_data["group"]) && JarisCMS\Security\GetCurrentUser() != $page_data["author"])
                         {
-                        	$to[$user_data["name"]] = $user_data["email"];
-                        	$subject = t("You have a new comment on") . " " . JarisCMS\Setting\Get("title", "main");
-                        	$html_message = t("A user posted the following comment on your post:") . "<br /><br />";
-                        	$html_message .= "<i>" . JarisCMS\Search\StripHTMLTags($comment) . "</i><br /><br />";
-                        	$html_message .= t("To reply or view your original post click on the following link:") . "<br />";
-                        	$html_message .= "<a target=\"_blank\" href=\"" . JarisCMS\URI\PrintURL($_REQUEST["page"]) . "\">" . JarisCMS\URI\PrintURL($_REQUEST["page"]) . "</a>";
-                        	
-                        	JarisCMS\Email\Send($to, $subject, $html_message);
+                            $to[$user_data["name"]] = $user_data["email"];
+                            $subject = t("You have a new comment on") . " " . JarisCMS\Setting\Get("title", "main");
+                            $html_message = t("A user posted the following comment on your post:") . "<br /><br />";
+                            $html_message .= "<i>" . JarisCMS\Search\StripHTMLTags($comment) . "</i><br /><br />";
+                            $html_message .= t("To reply or view your original post click on the following link:") . "<br />";
+                            $html_message .= "<a target=\"_blank\" href=\"" . JarisCMS\URI\PrintURL($_REQUEST["page"]) . "\">" . JarisCMS\URI\PrintURL($_REQUEST["page"]) . "</a>";
+                            
+                            JarisCMS\Email\Send($to, $subject, $html_message);
                         }
                         
                         $data = JarisCMS\Module\Comments\GetData($id, $_REQUEST["page"]);
@@ -63,10 +63,10 @@ row: 0
                     }
                 }
             }
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

@@ -13,31 +13,31 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Export Users List") ?>
-	field;
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_users"));
+    field: title
+        <?php print t("Export Users List") ?>
+    field;
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_users"));
             
             JarisCMS\System\AddTab(t("Navigation View"), "admin/users");
             JarisCMS\System\AddTab(t("List View"), "admin/users/list");
             JarisCMS\System\AddTab(t("Create User"), "admin/users/add");
-			JarisCMS\System\AddTab(t("Groups"), "admin/groups");
+            JarisCMS\System\AddTab(t("Groups"), "admin/groups");
             JarisCMS\System\AddTab(t("Export"), "admin/users/export");
             
             $users_csv = JarisCMS\Setting\GetDataDirectory() . "users/users.csv";
-			
+            
             if(file_exists($users_csv))
             {
                 JarisCMS\System\AddTab(t("Download Last Generated"), "admin/users/export", array("download"=>1), 1);
             }
            
             $page = 1;
-			
-			if(isset($_REQUEST["btnYes"]))
-			{
-				$file = fopen($users_csv, "w");
+            
+            if(isset($_REQUEST["btnYes"]))
+            {
+                $file = fopen($users_csv, "w");
                 
                 if($file)
                 {
@@ -63,7 +63,7 @@ row: 0
                 {
                     JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
                 }
-			}
+            }
             elseif(isset($_REQUEST["download"]))
             {
                 JarisCMS\FileSystem\PrintAllFiles($users_csv, "users.csv", true, true);
@@ -72,20 +72,20 @@ row: 0
             {
                 JarisCMS\System\GoToPage("admin/users");
             }
-		?>
+        ?>
         
         <?php
             
         ?>
         
         <form class="export_users_list" method="post" action="<?php JarisCMS\URI\PrintURL("admin/users/export") ?>">
-			<div><?php print t("The process of creating a csv file of the users database could take a long time.<br />Do you want to the generate export file?") ?></div>
-			<input class="form-submit" type="submit" name="btnYes" value="<?php print t("Yes") ?>" />
-			<input class="form-submit" type="submit" name="btnNo" value="<?php print t("No") ?>" />
-		</form>
-	field;
+            <div><?php print t("The process of creating a csv file of the users database could take a long time.<br />Do you want to the generate export file?") ?></div>
+            <input class="form-submit" type="submit" name="btnYes" value="<?php print t("Yes") ?>" />
+            <input class="form-submit" type="submit" name="btnNo" value="<?php print t("No") ?>" />
+        </form>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

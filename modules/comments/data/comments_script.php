@@ -13,11 +13,11 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Comments script
-	field;
+    field: title
+        Comments script
+    field;
 
-	field: content
+    field: content
         <?php $settings = JarisCMS\Module\Comments\GetSettings($_REQUEST["type"]) ?>
         //<script>
         function comments_page(page)
@@ -158,8 +158,8 @@ row: 0
             $(this).unbind("click");
         }
           
-		$(document).ready(function(){
-		  
+        $(document).ready(function(){
+          
           $("#add-comment-submit").click(comment_submit);
           
           $("#add-comment-reset").click(function(){$("#add-comment-comment").val("");});
@@ -172,7 +172,7 @@ row: 0
           
           $(".comment-delete-link").click(delete_submit);
           
-		});
+        });
         
         function add_comment(data)
         {
@@ -203,9 +203,9 @@ row: 0
             $("#comment-" + data.toString()).fadeOut();
         }
         //</script>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

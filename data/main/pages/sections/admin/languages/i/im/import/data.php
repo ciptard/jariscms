@@ -13,30 +13,30 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Import POT File") ?>
-	field;
+    field: title
+        <?php print t("Import POT File") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_languages", "edit_languages"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_languages", "edit_languages"));
 
-			$lang_code = $_REQUEST["code"];
+            $lang_code = $_REQUEST["code"];
             
             if(!isset($_REQUEST["btnUpload"]) && !isset($_REQUEST["btnCancel"]))
-			{
-				JarisCMS\System\AddMessage(t("Here you can update language strings by uploading a po translation file."));
-			}
+            {
+                JarisCMS\System\AddMessage(t("Here you can update language strings by uploading a po translation file."));
+            }
 
-			if(isset($_REQUEST["btnUpload"]) && !JarisCMS\Form\CheckFields("language-import"))
-			{
-				if("" . stristr($_FILES["po_file"]["type"], ".po") . "" == "")
-				{
-				    $main_file = JarisCMS\Setting\GetDataDirectory() . "language/strings.po";
+            if(isset($_REQUEST["btnUpload"]) && !JarisCMS\Form\CheckFields("language-import"))
+            {
+                if("" . stristr($_FILES["po_file"]["type"], ".po") . "" == "")
+                {
+                    $main_file = JarisCMS\Setting\GetDataDirectory() . "language/strings.po";
                     $language_file = JarisCMS\Setting\GetDataDirectory() . "language/" . $lang_code . "/" . "strings.po";
                     
                     //Parse the uploaded file
-					$new_strings = JarisCMS\Language\ParsePO($_FILES["po_file"]["tmp_name"]);
+                    $new_strings = JarisCMS\Language\ParsePO($_FILES["po_file"]["tmp_name"]);
                     
                     //First update empty strings pot file
                     $empty_strings = JarisCMS\Language\ParsePO($main_file);
@@ -87,27 +87,27 @@ row: 0
                     }
                     
                     JarisCMS\System\GoToPage("admin/languages/edit", array("code"=>$lang_code));
-				}
-				else
-				{
-					JarisCMS\System\AddMessage(t("The uploaded file is not supported."), "error");
+                }
+                else
+                {
+                    JarisCMS\System\AddMessage(t("The uploaded file is not supported."), "error");
                     JarisCMS\System\GoToPage("admin/languages/import", array("code"=>$lang_code));
-				}
-			}
-			elseif(isset($_REQUEST["btnCancel"]))
-			{
-				JarisCMS\System\GoToPage("admin/languages/edit", array("code"=>$lang_code));
-			}
-			
-			$parameters["name"] = "language-import";
-			$parameters["class"] = "language-import";
-			$parameters["action"] = JarisCMS\URI\PrintURL("admin/languages/import");
-			$parameters["method"] = "post";
-			$parameters["enctype"] = "multipart/form-data";
-			
+                }
+            }
+            elseif(isset($_REQUEST["btnCancel"]))
+            {
+                JarisCMS\System\GoToPage("admin/languages/edit", array("code"=>$lang_code));
+            }
+            
+            $parameters["name"] = "language-import";
+            $parameters["class"] = "language-import";
+            $parameters["action"] = JarisCMS\URI\PrintURL("admin/languages/import");
+            $parameters["method"] = "post";
+            $parameters["enctype"] = "multipart/form-data";
+            
             $fields[] = array("type"=>"hidden", "name"=>"code", "value"=>$lang_code);
             
-			$fields[] = array("type"=>"file", "label"=>t("PO file:"), "name"=>"po_file", "id"=>"po_file", "valid_types"=>"po", "description"=>t("A po translation file to import into current translations."));
+            $fields[] = array("type"=>"file", "label"=>t("PO file:"), "name"=>"po_file", "id"=>"po_file", "valid_types"=>"po", "description"=>t("A po translation file to import into current translations."));
             $fieldset[] = array("fields"=>$fields);
             
             $options[t("Just insert new strings")] = "insert_new";
@@ -115,18 +115,18 @@ row: 0
             
             $options_fields[] = array("type"=>"radio", "name"=>"option", "id"=>"option", "value"=>$options, "checked"=>"insert_new");
 
-			$fieldset[] = array("name"=>t("Import method"), "fields"=>$options_fields, "collapsible"=>true, "collapsed"=>false);
+            $fieldset[] = array("name"=>t("Import method"), "fields"=>$options_fields, "collapsible"=>true, "collapsed"=>false);
 
-			$fields_submit[] = array("type"=>"submit", "name"=>"btnUpload", "value"=>t("Upload"));
-			$fields_submit[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields_submit[] = array("type"=>"submit", "name"=>"btnUpload", "value"=>t("Upload"));
+            $fields_submit[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields_submit);
+            $fieldset[] = array("fields"=>$fields_submit);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
-		?>
-	field;
-	
-	field: is_system
-		1
-	field;
+            print JarisCMS\Form\Generate($parameters, $fieldset);
+        ?>
+    field;
+    
+    field: is_system
+        1
+    field;
 row;

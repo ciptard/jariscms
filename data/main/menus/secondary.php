@@ -15,20 +15,20 @@ exit;
 
 row: 0
 
-	field: title
-		Menu Title
-	field;
+    field: title
+        Menu Title
+    field;
 
-	field: url
-		uri
-	field;
+    field: url
+        uri
+    field;
 
-	field: parent
-		root
-	field;
+    field: parent
+        root
+    field;
 
-	field: order
-		1
-	field;
+    field: order
+        1
+    field;
 
 row;

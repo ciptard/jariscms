@@ -19,91 +19,91 @@ namespace JarisCMS\PHPDB;
  *         in the format row[id] = array(field_name=>value) or false if error.
  */
 function Parse($file)
-{	
-	//In case file is been write wait to not get empty content
-	WaitForUnLock($file);
-	
-	if(!file_exists($file))
-	{
-		return false;
-	}
-	
-	//If data is stored serialized get that instead since it is faster than reparsing.
-	//This is specially useful for less powered embedded devices
-	if(file_exists(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file)))
-	{
-		return unserialize(file_get_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file)));
-	}
+{    
+    //In case file is been write wait to not get empty content
+    WaitForUnLock($file);
+    
+    if(!file_exists($file))
+    {
+        return false;
+    }
+    
+    //If data is stored serialized get that instead since it is faster than reparsing.
+    //This is specially useful for less powered embedded devices
+    if(file_exists(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file)))
+    {
+        return unserialize(file_get_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file)));
+    }
 
-	$arrFile = file($file);
+    $arrFile = file($file);
 
-	$row = array();
+    $row = array();
 
-	$insideRow = false;
-	$insideField = false;
-	$currentRow = "";
-	$currentField = "";
+    $insideRow = false;
+    $insideField = false;
+    $currentRow = "";
+    $currentField = "";
 
-	for($i=0; $i<count($arrFile); ++$i)
-	{
-		if($insideField)
-		{
-			if(substr(trim($arrFile[$i]),0,6) == "field;")
-			{
-				$insideField = false;
+    for($i=0; $i<count($arrFile); ++$i)
+    {
+        if($insideField)
+        {
+            if(substr(trim($arrFile[$i]),0,6) == "field;")
+            {
+                $insideField = false;
 
-				$row[$currentRow][$currentField] = rtrim($row[$currentRow][$currentField]);
-			}
-			else
-			{
-				$field =  $arrFile[$i];
-				$field = ltrim($field, "\t");
+                $row[$currentRow][$currentField] = rtrim($row[$currentRow][$currentField]);
+            }
+            else
+            {
+                $field =  $arrFile[$i];
+                $field = ltrim($field, "\t");
 
-				if($row[$currentRow][$currentField] != "")
-				{
-					$row[$currentRow][$currentField] .= $field . "";
-				}
-				else
-				{
-					$field = trim($field, "\t");
-					$row[$currentRow][$currentField] .= $field;
-				}
-			}
-		}
-		else if($insideRow)
-		{
-			if(substr(trim($arrFile[$i]),0,6) == "field:")
-			{
-				$arrField = explode(":", $arrFile[$i]);
-				$currentField = trim($arrField[1]);
-				$insideField = true;
+                if($row[$currentRow][$currentField] != "")
+                {
+                    $row[$currentRow][$currentField] .= $field . "";
+                }
+                else
+                {
+                    $field = trim($field, "\t");
+                    $row[$currentRow][$currentField] .= $field;
+                }
+            }
+        }
+        else if($insideRow)
+        {
+            if(substr(trim($arrFile[$i]),0,6) == "field:")
+            {
+                $arrField = explode(":", $arrFile[$i]);
+                $currentField = trim($arrField[1]);
+                $insideField = true;
 
-				$row[$currentRow][$currentField] = "";
-			}
-			else if(substr(trim($arrFile[$i]),0,4) == "row;")
-			{
-				$insideRow = false;
-			}
-		}
-		else if(!$insideRow)
-		{
-			if(substr(trim($arrFile[$i]),0,4) == "row:")
-			{
-				$arrRow = explode(":", $arrFile[$i]);
-				$currentRow = trim($arrRow[1]);
-				$insideRow = true;
-			}
-		}
-	}
+                $row[$currentRow][$currentField] = "";
+            }
+            else if(substr(trim($arrFile[$i]),0,4) == "row;")
+            {
+                $insideRow = false;
+            }
+        }
+        else if(!$insideRow)
+        {
+            if(substr(trim($arrFile[$i]),0,4) == "row:")
+            {
+                $arrRow = explode(":", $arrFile[$i]);
+                $currentRow = trim($arrRow[1]);
+                $insideRow = true;
+            }
+        }
+    }
 
-	unset($arrFile);
-	
-	//Store retrieved data in serialized form for faster retreival next time
-	//This is specially useful for less powered embedded devices
-	if(is_dir(\JarisCMS\Setting\GetDataDirectory() . "data_cache"))
-		file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file), serialize($row));
+    unset($arrFile);
+    
+    //Store retrieved data in serialized form for faster retreival next time
+    //This is specially useful for less powered embedded devices
+    if(is_dir(\JarisCMS\Setting\GetDataDirectory() . "data_cache"))
+        file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file), serialize($row));
 
-	return $row;
+    return $row;
 }
 
 /**
@@ -117,50 +117,50 @@ function Parse($file)
  */
 function Write($data, $file)
 {
-	//Wait if file is been modified
-	WaitForUnLock($file);
-	
-	//Check if a file could no be lock and keep trying until locked
-	while(!Lock($file))
-	{
-		continue;
-	}
-	
-	//For security we place this at the top of the file to make it unreadable by
-	//external users
-	$content = "<?php exit; ?>\n\n\n";
+    //Wait if file is been modified
+    WaitForUnLock($file);
+    
+    //Check if a file could no be lock and keep trying until locked
+    while(!Lock($file))
+    {
+        continue;
+    }
+    
+    //For security we place this at the top of the file to make it unreadable by
+    //external users
+    $content = "<?php exit; ?>\n\n\n";
 
-	foreach($data as $row => $fields)
-	{
-		$content .= "row: $row\n\n";
+    foreach($data as $row => $fields)
+    {
+        $content .= "row: $row\n\n";
 
-		foreach($fields as $name => $value)
-		{
-			$content .= "\tfield: $name\n";
-			$content .= "\t\t" . trim($value);
-			$content .= "\n\tfield;\n\n";
-		}
+        foreach($fields as $name => $value)
+        {
+            $content .= "\tfield: $name\n";
+            $content .= "\t\t" . trim($value);
+            $content .= "\n\tfield;\n\n";
+        }
 
-		$content .= "row;\n\n\n";
-	}
+        $content .= "row;\n\n\n";
+    }
 
-	if(!file_put_contents($file, $content))
-	{
+    if(!file_put_contents($file, $content))
+    {
         //Unlock file
         Unlock($file);
         
-		return false;
-	}
-	
-	//Store data in serialized form for faster reads by Parse() function
-	//This is specially useful for less powered embedded devices
-	if(is_dir(\JarisCMS\Setting\GetDataDirectory() . "data_cache"))
-		file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file), serialize($data));
-	
-	//Unlock file
-	Unlock($file);
+        return false;
+    }
+    
+    //Store data in serialized form for faster reads by Parse() function
+    //This is specially useful for less powered embedded devices
+    if(is_dir(\JarisCMS\Setting\GetDataDirectory() . "data_cache"))
+        file_put_contents(\JarisCMS\Setting\GetDataDirectory() . "data_cache/" . \JarisCMS\URI\FromText($file), serialize($data));
+    
+    //Unlock file
+    Unlock($file);
 
-	return true;
+    return true;
 }
 
 /**
@@ -173,16 +173,16 @@ function Write($data, $file)
  */
 function GetData($position, $file)
 {
-	//In case file is been write wait to not get empty content
-	WaitForUnLock($file);
-	
-	$actual_data = array();
-	if(file_exists($file))
-	{
-		$actual_data = Parse($file);
-	}
+    //In case file is been write wait to not get empty content
+    WaitForUnLock($file);
+    
+    $actual_data = array();
+    if(file_exists($file))
+    {
+        $actual_data = Parse($file);
+    }
 
-	return $actual_data[$position];
+    return $actual_data[$position];
 }
 
 /**
@@ -194,21 +194,21 @@ function GetData($position, $file)
  * @return bool False if failed to add data otherwise true.
  */
 function Add($fields, $file)
-{	
-	$actual_data = array();
-	if(file_exists($file))
-	{
-		$actual_data = Parse($file);
-	}
+{    
+    $actual_data = array();
+    if(file_exists($file))
+    {
+        $actual_data = Parse($file);
+    }
 
-	$actual_data[] = $fields;
+    $actual_data[] = $fields;
 
-	if(!Write($actual_data, $file))
-	{
-		return false;
-	}
+    if(!Write($actual_data, $file))
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -221,16 +221,16 @@ function Add($fields, $file)
  */
 function Delete($position, $file)
 {
-	$actual_data = Parse($file);
+    $actual_data = Parse($file);
 
-	unset($actual_data[$position]);
+    unset($actual_data[$position]);
 
-	if(!Write($actual_data, $file))
-	{
-		return false;
-	}
+    if(!Write($actual_data, $file))
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -244,20 +244,20 @@ function Delete($position, $file)
  */
 function DeleteByField($field_name, $value, $file)
 {
-	$data = Parse($file);
-	
-	foreach($data as $position=>$fields)
-	{
-		if($fields[$field_name] == $value)
-		{
-			if(!Delete($position, $file))
-			{
-				return false;
-			} 
-		}
-	}
-	
-	return true;
+    $data = Parse($file);
+    
+    foreach($data as $position=>$fields)
+    {
+        if($fields[$field_name] == $value)
+        {
+            if(!Delete($position, $file))
+            {
+                return false;
+            } 
+        }
+    }
+    
+    return true;
 }
 
 /**
@@ -272,16 +272,16 @@ function DeleteByField($field_name, $value, $file)
  */
 function Edit($position, $new_data, $file)
 {
-	$actual_data = Parse($file);
+    $actual_data = Parse($file);
 
-	$actual_data[$position] = $new_data;
+    $actual_data[$position] = $new_data;
 
-	if(!Write($actual_data, $file))
-	{
-		return false;
-	}
+    if(!Write($actual_data, $file))
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -293,20 +293,20 @@ function Edit($position, $new_data, $file)
  */
 function Lock($file)
 {
-	//File to block file from modifications.
-	$file_lock = $file . ".lock";
-	
-	//Create lock file
-	if(file_exists($file_lock))
-	{
-		return false;
-	}
-	else
-	{
-		file_put_contents($file_lock, "");
-	}
-	
-	return true;
+    //File to block file from modifications.
+    $file_lock = $file . ".lock";
+    
+    //Create lock file
+    if(file_exists($file_lock))
+    {
+        return false;
+    }
+    else
+    {
+        file_put_contents($file_lock, "");
+    }
+    
+    return true;
 }
 
 /**
@@ -316,11 +316,11 @@ function Lock($file)
  */
 function Unlock($file)
 {
-	//File to block file from modifications.
-	$file_lock = $file . ".lock";
-	
-	//Delete lock file
-	unlink($file_lock);
+    //File to block file from modifications.
+    $file_lock = $file . ".lock";
+    
+    //Delete lock file
+    unlink($file_lock);
 }
 
 /**
@@ -330,18 +330,18 @@ function Unlock($file)
  */
 function WaitForUnLock($file)
 {
-	//File to block file from modifications until is modified here first.
-	$file_lock = $file . ".lock";
-	
-	//Check if $file is not been modified already.
-	if(file_exists($file_lock))
-	{
-		//Wait until the file is written by the other process
-		while(file_exists($file_lock))
-		{
-			continue;
-		}
-	}
+    //File to block file from modifications until is modified here first.
+    $file_lock = $file . ".lock";
+    
+    //Check if $file is not been modified already.
+    if(file_exists($file_lock))
+    {
+        //Wait until the file is written by the other process
+        while(file_exists($file_lock))
+        {
+            continue;
+        }
+    }
 }
 
 /**
@@ -355,27 +355,27 @@ function WaitForUnLock($file)
  */
 function Sort($data_array, $field_name, $sort_method = SORT_ASC)
 {
-	$sorted_array = array();
-	
-	if(is_array($data_array))
-	{
-		$field_to_sort_by = array();
-		$new_id_position = array();
-		
-		foreach($data_array as $key=>$fields)
-		{
-			$field_to_sort_by[$key] = $fields[$field_name];
-			$new_id_position[$key] = $key;
-		}
-		
-		array_multisort($field_to_sort_by, $sort_method, $new_id_position, $sort_method);
-		
-		foreach($new_id_position as $id)
-		{
-			$sorted_array[$id] = $data_array[$id];
-		}
-	}
-	
-	return $sorted_array;
+    $sorted_array = array();
+    
+    if(is_array($data_array))
+    {
+        $field_to_sort_by = array();
+        $new_id_position = array();
+        
+        foreach($data_array as $key=>$fields)
+        {
+            $field_to_sort_by[$key] = $fields[$field_name];
+            $new_id_position[$key] = $key;
+        }
+        
+        array_multisort($field_to_sort_by, $sort_method, $new_id_position, $sort_method);
+        
+        foreach($new_id_position as $id)
+        {
+            $sorted_array[$id] = $data_array[$id];
+        }
+    }
+    
+    return $sorted_array;
 }
 ?>

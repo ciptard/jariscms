@@ -32,24 +32,24 @@ $query = JarisCMS\URI\FromText($_REQUEST["query"], true);
 
 if(JarisCMS\SQLite\DBExists("search_engine"))
 {
-	$db = JarisCMS\SQLite\Open("search_engine");
-	
-	$select = "select uri, haspermission(groups, '".JarisCMS\Security\GetCurrentUserGroup()."') as has_permissions 
-	from uris where uri like '{$query}%' and has_permissions > 0 limit 0,10";
-	
-	$result = JarisCMS\SQLite\Query($select, $db);
-	
-	$list = array();
-	
-	while($data = JarisCMS\SQLite\FetchArray($result))
-	{
-		$list[] = $data["uri"];
-	}
-	
-	print json_encode(array("query"=>$query, "suggestions"=>$list));
+    $db = JarisCMS\SQLite\Open("search_engine");
+    
+    $select = "select uri, haspermission(groups, '".JarisCMS\Security\GetCurrentUserGroup()."') as has_permissions 
+    from uris where uri like '{$query}%' and has_permissions > 0 limit 0,10";
+    
+    $result = JarisCMS\SQLite\Query($select, $db);
+    
+    $list = array();
+    
+    while($data = JarisCMS\SQLite\FetchArray($result))
+    {
+        $list[] = $data["uri"];
+    }
+    
+    print json_encode(array("query"=>$query, "suggestions"=>$list));
 }
 else
 {
-	print json_encode(array("query"=>$query, "suggestions"=>array()));
+    print json_encode(array("query"=>$query, "suggestions"=>array()));
 }
 ?>

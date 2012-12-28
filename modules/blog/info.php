@@ -24,16 +24,16 @@ $module["website"] = "http://www.jegoyalu.com";
 
 Version 1.4.1 - Date 15/10/2012
 
-	* Changed html of the recents post block.
+    * Changed html of the recents post block.
 
 Version 1.4 - Date 4/5/2011
 
-	* Fixed a bug when the content type of a blog page was changed to another it was kept on blog list
-	* Fixed bug of month and year not passed as arguments on pages navigation on users post list
+    * Fixed a bug when the content type of a blog page was changed to another it was kept on blog list
+    * Fixed bug of month and year not passed as arguments on pages navigation on users post list
 
 Version 1.3 - Date 22/2/2011
 
-	* Added the ability to change post templates
+    * Added the ability to change post templates
 
 */
 

@@ -20,30 +20,30 @@ namespace JarisCMS\InputFormat;
  */
 function Add($name, $fields)
 {
-	$input_format_data_path = GetPath($name);
+    $input_format_data_path = GetPath($name);
 
-	//Create input_formats directory in case is not present
-	$path = str_replace("$name.php", "", $input_format_data_path);
-	if(!file_exists($path))
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	}
+    //Create input_formats directory in case is not present
+    $path = str_replace("$name.php", "", $input_format_data_path);
+    if(!file_exists($path))
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    }
 
-	//Check if input format already exist.
-	if(file_exists($input_format_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("input_format_exist");
-	}
+    //Check if input format already exist.
+    if(file_exists($input_format_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("input_format_exist");
+    }
     
     //Call Add hook before creating the category
-	\JarisCMS\Module\Hook("InputFormat", "Add", $name, $fields);
+    \JarisCMS\Module\Hook("InputFormat", "Add", $name, $fields);
 
-	if(!\JarisCMS\PHPDB\Add($fields, $input_format_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!\JarisCMS\PHPDB\Add($fields, $input_format_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -55,14 +55,14 @@ function Add($name, $fields)
  */
 function Delete($name)
 {
-	$input_format_data_path = GetPath($name);
+    $input_format_data_path = GetPath($name);
 
-	if(!unlink($input_format_data_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!unlink($input_format_data_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -75,12 +75,12 @@ function Delete($name)
  */
 function Edit($name, $fields)
 {
-	$input_format_data_path = GetPath($name);
+    $input_format_data_path = GetPath($name);
     
     //Call Add hook before creating the category
-	\JarisCMS\Module\Hook("InputFormat", "Edit", $name, $fields);
+    \JarisCMS\Module\Hook("InputFormat", "Edit", $name, $fields);
 
-	return \JarisCMS\PHPDB\Edit(0, $fields, $input_format_data_path);
+    return \JarisCMS\PHPDB\Edit(0, $fields, $input_format_data_path);
 }
 
 /**
@@ -92,23 +92,23 @@ function Edit($name, $fields)
  */
 function GetData($name)
 {
-	$input_format_data_path = GetPath($name);
+    $input_format_data_path = GetPath($name);
 
-	$input_format = \JarisCMS\PHPDB\Parse($input_format_data_path);
+    $input_format = \JarisCMS\PHPDB\Parse($input_format_data_path);
 
-	return $input_format[0];
+    return $input_format[0];
 }
 
 /**
  * Gets the list of available content input formats.
  *
  * @return array Array with all input formats in the format input_format["machine name"] =
- *		  array(
- *			"name"=>"string",
- *			"description"=>"string",
+ *          array(
+ *            "name"=>"string",
+ *            "description"=>"string",
  *          "parse_url"=> bool,
  *          "ParseLineBreaks"=>bool
- *		  )
+ *          )
  *        or null if no input format found.
  */
 function GetList()
@@ -118,25 +118,25 @@ function GetList()
         \JarisCMS\FileSystem\MakeDir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats");
     }
     
-	$dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats");
+    $dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats");
 
-	$input_formats = array();
+    $input_formats = array();
 
     if(file_exists(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats"))
     {
-    	while(($file = readdir($dir)) !== false)
-    	{
-    		if($file != "." && $file != ".." && !is_dir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats/$file"))
-    		{
-    			$machine_name = str_replace(".php", "", $file);
+        while(($file = readdir($dir)) !== false)
+        {
+            if($file != "." && $file != ".." && !is_dir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats/$file"))
+            {
+                $machine_name = str_replace(".php", "", $file);
                 $input_formats[$machine_name] = GetData($machine_name);
-    		}
-    	}
+            }
+        }
     }
 
-	closedir($dir);
+    closedir($dir);
 
-	return $input_formats;
+    return $input_formats;
 }
 
 /**
@@ -201,8 +201,8 @@ function ParseLineBreaks($text)
  */
 function GetAll()
 {
-	$input_formats["full_html"] = array("title"=>t("Full HTML"), "description"=>t("Supports all html tags"));
- 	$input_formats["php_code"] = array("title"=>t("PHP Code"), "description"=>t("For executing php code with no filtering."));
+    $input_formats["full_html"] = array("title"=>t("Full HTML"), "description"=>t("Supports all html tags"));
+     $input_formats["php_code"] = array("title"=>t("PHP Code"), "description"=>t("For executing php code with no filtering."));
     
     $input_formats_array = GetList();
     
@@ -211,7 +211,7 @@ function GetAll()
         $input_formats[$machine_name] = array("title"=>t($data["name"]), "description"=>t($data["description"]));
     }
 
- 	return $input_formats;
+     return $input_formats;
 }
 
 /**
@@ -226,13 +226,13 @@ function FilterData($data, $input_format)
 {
     static $input_formats_array;
     
-	switch($input_format)
-	{
-		case "full_html":
-			return $data;
-		case "php_code":
-			return \JarisCMS\System\PHPEval($data);
-		default:
+    switch($input_format)
+    {
+        case "full_html":
+            return $data;
+        case "php_code":
+            return \JarisCMS\System\PHPEval($data);
+        default:
             if(!$input_formats_array[$input_format])
             {
                 $input_formats_array[$input_format] = GetData($input_format);
@@ -255,8 +255,8 @@ function FilterData($data, $input_format)
                 $data = ParseLineBreaks($data);
             }
             
-			return $data;
-	}
+            return $data;
+    }
 }
 
 /**
@@ -273,8 +273,8 @@ function GetPath($name)
         \JarisCMS\FileSystem\MakeDir(\JarisCMS\Setting\GetDataDirectory() . "types/input_formats");
     }
     
-	$input_format_path = \JarisCMS\Setting\GetDataDirectory() . "types/input_formats/$name.php";
+    $input_format_path = \JarisCMS\Setting\GetDataDirectory() . "types/input_formats/$name.php";
 
-	return $input_format_path;
+    return $input_format_path;
 }
 ?>

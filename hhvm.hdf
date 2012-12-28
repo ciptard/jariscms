@@ -1,61 +1,61 @@
 Server {
-	Port = 8080
+    Port = 8080
 }
 
 Eval {
-	Jit = false
+    Jit = false
 }
 
 Log {
-	Level = Error
-	UseLogFile = true
-	File = hhvm/error.log
-	Access {
-		* {
-			File = hhvm/access.log
-			Format = %h %l %u %t \"%r\" %>s %b
-		}
-	}
+    Level = Error
+    UseLogFile = true
+    File = hhvm/error.log
+    Access {
+        * {
+            File = hhvm/access.log
+            Format = %h %l %u %t \"%r\" %>s %b
+        }
+    }
 }
 
 Repo {
-	Central {
-		Path = hhvm/hhvm.hhbc.sq3
-	}
+    Central {
+        Path = hhvm/hhvm.hhbc.sq3
+    }
 }
 
 VirtualHost {
-	* {
-		Pattern = .*
-		RewriteRules {
-			* {
-				pattern = ^/(.*)$
-				to = index.php?p=$1
-				qsa = true
-			}
-		}
-	}
+    * {
+        Pattern = .*
+        RewriteRules {
+            * {
+                pattern = ^/(.*)$
+                to = index.php?p=$1
+                qsa = true
+            }
+        }
+    }
 }
 
 StaticFile {
-	FilesMatch {
-		* {
-			pattern = .*\.(dll|exe)
-			headers {
-				* = Content-Disposition: attachment
-			}
-		}
-	}
-	Extensions {
-		css = text/css
-		gif = image/gif
-		html = text/html
-		jpe = image/jpeg
-		jpeg = image/jpeg
-		jpg = image/jpeg
-		png = image/png
-		tif = image/tiff
-		tiff = image/tiff
-		txt = text/plain
-	}
+    FilesMatch {
+        * {
+            pattern = .*\.(dll|exe)
+            headers {
+                * = Content-Disposition: attachment
+            }
+        }
+    }
+    Extensions {
+        css = text/css
+        gif = image/gif
+        html = text/html
+        jpe = image/jpeg
+        jpeg = image/jpeg
+        jpg = image/jpeg
+        png = image/png
+        tif = image/tiff
+        tiff = image/tiff
+        txt = text/plain
+    }
 }

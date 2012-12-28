@@ -13,13 +13,13 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		admin/pages/gallery/add
-	field;
+    field: uri
+        admin/pages/gallery/add
+    field;
 row;
 
 row: 1
-	field: uri
-		admin/pages/gallery/edit
-	field;
+    field: uri
+        admin/pages/gallery/edit
+    field;
 row;

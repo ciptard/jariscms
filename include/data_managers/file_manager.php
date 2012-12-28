@@ -22,32 +22,32 @@ namespace JarisCMS\File;
  */
 function Add($file_array, $description, $page = "", &$file_name=null)
 {
-	//TODO: Check file mime type before adding the file.
-	$file_data_path = GeneratePath($page);
+    //TODO: Check file mime type before adding the file.
+    $file_data_path = GeneratePath($page);
 
-	//Create file directory in case is not present
-	$path = str_replace("files.php", "files", $file_data_path);
-	if(!file_exists($path))
-	{
-		\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-	}
+    //Create file directory in case is not present
+    $path = str_replace("files.php", "files", $file_data_path);
+    if(!file_exists($path))
+    {
+        \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+    }
 
-	$destination = $path . "/" . $file_array["name"];
+    $destination = $path . "/" . $file_array["name"];
 
-	$file_name = \JarisCMS\FileSystem\MoveFile($file_array["tmp_name"], $destination);
+    $file_name = \JarisCMS\FileSystem\MoveFile($file_array["tmp_name"], $destination);
 
-	if(!$file_name)
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!$file_name)
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	$fields["name"] = $file_name;
-	$fields["description"] = $description;
-	$fields["mime-type"] = $file_array["type"];
+    $fields["name"] = $file_name;
+    $fields["description"] = $description;
+    $fields["mime-type"] = $file_array["type"];
 
-	\JarisCMS\PHPDB\Add($fields, $file_data_path);
+    \JarisCMS\PHPDB\Add($fields, $file_data_path);
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -60,25 +60,25 @@ function Add($file_array, $description, $page = "", &$file_name=null)
  */
 function Delete($id, $page)
 {
-	$file_data_path = GeneratePath($page);
+    $file_data_path = GeneratePath($page);
 
-	$file_data = GetData($id, $page);
+    $file_data = GetData($id, $page);
 
-	//For not having problems clean any \n\t and many others
-	$file_data["name"] = trim($file_data["name"]);
+    //For not having problems clean any \n\t and many others
+    $file_data["name"] = trim($file_data["name"]);
 
-	$file_file_path = str_replace("files.php", "files/{$file_data['name']}", $file_data_path);
+    $file_file_path = str_replace("files.php", "files/{$file_data['name']}", $file_data_path);
 
-	//Remove file
-	if(!unlink($file_file_path))
-	{
-		return false;
-	}
+    //Remove file
+    if(!unlink($file_file_path))
+    {
+        return false;
+    }
 
-	//Remove file record from files.php data file
-	\JarisCMS\PHPDB\Delete($id, $file_data_path);
+    //Remove file record from files.php data file
+    \JarisCMS\PHPDB\Delete($id, $file_data_path);
 
-	return true;
+    return true;
 }
 
 /**
@@ -92,9 +92,9 @@ function Delete($id, $page)
  */
 function Edit($id, $new_data, $page)
 {
-	$file_data_path = GeneratePath($page);
+    $file_data_path = GeneratePath($page);
 
-	return \JarisCMS\PHPDB\Edit($id, $new_data, $file_data_path);
+    return \JarisCMS\PHPDB\Edit($id, $new_data, $file_data_path);
 }
 
 /**
@@ -107,11 +107,11 @@ function Edit($id, $new_data, $page)
  */
 function GetData($id, $page)
 {
-	$file_data_path = GeneratePath($page);
+    $file_data_path = GeneratePath($page);
 
-	$files = \JarisCMS\PHPDB\Parse($file_data_path);
+    $files = \JarisCMS\PHPDB\Parse($file_data_path);
 
-	return $files[$id];
+    return $files[$id];
 }
 
 /**
@@ -121,18 +121,18 @@ function GetData($id, $page)
  */
 function GetList($page)
 {
-	$file_data_path = GeneratePath($page);
+    $file_data_path = GeneratePath($page);
 
-	$files = \JarisCMS\PHPDB\Parse($file_data_path);
+    $files = \JarisCMS\PHPDB\Parse($file_data_path);
 
-	if($files == false)
-	{
-		return null;
-	}
-	else
-	{
-		return $files;
-	}
+    if($files == false)
+    {
+        return null;
+    }
+    else
+    {
+        return $files;
+    }
 }
 
 /**
@@ -142,9 +142,9 @@ function GetList($page)
  */
 function GeneratePath($page)
 {
-	$file_data_path = \JarisCMS\Page\GeneratePath($page) . "/files.php";
+    $file_data_path = \JarisCMS\Page\GeneratePath($page) . "/files.php";
 
-	return $file_data_path;
+    return $file_data_path;
 }
 
 ?>

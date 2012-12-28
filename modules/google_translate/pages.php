@@ -13,7 +13,7 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		admin/settings/google-translate
-	field;
+    field: uri
+        admin/settings/google-translate
+    field;
 row;

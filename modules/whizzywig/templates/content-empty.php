@@ -8,5 +8,5 @@
  */
 ?>
 <div class="content">
-	<?php print $content; ?>
+    <?php print $content; ?>
 </div>

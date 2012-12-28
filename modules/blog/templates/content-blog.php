@@ -11,16 +11,16 @@
 
 <?php if($header){?><div class="content-header"><?php print $header ?></div><?php } ?>
 
-	<table>
-		<tr>
-			<?php if($left){?><td class="content-left"><?php print $left ?></td><?php } ?>
-			<td class="content">
-				<?php if($center){?>
-				<div class="content-center">
-					<?php print $center ?>
-				</div>
-				<?php } ?>
-				<?php 
+    <table>
+        <tr>
+            <?php if($left){?><td class="content-left"><?php print $left ?></td><?php } ?>
+            <td class="content">
+                <?php if($center){?>
+                <div class="content-center">
+                    <?php print $center ?>
+                </div>
+                <?php } ?>
+                <?php 
                     JarisCMS\System\AddStyle("modules/blog/styles/post.css");
                     
                     $user_data = JarisCMS\User\GetData($content_data["author"]);
@@ -52,10 +52,10 @@
                     
                     print $content; 
                 ?>
-			</td>
-			<?php if($right){?><td class="content-right"><?php print $right ?></td><?php } ?>
-		</tr>
-	</table>
+            </td>
+            <?php if($right){?><td class="content-right"><?php print $right ?></td><?php } ?>
+        </tr>
+    </table>
 
 <?php if($footer){?><div class="content-footer"><?php print $footer ?></div><?php } ?>
 

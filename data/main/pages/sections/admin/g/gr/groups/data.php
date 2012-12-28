@@ -13,64 +13,64 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Groups") ?>
-	field;
+    field: title
+        <?php print t("Groups") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_groups"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_groups"));
 
-			JarisCMS\System\AddTab(t("Users"), "admin/users");
-			JarisCMS\System\AddTab(t("Create Group"), "admin/groups/add");
-		?>
+            JarisCMS\System\AddTab(t("Users"), "admin/users");
+            JarisCMS\System\AddTab(t("Create Group"), "admin/groups/add");
+        ?>
 
-		<?php
+        <?php
 
-			$groups = JarisCMS\Group\GetList();
+            $groups = JarisCMS\Group\GetList();
             $groups["Guest"] = "guest";
 
-			print "<table class=\"groups-list\">\n";
+            print "<table class=\"groups-list\">\n";
 
-			print "<thead><tr>\n";
+            print "<thead><tr>\n";
 
-			print "<td>" . t("Name") . "</td>\n";
-			print "<td>" . t("Description") . "</td>\n";
-			print "<td>" . t("Operation") . "</td>\n";
+            print "<td>" . t("Name") . "</td>\n";
+            print "<td>" . t("Description") . "</td>\n";
+            print "<td>" . t("Operation") . "</td>\n";
 
-			print  "</tr></thead>\n";
+            print  "</tr></thead>\n";
 
-			foreach($groups as $name=>$machine_name)
-			{
-				$group_data = JarisCMS\Group\GetData($machine_name);
-				$description = $group_data["description"];
+            foreach($groups as $name=>$machine_name)
+            {
+                $group_data = JarisCMS\Group\GetData($machine_name);
+                $description = $group_data["description"];
 
-				print "<tr>\n";
+                print "<tr>\n";
 
-				print "<td>" . t($name) . "</td>\n";
-				print "<td>" . t($description) . "</td>\n";
+                print "<td>" . t($name) . "</td>\n";
+                print "<td>" . t($description) . "</td>\n";
 
-				$edit_url = JarisCMS\URI\PrintURL("admin/groups/edit",array("group"=>$machine_name));
-				$permissions_url = JarisCMS\URI\PrintURL("admin/groups/permissions",array("group"=>$machine_name));
-				$delete_url = JarisCMS\URI\PrintURL("admin/groups/delete", array("group"=>$machine_name));
-				$edit_text = t("Edit");
-				$permissions_text = t("Permissions");
-				$delete_text = t("Delete");
+                $edit_url = JarisCMS\URI\PrintURL("admin/groups/edit",array("group"=>$machine_name));
+                $permissions_url = JarisCMS\URI\PrintURL("admin/groups/permissions",array("group"=>$machine_name));
+                $delete_url = JarisCMS\URI\PrintURL("admin/groups/delete", array("group"=>$machine_name));
+                $edit_text = t("Edit");
+                $permissions_text = t("Permissions");
+                $delete_text = t("Delete");
 
-				print "<td>
-						<a href=\"$edit_url\">$edit_text</a>&nbsp;
-						<a href=\"$permissions_url\">$permissions_text</a>&nbsp;
-						<a href=\"$delete_url\">$delete_text</a>
-					   </td>\n";
+                print "<td>
+                        <a href=\"$edit_url\">$edit_text</a>&nbsp;
+                        <a href=\"$permissions_url\">$permissions_text</a>&nbsp;
+                        <a href=\"$delete_url\">$delete_text</a>
+                       </td>\n";
 
-				print "</tr>\n";
-			}
+                print "</tr>\n";
+            }
 
-			print "</table>\n";
-		?>
-	field;
-	
-	field: is_system
-		1
-	field;
+            print "</table>\n";
+        ?>
+    field;
+    
+    field: is_system
+        1
+    field;
 row;

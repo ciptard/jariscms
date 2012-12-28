@@ -1,20 +1,20 @@
 body
 {
-	text-align: center;
-	min-width: 1014px;
-	margin: 0 auto 0 auto;
-	background: #d38d5f url(images/background.jpg) repeat-x top center;
+    text-align: center;
+    min-width: 1014px;
+    margin: 0 auto 0 auto;
+    background: #d38d5f url(images/background.jpg) repeat-x top center;
 }
 
 body *
 {
-	font-family: Arial, Sans-Serif;
-	font-size: 14px;
+    font-family: Arial, Sans-Serif;
+    font-size: 14px;
 }
 
 h1, h2 ,h3
 {
-	color: #004c60;
+    color: #004c60;
 }
 
 h1{ font-size: 32px; }
@@ -28,336 +28,336 @@ img{ border: 0 }
 
 table, td
 {
-	border: 0;
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
 }
 
 .menu
 {
-	list-style: none;
-	font-weight: bold;
-	padding: 0;
-	margin: 0;
+    list-style: none;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
 }
 
 .primary-links a, primary-links span
 {
-	color: #800000;
+    color: #800000;
 }
 
 .primary-links a:hover
 {
-	color: #ffffff;
+    color: #ffffff;
 }
 
 .secondary-links
 {
-	height: 45px;
-	display: inline-block;
+    height: 45px;
+    display: inline-block;
 }
 .secondary-links a
 {
-	background: transparent url(images/bullet-menu.gif) no-repeat  left;
-	padding-left: 16px;
+    background: transparent url(images/bullet-menu.gif) no-repeat  left;
+    padding-left: 16px;
 }
 
 .secondary-links a, secondary-links span
 {
-	font-size: 12px;
-	color: #004455;
+    font-size: 12px;
+    color: #004455;
 }
 
 .secondary-links li
 {
-	display: inline-block;
-	padding-right: 15px;
-	padding-top: 5px;
-	height: 45px;
+    display: inline-block;
+    padding-right: 15px;
+    padding-top: 5px;
+    height: 45px;
 }
 
 .secondary-links .first
 {
-	padding-left: 15px;
+    padding-left: 15px;
 }
 
 .primary-links li
 {
-	border-left: solid 1px #C69100;
-	display: inline;
-	padding-left: 5px;
-	padding-right: 5px;
+    border-left: solid 1px #C69100;
+    display: inline;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .primary-links li.first
 {
-	border-left: 0;
+    border-left: 0;
 }
 
 #header .logo
 {
-	width: 331px;
-	height: 123px;
-	background: #ffffff url(images/logo.png) no-repeat top left;
+    width: 331px;
+    height: 123px;
+    background: #ffffff url(images/logo.png) no-repeat top left;
 }
 
 #header .imagen
 {
-	width: 528px;
-	height: 123px;
-	background: #ffffff url(images/jaris-cms-hdr.png) no-repeat top right;
+    width: 528px;
+    height: 123px;
+    background: #ffffff url(images/jaris-cms-hdr.png) no-repeat top right;
 }
 .top-menu
 {
-	width: auto;
-	background: #ffffff url(images/header.png) repeat-x top left;
-	vertical-align: top;
-	text-align: right;
+    width: auto;
+    background: #ffffff url(images/header.png) repeat-x top left;
+    vertical-align: top;
+    text-align: right;
 
 }
 
 #top-bar
 {
-	height: 53px;
-	width: auto;
-	background: #ffffff url(images/top_bar.png) repeat-x top left;
-	padding: 15px;
+    height: 53px;
+    width: auto;
+    background: #ffffff url(images/top_bar.png) repeat-x top left;
+    padding: 15px;
 }
 
 /*Content*/
 #content
 {
-	width: 100%;
+    width: 100%;
 }
 
 #content .left
 {
-	width: 200px;
-	padding: 5px;
-	vertical-align: top;
+    width: 200px;
+    padding: 5px;
+    vertical-align: top;
 }
 
 #content .center
 {
-	width: auto;
-	padding: 5px 10px 5px 10px;
-	border-left: solid #f9dc8f 1px;
-	vertical-align: top;
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    border-left: solid #f9dc8f 1px;
+    vertical-align: top;
 }
 
 #content .center .content
 {
-	margin-top: 15px;
-	width: auto;
-	padding: 5px;
-	vertical-align: top;
+    margin-top: 15px;
+    width: auto;
+    padding: 5px;
+    vertical-align: top;
 }
 
 #content .right
 {
-	border-left: solid #f9dc8f 1px;
-	width: 200px;
-	padding: 5px;
-	vertical-align: top;
+    border-left: solid #f9dc8f 1px;
+    width: 200px;
+    padding: 5px;
+    vertical-align: top;
 }
 
 /*Block*/
 #content .block
 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 #content .block .title
 {
-	height: 26px;
-	width: auto;
-	background: #ffffff url(images/block_title.png) repeat-x top left;
-	color: #ffffff;
-	font-weight: bold;
-	border: solid 2px #00b4ff;
-	padding-top: 3px;
-	padding-left: 5px;
+    height: 26px;
+    width: auto;
+    background: #ffffff url(images/block_title.png) repeat-x top left;
+    color: #ffffff;
+    font-weight: bold;
+    border: solid 2px #00b4ff;
+    padding-top: 3px;
+    padding-left: 5px;
 }
 
 #content .block .content a
 {
-	font-size: 12px;
-	display: block;
-	padding: 4px 0px 4px 10px;
-	border-bottom: dashed #000000 1px;
+    font-size: 12px;
+    display: block;
+    padding: 4px 0px 4px 10px;
+    border-bottom: dashed #000000 1px;
 }
 
 #content .block .content a:hover
 {
-	display: block;
-	background-color: #D7E5E5;
-	color: #000000;
-	font-weight: bold;
+    display: block;
+    background-color: #D7E5E5;
+    color: #000000;
+    font-weight: bold;
 }
 
 #content .block .content form
 {
-	display: block;
-	padding: 4px 4px 4px 4px;
+    display: block;
+    padding: 4px 4px 4px 4px;
 }
 
 /*Content Block*/
 #content .content-block
 {
-	padding: 5px;
-	margin-bottom: 10px;
-	border-bottom: dashed 1px #b3b3b3;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #b3b3b3;
 }
 
 #content .content-block  .content .block-image-thumbnail
 {
-	float: left;
-	padding-right: 4px;
-	padding-bottom: 3px;
+    float: left;
+    padding-right: 4px;
+    padding-bottom: 3px;
 }
 
 #content .content-block .block-view-more
 {
-	text-align: right;
+    text-align: right;
 }
 
 #content  .content-footer .content-block
 {
-	padding: 5px;
-	margin-top: 10px;
-	border-top: dashed 1px #b3b3b3;
-	border-bottom: 0;
+    padding: 5px;
+    margin-top: 10px;
+    border-top: dashed 1px #b3b3b3;
+    border-bottom: 0;
 }
 
 #content  .content-left .content-block
 {
-	padding: 5px;
-	border-bottom: 0;
+    padding: 5px;
+    border-bottom: 0;
 }
 #content  .content-right .content-block
 {
-	padding: 5px;
-	border-bottom: 0;
+    padding: 5px;
+    border-bottom: 0;
 }
 
 .content-left
 {
-	width: 150px;
-	border-right: dashed 1px #b3b3b3;
-	vertical-align: top;
+    width: 150px;
+    border-right: dashed 1px #b3b3b3;
+    vertical-align: top;
 }
 
 .content-right
 {
-	width: 150px;
-	border-left: dashed 1px #b3b3b3;
-	vertical-align: top;
+    width: 150px;
+    border-left: dashed 1px #b3b3b3;
+    vertical-align: top;
 }
 
 /*Footer*/
 #footer
 {
-	background-color: #5fbcd3;
+    background-color: #5fbcd3;
 }
 
 #footer td
 {
-	padding: 5px;
-	width: 50%;
+    padding: 5px;
+    width: 50%;
 }
 
 #footer img
 {
-	display: inline;
+    display: inline;
 }
 
 #footer_message
 {
-	width: auto;
-	padding: 10px 0 10px 0;
-	background-color: #68aaba;
-	margin-top: 3px;
-	color: #ffffff;
-	font-weight: bold;
-	font-size: 14px;
+    width: auto;
+    padding: 10px 0 10px 0;
+    background-color: #68aaba;
+    margin-top: 3px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 /*Footer block*/
 #footer .block
 {
-	height: 215px;
-	border: solid #eca943 5px;
-	background-color: #ffffff;
+    height: 215px;
+    border: solid #eca943 5px;
+    background-color: #ffffff;
 }
 
 #footer .block .title
 {
-	height: 37px;
-	width: auto;
-	background: #ffffff url(images/footer_block_title.png) repeat-x top left;
-	padding: 10px 0px 0px 3px;
-	color: #ffffff;
-	font-weight: bold;
-	text-align: center;
+    height: 37px;
+    width: auto;
+    background: #ffffff url(images/footer_block_title.png) repeat-x top left;
+    padding: 10px 0px 0px 3px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
 }
 
 #footer .block .content
 {
-	padding: 10px;
-	height: 178px;
-	text-align: justify;
+    padding: 10px;
+    height: 178px;
+    text-align: justify;
 }
 
 #footer .block .content a
 {
-	color: #00576d;
+    color: #00576d;
 }
 
 #footer .block .content a:hover
 {
-	color: #e88c00;
+    color: #e88c00;
 }
 
 /*To fix the float left elements*/
 .clear
 {
-	clear: both;
+    clear: both;
 }
 
 /*Administration Center*/
 .administration-list .section
 {
-	padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .administration-list .section h2.section-title
 {
-	color: #ffffff;
-	font-size: 20px;
-	background: #ffffff url(images/block_title.png) repeat-x;
-	height: 26px;
-	padding-top: 2px;
-	padding-left: 5px;
-	font-weight: normal;
-	margin-bottom: 0;
-	margin-top: 0;
-	border: solid 2px #00b4ff;
+    color: #ffffff;
+    font-size: 20px;
+    background: #ffffff url(images/block_title.png) repeat-x;
+    height: 26px;
+    padding-top: 2px;
+    padding-left: 5px;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-top: 0;
+    border: solid 2px #00b4ff;
 }
 
 .administration-list .section .subsection-title
 {
-	margin-left: 25px;
+    margin-left: 25px;
 }
 
 .administration-list .section .description
 {
-	border-bottom: dashed 1px #d3d3d3;
-	font-size: 12px;
-	font-style: italic;
-	margin-left: 25px;
-	margin-bottom: 5px;
-	margin-right: 25px;
+    border-bottom: dashed 1px #d3d3d3;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    margin-right: 25px;
 }
 
 /*Blocks Administration*/
@@ -375,304 +375,304 @@ table, td
 
 form.blocks h3
 {
-	text-transform: capitalize;
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	padding: 4px;
+    text-transform: capitalize;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    padding: 4px;
 }
 
 form.blocks .blocks-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 form.blocks .blocks-list td
 {
-	width: auto;
+    width: auto;
 }
 
 form.blocks .blocks-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 /*Menus Administration*/
 form.menu .menu-list
 {
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
 }
 
 form.menu .menu-list td
 {
-	width: auto;
-	padding: 4px;
+    width: auto;
+    padding: 4px;
 }
 
 form.menu .menu-list .options
 {
-	text-align: right;
+    text-align: right;
 }
 
 form.menu .menu-items thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 form.menu .menu-items td
 {
-	width: auto;
+    width: auto;
 }
 
 form.menu .menu-items .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 /*Page images administration*/
 form.images .images-list
 {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 form.images .images-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 form.images .images-list thead td
 {
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	height: 30px;
-	border-bottom: 0;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    height: 30px;
+    border-bottom: 0;
 }
 
 form.images .images-list td
 {
-	width: auto;
-	vertical-align:  middle;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	margin-bottom: 10px;
+    width: auto;
+    vertical-align:  middle;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    margin-bottom: 10px;
 }
 
 form.images .images-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 /*Page files administration*/
 form.files .files-list
 {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 form.files .files-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 form.files .files-list thead td
 {
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	height: 30px;
-	border-bottom: 0;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    height: 30px;
+    border-bottom: 0;
 }
 
 form.files .files-list td
 {
-	width: auto;
-	vertical-align:  middle;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	margin-bottom: 10px;
+    width: auto;
+    vertical-align:  middle;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    margin-bottom: 10px;
 }
 
 form.files .files-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 /*Modules Administration*/
 .modules-list thead
 {
-	font-weight: bold;
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	height: 30px;
+    font-weight: bold;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    height: 30px;
 }
 
 .modules-list thead td
 {
-	border-bottom: 0;
+    border-bottom: 0;
 }
 
 .modules-list td
 {
-	width: auto;
-	vertical-align:  middle;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	margin-bottom: 10px;
+    width: auto;
+    vertical-align:  middle;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    margin-bottom: 10px;
 }
 
 .modules-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 .module-info .info .label
 {
-	text-align: left;
+    text-align: left;
 }
 
 .module-info .info .label
 {
-	font-weight: bold;
-	margin-bottom: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 
 /*Themes Administration*/
 form.themes .themes-list thead
 {
-	font-weight: bold;
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	height: 30px;
+    font-weight: bold;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    height: 30px;
 }
 
 form.themes .themes-list thead td
 {
-	border-bottom: 0;
+    border-bottom: 0;
 }
 
 form.themes .themes-list td
 {
-	width: auto;
-	vertical-align:  middle;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	margin-bottom: 10px;
+    width: auto;
+    vertical-align:  middle;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    margin-bottom: 10px;
 }
 
 form.themes .themes-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 .theme-info .info .label
 {
-	text-align: left;
+    text-align: left;
 }
 
 .theme-info .info .label
 {
-	font-weight: bold;
-	margin-bottom: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .theme-info .preview .label
 {
-	margin-top: 10px;
-	font-weight: bold;
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
-	height: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
+    height: 30px;
 }
 
 /*Groups Administration*/
 .groups-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .groups-list td
 {
-	width: auto;
-	text-align: left;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	padding-right: 10px;
+    width: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    padding-right: 10px;
 }
 
 /*Languages Administration*/
 .languages-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .languages-list td
 {
-	width: auto;
-	text-align: left;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	padding-right: 10px;
+    width: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    padding-right: 10px;
 }
 
 /*Types Administration*/
 .types-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .types-list td
 {
-	width: auto;
-	text-align: left;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	padding-right: 10px;
+    width: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    padding-right: 10px;
 }
 
 /*Categories Administration*/
 .categories-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .categories-list td
 {
-	width: auto;
-	text-align: left;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	border-bottom: dashed 1px #d3d3d3;
-	padding-right: 10px;
+    width: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #d3d3d3;
+    padding-right: 10px;
 }
 
 /*Subcategories administration*/
 .subcategories
 {
-	background: #ffffff url(images/gradblue.jpg) repeat-x;
+    background: #ffffff url(images/gradblue.jpg) repeat-x;
 }
 
 .subcategories td
 {
-	width: auto;
-	padding: 4px;
+    width: auto;
+    padding: 4px;
 }
 
 .subcategories-list thead
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .subcategories-list td
 {
-	width: auto;
+    width: auto;
 }
 
 .subcategories-list .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 /* FORMULARIOS */
@@ -683,32 +683,32 @@ form.themes .themes-list .form-text
 /*Block User Login*/
 form.block-login .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 form.block-login .form-password
 {
-	width: auto;
+    width: auto;
 }
 
 form.block-login .caption
 {
-	margin: 0;
+    margin: 0;
 }
 
 /*Block Search*/
 form.block-search .form-text
 {
-	width: auto;
+    width: auto;
 }
 
 form.block-search .caption
 {
-	margin: 0;
+    margin: 0;
 }
 
 /*Search results*/
 .search-results .title li
 {
-	list-style-image: url(images/bullet.png);
+    list-style-image: url(images/bullet.png);
 }

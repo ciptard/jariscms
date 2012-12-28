@@ -12,48 +12,48 @@
 
 namespace JarisCMS\Module\IEUpdate\System
 {
-	use JarisCMS\URI;
-	use JarisCMS\System;
-	
-	function GetStyles(&$styles)
-	{
-		if(System\GetUserBrowser() == "ie" && $_SESSION["ie_check"] != "yes")
-		{
-			$styles[] = URI\PrintURL("modules/ieupdate/css/style.css");
-		}
-	}
-	
-	function GetScripts(&$scripts)
-	{
-		if(System\GetUserBrowser() == "ie" && $_SESSION["ie_check"] != "yes")
-		{
-			$scripts[] = URI\PrintURL("ie-update-script");
-		}
+    use JarisCMS\URI;
+    use JarisCMS\System;
+    
+    function GetStyles(&$styles)
+    {
+        if(System\GetUserBrowser() == "ie" && $_SESSION["ie_check"] != "yes")
+        {
+            $styles[] = URI\PrintURL("modules/ieupdate/css/style.css");
+        }
+    }
+    
+    function GetScripts(&$scripts)
+    {
+        if(System\GetUserBrowser() == "ie" && $_SESSION["ie_check"] != "yes")
+        {
+            $scripts[] = URI\PrintURL("ie-update-script");
+        }
 
-		$_SESSION["ie_check"] = "yes";
-	}
+        $_SESSION["ie_check"] = "yes";
+    }
 }
 
 namespace JarisCMS\Module\IEUpdate\Theme
 {
-	use JarisCMS\URI;
-	use JarisCMS\Module;
-	
-	function GetPageTemplateFile(&$page, &$template_path)
-	{
-		if(URI\Get() == Module\GetPageURI("ie-update-script", "ieupdate"))
-		{
-			$template_path = "modules/ieupdate/templates/page-empty.php";
-		}
-	}
-	
-	function GetContentTemplateFile(&$page, &$type, &$template_path)
-	{
-		if(URI\Get() == Module\GetPageURI("ie-update-script", "ieupdate"))
-		{
-			$template_path = "modules/ieupdate/templates/content-empty.php";
-		}
-	}
+    use JarisCMS\URI;
+    use JarisCMS\Module;
+    
+    function GetPageTemplateFile(&$page, &$template_path)
+    {
+        if(URI\Get() == Module\GetPageURI("ie-update-script", "ieupdate"))
+        {
+            $template_path = "modules/ieupdate/templates/page-empty.php";
+        }
+    }
+    
+    function GetContentTemplateFile(&$page, &$type, &$template_path)
+    {
+        if(URI\Get() == Module\GetPageURI("ie-update-script", "ieupdate"))
+        {
+            $template_path = "modules/ieupdate/templates/content-empty.php";
+        }
+    }
 }
 
 ?>

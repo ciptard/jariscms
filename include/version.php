@@ -16,79 +16,79 @@ define("JARIS_CMS_VERSION", "4.9.5 MS");
 
 Version 4.9.5 - Date 17/11/2012
  
-	* Added custom format support for date fields.
-	* Updated jdpicker to work with newer jquery library.
+    * Added custom format support for date fields.
+    * Updated jdpicker to work with newer jquery library.
 
 Version 4.9.4 - Date 17/11/2012
  
-	* Added JarisCMS\Sqlite\Turbo to JarisCMS\Page\CountView increasing performance in about 85%
-	* Added JarisCMS\Sqlite\Turbo to JarisCMS\Search\ReindexCallback
-	* Added JarisCMS\Sqlite\Turbo to users re-index page
+    * Added JarisCMS\Sqlite\Turbo to JarisCMS\Page\CountView increasing performance in about 85%
+    * Added JarisCMS\Sqlite\Turbo to JarisCMS\Search\ReindexCallback
+    * Added JarisCMS\Sqlite\Turbo to users re-index page
 
 Version 4.9.3 - Date 14/10/2012
-	
-	* Fixes to check boxes on form generation functions.
-	* Added progress bar and concurrent support to file uploads.
-	* Small fix to print file functions.
+    
+    * Fixes to check boxes on form generation functions.
+    * Added progress bar and concurrent support to file uploads.
+    * Small fix to print file functions.
 
 Version 4.9.2 - Date 10/10/2012
-	
-	* Added uri autocompletion
-	* Added visual sorting of blocks, menus, categories, types, etc...
-	* Updated Email\Send function to use attacments array index as file name if not integer.
+    
+    * Added uri autocompletion
+    * Added visual sorting of blocks, menus, categories, types, etc...
+    * Updated Email\Send function to use attacments array index as file name if not integer.
 
 Version 4.9.1 - Date 26/09/2012
 
-	* Itialian translation (thanks to Andrea Zanellato <zanellato.andrea@gmail.com>)
-	* Improvements on language structure by Andrea Zanellato.
-	* Adjusments to language.php as needed for new structure.
-	* Removed empty string listed on language strings edition.
-	* Added language details capability
-	* Added counting of views by current day, week and month
-	* Improved custom file upload field functionality
-	* Added language po files caching for faster retrieval.
-	* Added optional data caching for better performance on embedded devices like the sheevaplug.
-	* Added image upload for as a content type custom filed.
-	* Fixes to content types file uploads custom field
-	* Fixes to cronjob to be able to run them in cli mode
+    * Itialian translation (thanks to Andrea Zanellato <zanellato.andrea@gmail.com>)
+    * Improvements on language structure by Andrea Zanellato.
+    * Adjusments to language.php as needed for new structure.
+    * Removed empty string listed on language strings edition.
+    * Added language details capability
+    * Added counting of views by current day, week and month
+    * Improved custom file upload field functionality
+    * Added language po files caching for faster retrieval.
+    * Added optional data caching for better performance on embedded devices like the sheevaplug.
+    * Added image upload for as a content type custom filed.
+    * Fixes to content types file uploads custom field
+    * Fixes to cronjob to be able to run them in cli mode
 
 Version 4.9.0 - Date 23/09/2012
 
-	* User can login with email also instead of username
-	* Fixed blocks lists management page appeareance
-	* Fixed menu lists management page appeareance
-	* Added maximum amount of posts per content type and users group
+    * User can login with email also instead of username
+    * Fixed blocks lists management page appeareance
+    * Fixed menu lists management page appeareance
+    * Added maximum amount of posts per content type and users group
 
 Version 4.8.22 - Date 23/06/2012
 
-	* Added ability for user profiles
+    * Added ability for user profiles
 
 Version 4.8.21 - Date 19/05/2012
 
-	* Added re-indexetion of users database
+    * Added re-indexetion of users database
 
 Version 4.8.20 - Date 29/03/2012
 
-	* Added support to add file upload fields to content types
-	* Added meta titles to creation of pages
+    * Added support to add file upload fields to content types
+    * Added meta titles to creation of pages
 
 Version 4.8.19 - Date 24/01/2012
 
-	* New permission: Can edit all users content
-	* New function to generated Control Center: generate_admin_page_sections();
+    * New permission: Can edit all users content
+    * New function to generated Control Center: generate_admin_page_sections();
 
 Version 4.8.18 - Date 18/12/2011
 
-	* Removed use of deprecated pass by reference on module hook_module() function
-	* Improved admin/pages/list
+    * Removed use of deprecated pass by reference on module hook_module() function
+    * Improved admin/pages/list
 
 Version 4.8.17 - Date 29/11/2011
 
-	* Added template support to search results
-	* Added new function jaris_sqlite_close_result($result); to not 
-	  forget that in some cases results need to be unset to unlock database.
-	* Added numeration to menus generated on theme_links ex: l1, l2, l3
-	* Other things I forgot.
+    * Added template support to search results
+    * Added new function jaris_sqlite_close_result($result); to not 
+      forget that in some cases results need to be unset to unlock database.
+    * Added numeration to menus generated on theme_links ex: l1, l2, l3
+    * Other things I forgot.
 
 Version 4.8.16 - Date 15/8/2011
     
@@ -116,21 +116,21 @@ Version 4.8.13 - Date 20/3/2011
 
 Version 4.8.12 - Date 10/3/2011
 
-	* Added has_permission method on jaris_sqlite_search class to use on search_engine database.
-	* Fixed security issue of search page displaying results of content where user has no permissions
-	* by using the new has_permission function on the search_content functions.
+    * Added has_permission method on jaris_sqlite_search class to use on search_engine database.
+    * Fixed security issue of search page displaying results of content where user has no permissions
+    * by using the new has_permission function on the search_content functions.
 
 Version 4.8.11 - Date 20/2/2011
 
-	* Adjusted send_mail function to use utf-8
-	* Fixed a security issue on the jaris_sqlite_get_data_list that had possibility of sql injections
-	* Also fixed security issues on search functions where the $_REQUEST[page] parameter could be used for sql injections.
+    * Adjusted send_mail function to use utf-8
+    * Fixed a security issue on the jaris_sqlite_get_data_list that had possibility of sql injections
+    * Also fixed security issues on search functions where the $_REQUEST[page] parameter could be used for sql injections.
 
 Version 4.8.10 - Date 18/1/2011
 
-	* Modified get_years_array to sort years in reverse order
+    * Modified get_years_array to sort years in reverse order
     * Fixed user_login function to lowercase username
-	* Other minor changes
+    * Other minor changes
 
 Version 4.8.9 - Date 19/12/2010
 
@@ -185,7 +185,7 @@ Version 4.8.3 - Date 15/08/2010
     * Added theme_content function hook to be able to modify content output
     * Added results title h2 on search page
     * Fixed JarisCMS\Search\StripHTMLTags function to optionally allow object and embed tags
-	* Improved category get_subcategory_list functions performance by caching data
+    * Improved category get_subcategory_list functions performance by caching data
     * Added main category sortings option
     * Added optional permission to enable or disable user from etering meta tags
     * Improved custom type fields options

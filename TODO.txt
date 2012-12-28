@@ -8,7 +8,7 @@ List of needed things to be done:
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 To Work on IT
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
 * Write more function hooks if neccessary.
 
 ============================================================================
@@ -23,11 +23,11 @@ Almost DONE
 * Create guest group for people not registered - done and needs testing
 
 * Be able to add translations directly on the website while editing content.
-	* Pages - done
-	* Menus
-	* Blocks
-	
+    * Pages - done
+    * Menus
+    * Blocks
+    
 * Be able to select input format - done
- 	* plain text - done
- 	* php code - done
-	* Implement input formats as manageble objects from the admin center - done
+     * plain text - done
+     * php code - done
+    * Implement input formats as manageble objects from the admin center - done

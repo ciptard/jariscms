@@ -13,55 +13,55 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Lightbox Settings
-	field;
+    field: title
+        Lightbox Settings
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
 
-			if(isset($_REQUEST["btnSave"]))
-			{
-				if(JarisCMS\Setting\Save("display_rule", $_REQUEST["display_rule"], "jquery-lightbox"))
-				{
-					JarisCMS\Setting\Save("pages", $_REQUEST["pages"], "jquery-lightbox");
-					JarisCMS\System\AddMessage(t("Your changes have been saved."));
-				}
-				else
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"));
-				}
+            if(isset($_REQUEST["btnSave"]))
+            {
+                if(JarisCMS\Setting\Save("display_rule", $_REQUEST["display_rule"], "jquery-lightbox"))
+                {
+                    JarisCMS\Setting\Save("pages", $_REQUEST["pages"], "jquery-lightbox");
+                    JarisCMS\System\AddMessage(t("Your changes have been saved."));
+                }
+                else
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"));
+                }
 
-				JarisCMS\System\GoToPage("admin/settings");
-			}
+                JarisCMS\System\GoToPage("admin/settings");
+            }
 
-			$lightbox_settings = JarisCMS\Setting\GetAll("jquery-lightbox");
+            $lightbox_settings = JarisCMS\Setting\GetAll("jquery-lightbox");
 
-			$parameters["name"] = "jquery-lightbox-settings";
-			$parameters["class"] = "jquery-lightbox-settings";
-			$parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/jquery/lightbox", "jquery_lightbox"));
-			$parameters["method"] = "post";
+            $parameters["name"] = "jquery-lightbox-settings";
+            $parameters["class"] = "jquery-lightbox-settings";
+            $parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/jquery/lightbox", "jquery_lightbox"));
+            $parameters["method"] = "post";
 
-			$display_rules[t("Display in all pages except the listed ones.")] = "all_except_listed";
-			$display_rules[t("Just display on the listed pages.")] = "just_listed";
-			
-			$fields_pages[] = array("type"=>"radio", "checked"=>$lightbox_settings["display_rule"], "name"=>"display_rule", "id"=>"display_rule", "value"=>$display_rules);
-			$fields_pages[] = array("type"=>"textarea", "name"=>"pages", "label"=>t("Pages:"), "id"=>"pages", "value"=>$lightbox_settings["pages"]);
-			
-			$fieldset[] = array("fields"=>$fields_pages, "name"=>"Pages to display", "description"=>t("List of uri's seperated by comma (,). Also supports the wildcard (*), for example: my-section/*"));
+            $display_rules[t("Display in all pages except the listed ones.")] = "all_except_listed";
+            $display_rules[t("Just display on the listed pages.")] = "just_listed";
+            
+            $fields_pages[] = array("type"=>"radio", "checked"=>$lightbox_settings["display_rule"], "name"=>"display_rule", "id"=>"display_rule", "value"=>$display_rules);
+            $fields_pages[] = array("type"=>"textarea", "name"=>"pages", "label"=>t("Pages:"), "id"=>"pages", "value"=>$lightbox_settings["pages"]);
+            
+            $fieldset[] = array("fields"=>$fields_pages, "name"=>"Pages to display", "description"=>t("List of uri's seperated by comma (,). Also supports the wildcard (*), for example: my-section/*"));
 
-			$fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
-			$fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
+            $fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

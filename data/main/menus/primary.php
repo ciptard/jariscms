@@ -15,24 +15,24 @@ exit;
 
 row: 0
 
-	field: title
-		Menu Title
-	field;
+    field: title
+        Menu Title
+    field;
 
-	field: url
-		uri
-	field;
+    field: url
+        uri
+    field;
 
-	field: description
-		value
-	field;
+    field: description
+        value
+    field;
 
-	field: order
-		0
-	field;
+    field: order
+        0
+    field;
 
-	field: parent
-		root
-	field;
+    field: parent
+        root
+    field;
 
 row;

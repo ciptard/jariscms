@@ -42,24 +42,24 @@ $visual_uri = JarisCMS\URI\Get();
 $page_type = JarisCMS\URI\GetType($page);
 if($page_type == "image")
 {
-	$image_path = JarisCMS\URI\GetImagePath($page);
-	JarisCMS\Image\Show($image_path);
+    $image_path = JarisCMS\URI\GetImagePath($page);
+    JarisCMS\Image\Show($image_path);
 }
 elseif($page_type == "user_picture")
 {
-	JarisCMS\Image\PrintAvatar($page);
+    JarisCMS\Image\PrintAvatar($page);
 }
 elseif($page_type == "user_profile")
 {
-	JarisCMS\User\ShowProfile($page);
+    JarisCMS\User\ShowProfile($page);
 }
 elseif($page_type == "file")
 {
-	JarisCMS\FileSystem\PrintFile($page);
+    JarisCMS\FileSystem\PrintFile($page);
 }
 elseif($page_type == "category")
 {
-	JarisCMS\Category\ShowResults($page);
+    JarisCMS\Category\ShowResults($page);
 }
 
 //Sets the language based on user selection or system default
@@ -80,7 +80,7 @@ JarisCMS\System\CachePageIfPossible($page, $page_data[0]);
 //Check if the current user can view the current content
 if(!JarisCMS\Page\UserAccess($page_data[0]))
 {
-	JarisCMS\System\GoToPage("access-denied");
+    JarisCMS\System\GoToPage("access-denied");
 }
 
 //Append hiden parameters to $_REQUEST for the correct execution of breadcrumbs
@@ -98,7 +98,7 @@ $secondary_links_data = JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems(JarisCMS\M
 //In case of page not found
 if(!$page_data[0])
 {
-	$page_data = JarisCMS\System\MakePageNotFound();
+    $page_data = JarisCMS\System\MakePageNotFound();
 }
 
 //Format Data
@@ -117,21 +117,21 @@ JarisCMS\System\AddEditTab();
 //Set the page title
 if(JarisCMS\System\IsSystemPage() || ($page_type == "category" && $page == "search") || $page == "user") 
 {
-	//Parse the title if is system page
-	$title = t(JarisCMS\System\PHPEval($page_data[0]["title"])) . " - " . t($title);
+    //Parse the title if is system page
+    $title = t(JarisCMS\System\PHPEval($page_data[0]["title"])) . " - " . t($title);
 }
 else
 {
-	//Just translate if not system page
-	if(trim($page_data["meta_title"]) != "")
-	{
-		//If meta title is available use it
-		$title = t($page_data[0]["meta_title"]);
-	}
-	else
-	{
-		$title = t($page_data[0]["title"]) . " - " . t($title);
-	}
+    //Just translate if not system page
+    if(trim($page_data["meta_title"]) != "")
+    {
+        //If meta title is available use it
+        $title = t($page_data[0]["meta_title"]);
+    }
+    else
+    {
+        $title = t($page_data[0]["title"]) . " - " . t($title);
+    }
 }
 
 //Display Page and generate cache if enabled and possible
@@ -141,12 +141,12 @@ print $page_html;
 
 if(JarisCMS\Setting\Get("view_script_stats", "main"))
 {
-	print "<div style=\"clear: both\">";
-	print "<div style=\"width: 90%; border: solid #f0b656 1px; background-color: #d0dde7; margin: 0 auto 0 auto; padding: 10px\">";
-	print "<b>Script execution time:</b> " . ceil((microtime(true) - $time_start) * 1000) . " milliseconds<br />";
+    print "<div style=\"clear: both\">";
+    print "<div style=\"width: 90%; border: solid #f0b656 1px; background-color: #d0dde7; margin: 0 auto 0 auto; padding: 10px\">";
+    print "<b>Script execution time:</b> " . ceil((microtime(true) - $time_start) * 1000) . " milliseconds<br />";
 
-	print "<b>Peak memory usage:</b> " . number_format(memory_get_peak_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
-	print "<b>Final memory usage:</b> " . number_format(memory_get_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
-	print "</div>";
+    print "<b>Peak memory usage:</b> " . number_format(memory_get_peak_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
+    print "<b>Final memory usage:</b> " . number_format(memory_get_usage() / 1024 / 1024, 0, '.', ',') . " MB<br />";
+    print "</div>";
 }
 ?>

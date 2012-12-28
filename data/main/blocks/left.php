@@ -15,47 +15,47 @@ exit;
 
 row: 0
 
-	field: description
-		Login
-	field;
+    field: description
+        Login
+    field;
 
-	field: title
-		Login
-	field;
+    field: title
+        Login
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			$parameters["class"] = "block-login";
-        	$parameters["action"] = JarisCMS\URI\PrintURL("admin/user");
-        	$parameters["method"] = "post";
+            $parameters["class"] = "block-login";
+            $parameters["action"] = JarisCMS\URI\PrintURL("admin/user");
+            $parameters["method"] = "post";
 
-        	$fields[] = array("type"=>"text", "name"=>"username", "label"=>t("Username:"), "id"=>"block-username", "required"=>true);
-        	$fields[] = array("type"=>"password", "name"=>"password", "label"=>t("Password:"), "id"=>"block-password", "required"=>true);
-        	$fields[] = array("type"=>"submit", "name"=>"login", "value"=>t("Login"));
+            $fields[] = array("type"=>"text", "name"=>"username", "label"=>t("Username:"), "id"=>"block-username", "required"=>true);
+            $fields[] = array("type"=>"password", "name"=>"password", "label"=>t("Password:"), "id"=>"block-password", "required"=>true);
+            $fields[] = array("type"=>"submit", "name"=>"login", "value"=>t("Login"));
 
-        	$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-        	print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
         ?>
-	field;
+    field;
 
-	field: order
-		0
-	field;
-	
-	field: display_rule
-		all_except_listed
-	field;
+    field: order
+        0
+    field;
+    
+    field: display_rule
+        all_except_listed
+    field;
 
-	field: pages
-	field;
+    field: pages
+    field;
 
-	field: return
-		<?php
-			if(JarisCMS\Security\IsUserLogged() || JarisCMS\URI\Get() == "admin/user")
-        	{
+    field: return
+        <?php
+            if(JarisCMS\Security\IsUserLogged() || JarisCMS\URI\Get() == "admin/user")
+            {
                print "false";
             }
             else
@@ -63,61 +63,61 @@ row: 0
                print "true";
             }
         ?>
-	field;
-	
-	field: is_system
-		1
-	field;
+    field;
+    
+    field: is_system
+        1
+    field;
 
 row;
 
 
 row: 1
 
-	field: description
-		Navigation Menu
-	field;
-	
-	field: title
-		Navigation
-	field;
+    field: description
+        Navigation Menu
+    field;
+    
+    field: title
+        Navigation
+    field;
 
-	field: content
-		<?php
-			print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("navigation"),"order"), "navigation");
+    field: content
+        <?php
+            print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("navigation"),"order"), "navigation");
         ?>
-	field;
-	
-	field: display_rule
-		all_except_listed
-	field;
+    field;
+    
+    field: display_rule
+        all_except_listed
+    field;
 
-	field: pages
-	field;
+    field: pages
+    field;
 
-	field: return
-		<?php
-			if(JarisCMS\Security\IsUserLogged())
-        	{
-            	print "true";
+    field: return
+        <?php
+            if(JarisCMS\Security\IsUserLogged())
+            {
+                print "true";
             }
             else
             {
-               	print "false";
+                   print "false";
             }
         ?>
-	field;
+    field;
 
-	field: order
-		1
-	field;
-	
-	field: is_system
-		1
-	field;
-	
-	field: menu_name
-		navigation
-	field;
-	
+    field: order
+        1
+    field;
+    
+    field: is_system
+        1
+    field;
+    
+    field: menu_name
+        navigation
+    field;
+    
 row;

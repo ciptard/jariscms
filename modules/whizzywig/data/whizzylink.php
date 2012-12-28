@@ -13,38 +13,38 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("File browser") ?>
-	field;
+    field: title
+        <?php print t("File browser") ?>
+    field;
 
-	field: content
-		<?php 
-            $groups = get_setting("groups", "whizzywig")?unserialize(get_setting("groups", "whizzywig")):false;	
+    field: content
+        <?php 
+            $groups = get_setting("groups", "whizzywig")?unserialize(get_setting("groups", "whizzywig")):false;    
 
-        	//Check if current user is on one of the groups that can use the editor
-        	if($groups)
-        	{
-        		$user_is_in_group = false;
-        		foreach($groups as $machine_name=>$value)
-        		{
-        			if(current_user_group() == $machine_name && $value)
-        			{
-        				$user_is_in_group = true;
-        				break;
-        			}
-        		}
-        		
-        		if(!is_admin_logged() && !$user_is_in_group)
-        		{
-        			exit;
-        		}
-        	}
+            //Check if current user is on one of the groups that can use the editor
+            if($groups)
+            {
+                $user_is_in_group = false;
+                foreach($groups as $machine_name=>$value)
+                {
+                    if(current_user_group() == $machine_name && $value)
+                    {
+                        $user_is_in_group = true;
+                        break;
+                    }
+                }
+                
+                if(!is_admin_logged() && !$user_is_in_group)
+                {
+                    exit;
+                }
+            }
             
             $rtnfield = "lf_url";
             
             if($_REQUEST['element_id'])
             {
-            	$rtnfield = "lf_url" . $_REQUEST['element_id']; 
+                $rtnfield = "lf_url" . $_REQUEST['element_id']; 
             }
             
             $module_url = print_url("modules/whizzywig/whizzywig");
@@ -69,22 +69,22 @@ row: 0
             
             if($files || !uri)
             {
-            	foreach ($files as $file) 
-            	{
-            		$url = print_url("file/$uri/{$file['name']}");
-            		$flist .= "<div style='float:left;width:20em'><a href='#' onclick='WantThis(\"$url\")'>{$file['name']}</a></div>";
-            	}
-            	echo $flist;
+                foreach ($files as $file) 
+                {
+                    $url = print_url("file/$uri/{$file['name']}");
+                    $flist .= "<div style='float:left;width:20em'><a href='#' onclick='WantThis(\"$url\")'>{$file['name']}</a></div>";
+                }
+                echo $flist;
             }
             else
             {
-            	print "<h2>" . t("No files available.") . "</h2>";
+                print "<h2>" . t("No files available.") . "</h2>";
             }
         ?>
         </div>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

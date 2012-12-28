@@ -22,15 +22,15 @@ function Get()
     
     if($page == "")
     {
-    	//Default home page.
-    	$page = "home";
-    	
-    	//Try to get home page set on site settings
-    	if($home_page = \JarisCMS\Setting\Get("home_page", "main"))
-    	{
-    		$page = $home_page;
-    	}
-    	
+        //Default home page.
+        $page = "home";
+        
+        //Try to get home page set on site settings
+        if($home_page = \JarisCMS\Setting\Get("home_page", "main"))
+        {
+            $page = $home_page;
+        }
+        
         if(isset($_REQUEST['p']))
         {
             if($_REQUEST['p'] != "")
@@ -52,34 +52,34 @@ function Get()
  */
 function GetType($uri)
 {
-	global $user_profiles;
-	
-	$sections = explode("/", $uri);
+    global $user_profiles;
+    
+    $sections = explode("/", $uri);
 
-	if($sections[0] == "image" && $sections[1] == "user")
-	{
-		return "user_picture";
-	}
-	elseif($sections[0] == "image")
-	{
-		return "image";
-	}
-	elseif($sections[0] == "file")
-	{
-		return "file";
-	}
+    if($sections[0] == "image" && $sections[1] == "user")
+    {
+        return "user_picture";
+    }
+    elseif($sections[0] == "image")
+    {
+        return "image";
+    }
+    elseif($sections[0] == "file")
+    {
+        return "file";
+    }
     elseif($sections[0] == "category")
-	{
-		return "category";
-	}
-	elseif(count($sections) == 2 && $sections[0] == "user" && $user_profiles)
-	{
-		return "user_profile";
-	}
-	else
-	{
-		return "page";
-	}
+    {
+        return "category";
+    }
+    elseif(count($sections) == 2 && $sections[0] == "user" && $user_profiles)
+    {
+        return "user_profile";
+    }
+    else
+    {
+        return "page";
+    }
 }
 
 /**
@@ -91,9 +91,9 @@ function GetType($uri)
  */
 function GetDataPath($page)
 {
-	$data_file = \JarisCMS\Page\GeneratePath($page) . "/data.php";
+    $data_file = \JarisCMS\Page\GeneratePath($page) . "/data.php";
 
-	return $data_file;
+    return $data_file;
 }
 
 /**
@@ -105,50 +105,50 @@ function GetDataPath($page)
  */
 function GetImagePath($path)
 {
-	$data_file = \JarisCMS\Setting\GetDataDirectory() . "pages/";
-	$sections = explode("/", $path);
-	$image_id = $sections[count($sections) - 1];
-	$sections_available = count($sections) - 2;
+    $data_file = \JarisCMS\Setting\GetDataDirectory() . "pages/";
+    $sections = explode("/", $path);
+    $image_id = $sections[count($sections) - 1];
+    $sections_available = count($sections) - 2;
 
-	if(count($sections) > 3)
-	{
-		$data_file .= "sections/";
+    if(count($sections) > 3)
+    {
+        $data_file .= "sections/";
 
-		for($i=1; $i<$sections_available; ++$i)
-		{
-			$data_file .= $sections[$i] . "/";
-		}
+        for($i=1; $i<$sections_available; ++$i)
+        {
+            $data_file .= $sections[$i] . "/";
+        }
 
-		$data_file .= substr($sections[$sections_available],0,1) . "/" .
-		substr($sections[$sections_available],0,2) . "/" .
-		$sections[$sections_available] . "/images.php";
-	}
-	else
-	{
-		$data_file .= "singles/";
-		$data_file .= substr($sections[1],0,1) . "/" . substr($sections[1],0,2) . "/" . $sections[1] . "/images.php";
-	}
+        $data_file .= substr($sections[$sections_available],0,1) . "/" .
+        substr($sections[$sections_available],0,2) . "/" .
+        $sections[$sections_available] . "/images.php";
+    }
+    else
+    {
+        $data_file .= "singles/";
+        $data_file .= substr($sections[1],0,1) . "/" . substr($sections[1],0,2) . "/" . $sections[1] . "/images.php";
+    }
 
-	$images = \JarisCMS\PHPDB\Parse($data_file);
+    $images = \JarisCMS\PHPDB\Parse($data_file);
 
-	//Search for the image id and return its path
-	foreach($images as $row => $fields)
-	{
+    //Search for the image id and return its path
+    foreach($images as $row => $fields)
+    {
         //Return by image name
-		if(strcmp($image_id, trim($fields['name'])) == "0")
-		{
-			return str_replace("images.php", "images/" . trim($fields['name']), $data_file);
-		}
+        if(strcmp($image_id, trim($fields['name'])) == "0")
+        {
+            return str_replace("images.php", "images/" . trim($fields['name']), $data_file);
+        }
         
         //Return by image id
-		else if(strcmp($row, $image_id) == "0")
-		{
-			return str_replace("images.php", "images/" . trim($fields['name']), $data_file);
-		}
-	}
+        else if(strcmp($row, $image_id) == "0")
+        {
+            return str_replace("images.php", "images/" . trim($fields['name']), $data_file);
+        }
+    }
 
-	//Image not found if the end was reached
-	return "";
+    //Image not found if the end was reached
+    return "";
 }
 
 /**
@@ -161,46 +161,46 @@ function GetImagePath($path)
  */
 function GetFileInfo($path)
 {
-	$path = str_replace("file/", "", $path);
+    $path = str_replace("file/", "", $path);
 
-	$sections = explode("/", $path);
-	$file_id = $sections[count($sections) - 1];
-	unset($sections[count($sections) - 1]);
-	$path = implode("/", $sections);
+    $sections = explode("/", $path);
+    $file_id = $sections[count($sections) - 1];
+    unset($sections[count($sections) - 1]);
+    $path = implode("/", $sections);
 
-	$data_file = \JarisCMS\File\GeneratePath($path);
+    $data_file = \JarisCMS\File\GeneratePath($path);
 
-	$files = \JarisCMS\PHPDB\Parse($data_file);
+    $files = \JarisCMS\PHPDB\Parse($data_file);
 
-	$file_path = "";
-	//Search for the file id and return its path
-	foreach($files as $row => $fields)
-	{
-		$found = false;
+    $file_path = "";
+    //Search for the file id and return its path
+    foreach($files as $row => $fields)
+    {
+        $found = false;
 
-		if(strcmp($file_id, trim($fields['name'])) == "0")
-		{
-			$file_path = str_replace("files.php", "files/" . trim($fields['name']), $data_file);
-			$found = true;
-		}
-		else if(strcmp($row, $file_id) == "0")
-		{
-			$file_path = str_replace("files.php", "files/" . trim($fields['name']), $data_file);
-			$found = true;
-		}
+        if(strcmp($file_id, trim($fields['name'])) == "0")
+        {
+            $file_path = str_replace("files.php", "files/" . trim($fields['name']), $data_file);
+            $found = true;
+        }
+        else if(strcmp($row, $file_id) == "0")
+        {
+            $file_path = str_replace("files.php", "files/" . trim($fields['name']), $data_file);
+            $found = true;
+        }
 
-		if($found)
-		{
-			$file_array["path"] = $file_path;
-			$file_array["id"] = $row;
-			$file_array["page_uri"] = $path;
+        if($found)
+        {
+            $file_array["path"] = $file_path;
+            $file_array["id"] = $row;
+            $file_array["page_uri"] = $path;
 
-			return $file_array;
-		}
-	}
+            return $file_array;
+        }
+    }
 
-	//File not found if the end was reached
-	return null;
+    //File not found if the end was reached
+    return null;
 }
 
 /**
@@ -212,12 +212,12 @@ function GetFileInfo($path)
  */
 function GetAvatarInfo($path)
 {
-	$sections = explode("/", $path);
+    $sections = explode("/", $path);
 
-	$uri_data["username"] = $sections[2];
-	$uri_data["path"] = \JarisCMS\User\GetAvatarPath($uri_data["username"]);
+    $uri_data["username"] = $sections[2];
+    $uri_data["path"] = \JarisCMS\User\GetAvatarPath($uri_data["username"]);
 
-	return $uri_data;
+    return $uri_data;
 }
 
 /**
@@ -234,61 +234,61 @@ function GetAvatarInfo($path)
  */
 function PrintURL($uri, $arguments = null)
 {
-	global $base_url, $clean_urls;
+    global $base_url, $clean_urls;
 
-	$url = "";
+    $url = "";
 
-	if("" . strpos($uri, "http://") . "" != "" || "" . strpos($uri, "https://") . "" != "")
-	{
-		$url = $uri;
-	}
-	else if(file_exists($uri))
-	{
-		$url = $base_url . "/" . $uri;
+    if("" . strpos($uri, "http://") . "" != "" || "" . strpos($uri, "https://") . "" != "")
+    {
+        $url = $uri;
+    }
+    else if(file_exists($uri))
+    {
+        $url = $base_url . "/" . $uri;
         
         if(count($arguments) > 0)
-		{
-			$formated_arguments = "?";
+        {
+            $formated_arguments = "?";
 
-			foreach($arguments as $argument=>$value)
-			{
+            foreach($arguments as $argument=>$value)
+            {
                 if("" . $value . "" != "")
                 {
-				    $formated_arguments .= $argument . "=" . rawurlencode($value) . "&";
+                    $formated_arguments .= $argument . "=" . rawurlencode($value) . "&";
                 }
-			}
+            }
 
-			$formated_arguments = rtrim($formated_arguments, "&");
+            $formated_arguments = rtrim($formated_arguments, "&");
 
-			$url .= $formated_arguments;
-		}
-	}
-	else
-	{
+            $url .= $formated_arguments;
+        }
+    }
+    else
+    {
 
-		$url = "$base_url/";
+        $url = "$base_url/";
 
-		$url .= $clean_urls?$uri:"?p=$uri";
+        $url .= $clean_urls?$uri:"?p=$uri";
 
-		if(count($arguments) > 0)
-		{
-			$formated_arguments = $clean_urls?"?":"&";
+        if(count($arguments) > 0)
+        {
+            $formated_arguments = $clean_urls?"?":"&";
 
-			foreach($arguments as $argument=>$value)
-			{
+            foreach($arguments as $argument=>$value)
+            {
                 if("" . $value . "" != "")
                 {
-				    $formated_arguments .= $argument . "=" . rawurlencode($value) . "&";
+                    $formated_arguments .= $argument . "=" . rawurlencode($value) . "&";
                 }
-			}
+            }
 
-			$formated_arguments = rtrim($formated_arguments, "&");
+            $formated_arguments = rtrim($formated_arguments, "&");
 
-			$url .= $formated_arguments;
-		}
-	}
+            $url .= $formated_arguments;
+        }
+    }
 
-	return $url;
+    return $url;
 }
 
 /**
@@ -314,12 +314,12 @@ function FromText($string, $allow_slashes=true)
     $uri= strtolower($uri);
     
    // only take alphanumerical characters, but keep the spaces and dashes
-	if(!$allow_slashes)
-		$uri= preg_replace('/[^a-zA-Z0-9 -]/', '', $uri );
-	
-	// only take alphanumerical characters, but keep the spaces, dashes and slashes
-	else
-		$uri= preg_replace('/[^a-zA-Z0-9 -\/]/', '', $uri );
+    if(!$allow_slashes)
+        $uri= preg_replace('/[^a-zA-Z0-9 -]/', '', $uri );
+    
+    // only take alphanumerical characters, but keep the spaces, dashes and slashes
+    else
+        $uri= preg_replace('/[^a-zA-Z0-9 -\/]/', '', $uri );
     
     $uri= str_replace(' ', '-', $uri);
     

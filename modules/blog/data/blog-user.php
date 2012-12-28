@@ -14,8 +14,8 @@ exit;
 
 row: 0
 
-	field: title
-		<?php
+    field: title
+        <?php
             $blog_data = JarisCMS\Module\Blog\GetFromDB($_REQUEST["user"]);
             
             if($blog_data["title"])
@@ -28,10 +28,10 @@ row: 0
             }
             print " " . t("blog");
         ?>
-	field;
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             JarisCMS\System\AddStyle("modules/blog/styles/post.css");
             
             $user_data = JarisCMS\User\GetData($_REQUEST["user"]);
@@ -72,7 +72,7 @@ row: 0
             
             if(isset($_REQUEST["page"]))
             {
-            	$page = $_REQUEST["page"];
+                $page = $_REQUEST["page"];
             }
             
             $month_query = "";
@@ -83,8 +83,8 @@ row: 0
             
             if(isset($_REQUEST["m"]))
             {
-            	$_REQUEST["m"] = intval($_REQUEST["m"]);
-            	
+                $_REQUEST["m"] = intval($_REQUEST["m"]);
+                
                 $month = str_replace("'", "''", $_REQUEST["m"]);
                 $month_query = "month='$month' and ";
                 
@@ -93,8 +93,8 @@ row: 0
             
             if(isset($_REQUEST["y"]))
             {
-            	$_REQUEST["y"] = intval($_REQUEST["y"]);
-            	
+                $_REQUEST["y"] = intval($_REQUEST["y"]);
+                
                 $year = str_replace("'", "''", $_REQUEST["y"]);
                 $year_query = "year='$year'";
                 
@@ -120,10 +120,10 @@ row: 0
             }
             
             JarisCMS\System\PrintGenericNavigation($post_count, $page, "blog/user/" . $_REQUEST["user"], "", 10, $arguments);
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

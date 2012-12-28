@@ -13,36 +13,36 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Google Translate Settings") ?>
-	field;
+    field: title
+        <?php print t("Google Translate Settings") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
             
             JarisCMS\System\AddTab(t("Settings"), "admin/settings");
 
-			if(isset($_REQUEST["btnSave"]))
-			{
-				if(JarisCMS\Setting\Save("input_language", $_REQUEST["input_language"], "google_translate"))
-				{
-					JarisCMS\System\AddMessage(t("Your changes have been saved."));
-				}
-				else
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"));
-				}
+            if(isset($_REQUEST["btnSave"]))
+            {
+                if(JarisCMS\Setting\Save("input_language", $_REQUEST["input_language"], "google_translate"))
+                {
+                    JarisCMS\System\AddMessage(t("Your changes have been saved."));
+                }
+                else
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"));
+                }
 
-				JarisCMS\System\GoToPage("admin/settings");
-			}
+                JarisCMS\System\GoToPage("admin/settings");
+            }
 
-			$settings = JarisCMS\Setting\GetAll("google_translate");
+            $settings = JarisCMS\Setting\GetAll("google_translate");
 
-			$parameters["name"] = "google-translate-settings";
-			$parameters["class"] = "google-translate-settings";
-			$parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/google-translate", "google_translate"));
-			$parameters["method"] = "post";
+            $parameters["name"] = "google-translate-settings";
+            $parameters["class"] = "google-translate-settings";
+            $parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/google-translate", "google_translate"));
+            $parameters["method"] = "post";
             
             $languages[t("Afrikaans")] = "af";
             $languages[t("Albanian")] = "sq";
@@ -98,19 +98,19 @@ row: 0
             $languages[t("Welsh")] = "cy";
             $languages[t("Yiddish")] = "yi";
             
-			$fields[] = array("type"=>"select", "label"=>t("Input language:"), "name"=>"input_language", "id"=>"input_language", "value"=>$languages, "selected"=>$settings["input_language"], "description"=>t("The original language of the website."));
-			
-			$fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
-			$fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields[] = array("type"=>"select", "label"=>t("Input language:"), "name"=>"input_language", "id"=>"input_language", "value"=>$languages, "selected"=>$settings["input_language"], "description"=>t("The original language of the website."));
+            
+            $fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
+            $fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

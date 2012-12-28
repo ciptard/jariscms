@@ -13,25 +13,25 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Welcome to your new Jaris website!") ?>
-	field;
+    field: title
+        <?php print t("Welcome to your new Jaris website!") ?>
+    field;
 
-	field: content
-		<?php
-			if(!JarisCMS\Security\IsAdminLogged())
-			{
-				print t("Enjoy your new webiste, to start working on it login on the left block with your administration account");
-			}
-			else
-			{
-				print t("Now that you are logged in you can start by using the administration navigation menu to modify your web page as you like.");
-			}
-		?>
-	field;
-	
-	field: is_system
-		1
-	field;
-	
+    field: content
+        <?php
+            if(!JarisCMS\Security\IsAdminLogged())
+            {
+                print t("Enjoy your new webiste, to start working on it login on the left block with your administration account");
+            }
+            else
+            {
+                print t("Now that you are logged in you can start by using the administration navigation menu to modify your web page as you like.");
+            }
+        ?>
+    field;
+    
+    field: is_system
+        1
+    field;
+    
 row;

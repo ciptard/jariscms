@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("My Content") ?>
-	field;
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("add_content"));
+    field: title
+        <?php print t("My Content") ?>
+    field;
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("add_content"));
             
             $type = "";
             if(trim($_REQUEST["type"]) != "")
@@ -47,26 +47,26 @@ row: 0
             print "</form>\n";
             
             $page = 1;
-			
-			if(isset($_REQUEST["page"]))
-			{
-				$page = $_REQUEST["page"];
-			}
+            
+            if(isset($_REQUEST["page"]))
+            {
+                $page = $_REQUEST["page"];
+            }
             
             $user = JarisCMS\Security\GetCurrentUser();
             
             $pages_count = JarisCMS\SQLite\CountColumn("search_engine", "uris", "uri", "where author='$user' $type");
-			
-			print "<h2>" . t("Total content:") . " " . $pages_count . "</h2>";
-			
-			$pages = JarisCMS\SQLite\GetDataList("search_engine", "uris", $page - 1, 20, "where author='$user' $type order by created_date desc");
-			
-			JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/user/content", "", 20, array("type"=>$_REQUEST["type"]));
-			
-			print "<table class=\"navigation-list\">";
-			print "<thead>";
-			print "<tr>";
-			print "<td>" . t("Title") . "</td>";
+            
+            print "<h2>" . t("Total content:") . " " . $pages_count . "</h2>";
+            
+            $pages = JarisCMS\SQLite\GetDataList("search_engine", "uris", $page - 1, 20, "where author='$user' $type order by created_date desc");
+            
+            JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/user/content", "", 20, array("type"=>$_REQUEST["type"]));
+            
+            print "<table class=\"navigation-list\">";
+            print "<thead>";
+            print "<tr>";
+            print "<td>" . t("Title") . "</td>";
             print "<td>" . t("Dates") . "</td>";
             print "<td>" . t("Type") . "</td>";
             
@@ -75,18 +75,18 @@ row: 0
                 print "<td>" . t("Operation") . "</td>";
             }
             
-			print "</tr>";
-			print "</thead>";
-			
-			foreach($pages as $data)
-			{
-				$page_data = JarisCMS\Page\GetData($data["uri"]);
+            print "</tr>";
+            print "</thead>";
+            
+            foreach($pages as $data)
+            {
+                $page_data = JarisCMS\Page\GetData($data["uri"]);
                 $type_data = JarisCMS\Type\GetData($page_data["type"]);
                 $type = $page_data["type"]?t($type_data["name"]):t("system");
-				
-				print "<tr>";
-				
-				print "<td><a href=\"" . JarisCMS\URI\PrintURL($data["uri"]) . "\">" . JarisCMS\System\PHPEval($page_data["title"]) . "</a></td>";
+                
+                print "<tr>";
+                
+                print "<td><a href=\"" . JarisCMS\URI\PrintURL($data["uri"]) . "\">" . JarisCMS\System\PHPEval($page_data["title"]) . "</a></td>";
                 
                 print 
                 "<td>" . 
@@ -95,34 +95,34 @@ row: 0
                 "</td>";
                 
                 print "<td>" . $type . "</td>";
-				
-				$edit_url = JarisCMS\URI\PrintURL("admin/pages/edit", array("uri"=>$data["uri"]));
-				$delete_url = JarisCMS\URI\PrintURL("admin/pages/delete", array("uri"=>$data["uri"]));
-				
+                
+                $edit_url = JarisCMS\URI\PrintURL("admin/pages/edit", array("uri"=>$data["uri"]));
+                $delete_url = JarisCMS\URI\PrintURL("admin/pages/delete", array("uri"=>$data["uri"]));
+                
                 if(JarisCMS\Group\GetPermission("edit_content", JarisCMS\Security\GetCurrentUserGroup()) || JarisCMS\Group\GetPermission("delete_content", JarisCMS\Security\GetCurrentUserGroup()))
                 {
-    				print "<td>";
+                    print "<td>";
                     if(JarisCMS\Group\GetPermission("edit_content", JarisCMS\Security\GetCurrentUserGroup()))
                     { 
-    				    print "<a href=\"$edit_url\">" . t("Edit") . "</a> <br />";
+                        print "<a href=\"$edit_url\">" . t("Edit") . "</a> <br />";
                     }
                     if(JarisCMS\Group\GetPermission("delete_content", JarisCMS\Security\GetCurrentUserGroup()))
                     {
-    				    print "<a href=\"$delete_url\">" . t("Delete") . "</a>";
-                    }					
-    			 	print "</td>";
+                        print "<a href=\"$delete_url\">" . t("Delete") . "</a>";
+                    }                    
+                     print "</td>";
                 }
-				
-				print "</tr>";
-			}
-			
-			print "</table>";
-			
-			JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/user/content", "", 20, array("type"=>$_REQUEST["type"]));
-		?>
-	field;
+                
+                print "</tr>";
+            }
+            
+            print "</table>";
+            
+            JarisCMS\System\PrintGenericNavigation($pages_count, $page, "admin/user/content", "", 20, array("type"=>$_REQUEST["type"]));
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

@@ -23,20 +23,20 @@ namespace JarisCMS\Menu;
  */
 function Create($menu_name)
 {
-	$menu_file = GeneratePath($menu_name);
+    $menu_file = GeneratePath($menu_name);
 
-	if(file_exists($menu_file))
-	{
-		return \JarisCMS\System\GetErrorMessage("menu_exist");
-	}
-	
-	//Create an empty menu file and supress invalid array warning
-	if(@ !\JarisCMS\PHPDB\Write(null, $menu_file))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(file_exists($menu_file))
+    {
+        return \JarisCMS\System\GetErrorMessage("menu_exist");
+    }
+    
+    //Create an empty menu file and supress invalid array warning
+    if(@ !\JarisCMS\PHPDB\Write(null, $menu_file))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -48,14 +48,14 @@ function Create($menu_name)
  */
 function Delete($menu_name)
 {
-	$menu_file = GeneratePath($menu_name);
+    $menu_file = GeneratePath($menu_name);
 
-	if(!unlink($menu_file))
-	{
-		return false;
-	}
+    if(!unlink($menu_file))
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -68,21 +68,21 @@ function Delete($menu_name)
  */
 function Rename($actual_name, $new_name)
 {
-	$actual_path = GeneratePath($actual_name);
+    $actual_path = GeneratePath($actual_name);
 
-	$new_path = GeneratePath($new_name);
+    $new_path = GeneratePath($new_name);
 
-	if(file_exists($new_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("menu_exist");
-	}
+    if(file_exists($new_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("menu_exist");
+    }
 
-	if(!rename($actual_path, $new_path))
-	{
-		return \JarisCMS\System\GetErrorMessage("write_error_data");
-	}
+    if(!rename($actual_path, $new_path))
+    {
+        return \JarisCMS\System\GetErrorMessage("write_error_data");
+    }
 
-	return "true";
+    return "true";
 }
 
 /**
@@ -92,20 +92,20 @@ function Rename($actual_name, $new_name)
  */
 function GetList()
 {
-	$menu_dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "menus");
+    $menu_dir = opendir(\JarisCMS\Setting\GetDataDirectory() . "menus");
 
-	$menus = array();
-	while(($menu = readdir($menu_dir)) !==  false)
-	{
-		if(filetype(\JarisCMS\Setting\GetDataDirectory() . "menus/" . $menu) == "file")
-		{
-			$menus[] = str_replace(".php", "", $menu);
-		}
-	}
+    $menus = array();
+    while(($menu = readdir($menu_dir)) !==  false)
+    {
+        if(filetype(\JarisCMS\Setting\GetDataDirectory() . "menus/" . $menu) == "file")
+        {
+            $menus[] = str_replace(".php", "", $menu);
+        }
+    }
 
-	closedir($menu_dir);
+    closedir($menu_dir);
 
-	return $menus;
+    return $menus;
 }
 
 /**
@@ -118,9 +118,9 @@ function GetList()
  */
 function AddItem($menu_name, $fields)
 {
-	$menu_data_path = GeneratePath($menu_name);
+    $menu_data_path = GeneratePath($menu_name);
 
-	return \JarisCMS\PHPDB\Add($fields, $menu_data_path);
+    return \JarisCMS\PHPDB\Add($fields, $menu_data_path);
 }
 
 /**
@@ -133,9 +133,9 @@ function AddItem($menu_name, $fields)
  */
 function DeleteItem($id, $menu_name)
 {
-	$menu_data_path = GeneratePath($menu_name);
+    $menu_data_path = GeneratePath($menu_name);
 
-	return \JarisCMS\PHPDB\Delete($id, $menu_data_path);
+    return \JarisCMS\PHPDB\Delete($id, $menu_data_path);
 }
 
 /**
@@ -149,9 +149,9 @@ function DeleteItem($id, $menu_name)
  */
 function EditItem($id, $menu_name, $new_data)
 {
-	$menu_data_path = GeneratePath($menu_name);
+    $menu_data_path = GeneratePath($menu_name);
 
-	return \JarisCMS\PHPDB\Edit($id, $new_data, $menu_data_path);
+    return \JarisCMS\PHPDB\Edit($id, $new_data, $menu_data_path);
 }
 
 /**
@@ -164,11 +164,11 @@ function EditItem($id, $menu_name, $new_data)
  */
 function GetItemData($id, $menu_name)
 {
-	$menu_data_path = GeneratePath($menu_name);
+    $menu_data_path = GeneratePath($menu_name);
 
-	$menu = \JarisCMS\PHPDB\Parse($menu_data_path);
+    $menu = \JarisCMS\PHPDB\Parse($menu_data_path);
 
-	return $menu[$id];
+    return $menu[$id];
 }
 
 /**
@@ -184,12 +184,12 @@ function GetItemList($menu_name)
     
     if(!$menu_array[$menu_name])
     {
-    	$menu_data_path = GeneratePath($menu_name);
+        $menu_data_path = GeneratePath($menu_name);
     
-    	$menu_array[$menu_name] = \JarisCMS\PHPDB\Parse($menu_data_path);
+        $menu_array[$menu_name] = \JarisCMS\PHPDB\Parse($menu_data_path);
     }
 
-	return $menu_array[$menu_name];
+    return $menu_array[$menu_name];
 }
 
 /**
@@ -200,30 +200,30 @@ function GetItemList($menu_name)
  * 
  * @return array The parent item with its sub items and also the sub 
  *        items of the sub items in another array. For example:
- * 		  $parent_item = array(..., menu_item_values, ..., "sub_items"=>array())
+ *           $parent_item = array(..., menu_item_values, ..., "sub_items"=>array())
  */
 function GetSubItems($menu_name, $parent_id="root")
 {
-	$menu_items = GetItemList($menu_name);
-	
-	$menu = array();
-	foreach($menu_items as $id=>$items)
-	{
-		if("" . $items["parent"] . "" == "" . $parent_id . "")
-		{
-			//get the sub items of this item
-			$sub_items["sub_items"] = \JarisCMS\PHPDB\Sort(GetSubItems($menu_name, $id), "order");
-			
-			if(count($sub_items["sub_items"]) > 0)
-			{
-				$items += $sub_items;
-			}
-			
-			$menu[$id] = $items;
-		}
-	}
-	
-	return $menu;
+    $menu_items = GetItemList($menu_name);
+    
+    $menu = array();
+    foreach($menu_items as $id=>$items)
+    {
+        if("" . $items["parent"] . "" == "" . $parent_id . "")
+        {
+            //get the sub items of this item
+            $sub_items["sub_items"] = \JarisCMS\PHPDB\Sort(GetSubItems($menu_name, $id), "order");
+            
+            if(count($sub_items["sub_items"]) > 0)
+            {
+                $items += $sub_items;
+            }
+            
+            $menu[$id] = $items;
+        }
+    }
+    
+    return $menu;
 }
 
 /**
@@ -233,14 +233,14 @@ function GetSubItems($menu_name, $parent_id="root")
  */
 function GetPrimaryName()
 {
-	$name = \JarisCMS\Setting\Get("primary_menu", "main");
-	
-	if($name)
-	{
-		return $name;
-	}
-	
-	return "primary";
+    $name = \JarisCMS\Setting\Get("primary_menu", "main");
+    
+    if($name)
+    {
+        return $name;
+    }
+    
+    return "primary";
 }
 
 /**
@@ -250,14 +250,14 @@ function GetPrimaryName()
  */
 function GetSecondaryName()
 {
-	$name = \JarisCMS\Setting\Get("secondary_menu", "main");
-	
-	if($name)
-	{
-		return $name;
-	}
-	
-	return "secondary";
+    $name = \JarisCMS\Setting\Get("secondary_menu", "main");
+    
+    if($name)
+    {
+        return $name;
+    }
+    
+    return "secondary";
 }
 
 /**
@@ -269,11 +269,11 @@ function GetSecondaryName()
  */
 function GeneratePath($menu)
 {
-	$menu_path = \JarisCMS\Setting\GetDataDirectory() . "menus/";
+    $menu_path = \JarisCMS\Setting\GetDataDirectory() . "menus/";
 
-	$menu_path .= $menu . ".php";
+    $menu_path .= $menu . ".php";
 
-	return $menu_path;
+    return $menu_path;
 }
 
 ?>

@@ -13,58 +13,58 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Create Group") ?>
-	field;
+    field: title
+        <?php print t("Create Group") ?>
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			JarisCMS\Security\ProtectPage(array("view_groups", "add_groups"));
+            JarisCMS\Security\ProtectPage(array("view_groups", "add_groups"));
 
-			if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("add-group"))
-			{
-				$fields["name"] = $_REQUEST["name"];
-				$fields["description"] = $_REQUEST["description"];
+            if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("add-group"))
+            {
+                $fields["name"] = $_REQUEST["name"];
+                $fields["description"] = $_REQUEST["description"];
 
-				$message = JarisCMS\Group\Add($_REQUEST["machine_name"], $fields);
+                $message = JarisCMS\Group\Add($_REQUEST["machine_name"], $fields);
 
-				if($message == "true")
-				{
-					JarisCMS\System\AddMessage(t("The group has been successfully created."));
-				}
-				else
-				{
-					//An error ocurred so display the error message
-					JarisCMS\System\AddMessage($message, "error");
-				}
+                if($message == "true")
+                {
+                    JarisCMS\System\AddMessage(t("The group has been successfully created."));
+                }
+                else
+                {
+                    //An error ocurred so display the error message
+                    JarisCMS\System\AddMessage($message, "error");
+                }
 
-				JarisCMS\System\GoToPage("admin/groups");
-			}
-			elseif(isset($_REQUEST["btnCancel"]))
-			{
-				JarisCMS\System\GoToPage("admin/groups");
-			}
+                JarisCMS\System\GoToPage("admin/groups");
+            }
+            elseif(isset($_REQUEST["btnCancel"]))
+            {
+                JarisCMS\System\GoToPage("admin/groups");
+            }
 
-			$parameters["name"] = "add-group";
-			$parameters["class"] = "add-group";
-			$parameters["action"] = JarisCMS\URI\PrintURL("admin/groups/add");
-			$parameters["method"] = "post";
+            $parameters["name"] = "add-group";
+            $parameters["class"] = "add-group";
+            $parameters["action"] = JarisCMS\URI\PrintURL("admin/groups/add");
+            $parameters["method"] = "post";
 
-			$fields[] = array("type"=>"text", "value"=>$_REQUEST["machine_name"], "name"=>"machine_name", "label"=>t("Machine name:"), "id"=>"machine_name", "required"=>true, "description"=>t("A readable machine name, like for example: my-group."));
-			$fields[] = array("type"=>"text", "value"=>$_REQUEST["name"], "name"=>"name", "label"=>t("Name:"), "id"=>"name", "required"=>true, "description"=>t("A human readable name like for example: My Group."));
-			$fields[] = array("type"=>"text", "name"=>"description", "label"=>t("Description:"), "id"=>"description", "required"=>true, "description"=>t("A brief description of the group."));
+            $fields[] = array("type"=>"text", "value"=>$_REQUEST["machine_name"], "name"=>"machine_name", "label"=>t("Machine name:"), "id"=>"machine_name", "required"=>true, "description"=>t("A readable machine name, like for example: my-group."));
+            $fields[] = array("type"=>"text", "value"=>$_REQUEST["name"], "name"=>"name", "label"=>t("Name:"), "id"=>"name", "required"=>true, "description"=>t("A human readable name like for example: My Group."));
+            $fields[] = array("type"=>"text", "name"=>"description", "label"=>t("Description:"), "id"=>"description", "required"=>true, "description"=>t("A brief description of the group."));
 
-			$fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
-			$fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
+            $fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
-		?>
-	field;
-	
-	field: is_system
-		1
-	field;
+            print JarisCMS\Form\Generate($parameters, $fieldset);
+        ?>
+    field;
+    
+    field: is_system
+        1
+    field;
 row;

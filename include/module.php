@@ -22,66 +22,66 @@ namespace JarisCMS\Module;
  */
 function Hook($namespace, $function_name, &$var1="null", &$var2="null", &$var3="null", &$var4="null")
 {
-	static $modules_namespace;
-	
-	$modules_dir = GetInstalledNames();
-	
-	//Cache module namespaces if not already cached
-	if(!is_array($modules_namespace))
-	{
-		$modules_namespace = array();
-		
-		$module = array(); //Intialize variable modified by module info.php file
-		
-		foreach($modules_dir as $dir)
-		{
-			include("modules/".$dir."/info.php");
-			$modules_namespace[] = $module["namespace"];
-			
-			unset($module);
-		}
-	}
+    static $modules_namespace;
+    
+    $modules_dir = GetInstalledNames();
+    
+    //Cache module namespaces if not already cached
+    if(!is_array($modules_namespace))
+    {
+        $modules_namespace = array();
+        
+        $module = array(); //Intialize variable modified by module info.php file
+        
+        foreach($modules_dir as $dir)
+        {
+            include("modules/".$dir."/info.php");
+            $modules_namespace[] = $module["namespace"];
+            
+            unset($module);
+        }
+    }
 
-	foreach($modules_namespace as $index=>$name)
-	{
-		$functions_file = \JarisCMS\Setting\GetDataDirectory() . "modules/{$modules_dir[$index]}/functions.php";
-		$hook_name = "\\JarisCMS\\Module\\".$name."\\".$namespace."\\".$function_name;
+    foreach($modules_namespace as $index=>$name)
+    {
+        $functions_file = \JarisCMS\Setting\GetDataDirectory() . "modules/{$modules_dir[$index]}/functions.php";
+        $hook_name = "\\JarisCMS\\Module\\".$name."\\".$namespace."\\".$function_name;
 
-		if(!file_exists($functions_file))
-		{
-			//Skip if functions file doesnt exist on the current module
-			continue;
-		}
+        if(!file_exists($functions_file))
+        {
+            //Skip if functions file doesnt exist on the current module
+            continue;
+        }
 
-		include_once($functions_file);
+        include_once($functions_file);
 
-		if(!function_exists($hook_name))
-		{
-			//Skip if function doesnt exist on the current module
-			continue;
-		}
+        if(!function_exists($hook_name))
+        {
+            //Skip if function doesnt exist on the current module
+            continue;
+        }
 
-		if($var1 != "null" && $var2 != "null" && $var3 != "null" && $var4 != "null")
-		{
-			$hook_name($var1, $var2, $var3, $var4);
-		}
-		else if($var1 != "null" && $var2 != "null" && $var3 != "null")
-		{
-			$hook_name($var1, $var2, $var3);
-		}
-		else if($var1 != "null" && $var2 != "null")
-		{
-			$hook_name($var1, $var2);
-		}
-		else if($var1 != "null")
-		{
-			$hook_name($var1);
-		}
-		else
-		{
-			$hook_name();
-		}
-	}
+        if($var1 != "null" && $var2 != "null" && $var3 != "null" && $var4 != "null")
+        {
+            $hook_name($var1, $var2, $var3, $var4);
+        }
+        else if($var1 != "null" && $var2 != "null" && $var3 != "null")
+        {
+            $hook_name($var1, $var2, $var3);
+        }
+        else if($var1 != "null" && $var2 != "null")
+        {
+            $hook_name($var1, $var2);
+        }
+        else if($var1 != "null")
+        {
+            $hook_name($var1);
+        }
+        else
+        {
+            $hook_name();
+        }
+    }
 }
 
 /**
@@ -93,31 +93,31 @@ function Hook($namespace, $function_name, &$var1="null", &$var2="null", &$var3="
  */
 function GetAll()
 {
-	$module_dir = "modules/";
-	$dir_handle = opendir($module_dir);
+    $module_dir = "modules/";
+    $dir_handle = opendir($module_dir);
 
-	$modules = null;
+    $modules = null;
 
-	while(($file = readdir($dir_handle)) !== false)
-	{
+    while(($file = readdir($dir_handle)) !== false)
+    {
         //Deletes previous module data
         unset($module);
         
-		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-		{
-			$info_file = $module_dir . $file . "/info.php";
+        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+        {
+            $info_file = $module_dir . $file . "/info.php";
 
-			if(file_exists($info_file))
-			{
-				include($info_file);
-				$modules[$file] = $module;
-			}
-		}
-	}
+            if(file_exists($info_file))
+            {
+                include($info_file);
+                $modules[$file] = $module;
+            }
+        }
+    }
     
     ksort($modules);
 
-	return $modules;
+    return $modules;
 }
 
 /**
@@ -130,17 +130,17 @@ function GetAll()
  */
 function GetInfo($name)
 {
-	$module_dir = "modules/$name/";
+    $module_dir = "modules/$name/";
 
-	$info_file = $module_dir . "info.php";
+    $info_file = $module_dir . "info.php";
 
-	if(file_exists($info_file))
-	{
-		include($info_file);
-		return $module;
-	}
+    if(file_exists($info_file))
+    {
+        include($info_file);
+        return $module;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -156,29 +156,29 @@ function GetInstalledNames()
     {
         $modules = array();
         
-    	$module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/";
-		
-		if(!is_dir($module_dir))
-			return $modules;
-		
-    	$dir_handle = opendir($module_dir);
+        $module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/";
+        
+        if(!is_dir($module_dir))
+            return $modules;
+        
+        $dir_handle = opendir($module_dir);
         
         if(!is_bool($dir_handle))
         {
-        	while(($file = readdir($dir_handle)) !== false)
-        	{
-        		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-        		{
-        			if(is_dir($module_dir . $file))
-        			{
-        				$modules[] = $file;
-        			}
-        		}
-        	}
+            while(($file = readdir($dir_handle)) !== false)
+            {
+                if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+                {
+                    if(is_dir($module_dir . $file))
+                    {
+                        $modules[] = $file;
+                    }
+                }
+            }
          }
     }
 
-	return $modules;
+    return $modules;
 }
 
 /**
@@ -190,17 +190,17 @@ function GetInstalledNames()
  */
 function GetVersion($name)
 {
-	$module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/$name/";
+    $module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/$name/";
 
-	$info_file = $module_dir . "info.php";
+    $info_file = $module_dir . "info.php";
 
-	if(file_exists($info_file))
-	{
-		include($info_file);
-		return $module["version"];
-	}
+    if(file_exists($info_file))
+    {
+        include($info_file);
+        return $module["version"];
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -212,12 +212,12 @@ function GetVersion($name)
  */
 function IsInstalled($name)
 {
-	if(file_exists(\JarisCMS\Setting\GetDataDirectory() . "modules/$name"))
-	{
-		return true;
-	}
+    if(file_exists(\JarisCMS\Setting\GetDataDirectory() . "modules/$name"))
+    {
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -319,79 +319,79 @@ function Install($name, &$needs_dependency=null)
         return false;
     }
     
-	$module_dir = "modules/$name";
-	$module_installation = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
+    $module_dir = "modules/$name";
+    $module_installation = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
 
-	//Firt we make the directory holding module installation files.
-	if(!\JarisCMS\FileSystem\MakeDir($module_installation, 0755, true))
-	{
-		return false;
-	}
+    //Firt we make the directory holding module installation files.
+    if(!\JarisCMS\FileSystem\MakeDir($module_installation, 0755, true))
+    {
+        return false;
+    }
 
-	//Copy current module info file used to store the version
-	copy($module_dir . "/info.php", $module_installation . "/info.php");
+    //Copy current module info file used to store the version
+    copy($module_dir . "/info.php", $module_installation . "/info.php");
 
-	//Copy current module functions file.
-	if(file_exists($module_dir . "/functions.php"))
-	{
-		copy($module_dir . "/functions.php", $module_installation . "/functions.php");
-	}
-	
-	//Copy current module uninstall function file.
-	if(file_exists($module_dir . "/uninstall.php"))
-	{
-		copy($module_dir . "/uninstall.php", $module_installation . "/uninstall.php");
-	}
+    //Copy current module functions file.
+    if(file_exists($module_dir . "/functions.php"))
+    {
+        copy($module_dir . "/functions.php", $module_installation . "/functions.php");
+    }
+    
+    //Copy current module uninstall function file.
+    if(file_exists($module_dir . "/uninstall.php"))
+    {
+        copy($module_dir . "/uninstall.php", $module_installation . "/uninstall.php");
+    }
 
-	//Install module pages
-	if(file_exists($module_dir . "/pages.php"))
-	{
-		//Store the uri of each page created in case uri is renamed since already
-		//exist
-		$pages_uri = array();
+    //Install module pages
+    if(file_exists($module_dir . "/pages.php"))
+    {
+        //Store the uri of each page created in case uri is renamed since already
+        //exist
+        $pages_uri = array();
 
-		$pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
+        $pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
 
-		foreach($pages as $id=>$fields)
-		{
-			$uri = trim($fields["uri"]);
+        foreach($pages as $id=>$fields)
+        {
+            $uri = trim($fields["uri"]);
 
-			//Reference that stores the new page uri in case original already exist
-			$new_uri = null;
+            //Reference that stores the new page uri in case original already exist
+            $new_uri = null;
 
-			$data_file = $module_dir . "/data/" . str_replace("/", "-", str_replace("-", "_", $uri)) . ".php";
+            $data_file = $module_dir . "/data/" . str_replace("/", "-", str_replace("-", "_", $uri)) . ".php";
 
-			$data = \JarisCMS\PHPDB\GetData(0, $data_file);
+            $data = \JarisCMS\PHPDB\GetData(0, $data_file);
 
-			if(!\JarisCMS\Page\Create($uri, $data, $new_uri))
-			{
-				return false;
-			}
+            if(!\JarisCMS\Page\Create($uri, $data, $new_uri))
+            {
+                return false;
+            }
 
-			$pages_uri[$id] = array("original_uri"=>$uri, "new_uri"=>$new_uri);
-		}
+            $pages_uri[$id] = array("original_uri"=>$uri, "new_uri"=>$new_uri);
+        }
 
-		if(!\JarisCMS\PHPDB\Write($pages_uri, $module_installation . "/pages.php"))
-		{
-			return false;
-		}
-	}
-	
-	//Execute module install script function if available
-	//This function is named with the module name and install word.
-	//for example: modulename_install()
-	if(file_exists($module_dir . "/install.php"))
-	{
-		include($module_dir . "/info.php"); //Get Module info
-		
-		include($module_dir . "/install.php"); //Module install function
-		
-		$install_function = "\\JarisCMS\\Module\\".$module["namespace"]."\\Install";
-		
-		$install_function();
-	}
+        if(!\JarisCMS\PHPDB\Write($pages_uri, $module_installation . "/pages.php"))
+        {
+            return false;
+        }
+    }
+    
+    //Execute module install script function if available
+    //This function is named with the module name and install word.
+    //for example: modulename_install()
+    if(file_exists($module_dir . "/install.php"))
+    {
+        include($module_dir . "/info.php"); //Get Module info
+        
+        include($module_dir . "/install.php"); //Module install function
+        
+        $install_function = "\\JarisCMS\\Module\\".$module["namespace"]."\\Install";
+        
+        $install_function();
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -411,42 +411,42 @@ function Uninstall($name, &$is_dependency=null)
         return false;
     }
     
-	$module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
+    $module_dir = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
 
-	//Remove module pages
-	if(file_exists($module_dir . "/pages.php"))
-	{
-		$pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
+    //Remove module pages
+    if(file_exists($module_dir . "/pages.php"))
+    {
+        $pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
 
-		foreach($pages as $id=>$fields)
-		{
-			if(!\JarisCMS\Page\Delete($fields["new_uri"]))
-			{
-				return false;
-			}
-		}
-	}
-	
-	//Execute module uninstall script function if available
-	//This function is named with the module name and uninstall word.
-	//for example: modulename_uninstall()
-	if(file_exists($module_dir . "/uninstall.php"))
-	{
-		include($module_dir . "/info.php"); //Get Module info
-		
-		include($module_dir . "/uninstall.php"); //Module uninstall function
-		
-		$uninstall_function = "\\JarisCMS\\Module\\".$module["namespace"]."\\Uninstall";
-		
-		$uninstall_function();
-	}
+        foreach($pages as $id=>$fields)
+        {
+            if(!\JarisCMS\Page\Delete($fields["new_uri"]))
+            {
+                return false;
+            }
+        }
+    }
+    
+    //Execute module uninstall script function if available
+    //This function is named with the module name and uninstall word.
+    //for example: modulename_uninstall()
+    if(file_exists($module_dir . "/uninstall.php"))
+    {
+        include($module_dir . "/info.php"); //Get Module info
+        
+        include($module_dir . "/uninstall.php"); //Module uninstall function
+        
+        $uninstall_function = "\\JarisCMS\\Module\\".$module["namespace"]."\\Uninstall";
+        
+        $uninstall_function();
+    }
 
-	if(!\JarisCMS\FileSystem\RemoveDirRecursively($module_dir))
-	{
-		return false;
-	}
-	
-	return true;
+    if(!\JarisCMS\FileSystem\RemoveDirRecursively($module_dir))
+    {
+        return false;
+    }
+    
+    return true;
 }
 
 /**
@@ -459,85 +459,85 @@ function Uninstall($name, &$is_dependency=null)
  */
 function Upgrade($name)
 {
-	$module_dir = "modules/$name";
-	$module_installation = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
+    $module_dir = "modules/$name";
+    $module_installation = \JarisCMS\Setting\GetDataDirectory() . "modules/$name";
 
-	//Remove module pages
-	if(file_exists($module_installation . "/pages.php"))
-	{
-		$pages = \JarisCMS\PHPDB\Parse($module_installation . "/pages.php");
+    //Remove module pages
+    if(file_exists($module_installation . "/pages.php"))
+    {
+        $pages = \JarisCMS\PHPDB\Parse($module_installation . "/pages.php");
 
-		foreach($pages as $id=>$fields)
-		{
-			if(!\JarisCMS\Page\Delete($fields["new_uri"]))
-			{
-				return false;
-			}
-		}
-	}
+        foreach($pages as $id=>$fields)
+        {
+            if(!\JarisCMS\Page\Delete($fields["new_uri"]))
+            {
+                return false;
+            }
+        }
+    }
 
-	//Copy current module info file used to store the version
-	copy($module_dir . "/info.php", $module_installation . "/info.php");
+    //Copy current module info file used to store the version
+    copy($module_dir . "/info.php", $module_installation . "/info.php");
 
-	//Copy current module functions file.
-	if(file_exists($module_dir . "/functions.php"))
-	{
-		copy($module_dir . "/functions.php", $module_installation . "/functions.php");
-	}
-	
-	//Copy current module uninstall function file.
-	if(file_exists($module_dir . "/uninstall.php"))
-	{
-		copy($module_dir . "/uninstall.php", $module_installation . "/uninstall.php");
-	}
+    //Copy current module functions file.
+    if(file_exists($module_dir . "/functions.php"))
+    {
+        copy($module_dir . "/functions.php", $module_installation . "/functions.php");
+    }
+    
+    //Copy current module uninstall function file.
+    if(file_exists($module_dir . "/uninstall.php"))
+    {
+        copy($module_dir . "/uninstall.php", $module_installation . "/uninstall.php");
+    }
 
-	//Install module pages
-	if(file_exists($module_dir . "/pages.php"))
-	{
-		//Store the uri of each page created in case uri is renamed since already
-		//exist
-		$pages_uri = array();
+    //Install module pages
+    if(file_exists($module_dir . "/pages.php"))
+    {
+        //Store the uri of each page created in case uri is renamed since already
+        //exist
+        $pages_uri = array();
 
-		$pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
+        $pages = \JarisCMS\PHPDB\Parse($module_dir . "/pages.php");
 
-		foreach($pages as $id=>$fields)
-		{
-			$uri = trim($fields["uri"]);
+        foreach($pages as $id=>$fields)
+        {
+            $uri = trim($fields["uri"]);
 
-			//Reference that stores the new page uri in case original already exist
-			$new_uri = null;
+            //Reference that stores the new page uri in case original already exist
+            $new_uri = null;
 
-			$data_file = $module_dir . "/data/" . str_replace("/", "-", str_replace("-", "_", $uri)) . ".php";
+            $data_file = $module_dir . "/data/" . str_replace("/", "-", str_replace("-", "_", $uri)) . ".php";
 
-			$data = \JarisCMS\PHPDB\GetData(0, $data_file);
+            $data = \JarisCMS\PHPDB\GetData(0, $data_file);
 
-			if(!\JarisCMS\Page\Create($uri, $data, $new_uri))
-			{
-				return false;
-			}
+            if(!\JarisCMS\Page\Create($uri, $data, $new_uri))
+            {
+                return false;
+            }
 
-			$pages_uri[$id] = array("original_uri"=>$new_uri, "new_uri"=>$new_uri);
-		}
+            $pages_uri[$id] = array("original_uri"=>$new_uri, "new_uri"=>$new_uri);
+        }
 
-		if(!\JarisCMS\PHPDB\Write($pages_uri, $module_installation . "/pages.php"))
-		{
-			return false;
-		}
-	}
-	
-	//Execute module upgrade script function if available
-	//This function is named with the module name and upgrade word.
-	//for example: modulename_upgrade()
-	if(file_exists($module_dir . "/upgrade.php"))
-	{
-		include($module_dir . "/upgrade.php");
-		
-		$upgrade_function = $name . "Upgrade";
-		
-		$upgrade_function();
-	}
+        if(!\JarisCMS\PHPDB\Write($pages_uri, $module_installation . "/pages.php"))
+        {
+            return false;
+        }
+    }
+    
+    //Execute module upgrade script function if available
+    //This function is named with the module name and upgrade word.
+    //for example: modulename_upgrade()
+    if(file_exists($module_dir . "/upgrade.php"))
+    {
+        include($module_dir . "/upgrade.php");
+        
+        $upgrade_function = $name . "Upgrade";
+        
+        $upgrade_function();
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -560,19 +560,19 @@ function GetPageURI($original_uri, $module_name)
         {
             $module_pages[$module_name] = \JarisCMS\PHPDB\Parse(\JarisCMS\Setting\GetDataDirectory() . "modules/$module_name/pages.php");
         }
-    	
-    	if(is_array($module_pages[$module_name]))
-    	{
-    		foreach($module_pages[$module_name] as $id=>$fields)
-    		{
-    			if($fields["original_uri"] == $original_uri)
-    			{
-    				return $fields["new_uri"];
-    			}
-    		}
-    	}
+        
+        if(is_array($module_pages[$module_name]))
+        {
+            foreach($module_pages[$module_name] as $id=>$fields)
+            {
+                if($fields["original_uri"] == $original_uri)
+                {
+                    return $fields["new_uri"];
+                }
+            }
+        }
      }
 
-	return $original_uri;
+    return $original_uri;
 }
 ?>

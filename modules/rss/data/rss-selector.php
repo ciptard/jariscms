@@ -13,48 +13,48 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("RSS Selector") ?>
-	field;
+    field: title
+        <?php print t("RSS Selector") ?>
+    field;
 
-	field: content
-		<?php
-		
-			if(isset($_REQUEST["btnView"]))
-			{
-				if($_REQUEST["type"] != "")
-				{
-					JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("rss", "rss"), array("type"=>$_REQUEST["type"]));
-				}
-				
-				JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("rss", "rss"));
-			}
+    field: content
+        <?php
+        
+            if(isset($_REQUEST["btnView"]))
+            {
+                if($_REQUEST["type"] != "")
+                {
+                    JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("rss", "rss"), array("type"=>$_REQUEST["type"]));
+                }
+                
+                JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("rss", "rss"));
+            }
 
-			$parameters["name"] = "rss-selector";
-			$parameters["class"] = "rss-selector";
-			$parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("rss/selector", "rss"));
-			$parameters["method"] = "post";
-			
-			$types = JarisCMS\Type\GetList();
-			$types_list = array();
-			$types_list[t("All")] = "";
-			
-			foreach($types as $type_name=>$type_data)
-			{
-				$types_list[t($type_data["name"])] = $type_name;
-			}
+            $parameters["name"] = "rss-selector";
+            $parameters["class"] = "rss-selector";
+            $parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("rss/selector", "rss"));
+            $parameters["method"] = "post";
+            
+            $types = JarisCMS\Type\GetList();
+            $types_list = array();
+            $types_list[t("All")] = "";
+            
+            foreach($types as $type_name=>$type_data)
+            {
+                $types_list[t($type_data["name"])] = $type_name;
+            }
 
-			$fields[] = array("type"=>"select", "name"=>"type", "label"=>t("Type of content:"), "id"=>"type", "value"=>$types_list, "selected"=>"");
-			$fields[] = array("type"=>"submit", "name"=>"btnView", "value"=>t("View"));
+            $fields[] = array("type"=>"select", "name"=>"type", "label"=>t("Type of content:"), "id"=>"type", "value"=>$types_list, "selected"=>"");
+            $fields[] = array("type"=>"submit", "name"=>"btnView", "value"=>t("View"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

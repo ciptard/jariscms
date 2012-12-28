@@ -13,58 +13,58 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Languages") ?>
-	field;
+    field: title
+        <?php print t("Languages") ?>
+    field;
 
-	field: content
+    field: content
 
-		<?php
-			JarisCMS\Security\ProtectPage(array("view_languages"));
+        <?php
+            JarisCMS\Security\ProtectPage(array("view_languages"));
 
-			JarisCMS\System\AddTab(t("Add Language"), "admin/languages/add");
-		?>
+            JarisCMS\System\AddTab(t("Add Language"), "admin/languages/add");
+        ?>
 
-		<?php
+        <?php
 
-			$languages = JarisCMS\Language\GetAll();
+            $languages = JarisCMS\Language\GetAll();
 
-			print "<table class=\"languages-list\">\n";
+            print "<table class=\"languages-list\">\n";
 
-			print "<thead><tr>\n";
+            print "<thead><tr>\n";
 
-			print "<td>" . t("Code") . "</td>\n";
-			print "<td>" . t("Name") . "</td>\n";
-			print "<td>" . t("Operation") . "</td>\n";
+            print "<td>" . t("Code") . "</td>\n";
+            print "<td>" . t("Name") . "</td>\n";
+            print "<td>" . t("Operation") . "</td>\n";
 
-			print  "</tr></thead>\n";
+            print  "</tr></thead>\n";
 
-			$title = t("View language info.");
-			
-			foreach($languages as $code=>$name)
-			{
-				if($code != "en"){
-					print "<tr>\n";
+            $title = t("View language info.");
+            
+            foreach($languages as $code=>$name)
+            {
+                if($code != "en"){
+                    print "<tr>\n";
 
-					print "<td><a title=\"$title\" href=\"".JarisCMS\URI\PrintURL("admin/languages/info", array("code"=>$code))."\">" . $code . "</a></td>\n";
-					print "<td>" . $name . "</td>\n";
+                    print "<td><a title=\"$title\" href=\"".JarisCMS\URI\PrintURL("admin/languages/info", array("code"=>$code))."\">" . $code . "</a></td>\n";
+                    print "<td>" . $name . "</td>\n";
 
-					$edit_url = JarisCMS\URI\PrintURL("admin/languages/edit",array("code"=>$code));
-					$edit_text = t("Edit strings");
+                    $edit_url = JarisCMS\URI\PrintURL("admin/languages/edit",array("code"=>$code));
+                    $edit_text = t("Edit strings");
 
-					print "<td>
-							<a href=\"$edit_url\">$edit_text</a>&nbsp;
-						   </td>\n";
+                    print "<td>
+                            <a href=\"$edit_url\">$edit_text</a>&nbsp;
+                           </td>\n";
 
-					print "</tr>\n";
-				}
-			}
+                    print "</tr>\n";
+                }
+            }
 
-			print "</table>\n";
-		?>
-	field;
-	
-	field: is_system
-		1
-	field;
+            print "</table>\n";
+        ?>
+    field;
+    
+    field: is_system
+        1
+    field;
 row;

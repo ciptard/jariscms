@@ -13,62 +13,62 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Theme Info") ?>
-	field;
+    field: title
+        <?php print t("Theme Info") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
 
-			$info = null;
+            $info = null;
 
-			if(isset($_REQUEST["path"]))
-			{
-				$info = JarisCMS\Theme\GetInfo($_REQUEST["path"]);
-			}
-			else
-			{
-				JarisCMS\System\GoToPage("admin/themes");
-			}
-		?>
+            if(isset($_REQUEST["path"]))
+            {
+                $info = JarisCMS\Theme\GetInfo($_REQUEST["path"]);
+            }
+            else
+            {
+                JarisCMS\System\GoToPage("admin/themes");
+            }
+        ?>
 
-		<div class="theme-info">
-			<div class="info">
-				<div>
-					<span class="label"><?php print t("Name:") ?></span>
-					<?php print t($info["name"]) ?>
-				</div>
-				<div>
-					<span class="label"><?php print t("Version:") ?></span>
-					<?php print t($info["version"]) ?>
-				</div>
-				<div>
-					<span class="label"><?php print t("Description:") ?></span>
-					<?php print t($info["description"]) ?>
-				</div>
-				<div>
-					<span class="label"><?php print t("Author:") ?></span>
-					<?php print t($info["author"]) ?>
-				</div>
-				<div>
-					<span class="label"><?php print t("Email:") ?></span>
-					<a href="mailto:<?php print $info["email"] ?>"><?php print $info["email"] ?></a>
-				</div>
-				<div>
-					<span class="label"><?php print t("Website:") ?></span>
-					<a href="<?php print $info["website"] ?>"><?php print t($info["website"]) ?></a>
-				</div>
-			</div>
+        <div class="theme-info">
+            <div class="info">
+                <div>
+                    <span class="label"><?php print t("Name:") ?></span>
+                    <?php print t($info["name"]) ?>
+                </div>
+                <div>
+                    <span class="label"><?php print t("Version:") ?></span>
+                    <?php print t($info["version"]) ?>
+                </div>
+                <div>
+                    <span class="label"><?php print t("Description:") ?></span>
+                    <?php print t($info["description"]) ?>
+                </div>
+                <div>
+                    <span class="label"><?php print t("Author:") ?></span>
+                    <?php print t($info["author"]) ?>
+                </div>
+                <div>
+                    <span class="label"><?php print t("Email:") ?></span>
+                    <a href="mailto:<?php print $info["email"] ?>"><?php print $info["email"] ?></a>
+                </div>
+                <div>
+                    <span class="label"><?php print t("Website:") ?></span>
+                    <a href="<?php print $info["website"] ?>"><?php print t($info["website"]) ?></a>
+                </div>
+            </div>
 
-			<div class="preview">
-				<div class="label"><?php print t("Preview") ?></div>
-				<img src="<?php global $base_url; print $base_url . "/themes/{$_REQUEST['path']}/preview.png"; ?>" />
-			</div>
-		</div>
-	field;
+            <div class="preview">
+                <div class="label"><?php print t("Preview") ?></div>
+                <img src="<?php global $base_url; print $base_url . "/themes/{$_REQUEST['path']}/preview.png"; ?>" />
+            </div>
+        </div>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

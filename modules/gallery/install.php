@@ -13,15 +13,15 @@
 namespace JarisCMS\Module\ImageGallery;
 
 function Install()
-{	
+{    
     $string = t("Gallery");
     $string = t("For creating image galleries using lightbox.");
     
-	//Create new properties type
-	$new_type["name"] = "Gallery";
-	$new_type["description"] = "For creating image galleries using lightbox.";
-	
-	JarisCMS\Type\Add("gallery", $new_type);
+    //Create new properties type
+    $new_type["name"] = "Gallery";
+    $new_type["description"] = "For creating image galleries using lightbox.";
+    
+    JarisCMS\Type\Add("gallery", $new_type);
 }
 
 ?>

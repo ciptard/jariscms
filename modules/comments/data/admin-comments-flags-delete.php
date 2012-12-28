@@ -13,14 +13,14 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Delete Flag") ?>
-	field;
-	field: content
-		<?php
+    field: title
+        <?php print t("Delete Flag") ?>
+    field;
+    field: content
+        <?php
             JarisCMS\Security\ProtectPage("manage_comments_flags");
 
-			$id = $_REQUEST["id"];
+            $id = $_REQUEST["id"];
             $page = $_REQUEST["page"];
             $user = $_REQUEST["user"];
             
@@ -28,9 +28,9 @@ row: 0
             JarisCMS\System\AddMessage(t("Comment successfully deleted."));
             JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("admin/comments/flags", "comments"));
         ?>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

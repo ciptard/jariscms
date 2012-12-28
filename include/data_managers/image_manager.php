@@ -23,48 +23,48 @@ namespace JarisCMS\Image;
  */
 function Add($file_array, $description, $page = "", &$file_name=null)
 {
-	$image_data_path = GeneratePath($page);
+    $image_data_path = GeneratePath($page);
 
-	if($file_array["type"] == "image/png" ||
-	   $file_array["type"] == "image/jpeg" ||
-	   $file_array["type"] == "image/pjpeg" ||
-	   $file_array["type"] == "image/gif"
-	  )
-	  {
-	  	//Create image directory in case is not present
-		$path = str_replace("images.php", "images", $image_data_path);
-		if(!file_exists($path))
-		{
-			\JarisCMS\FileSystem\MakeDir($path, 0755, true);
-		}
+    if($file_array["type"] == "image/png" ||
+       $file_array["type"] == "image/jpeg" ||
+       $file_array["type"] == "image/pjpeg" ||
+       $file_array["type"] == "image/gif"
+      )
+      {
+          //Create image directory in case is not present
+        $path = str_replace("images.php", "images", $image_data_path);
+        if(!file_exists($path))
+        {
+            \JarisCMS\FileSystem\MakeDir($path, 0755, true);
+        }
 
-		$destination = $path . "/" . $file_array["name"];
+        $destination = $path . "/" . $file_array["name"];
 
-		$file_name = \JarisCMS\FileSystem\MoveFile($file_array["tmp_name"], $destination);
+        $file_name = \JarisCMS\FileSystem\MoveFile($file_array["tmp_name"], $destination);
 
-		//
-		if(!$file_name)
-		{
-			return \JarisCMS\System\GetErrorMessage("write_error_data");
-		}
+        //
+        if(!$file_name)
+        {
+            return \JarisCMS\System\GetErrorMessage("write_error_data");
+        }
 
-		$fields["name"] = $file_name;
-		$fields["description"] = $description;
-		$fields["order"] = 0;
+        $fields["name"] = $file_name;
+        $fields["description"] = $description;
+        $fields["order"] = 0;
 
-		if(\JarisCMS\PHPDB\Add($fields, $image_data_path))
-		{
-			return "true";
-		}
-		else
-		{
-			return \JarisCMS\System\GetErrorMessage("write_error_data");
-		}
-	  }
-	  else
-	  {
-	  	return \JarisCMS\System\GetErrorMessage("image_file_type");
-	  }
+        if(\JarisCMS\PHPDB\Add($fields, $image_data_path))
+        {
+            return "true";
+        }
+        else
+        {
+            return \JarisCMS\System\GetErrorMessage("write_error_data");
+        }
+      }
+      else
+      {
+          return \JarisCMS\System\GetErrorMessage("image_file_type");
+      }
 }
 
 /**
@@ -77,31 +77,31 @@ function Add($file_array, $description, $page = "", &$file_name=null)
  */
 function Delete($id, $page)
 {
-	$image_data_path = GeneratePath($page);
+    $image_data_path = GeneratePath($page);
 
-	$image_data = GetData($id, $page);
+    $image_data = GetData($id, $page);
 
-	//For not having problems clean any \n\t and many others
-	$image_data["name"] = trim($image_data["name"]);
+    //For not having problems clean any \n\t and many others
+    $image_data["name"] = trim($image_data["name"]);
 
-	$image_file_path = str_replace("images.php", "images/{$image_data['name']}", $image_data_path);
+    $image_file_path = str_replace("images.php", "images/{$image_data['name']}", $image_data_path);
 
-	//Remove Original Image
-	if(!unlink($image_file_path))
-	{
-		//If this doesnt return false the everything should go right since it has
-		//the permissions to delete the file
-		return false;
-	}
+    //Remove Original Image
+    if(!unlink($image_file_path))
+    {
+        //If this doesnt return false the everything should go right since it has
+        //the permissions to delete the file
+        return false;
+    }
 
-	//Remove cached images
-	$image_name = str_replace("/", "-", $page);
-	\JarisCMS\FileSystem\SearchFiles(\JarisCMS\Setting\GetDataDirectory() . "image-cache", "/image-$image_name-$id.*/", "unlink");
+    //Remove cached images
+    $image_name = str_replace("/", "-", $page);
+    \JarisCMS\FileSystem\SearchFiles(\JarisCMS\Setting\GetDataDirectory() . "image-cache", "/image-$image_name-$id.*/", "unlink");
 
-	//Remove the image record from the image.php data file
-	\JarisCMS\PHPDB\Delete($id, $image_data_path);
+    //Remove the image record from the image.php data file
+    \JarisCMS\PHPDB\Delete($id, $image_data_path);
 
-	return true;
+    return true;
 }
 
 /**
@@ -115,9 +115,9 @@ function Delete($id, $page)
  */
 function Edit($id, $new_data, $page)
 {
-	$image_data_path = GeneratePath($page);
+    $image_data_path = GeneratePath($page);
 
-	return \JarisCMS\PHPDB\Edit($id, $new_data, $image_data_path);
+    return \JarisCMS\PHPDB\Edit($id, $new_data, $image_data_path);
 }
 
 /**
@@ -130,11 +130,11 @@ function Edit($id, $new_data, $page)
  */
 function GetData($id, $page)
 {
-	$image_data_path = GeneratePath($page);
+    $image_data_path = GeneratePath($page);
 
-	$images = \JarisCMS\PHPDB\Parse($image_data_path);
+    $images = \JarisCMS\PHPDB\Parse($image_data_path);
 
-	return $images[$id];
+    return $images[$id];
 }
 
 /**
@@ -146,18 +146,18 @@ function GetData($id, $page)
  */
 function GetList($page)
 {
-	$image_data_path = GeneratePath($page);
+    $image_data_path = GeneratePath($page);
 
-	$images = \JarisCMS\PHPDB\Parse($image_data_path);
+    $images = \JarisCMS\PHPDB\Parse($image_data_path);
 
-	if($images == false)
-	{
-		return null;
-	}
-	else
-	{
-		return \JarisCMS\PHPDB\Sort($images, "order");
-	}
+    if($images == false)
+    {
+        return null;
+    }
+    else
+    {
+        return \JarisCMS\PHPDB\Sort($images, "order");
+    }
 }
 
 /**
@@ -169,9 +169,9 @@ function GetList($page)
  */
 function GeneratePath($path)
 {
-	$image_data_path = \JarisCMS\Page\GeneratePath($path) . "/images.php";
+    $image_data_path = \JarisCMS\Page\GeneratePath($path) . "/images.php";
 
-	return $image_data_path;
+    return $image_data_path;
 }
 
 ?>

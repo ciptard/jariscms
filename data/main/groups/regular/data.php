@@ -12,11 +12,11 @@ exit;
 ?>
 
 row: 0
-	field: name
-		Regular
-	field;
+    field: name
+        Regular
+    field;
 
-	field: description
-		Regular member with limited access.
-	field;
+    field: description
+        Regular member with limited access.
+    field;
 row;

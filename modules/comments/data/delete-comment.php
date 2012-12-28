@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Delete comment
-	field;
+    field: title
+        Delete comment
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             if(isset($_REQUEST["s"]) && JarisCMS\Security\GetCurrentUser() == "Guest")
             {
                 session_destroy();
@@ -47,10 +47,10 @@ row: 0
                     print $_REQUEST["id"];
                 }
             }
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

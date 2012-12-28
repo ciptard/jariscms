@@ -19,31 +19,31 @@ namespace JarisCMS\Theme;
  */
 function GetAll()
 {
-	$theme_dir = "themes/";
-	$dir_handle = opendir($theme_dir);
+    $theme_dir = "themes/";
+    $dir_handle = opendir($theme_dir);
 
-	$themes = null;
+    $themes = null;
 
-	while(($file = readdir($dir_handle)) !== false)
-	{
-		//just add directories
-		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-		{
-			$info_file = $theme_dir . $file . "/info.php";
+    while(($file = readdir($dir_handle)) !== false)
+    {
+        //just add directories
+        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+        {
+            $info_file = $theme_dir . $file . "/info.php";
 
-			if(file_exists($info_file))
-			{
-				include($info_file);
-				$themes[$file] = $theme;
-			}
-			else
-			{
-				$themes[$file] = null;
-			}
-		}
-	}
+            if(file_exists($info_file))
+            {
+                include($info_file);
+                $themes[$file] = $theme;
+            }
+            else
+            {
+                $themes[$file] = null;
+            }
+        }
+    }
 
-	return $themes;
+    return $themes;
 }
 
 /**
@@ -56,9 +56,9 @@ function GetAll()
  */
 function GetInfo($path)
 {
-	$themes = GetAll();
+    $themes = GetAll();
 
-	return $themes[$path];
+    return $themes[$path];
 }
 
 /**
@@ -67,9 +67,9 @@ function GetInfo($path)
  */
 function GetDefault()
 {
-	global $theme;
+    global $theme;
 
-	return $theme;
+    return $theme;
 }
 
 /*

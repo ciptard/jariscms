@@ -13,38 +13,38 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Sqlite Backup") ?>
-	field;
+    field: title
+        <?php print t("Sqlite Backup") ?>
+    field;
 
-	field: content
-		<?php
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
-		?>
-		
-		<?php
-			if(isset($_REQUEST["name"]))
-			{
-				if(JarisCMS\SQLite\DBExists($_REQUEST["name"]))
-				{
-					JarisCMS\SQLite\Backup($_REQUEST["name"]);
-					
-					if(file_exists(JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $_REQUEST["name"] . ".sql"))
-					{
-						JarisCMS\System\AddMessage(t("Backup successfully updated."));
-					}
-					else
-					{
-						JarisCMS\System\AddMessage(t("Backup successfully created."));
-					}
-				}
-			}
-			
-			JarisCMS\System\GoToPage("admin/settings/sqlite");
-		?>
-	field;
+    field: content
+        <?php
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
+        ?>
+        
+        <?php
+            if(isset($_REQUEST["name"]))
+            {
+                if(JarisCMS\SQLite\DBExists($_REQUEST["name"]))
+                {
+                    JarisCMS\SQLite\Backup($_REQUEST["name"]);
+                    
+                    if(file_exists(JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $_REQUEST["name"] . ".sql"))
+                    {
+                        JarisCMS\System\AddMessage(t("Backup successfully updated."));
+                    }
+                    else
+                    {
+                        JarisCMS\System\AddMessage(t("Backup successfully created."));
+                    }
+                }
+            }
+            
+            JarisCMS\System\GoToPage("admin/settings/sqlite");
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

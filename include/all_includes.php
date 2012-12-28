@@ -56,22 +56,22 @@ $installed_modules = JarisCMS\Module\GetInstalledNames();
 
 foreach($installed_modules as $machine_name)
 {
-	$module_directory = "modules/$machine_name/include/";
-	if(file_exists($module_directory))
-	{
-		$dir_handle = opendir($module_directory);
-		
-		while(($file = readdir($dir_handle)) !== false)
-		{
-			if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-			{
-				if(is_file($module_directory . $file))
-				{
-					include($module_directory . $file);
-				}
-			}
-		}
-	}
+    $module_directory = "modules/$machine_name/include/";
+    if(file_exists($module_directory))
+    {
+        $dir_handle = opendir($module_directory);
+        
+        while(($file = readdir($dir_handle)) !== false)
+        {
+            if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+            {
+                if(is_file($module_directory . $file))
+                {
+                    include($module_directory . $file);
+                }
+            }
+        }
+    }
 }
 
 ?>

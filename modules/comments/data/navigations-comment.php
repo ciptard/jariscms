@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Navigations comment
-	field;
+    field: title
+        Navigations comment
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
             JarisCMS\Security\ProtectPage(array("view_comments"));
             
             if(isset($_REQUEST["uri"]) && isset($_REQUEST["page"]) && isset($_REQUEST["type"]))
@@ -32,10 +32,10 @@ row: 0
                     print JarisCMS\Module\Comments\PrintAll($_REQUEST["uri"], $page_data[0]["type"], $_REQUEST["page"]);
                 }
             }
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

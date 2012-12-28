@@ -12,11 +12,11 @@ exit;
 ?>
 
 row: 0
-	field: name
-		Guest
-	field;
+    field: name
+        Guest
+    field;
 
-	field: description
-		Anyone visiting the website that is not registered.
-	field;
+    field: description
+        Anyone visiting the website that is not registered.
+    field;
 row;

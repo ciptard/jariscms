@@ -14,11 +14,11 @@ exit;
 ?>
 
 row: 0
-	field: name
-		Page
-	field;
+    field: name
+        Page
+    field;
 
-	field: description
-		Create pages for your website
-	field;
+    field: description
+        Create pages for your website
+    field;
 row;

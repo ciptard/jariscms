@@ -302,7 +302,7 @@ function CreateDB($page, $user)
     if(!JarisCMS\SQLite\DBExists("comments", GetPagePath($page)))
     {
         $db = JarisCMS\SQLite\Open("comments", GetPagePath($page));
-		
+        
         JarisCMS\SQLite\Query("create table comments (id integer primary key, created_timestamp text, edited_timestamp text, comment_text text, reply_to integer, user text, flags integer)", $db);
         
         JarisCMS\SQLite\Query("create index comments_index on comments (created_timestamp desc, reply_to desc, user desc, flags desc)", $db);
@@ -314,7 +314,7 @@ function CreateDB($page, $user)
     if(!JarisCMS\SQLite\DBExists("comments", GetUserPath($user)))
     {
         $db = JarisCMS\SQLite\Open("comments", GetUserPath($user));
-		
+        
         JarisCMS\SQLite\Query("create table comments (id integer, created_timestamp text, edited_timestamp text, comment_text text, reply_to integer, uri text, flags integer)", $db);
         
         JarisCMS\SQLite\Query("create index comments_index on comments (created_timestamp desc, reply_to desc, uri desc, flags desc)", $db);
@@ -356,38 +356,38 @@ function GetPagePath($page)
  */
 function GetList($page=0, $limit=30, $page_uri)
 {
-	$db = null;
-	$page *=  $limit;
-	$comments = array();
-		
-	if(JarisCMS\SQLite\DBExists("comments", GetPagePath($page_uri)))
-	{
-		$db = JarisCMS\SQLite\Open("comments", GetPagePath($page_uri));
-		$result = JarisCMS\SQLite\Query("select * from comments order by created_timestamp desc limit $page, $limit", $db);
-	}
-	else
-	{
-		return $comments;
-	}
-	
-	$fields = array();
-	if($fields = JarisCMS\SQLite\FetchArray($result))
-	{
-		$comments[] = $fields;
-		
-		while($fields = JarisCMS\SQLite\FetchArray($result))
-		{
-			$comments[] = $fields;
-		}
-		
-		JarisCMS\SQLite\Close($db);
-		return $comments;
-	}
-	else
-	{
-		JarisCMS\SQLite\Close($db);
-		return $comments;
-	}
+    $db = null;
+    $page *=  $limit;
+    $comments = array();
+        
+    if(JarisCMS\SQLite\DBExists("comments", GetPagePath($page_uri)))
+    {
+        $db = JarisCMS\SQLite\Open("comments", GetPagePath($page_uri));
+        $result = JarisCMS\SQLite\Query("select * from comments order by created_timestamp desc limit $page, $limit", $db);
+    }
+    else
+    {
+        return $comments;
+    }
+    
+    $fields = array();
+    if($fields = JarisCMS\SQLite\FetchArray($result))
+    {
+        $comments[] = $fields;
+        
+        while($fields = JarisCMS\SQLite\FetchArray($result))
+        {
+            $comments[] = $fields;
+        }
+        
+        JarisCMS\SQLite\Close($db);
+        return $comments;
+    }
+    else
+    {
+        JarisCMS\SQLite\Close($db);
+        return $comments;
+    }
 }
 
 function CleanUserComments($user)
@@ -454,38 +454,38 @@ function CleanUserComments($user)
  */
 function GetFlaggedList($page=0, $limit=30)
 {
-	$db = null;
-	$page *=  $limit;
-	$comments = array();
-		
-	if(JarisCMS\SQLite\DBExists("comments"))
-	{
-		$db = JarisCMS\SQLite\Open("comments");
-		$result = JarisCMS\SQLite\Query("select * from comments where flags > 0 order by flags desc limit $page, $limit", $db);
-	}
-	else
-	{
-		return $comments;
-	}
-	
-	$fields = array();
-	if($fields = JarisCMS\SQLite\FetchArray($result))
-	{
-		$comments[] = $fields;
-		
-		while($fields = JarisCMS\SQLite\FetchArray($result))
-		{
-			$comments[] = $fields;
-		}
-		
-		JarisCMS\SQLite\Close($db);
-		return $comments;
-	}
-	else
-	{
-		JarisCMS\SQLite\Close($db);
-		return $comments;
-	}
+    $db = null;
+    $page *=  $limit;
+    $comments = array();
+        
+    if(JarisCMS\SQLite\DBExists("comments"))
+    {
+        $db = JarisCMS\SQLite\Open("comments");
+        $result = JarisCMS\SQLite\Query("select * from comments where flags > 0 order by flags desc limit $page, $limit", $db);
+    }
+    else
+    {
+        return $comments;
+    }
+    
+    $fields = array();
+    if($fields = JarisCMS\SQLite\FetchArray($result))
+    {
+        $comments[] = $fields;
+        
+        while($fields = JarisCMS\SQLite\FetchArray($result))
+        {
+            $comments[] = $fields;
+        }
+        
+        JarisCMS\SQLite\Close($db);
+        return $comments;
+    }
+    else
+    {
+        JarisCMS\SQLite\Close($db);
+        return $comments;
+    }
 }
 
 ?>

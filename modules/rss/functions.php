@@ -12,41 +12,41 @@
 
 namespace JarisCMS\Module\Rss\System
 {
-	use JarisCMS\URI;
-	use JarisCMS\Module;
-	use JarisCMS\Setting;
-	
-	function GetPageMetaTags(&$meta_tags)
-	{
-		$title = t(Setting\Get("title", "main"));
-		$meta_tags .= "<link rel=\"alternate\" title=\"RSS - $title\" href=\"" . URI\PrintURL(Module\GetPageURI("rss", "rss")) . "\" type=\"application/rss+xml\">\n";
-	}
+    use JarisCMS\URI;
+    use JarisCMS\Module;
+    use JarisCMS\Setting;
+    
+    function GetPageMetaTags(&$meta_tags)
+    {
+        $title = t(Setting\Get("title", "main"));
+        $meta_tags .= "<link rel=\"alternate\" title=\"RSS - $title\" href=\"" . URI\PrintURL(Module\GetPageURI("rss", "rss")) . "\" type=\"application/rss+xml\">\n";
+    }
 }
 
 namespace JarisCMS\Module\Rss\Theme
 {
-	use JarisCMS\URI;
-	use JarisCMS\Module;
-	
-	function GetPageTemplateFile(&$page, &$template_path)
-	{
-		$uri = URI\Get();
+    use JarisCMS\URI;
+    use JarisCMS\Module;
+    
+    function GetPageTemplateFile(&$page, &$template_path)
+    {
+        $uri = URI\Get();
 
-		if($uri == Module\GetPageURI("rss", "rss"))
-		{
-			$template_path = "modules/rss/templates/page-empty.php";
-		}
-	}
-	
-	function GetContentTemplateFile(&$page, &$type, &$template_path)
-	{
-		$uri = URI\Get();
+        if($uri == Module\GetPageURI("rss", "rss"))
+        {
+            $template_path = "modules/rss/templates/page-empty.php";
+        }
+    }
+    
+    function GetContentTemplateFile(&$page, &$type, &$template_path)
+    {
+        $uri = URI\Get();
 
-		if($uri == Module\GetPageURI("rss", "rss"))
-		{
-			$template_path = "modules/rss/templates/content-empty.php";
-		}
-	}
+        if($uri == Module\GetPageURI("rss", "rss"))
+        {
+            $template_path = "modules/rss/templates/content-empty.php";
+        }
+    }
 }
 
 ?>

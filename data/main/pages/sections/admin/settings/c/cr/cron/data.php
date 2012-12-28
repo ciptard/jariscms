@@ -13,25 +13,25 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Cron Jobs") ?>
-	field;
+    field: title
+        <?php print t("Cron Jobs") ?>
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
 
-			if(isset($_REQUEST["btnYes"]))
-			{
-				JarisCMS\System\GoToPage("cron.php", array("return"=>"admin/settings"));
-			}
-			elseif(isset($_REQUEST["btnNo"]))
-			{
-				JarisCMS\System\GoToPage("admin/settings");
-			}
+            if(isset($_REQUEST["btnYes"]))
+            {
+                JarisCMS\System\GoToPage("cron.php", array("return"=>"admin/settings"));
+            }
+            elseif(isset($_REQUEST["btnNo"]))
+            {
+                JarisCMS\System\GoToPage("admin/settings");
+            }
 
-		?>
+        ?>
         
         <div>
         <?php 
@@ -40,7 +40,7 @@ row: 0
         <br /><br />
         /usr/bin/php-cgi /home/username/public_html/cron.php "HTTP_HOST=www.mysite.com" <br />
         /usr/bin/php-cgi /home/username/public_html/cron.php 'HTTP_HOST=www.mysite.com' <br />
-		/usr/bin/php /home/username/public_html/cron.php www.mysite.com
+        /usr/bin/php /home/username/public_html/cron.php www.mysite.com
         </div>
         
         <hr />
@@ -64,15 +64,15 @@ row: 0
         <hr />
         
         <h2><?php print t("Run cron jobs?") ?></h2>
-		
-		<form class="clear-image_cache" method="post" action="<?php JarisCMS\URI\PrintURL("admin/settings/cron") ?>">
-			<div><?php print t("The process of running the cron jobs could take a long time. Execute jobs now?") ?></div>
-			<input class="form-submit" type="submit" name="btnYes" value="<?php print t("Yes") ?>" />
-			<input class="form-submit" type="submit" name="btnNo" value="<?php print t("No") ?>" />
-		</form>
-	field;
+        
+        <form class="clear-image_cache" method="post" action="<?php JarisCMS\URI\PrintURL("admin/settings/cron") ?>">
+            <div><?php print t("The process of running the cron jobs could take a long time. Execute jobs now?") ?></div>
+            <input class="form-submit" type="submit" name="btnYes" value="<?php print t("Yes") ?>" />
+            <input class="form-submit" type="submit" name="btnNo" value="<?php print t("No") ?>" />
+        </form>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

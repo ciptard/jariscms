@@ -138,7 +138,7 @@ function rating_add_to_user_db($points, $data)
     
     //Create ratings data base
     if(!JarisCMS\SQLite\DBExists("ratings", $db_path))
-    {		
+    {        
         $db = JarisCMS\SQLite\Open("ratings", $db_path);
         
         JarisCMS\SQLite\Query("create table ratings (last_rate_timestamp text, day integer, month integer, year integer, uri text, type text, points integer)", $db);

@@ -13,20 +13,20 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Blog Browser") ?>
-	field;
+    field: title
+        <?php print t("Blog Browser") ?>
+    field;
 
-	field: content
-		<?php 
+    field: content
+        <?php 
             JarisCMS\System\AddStyle("modules/blog/styles/list.css");
             
             $page = 1;
-			
-			if(isset($_REQUEST["page"]))
-			{
-				$page = $_REQUEST["page"];
-			}
+            
+            if(isset($_REQUEST["page"]))
+            {
+                $page = $_REQUEST["page"];
+            }
             
             $category = "";
             
@@ -45,9 +45,9 @@ row: 0
             {
                 $blogs_count = JarisCMS\SQLite\CountColumn("blog", "blogs", "id");
             }
-			
-			print "<h2>" . t("Total Blogs:") . " " . $blogs_count . "</h2>";
-			
+            
+            print "<h2>" . t("Total Blogs:") . " " . $blogs_count . "</h2>";
+            
             $blogs = array();
             if($category != "")
             {
@@ -57,10 +57,10 @@ row: 0
             {
                 $blogs = JarisCMS\SQLite\GetDataList("blog", "blogs", $page-1, 20);
             }
-			
-			JarisCMS\System\PrintGenericNavigation($blogs_count, $page, "blog/browser", "blog", 20, array("c"=>$_REQUEST["c"]));
-			
-			foreach($blogs as $data)
+            
+            JarisCMS\System\PrintGenericNavigation($blogs_count, $page, "blog/browser", "blog", 20, array("c"=>$_REQUEST["c"]));
+            
+            foreach($blogs as $data)
             {
                 $user_data = JarisCMS\User\GetData($data["user"]);
                 
@@ -100,12 +100,12 @@ row: 0
             }
             
             print "<div style=\"clear: both\"></div>\n";
-			
-			JarisCMS\System\PrintGenericNavigation($blogs_count, $page, "blog/browser", "blog", 20, array("c"=>$_REQUEST["c"]));
+            
+            JarisCMS\System\PrintGenericNavigation($blogs_count, $page, "blog/browser", "blog", 20, array("c"=>$_REQUEST["c"]));
         ?>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

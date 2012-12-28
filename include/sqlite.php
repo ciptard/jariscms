@@ -18,14 +18,14 @@ namespace JarisCMS\SQLite;
  * @return resource|bool Database handle or false on failure. 
  */
 function Open($name, $directory=null)
-{	
+{    
     if($directory == null)
     {
         $directory = \JarisCMS\Setting\GetDataDirectory() . "sqlite/";
     }
     
     $db = null;
-	$error = "";
+    $error = "";
     $opened = false;
     $db_path = $directory . $name;
     
@@ -33,9 +33,9 @@ function Open($name, $directory=null)
     {
         $sqlite3_class_error = "";
         ob_start();
-        	$db = new \SQLite3($db_path);
-        	$result = $db->query("select * from sqlite_master");
-        	$sqlite3_class_error = ob_get_contents();
+            $db = new \SQLite3($db_path);
+            $result = $db->query("select * from sqlite_master");
+            $sqlite3_class_error = ob_get_contents();
         ob_end_clean();
 
         if($sqlite3_class_error == "")
@@ -66,14 +66,14 @@ function Open($name, $directory=null)
     
     if(!$opened)
     {
-	   $db = sqlite_open($db_path, 0600, $error);
+       $db = sqlite_open($db_path, 0600, $error);
     }
     
-	
-	if($error != "")
-	{
-		\JarisCMS\System\AddMessage($error, "error");
-	}
+    
+    if($error != "")
+    {
+        \JarisCMS\System\AddMessage($error, "error");
+    }
     else
     {
         //Inject text search functions to sqlite (UDF)
@@ -134,7 +134,7 @@ function Close(&$db)
  */
 function CloseResult(&$result)
 {
-	unset($result);
+    unset($result);
 }
 
 /**
@@ -147,7 +147,7 @@ function Turbo(&$db)
     Query("PRAGMA cache_size=10240", $db);
     Query("PRAGMA temp_store=MEMORY", $db); 
     Query("PRAGMA synchronous=OFF", $db);
-	Query("PRAGMA journal_mode=OFF", $db);
+    Query("PRAGMA journal_mode=OFF", $db);
 }
 
 /**
@@ -206,15 +206,15 @@ function InsertArrayToTable($table_name, $data, &$db)
  * @return bool true on success or false on fail.
  */
 function DeleteFromTable($database, $table, $clause, $directory=null)
-{		
-	if(DBExists($database, $directory))
-	{
+{        
+    if(DBExists($database, $directory))
+    {
             $db = Open($database, $directory);
             Query("delete from $table $clause", $db);
             Close($db);
         
             return true;
-	}
+    }
     
     return false;
 }
@@ -234,48 +234,48 @@ function DeleteFromTable($database, $table, $clause, $directory=null)
  */
 function GetDataList($database, $table, $page=0, $limit=30, $clause="", $fields="*", $directory=null)
 {
-	// To protect against sql injections be sure $page is a int
-	if(!is_numeric($page))
-	{
-		$page = 0;		
-	}
-	else 
-	{
-		$page = intval($page);
-	}
-	
-	$db = null;
-	$page *=  $limit;
-	$data = array();
-		
-	if(DBExists($database, $directory))
-	{
-		$db = Open($database, $directory);
-		$result = Query("select $fields from $table $clause limit $page, $limit", $db);
-	}
-	else
-	{
-		return $data;
-	}
-	
-	$fields = array();
-	if($fields = FetchArray($result))
-	{
-		$data[] = $fields;
-		
-		while($fields = FetchArray($result))
-		{
-			$data[] = $fields;
-		}
-		
-		Close($db);
-		return $data;
-	}
-	else
-	{
-		Close($db);
-		return $data;
-	}
+    // To protect against sql injections be sure $page is a int
+    if(!is_numeric($page))
+    {
+        $page = 0;        
+    }
+    else 
+    {
+        $page = intval($page);
+    }
+    
+    $db = null;
+    $page *=  $limit;
+    $data = array();
+        
+    if(DBExists($database, $directory))
+    {
+        $db = Open($database, $directory);
+        $result = Query("select $fields from $table $clause limit $page, $limit", $db);
+    }
+    else
+    {
+        return $data;
+    }
+    
+    $fields = array();
+    if($fields = FetchArray($result))
+    {
+        $data[] = $fields;
+        
+        while($fields = FetchArray($result))
+        {
+            $data[] = $fields;
+        }
+        
+        Close($db);
+        return $data;
+    }
+    else
+    {
+        Close($db);
+        return $data;
+    }
 }
  
 /**
@@ -288,7 +288,7 @@ function GetDataList($database, $table, $page=0, $limit=30, $clause="", $fields=
  */
 function Query($query, &$db)
 {
-	$error = "";
+    $error = "";
     
     if(gettype($db) == "object" && class_exists("SQLite3"))
     {
@@ -313,13 +313,13 @@ function Query($query, &$db)
     {
         $result = sqlite_unbuffered_query($query, $db, SQLITE_ASSOC ,$error);
     }
-	
-	if($error != "")
-	{
-		\JarisCMS\System\AddMessage($error, "error");
-	}
-	
-	return $result;
+    
+    if($error != "")
+    {
+        \JarisCMS\System\AddMessage($error, "error");
+    }
+    
+    return $result;
 }
 
 /**
@@ -436,60 +436,60 @@ function CountColumn($database, $table, $column, $where="", $directory=null)
  */
 function Backup($name)
 {
-	if(DBExists($name))
-	{
-		$backup_path = \JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $name . ".sql";
-		
-		$db = Open($name);
-		
-		$result = Query("select * from sqlite_master where type = 'table' order by name asc", $db);
-		
-		$tables = array();
-		
-		while($row = FetchArray($result))
-		{
-			$tables[] = $row;
-		}
-		
-		$backup_file = fopen($backup_path, "w");
-		
-		foreach($tables as $values)
-		{
-			fwrite($backup_file, "/*CREATE " . strtoupper($values["name"]) . " TABLE*/" . "\n");
-			fwrite($backup_file, $values["sql"] . ";\n\n");
-			
-			fwrite($backup_file, "/*INSERT ALL " . strtoupper($values["name"]) . " TABLE DATA*/" . "\n");
-			
-			$result = Query("select * from " . $values["name"], $db);
-			
-			while($row = FetchArray($result))
-			{
-				$column_name_string = "";
-				$column_name_array = array();
-				
-				$column_value_string = "";
-				$column_value_array = array();
-				
-				foreach($row as $colum_name=>$colum_value)
-				{
-					$column_name_array[] = $colum_name;
-					$column_value_array[] = "'" . str_replace(array("'", "\r", "\n"), array("''", "\\r", "\\n"), $colum_value) . "'";
-				}
-				
-				$column_name_string = "(" . implode(",", $column_name_array) . ")";
-				$column_value_string = "(" . implode(",", $column_value_array) . ")";
-				
-				$insert = "insert into " . $values["name"] . " " . $column_name_string . " values " . $column_value_string;
-				
-				fwrite($backup_file, $insert . ";\n");
-			}
-			
-			fwrite($backup_file, "\n");		
-		}
-		
-		fclose($backup_file);
-		Close($db);		
-	}
+    if(DBExists($name))
+    {
+        $backup_path = \JarisCMS\Setting\GetDataDirectory() . "sqlite/" . $name . ".sql";
+        
+        $db = Open($name);
+        
+        $result = Query("select * from sqlite_master where type = 'table' order by name asc", $db);
+        
+        $tables = array();
+        
+        while($row = FetchArray($result))
+        {
+            $tables[] = $row;
+        }
+        
+        $backup_file = fopen($backup_path, "w");
+        
+        foreach($tables as $values)
+        {
+            fwrite($backup_file, "/*CREATE " . strtoupper($values["name"]) . " TABLE*/" . "\n");
+            fwrite($backup_file, $values["sql"] . ";\n\n");
+            
+            fwrite($backup_file, "/*INSERT ALL " . strtoupper($values["name"]) . " TABLE DATA*/" . "\n");
+            
+            $result = Query("select * from " . $values["name"], $db);
+            
+            while($row = FetchArray($result))
+            {
+                $column_name_string = "";
+                $column_name_array = array();
+                
+                $column_value_string = "";
+                $column_value_array = array();
+                
+                foreach($row as $colum_name=>$colum_value)
+                {
+                    $column_name_array[] = $colum_name;
+                    $column_value_array[] = "'" . str_replace(array("'", "\r", "\n"), array("''", "\\r", "\\n"), $colum_value) . "'";
+                }
+                
+                $column_name_string = "(" . implode(",", $column_name_array) . ")";
+                $column_value_string = "(" . implode(",", $column_value_array) . ")";
+                
+                $insert = "insert into " . $values["name"] . " " . $column_name_string . " values " . $column_value_string;
+                
+                fwrite($backup_file, $insert . ";\n");
+            }
+            
+            fwrite($backup_file, "\n");        
+        }
+        
+        fclose($backup_file);
+        Close($db);        
+    }
 }
 
 /**
@@ -500,22 +500,22 @@ function Backup($name)
  */
 function Restore($name, &$fp)
 {
-	unlink(\JarisCMS\Setting\GetDataDirectory() . "sqlite/$name");
-	
-	$db = Open($name);
-	
-	while(!feof($fp))
-	{
-		$sql_statement = fgets($fp);
-		
-		//Ignore empty lines and comments
-		if($sql_statement != "" && !preg_match("/^(\/\*)(.*)(\*\/)$/", $sql_statement))
-		{
+    unlink(\JarisCMS\Setting\GetDataDirectory() . "sqlite/$name");
+    
+    $db = Open($name);
+    
+    while(!feof($fp))
+    {
+        $sql_statement = fgets($fp);
+        
+        //Ignore empty lines and comments
+        if($sql_statement != "" && !preg_match("/^(\/\*)(.*)(\*\/)$/", $sql_statement))
+        {
             $sql_statement = str_replace(array("\\r", "\\n"), array("\r", "\n"), $sql_statement);
             
-			Query($sql_statement, $db);
-		}
-	}
+            Query($sql_statement, $db);
+        }
+    }
 }
  
 ?>

@@ -20,22 +20,22 @@ namespace JarisCMS\FileSystem;
  */
 function GetDirectoriesFromPath($directory)
 {
-	$main_dir = $directory . "/";
-	$dir_handle = opendir($main_dir);
+    $main_dir = $directory . "/";
+    $dir_handle = opendir($main_dir);
 
-	while(($file = readdir($dir_handle)) !== false)
-	{
-		//just add directories inside the file
-		if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-		{
-			if(is_dir($main_dir . $file))
-			{
-				$dir_array[] = array("main"=>$main_dir, "dir"=>$file);
-			}
-		}
-	}
+    while(($file = readdir($dir_handle)) !== false)
+    {
+        //just add directories inside the file
+        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
+        {
+            if(is_dir($main_dir . $file))
+            {
+                $dir_array[] = array("main"=>$main_dir, "dir"=>$file);
+            }
+        }
+    }
 
-	return \JarisCMS\PHPDB\Sort($dir_array, "dir");
+    return \JarisCMS\PHPDB\Sort($dir_array, "dir");
 }
 
 /**
@@ -49,26 +49,26 @@ function GetDirectoriesFromPath($directory)
  */
 function GenerateNavigationList($directories, $main_dir)
 {
-	foreach($directories as $directory)
-	{
-		$full_path = $directory["main"] . $directory["dir"];
-		$relative_path = str_replace($main_dir . "/", "", $full_path);
+    foreach($directories as $directory)
+    {
+        $full_path = $directory["main"] . $directory["dir"];
+        $relative_path = str_replace($main_dir . "/", "", $full_path);
 
-		if(file_exists($full_path . "/data.php"))
-		{
-			$navigation[] = array("type"=>"page", "path"=>$relative_path, "current"=>$directory["dir"]);
-		}
-		elseif(strlen($directory["dir"]) < 3)
-		{
-			$navigation[] = array("type"=>"alphabet", "path"=>$relative_path, "current"=>$directory["dir"]);
-		}
-		else
-		{
-			$navigation[] = array("type"=>"section", "path"=>$relative_path, "current"=>$directory["dir"]);
-		}
-	}
+        if(file_exists($full_path . "/data.php"))
+        {
+            $navigation[] = array("type"=>"page", "path"=>$relative_path, "current"=>$directory["dir"]);
+        }
+        elseif(strlen($directory["dir"]) < 3)
+        {
+            $navigation[] = array("type"=>"alphabet", "path"=>$relative_path, "current"=>$directory["dir"]);
+        }
+        else
+        {
+            $navigation[] = array("type"=>"section", "path"=>$relative_path, "current"=>$directory["dir"]);
+        }
+    }
 
-	return $navigation;
+    return $navigation;
 }
 
 /**
@@ -82,29 +82,29 @@ function GenerateNavigationList($directories, $main_dir)
  */
 function GetURIFromPath($relative_path)
 {
-	$uri = "";
+    $uri = "";
 
-	$fragments = explode("/", $relative_path);
+    $fragments = explode("/", $relative_path);
 
-	$fragments_count = count($fragments);
+    $fragments_count = count($fragments);
 
-	//Remove 2 letters folder.
-	$fragments[$fragments_count - 2] = "";
+    //Remove 2 letters folder.
+    $fragments[$fragments_count - 2] = "";
 
-	//Remove 1 letter folder.
-	$fragments[$fragments_count - 3] = "";
+    //Remove 1 letter folder.
+    $fragments[$fragments_count - 3] = "";
 
-	for($i=1; $i<$fragments_count; $i++)
-	{
-		if($fragments[$i])
-		{
-			$uri .= $fragments[$i] . "/";
-		}
-	}
+    for($i=1; $i<$fragments_count; $i++)
+    {
+        if($fragments[$i])
+        {
+            $uri .= $fragments[$i] . "/";
+        }
+    }
 
-	//remove last trailing slash
-	$uri = rtrim($uri , "/");
+    //remove last trailing slash
+    $uri = rtrim($uri , "/");
 
-	return $uri;
+    return $uri;
 }
 ?>

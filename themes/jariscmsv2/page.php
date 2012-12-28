@@ -26,64 +26,64 @@
 
 <!--Header-->
 <div class="top-menu">
-	<?php print $secondary_links ?>
+    <?php print $secondary_links ?>
 </div>
 
 <table id="header">
-	<tr>
-		<td class="logo"></td>
-		<td class="imagen"></td>
-	</tr>
+    <tr>
+        <td class="logo"></td>
+        <td class="imagen"></td>
+    </tr>
 </table>
 
 <div id="top-bar" style="text-align: left;">
-	<?php print $primary_links ?>
+    <?php print $primary_links ?>
 </div>
 
 <table id="content">
-	<tr>
-		<?php if($left){ ?>
-		<td class="left">
-			<?php echo $left; ?>
-		</td>
-		<?php }?>
+    <tr>
+        <?php if($left){ ?>
+        <td class="left">
+            <?php echo $left; ?>
+        </td>
+        <?php }?>
 
-		<td class="center">
-			<h1><?php print $content_title; ?></h1>
-			
-			<?php if($breadcrumb){?>
-			<div id="breadcrumb"><?php print $breadcrumb; ?></div>
-			<?php } ?>
+        <td class="center">
+            <h1><?php print $content_title; ?></h1>
+            
+            <?php if($breadcrumb){?>
+            <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+            <?php } ?>
 
-			<?php if($messages){?>
-			<div id="messages"><?php print $messages; ?></div>
-			<?php } ?>
+            <?php if($messages){?>
+            <div id="messages"><?php print $messages; ?></div>
+            <?php } ?>
 
-			<?php if($tabs){?>
-			<div id="tabs-menu"><?php print $tabs; ?></div>
-			<?php } ?>
+            <?php if($tabs){?>
+            <div id="tabs-menu"><?php print $tabs; ?></div>
+            <?php } ?>
 
-			<?php print $content; ?>
-		</td>
+            <?php print $content; ?>
+        </td>
 
-		<?php if($right){ ?>
-		<td class="right">
-			<?php echo $right; ?>
-		</td>
-		<?php }?>
-	</tr>
+        <?php if($right){ ?>
+        <td class="right">
+            <?php echo $right; ?>
+        </td>
+        <?php }?>
+    </tr>
 </table>
 
 <?php if($footer){ ?>
 <table id="footer">
-	<tr>
-	<?php echo $footer; ?>
-	</tr>
+    <tr>
+    <?php echo $footer; ?>
+    </tr>
 </table>
 <?php } ?>
 
 <div id="footer_message">
-	<?php echo $footer_message; ?>
+    <?php echo $footer_message; ?>
 </div>
 
 </div>

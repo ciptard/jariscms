@@ -13,49 +13,49 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		admin/blog/edit
-	field;
+    field: uri
+        admin/blog/edit
+    field;
 row;
 
 row: 1
-	field: uri
-		admin/settings/blog
-	field;
+    field: uri
+        admin/settings/blog
+    field;
 row;
 
 row: 2
-	field: uri
-		blog/browser
-	field;
+    field: uri
+        blog/browser
+    field;
 row;
 
 row: 3
-	field: uri
-		blog/subscribe
-	field;
+    field: uri
+        blog/subscribe
+    field;
 row;
 
 row: 4
-	field: uri
-		blog/subscriptions
-	field;
+    field: uri
+        blog/subscriptions
+    field;
 row;
 
 row: 5
-	field: uri
-		blog/unsubscribe
-	field;
+    field: uri
+        blog/unsubscribe
+    field;
 row;
 
 row: 6
-	field: uri
-		blog/user
-	field;
+    field: uri
+        blog/user
+    field;
 row;
 
 row: 7
-	field: uri
-		user/blog
-	field;
+    field: uri
+        user/blog
+    field;
 row;

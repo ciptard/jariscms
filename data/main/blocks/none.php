@@ -15,81 +15,81 @@ exit;
 
 row: 0
 
-	field: description
-		primary menu
-	field;
+    field: description
+        primary menu
+    field;
 
-	field: title
-		Primary menu
-	field;
+    field: title
+        Primary menu
+    field;
 
-	field: content
-		<?php
-			print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("primary"),"order"), "primary");
+    field: content
+        <?php
+            print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("primary"),"order"), "primary");
         ?>
-	field;
+    field;
 
-	field: order
-		0
-	field;
-	
-	field: display_rule
-		all_except_listed
-	field;
+    field: order
+        0
+    field;
+    
+    field: display_rule
+        all_except_listed
+    field;
 
-	field: pages
-	field;
+    field: pages
+    field;
 
-	field: return
-	field;
-	
-	field: is_system
-		1
-	field;
-	
-	field: menu_name
-		primary
-	field;
+    field: return
+    field;
+    
+    field: is_system
+        1
+    field;
+    
+    field: menu_name
+        primary
+    field;
 
 row;
 
 
 row: 1
-	
-	field: description
-		secondary menu
-	field;
-	
-	field: title
-		Secondary menu
-	field;
+    
+    field: description
+        secondary menu
+    field;
+    
+    field: title
+        Secondary menu
+    field;
 
-	field: content
-		<?php
-			print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("secondary"),"order"), "secondary");
-       	?>
-	field;
+    field: content
+        <?php
+            print JarisCMS\Theme\MakeLinks(JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems("secondary"),"order"), "secondary");
+           ?>
+    field;
 
-	field: display_rule
-		all_except_listed
-	field;
-	
-	field: pages
-	field;
+    field: display_rule
+        all_except_listed
+    field;
+    
+    field: pages
+    field;
 
-	field: return
-	field;
+    field: return
+    field;
 
-	field: order
-		1
-	field;
-	
-	field: is_system
-		1
-	field;
-	
-	field: menu_name
-		secondary
-	field;
+    field: order
+        1
+    field;
+    
+    field: is_system
+        1
+    field;
+    
+    field: menu_name
+        secondary
+    field;
 
 row;

@@ -95,73 +95,73 @@ function CheckNumber($input, $number_type="float")
   * @return bool true if a required field is empty or false if ok.
   */
  function CheckFields($form_name)
- { 	
- 	$required = false;
+ {     
+     $required = false;
     if(is_array($_SESSION["required_fields"][$form_name]))
     {
-     	foreach($_SESSION["required_fields"][$form_name] as $fields)
-     	{
-     		if($fields["type"] == "text" || $fields["type"] == "textarea" || $fields["type"] == "password" ||
-			   $fields["type"] == "uri" || $fields["type"] == "uriarea")
-     		{
-     			if(!isset($_REQUEST[$fields["name"]]) || $_REQUEST[$fields["name"]] == "")
-     			{
-     				$required = true;
-     			}
-     		}
-     		elseif($fields["type"] == "checkbox" || $fields["type"] == "radio" || $fields["type"] == "select")
-     		{
-     			if(!isset($_REQUEST[$fields["name"]]) || $_REQUEST[$fields["name"]] == "")
-     			{
-     				$required = true;
-     			}
-     		}
-     		elseif($fields["type"] == "file")
-     		{
-     			if((!isset($_FILES[$fields["name"]]) || $_FILES[$fields["name"]]["tmp_name"] == "") &&
-				   (!isset($_REQUEST[$fields["name"]]["names"]))
-				)
-     			{
-     				$required = true;
-     			}
-     		}
-     	}
+         foreach($_SESSION["required_fields"][$form_name] as $fields)
+         {
+             if($fields["type"] == "text" || $fields["type"] == "textarea" || $fields["type"] == "password" ||
+               $fields["type"] == "uri" || $fields["type"] == "uriarea")
+             {
+                 if(!isset($_REQUEST[$fields["name"]]) || $_REQUEST[$fields["name"]] == "")
+                 {
+                     $required = true;
+                 }
+             }
+             elseif($fields["type"] == "checkbox" || $fields["type"] == "radio" || $fields["type"] == "select")
+             {
+                 if(!isset($_REQUEST[$fields["name"]]) || $_REQUEST[$fields["name"]] == "")
+                 {
+                     $required = true;
+                 }
+             }
+             elseif($fields["type"] == "file")
+             {
+                 if((!isset($_FILES[$fields["name"]]) || $_FILES[$fields["name"]]["tmp_name"] == "") &&
+                   (!isset($_REQUEST[$fields["name"]]["names"]))
+                )
+                 {
+                     $required = true;
+                 }
+             }
+         }
     }
-	
-	DisableUploading();
-	
-	if(is_array($_SESSION["file_upload_fields"][$form_name]))
-	{
-		foreach($_SESSION["file_upload_fields"][$form_name] as $field_name=>$multiple)
-		{
-			ProcessUploads($field_name, $multiple);
-		}
-	}
- 	
- 	if($required)
- 	{
- 		\JarisCMS\System\AddMessage(t("You need to provide all the required fields, the ones marked with asterik."), "error");
- 	}
- 	
- 	unset($_SESSION["required_fields"][$form_name]);
-	
-	unset($_SESSION["file_upload_fields"][$form_name]);
+    
+    DisableUploading();
+    
+    if(is_array($_SESSION["file_upload_fields"][$form_name]))
+    {
+        foreach($_SESSION["file_upload_fields"][$form_name] as $field_name=>$multiple)
+        {
+            ProcessUploads($field_name, $multiple);
+        }
+    }
+     
+     if($required)
+     {
+         \JarisCMS\System\AddMessage(t("You need to provide all the required fields, the ones marked with asterik."), "error");
+     }
+     
+     unset($_SESSION["required_fields"][$form_name]);
+    
+    unset($_SESSION["file_upload_fields"][$form_name]);
     
     $not_validated = false;    
     if(is_array($_SESSION["validation_fields"][$form_name]))
     {
-     	foreach($_SESSION["validation_fields"][$form_name] as $fields)
-     	{
+         foreach($_SESSION["validation_fields"][$form_name] as $fields)
+         {
             if($_REQUEST[$fields["name"]] != $fields["value"])
             {
-         		if($fields["type"] == "validate_sum")
-         		{
-         			\JarisCMS\System\AddMessage(t("The sum you entered is incorrect."), "error");
-         		}
+                 if($fields["type"] == "validate_sum")
+                 {
+                     \JarisCMS\System\AddMessage(t("The sum you entered is incorrect."), "error");
+                 }
                 
                 $not_validated = true;
             }
-     	}
+         }
     }
     
     unset($_SESSION["validation_fields"][$form_name]);
@@ -170,8 +170,8 @@ function CheckNumber($input, $number_type="float")
     {
         return true;
     }
- 	
- 	return $required;
+     
+     return $required;
  }
  
 /**
@@ -179,7 +179,7 @@ function CheckNumber($input, $number_type="float")
  */
 function EnableUploading()
 {
-	$_SESSION["can_upload_file"] = true;
+    $_SESSION["can_upload_file"] = true;
 }
 
 /**
@@ -187,7 +187,7 @@ function EnableUploading()
  */
 function DisableUploading()
 {
-	unset($_SESSION["can_upload_file"]);
+    unset($_SESSION["can_upload_file"]);
 }
 
 /**
@@ -195,10 +195,10 @@ function DisableUploading()
  */
 function CanUpload()
 {
-	if(isset($_SESSION["can_upload_file"]))
-		return true;
-	
-	return false;
+    if(isset($_SESSION["can_upload_file"]))
+        return true;
+    
+    return false;
 }
 
 /**
@@ -208,38 +208,38 @@ function CanUpload()
  */
 function ProcessUploads($field_name, $multiple_uploads=false)
 {
-	if($multiple_uploads)
-	{
-		foreach($_REQUEST[$field_name]["names"] as $index=>$value)
-		{
-			$_FILES[$field_name]["name"][] = $_REQUEST[$field_name]["names"][$index];
-			$_FILES[$field_name]["tmp_name"][] = GetUploadPath($_REQUEST[$field_name]["names"][$index]);
-			$_FILES[$field_name]["type"][] = $_REQUEST[$field_name]["types"][$index];
-		}
-	}
-	else
-	{
-		$first_file = true;
-		
-		foreach($_REQUEST[$field_name]["names"] as $index=>$value)
-		{
-			//Save first file uploaded only.
-			if($first_file)
-			{
-				$_FILES[$field_name]["name"] = $_REQUEST[$field_name]["names"][$index];
-				$_FILES[$field_name]["tmp_name"] = GetUploadPath($_REQUEST[$field_name]["names"][$index]);
-				$_FILES[$field_name]["type"] = $_REQUEST[$field_name]["types"][$index];
-				
-				$first_file = false;
-				
-				continue;
-			}
-			
-			//In case some one uploaded more than 1 file for a field not marked as
-			//multiple the rest of the files are deleted.
-			unlink(GetUploadPath($_REQUEST[$field_name]["names"][$index]));
-		}
-	}
+    if($multiple_uploads)
+    {
+        foreach($_REQUEST[$field_name]["names"] as $index=>$value)
+        {
+            $_FILES[$field_name]["name"][] = $_REQUEST[$field_name]["names"][$index];
+            $_FILES[$field_name]["tmp_name"][] = GetUploadPath($_REQUEST[$field_name]["names"][$index]);
+            $_FILES[$field_name]["type"][] = $_REQUEST[$field_name]["types"][$index];
+        }
+    }
+    else
+    {
+        $first_file = true;
+        
+        foreach($_REQUEST[$field_name]["names"] as $index=>$value)
+        {
+            //Save first file uploaded only.
+            if($first_file)
+            {
+                $_FILES[$field_name]["name"] = $_REQUEST[$field_name]["names"][$index];
+                $_FILES[$field_name]["tmp_name"] = GetUploadPath($_REQUEST[$field_name]["names"][$index]);
+                $_FILES[$field_name]["type"] = $_REQUEST[$field_name]["types"][$index];
+                
+                $first_file = false;
+                
+                continue;
+            }
+            
+            //In case some one uploaded more than 1 file for a field not marked as
+            //multiple the rest of the files are deleted.
+            unlink(GetUploadPath($_REQUEST[$field_name]["names"][$index]));
+        }
+    }
 }
 
 /**
@@ -249,11 +249,11 @@ function ProcessUploads($field_name, $multiple_uploads=false)
  */
 function GetUploadPath($file_name)
 {
-	$file_path = $_SESSION["uploaded_files"][$file_name];
-	
-	unset($_SESSION["uploaded_files"][$file_name]);
-	
-	return $file_path;
+    $file_path = $_SESSION["uploaded_files"][$file_name];
+    
+    unset($_SESSION["uploaded_files"][$file_name]);
+    
+    return $file_path;
 }
 
 /**
@@ -262,22 +262,22 @@ function GetUploadPath($file_name)
  */
 function DeleteAllUploads()
 {
-	$upload_dir = str_replace(
-		"data.php", 
-		"uploads/", 
-		\JarisCMS\User\GeneratePath(
-			\JarisCMS\Security\GetCurrentUser(), 
-			\JarisCMS\Security\GetCurrentUserGroup()
-		)
-	);
-	
-	if(is_dir($upload_dir))
-	{
-		foreach(\JarisCMS\FileSystem\GetFiles($upload_dir) as $file)
-		{
-			unlink($file);
-		}
-	}
+    $upload_dir = str_replace(
+        "data.php", 
+        "uploads/", 
+        \JarisCMS\User\GeneratePath(
+            \JarisCMS\Security\GetCurrentUser(), 
+            \JarisCMS\Security\GetCurrentUserGroup()
+        )
+    );
+    
+    if(is_dir($upload_dir))
+    {
+        foreach(\JarisCMS\FileSystem\GetFiles($upload_dir) as $file)
+        {
+            unlink($file);
+        }
+    }
 }
 
 /**
@@ -288,127 +288,127 @@ function DeleteAllUploads()
  * @param array $fieldsets The needed data to create the form in the format:
  *        $fieldset[] = array(
  *        "name"="value", //Optional value if used a <fieldset> with <legend> is generated
- *		  "collapsible"=>true or false //Optional value to specify if fieldset should have collapsible class
+ *          "collapsible"=>true or false //Optional value to specify if fieldset should have collapsible class
  *        "fields"[] = array(
- *	      	"type"=>"text, hidden, file, password, submit, reset, select, textarea, radio, checkbox, other",
- *         	"id"=>"value",
- *        	"name"=>"value",
- * 			"class"=>"value" //Optional appended to current class
- *        	"label"=>"value", //Optional
- *        	"value"=>"value" or for selects, checkbox and radio array("label", "value"), //Optional
- *        	"size"=>"value", //Optional
- *        	"description"=>"value" //Optional
- *			"readonly"=>true or false //Optional for password or text
- *			"multiple"=>true or false value used on a select
- *			"code"=>"example (width="100%")" //Optional parameters passed to field tags
+ *              "type"=>"text, hidden, file, password, submit, reset, select, textarea, radio, checkbox, other",
+ *             "id"=>"value",
+ *            "name"=>"value",
+ *             "class"=>"value" //Optional appended to current class
+ *            "label"=>"value", //Optional
+ *            "value"=>"value" or for selects, checkbox and radio array("label", "value"), //Optional
+ *            "size"=>"value", //Optional
+ *            "description"=>"value" //Optional
+ *            "readonly"=>true or false //Optional for password or text
+ *            "multiple"=>true or false value used on a select
+ *            "code"=>"example (width="100%")" //Optional parameters passed to field tags
  *        )
  *        )
  *
  * @return string The html code for a form.
  */
 function Generate($parameters, $fieldsets)
-{		
-	//Call Generate hook before running function
-	\JarisCMS\Module\Hook("Form", "Generate", $parameters, $fieldsets);
-	
-	//Check if a field of file type exists
-	foreach($fieldsets as $fieldset)
-	{
-		foreach($fieldset["fields"] as $field)
-		{
-			if($field["type"] == "file")
-			{
-				$parameters["enctype"] = "multipart/form-data";
-				break;
-			}	
-		}
-	}
-	
-	// Store scripts code that give dynamic functionality to controls to 
-	// place them on the bottom of form since they conflict with collapse
-	// functionality.
-	$scripts = "";
+{        
+    //Call Generate hook before running function
+    \JarisCMS\Module\Hook("Form", "Generate", $parameters, $fieldsets);
+    
+    //Check if a field of file type exists
+    foreach($fieldsets as $fieldset)
+    {
+        foreach($fieldset["fields"] as $field)
+        {
+            if($field["type"] == "file")
+            {
+                $parameters["enctype"] = "multipart/form-data";
+                break;
+            }    
+        }
+    }
+    
+    // Store scripts code that give dynamic functionality to controls to 
+    // place them on the bottom of form since they conflict with collapse
+    // functionality.
+    $scripts = "";
 
-	$form = "<form ";
-	foreach($parameters as $name=>$value)
-	{
-		$form .= "$name=\"$value\" ";
-	}
-	$form .= ">\n";
+    $form = "<form ";
+    foreach($parameters as $name=>$value)
+    {
+        $form .= "$name=\"$value\" ";
+    }
+    $form .= ">\n";
 
-	foreach($fieldsets as $fieldset)
-	{
-		if($fieldset["name"])
-		{
-			$collapsible = "";
-			$legend = "<legend>{$fieldset['name']}</legend>\n";
-			if($fieldset["collapsible"] && $fieldset["collapsed"])
-			{
-				$collapsible = "class=\"collapsible collapsed\"";
-				$legend = "<legend><a class=\"expand\" href=\"javascript:void(0)\">{$fieldset['name']}</a></legend>";
-			}
-			else
-			{
-				$collapsible = "class=\"collapsible\"";
-				$legend = "<legend><a class=\"collapse\" href=\"javascript:void(0)\">{$fieldset['name']}</a></legend>";
-			}
+    foreach($fieldsets as $fieldset)
+    {
+        if($fieldset["name"])
+        {
+            $collapsible = "";
+            $legend = "<legend>{$fieldset['name']}</legend>\n";
+            if($fieldset["collapsible"] && $fieldset["collapsed"])
+            {
+                $collapsible = "class=\"collapsible collapsed\"";
+                $legend = "<legend><a class=\"expand\" href=\"javascript:void(0)\">{$fieldset['name']}</a></legend>";
+            }
+            else
+            {
+                $collapsible = "class=\"collapsible\"";
+                $legend = "<legend><a class=\"collapse\" href=\"javascript:void(0)\">{$fieldset['name']}</a></legend>";
+            }
 
-			$form .= "<fieldset $collapsible>\n";
-			$form .= $legend;
-		}
+            $form .= "<fieldset $collapsible>\n";
+            $form .= $legend;
+        }
 
-		foreach($fieldset["fields"] as $field)
-		{
-			$field["id"] = $parameters["name"] . "-" . $field["id"];
-			
-			//Convert special characters to html
-			if(is_string($field["value"]))
-			{
-				$field["value"] = htmlspecialchars($field["value"]);
-			}
-			
-			//print label
-			if($field["label"])
-			{
-				// Dont display label for single checkboxe since this
-				// should be added to a fields set
-				if($field["type"] != "checkbox" || ($field["type"] == "checkbox" && is_array($field["value"])))
-				{
-					$required = "";
-					if($field["required"])
-					{
-						//Register field as required on session variable required_fields
-						$_SESSION["required_fields"][$parameters["name"]][] = array("type"=>$field["type"], "name"=>str_replace("[]", "", $field["name"]));
-						$required = "<span class=\"required\"> *</span>";
-					}
+        foreach($fieldset["fields"] as $field)
+        {
+            $field["id"] = $parameters["name"] . "-" . $field["id"];
+            
+            //Convert special characters to html
+            if(is_string($field["value"]))
+            {
+                $field["value"] = htmlspecialchars($field["value"]);
+            }
+            
+            //print label
+            if($field["label"])
+            {
+                // Dont display label for single checkboxe since this
+                // should be added to a fields set
+                if($field["type"] != "checkbox" || ($field["type"] == "checkbox" && is_array($field["value"])))
+                {
+                    $required = "";
+                    if($field["required"])
+                    {
+                        //Register field as required on session variable required_fields
+                        $_SESSION["required_fields"][$parameters["name"]][] = array("type"=>$field["type"], "name"=>str_replace("[]", "", $field["name"]));
+                        $required = "<span class=\"required\"> *</span>";
+                    }
 
-					$form .= "<div class=\"caption\">";
-					$form .= "<label for=\"{$field['id']}\"><span>{$field['label']}</span>$required</label>";
-					$form .= "</div>\n";
-				}
-			}
+                    $form .= "<div class=\"caption\">";
+                    $form .= "<label for=\"{$field['id']}\"><span>{$field['label']}</span>$required</label>";
+                    $form .= "</div>\n";
+                }
+            }
 
-			if($field['class'])
-			{
-				$field['class'] = "-" . $field['class'];
-			}
+            if($field['class'])
+            {
+                $field['class'] = "-" . $field['class'];
+            }
 
-			//print field
-			if($field["type"] == "hidden")
-			{
-				$form .= "<input type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" />";
-			}
-			elseif($field["type"] == "text" || $field["type"] == "password")
-			{
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+            //print field
+            if($field["type"] == "hidden")
+            {
+                $form .= "<input type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" />";
+            }
+            elseif($field["type"] == "text" || $field["type"] == "password")
+            {
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
 
-				$form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">";
+                $form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
                 
                 if($field["limit"] && ($field["type"] == "text" || $field["type"] == "password"))
                 {
@@ -416,155 +416,155 @@ function Generate($parameters, $fieldsets)
                     $field["description"] .= " <span class=\"form-chars-left\" id=\"{$field["id"]}-limit\">{$field['limit']}</span>&nbsp;" . "<span class=\"form-chars-left-label\">" . t("characters left") . "</span>";
                     $scripts .= "<script>$(\"#{$field["id"]}\").limit('{$field['limit']}', '#{$field["id"]}-limit')</script>"; 
                 }
-			}
-			elseif($field["type"] == "file")
-			{
-				EnableUploading();
-				
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
-				
-				$multiple = null;
-				$single_upload = "true";
-				if($field["multiple"])
-				{
-					$multiple = "multiple";
-					$single_upload = "false";
-					$_SESSION["file_upload_fields"][$parameters["name"]][$field['name']] = true;
-				}
-				else
-				{
-					$_SESSION["file_upload_fields"][$parameters["name"]][$field['name']] = false;
-				}
-				
-				$description_field = "false";
-				if($field["description_field"])
-				{
-					$description_field = "true";
-				}
-				
-				$url = "data-url=\"".\JarisCMS\URI\PrintURL("upload.php")."\"";
+            }
+            elseif($field["type"] == "file")
+            {
+                EnableUploading();
+                
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
+                
+                $multiple = null;
+                $single_upload = "true";
+                if($field["multiple"])
+                {
+                    $multiple = "multiple";
+                    $single_upload = "false";
+                    $_SESSION["file_upload_fields"][$parameters["name"]][$field['name']] = true;
+                }
+                else
+                {
+                    $_SESSION["file_upload_fields"][$parameters["name"]][$field['name']] = false;
+                }
+                
+                $description_field = "false";
+                if($field["description_field"])
+                {
+                    $description_field = "true";
+                }
+                
+                $url = "data-url=\"".\JarisCMS\URI\PrintURL("upload.php")."\"";
 
-				$form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} $readonly $multiple $url id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">";
+                $form .= "<input {$field['code']} $readonly $multiple $url id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
                 
                 \JarisCMS\System\AddScript("scripts/jquery-ui/jquery.ui.js");
-				\JarisCMS\System\AddScript("scripts/fileupload/jquery.iframe-transport.js");
-				\JarisCMS\System\AddScript("scripts/fileupload/jquery.fileupload.js");
-				\JarisCMS\System\AddScript("scripts/fileupload/jquery.fileupload.wrapper.js");
-				
-				$scripts .= '
-				<script>
-				$(document).ready(function(){
-					$("#'.$field['id'].'").fileuploadwrapper({
-						showDescriptionField: '.$description_field.',
-						acceptFileTypes: "'.$field['valid_types'].'",
-						singleUpload: '.$single_upload.',
-						incorrectFileTypeMessage: "'.t("Incorrect file type selected. The type should be:").'"
-					});
-				});
-				</script>
-				';
-			}
+                \JarisCMS\System\AddScript("scripts/fileupload/jquery.iframe-transport.js");
+                \JarisCMS\System\AddScript("scripts/fileupload/jquery.fileupload.js");
+                \JarisCMS\System\AddScript("scripts/fileupload/jquery.fileupload.wrapper.js");
+                
+                $scripts .= '
+                <script>
+                $(document).ready(function(){
+                    $("#'.$field['id'].'").fileuploadwrapper({
+                        showDescriptionField: '.$description_field.',
+                        acceptFileTypes: "'.$field['valid_types'].'",
+                        singleUpload: '.$single_upload.',
+                        incorrectFileTypeMessage: "'.t("Incorrect file type selected. The type should be:").'"
+                    });
+                });
+                </script>
+                ';
+            }
             elseif($field["type"] == "color")
-			{
+            {
                 \JarisCMS\System\AddScript("scripts/jscolor/jscolor.js");
                 
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
 
-				$form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">";
+                $form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
                 
                 $scripts .= "<script type=\"text/javascript\">";
                 $scripts .= "var color_picker = new jscolor.color(document.getElementById('{$field['id']}'), {});";
                 $scripts .= "color_picker.fromString('{$field['value']}');";
                 $scripts .= "</script>";
-			}
-			elseif($field["type"] == "uri")
-			{
+            }
+            elseif($field["type"] == "uri")
+            {
                 \JarisCMS\System\AddScript("scripts/autocomplete/jquery.autocomplete.js");
-				\JarisCMS\System\AddStyle("scripts/autocomplete/jquery.autocomplete.css");
+                \JarisCMS\System\AddStyle("scripts/autocomplete/jquery.autocomplete.css");
                 
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
 
-				$form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-text{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">";
+                $form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-text{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
                 
                 $scripts .= "<script>";
                 $scripts .= "$(document).ready(function(){";
-				$scripts .= "$('#{$field['id']}').autocomplete({";
-					$scripts .= "serviceUrl:'".\JarisCMS\URI\PrintURL("uris.php")."',";
-					$scripts .= "minChars:1,";
-					$scripts .= "maxHeight:400,";
-					$scripts .= "zIndex: 9999";
-					$scripts .= "});";
-				$scripts .= "});";
+                $scripts .= "$('#{$field['id']}').autocomplete({";
+                    $scripts .= "serviceUrl:'".\JarisCMS\URI\PrintURL("uris.php")."',";
+                    $scripts .= "minChars:1,";
+                    $scripts .= "maxHeight:400,";
+                    $scripts .= "zIndex: 9999";
+                    $scripts .= "});";
+                $scripts .= "});";
                 $scripts .= "</script>";
-			}
-			elseif($field["type"] == "uriarea")
-			{
+            }
+            elseif($field["type"] == "uriarea")
+            {
                 \JarisCMS\System\AddScript("scripts/autocomplete/jquery.autocomplete.js");
-				\JarisCMS\System\AddStyle("scripts/autocomplete/jquery.autocomplete.css");
+                \JarisCMS\System\AddStyle("scripts/autocomplete/jquery.autocomplete.css");
                 
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
 
-				$form .= "<div class=\"field\">\n";
-				$form .= "<textarea $readonly {$field['code']} id=\"{$field['id']}\" class=\"form-textarea{$field['class']}\" name=\"{$field['name']}\" >\n";
-				$form .= $field["value"];
-				$form .= "</textarea>\n";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">\n";
+                $form .= "<textarea $readonly {$field['code']} id=\"{$field['id']}\" class=\"form-textarea{$field['class']}\" name=\"{$field['name']}\" >\n";
+                $form .= $field["value"];
+                $form .= "</textarea>\n";
+                $form .= "</div>\n";
                 
                 $scripts .= "<script>";
                 $scripts .= "$(document).ready(function(){";
-				$scripts .= "$('#{$field['id']}').autocomplete({";
-					$scripts .= "serviceUrl:'".\JarisCMS\URI\PrintURL("uris.php")."',";
-					$scripts .= "minChars:1,";
-					$scripts .= "delimiter: /(,|;)\s*/,";
-					$scripts .= "maxHeight:400,";
-					$scripts .= "zIndex: 9999";
-					$scripts .= "});";
-				$scripts .= "});";
+                $scripts .= "$('#{$field['id']}').autocomplete({";
+                    $scripts .= "serviceUrl:'".\JarisCMS\URI\PrintURL("uris.php")."',";
+                    $scripts .= "minChars:1,";
+                    $scripts .= "delimiter: /(,|;)\s*/,";
+                    $scripts .= "maxHeight:400,";
+                    $scripts .= "zIndex: 9999";
+                    $scripts .= "});";
+                $scripts .= "});";
                 $scripts .= "</script>";
-			}
+            }
             elseif($field["type"] == "date")
-			{
+            {
                 \JarisCMS\System\AddScript("scripts/jdpicker/jquery.jdpicker.js");
                 \JarisCMS\System\AddStyle("scripts/jdpicker/jdpicker.css");
                 
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
 
-				$form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
-				
-				$date_format = "FF dd YYYY";
-				
-				if($field["format"])
-				{
-					$date_format = $field["format"];
-				}
+                $form .= "<div class=\"field\">";
+                $form .= "<input {$field['code']} $readonly id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"text\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
+                
+                $date_format = "FF dd YYYY";
+                
+                if($field["format"])
+                {
+                    $date_format = $field["format"];
+                }
                 
                 $scripts .= "<script type=\"text/javascript\">\n";
                 $scripts .= "\$(document).ready(function(){\n";
@@ -577,159 +577,159 @@ function Generate($parameters, $fieldsets)
                 $scripts .= "});";
                 $scripts .= "});\n";
                 $scripts .= "</script>\n";
-			}
-			elseif($field["type"] == "radio")
-			{
-				$form .= "<div class=\"field\">";
-				foreach($field["value"] as $label=>$value)
-				{
-					if($field["horizontal_list"])
-					{
-						$form .= "<div>";
-					}
-					
-					$checked = "";
-					if($field["checked"] == $value)
-					{
-						$checked = "checked=\"checked\"";
-					}
-					$value = htmlspecialchars($value);
-					$form .= "<input $checked id=\"$value\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"$value\" /> ";
-					$form .= "<label for=\"$value\"><span>$label</span></label>\n";
-					
-					if($field["horizontal_list"])
-					{
-						$form .= "</div>\n";
-					}
-				}
-				$form .= "</div>\n";
-			}
-			elseif($field["type"] == "checkbox")
-			{
-				$form .= "<div class=\"field\">";
-				if(is_array($field["value"]))
-				{
-					foreach($field["value"] as $label=>$value)
-					{
-						if($field["horizontal_list"])
-						{
-							$form .= "<div>";
-						}
+            }
+            elseif($field["type"] == "radio")
+            {
+                $form .= "<div class=\"field\">";
+                foreach($field["value"] as $label=>$value)
+                {
+                    if($field["horizontal_list"])
+                    {
+                        $form .= "<div>";
+                    }
+                    
+                    $checked = "";
+                    if($field["checked"] == $value)
+                    {
+                        $checked = "checked=\"checked\"";
+                    }
+                    $value = htmlspecialchars($value);
+                    $form .= "<input $checked id=\"$value\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"$value\" /> ";
+                    $form .= "<label for=\"$value\"><span>$label</span></label>\n";
+                    
+                    if($field["horizontal_list"])
+                    {
+                        $form .= "</div>\n";
+                    }
+                }
+                $form .= "</div>\n";
+            }
+            elseif($field["type"] == "checkbox")
+            {
+                $form .= "<div class=\"field\">";
+                if(is_array($field["value"]))
+                {
+                    foreach($field["value"] as $label=>$value)
+                    {
+                        if($field["horizontal_list"])
+                        {
+                            $form .= "<div>";
+                        }
 
-						$checked = "";
-						if(is_array($field["checked"]))
-						{
-							if(in_array($value, $field["checked"]))
-							{
-								$checked = "checked=\"checked\"";
-							}
-						}
-						
-						$value = htmlspecialchars($value);
-						$form .= "<input $checked id=\"$value\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}[]\" value=\"$value\" /> ";
-						$form .= "<label for=\"$value\"><span>$label</span></label>\n";
+                        $checked = "";
+                        if(is_array($field["checked"]))
+                        {
+                            if(in_array($value, $field["checked"]))
+                            {
+                                $checked = "checked=\"checked\"";
+                            }
+                        }
+                        
+                        $value = htmlspecialchars($value);
+                        $form .= "<input $checked id=\"$value\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}[]\" value=\"$value\" /> ";
+                        $form .= "<label for=\"$value\"><span>$label</span></label>\n";
 
-						if($field["horizontal_list"])
-						{
-							$form .= "</div>\n";
-						}
-					}
-				}
-				else
-				{
-					$checked = "";
-					if($field["checked"] == true)
-					{
-						$checked = "checked=\"checked\"";
-					}
+                        if($field["horizontal_list"])
+                        {
+                            $form .= "</div>\n";
+                        }
+                    }
+                }
+                else
+                {
+                    $checked = "";
+                    if($field["checked"] == true)
+                    {
+                        $checked = "checked=\"checked\"";
+                    }
 
-					$value = "";
-					if(trim($field["value"]) != "")
-					{
-						$value = "value=\"{$field['value']}\"";
-					}
+                    $value = "";
+                    if(trim($field["value"]) != "")
+                    {
+                        $value = "value=\"{$field['value']}\"";
+                    }
 
-					$form .= "<label for=\"{$field['id']}\"><span>{$field['label']}</span></label> ";
-					$form .= "<input $checked $value id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" /> \n";
-				}
-				$form .= "</div>\n";
-			}
-			elseif($field["type"] == "select")
-			{
-				$multiple = "";
-				if($field["multiple"])
-				{
-					$multiple = "multiple=\"multiple\"";
-				}
+                    $form .= "<label for=\"{$field['id']}\"><span>{$field['label']}</span></label> ";
+                    $form .= "<input $checked $value id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" /> \n";
+                }
+                $form .= "</div>\n";
+            }
+            elseif($field["type"] == "select")
+            {
+                $multiple = "";
+                if($field["multiple"])
+                {
+                    $multiple = "multiple=\"multiple\"";
+                }
 
-				$form .= "<div class=\"field\">\n";
-				$form .= "<select {$field['code']} $multiple id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" name=\"{$field['name']}\" >\n";
-				foreach($field["value"] as $label=>$value)
-				{
-				    //For compatibility with jaris realty
-				    if($label == "optgroup")
-					{
-						foreach($value as $options)
-						{
-							$form .= "<optgroup label=\"{$options['label']}\">";
+                $form .= "<div class=\"field\">\n";
+                $form .= "<select {$field['code']} $multiple id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" name=\"{$field['name']}\" >\n";
+                foreach($field["value"] as $label=>$value)
+                {
+                    //For compatibility with jaris realty
+                    if($label == "optgroup")
+                    {
+                        foreach($value as $options)
+                        {
+                            $form .= "<optgroup label=\"{$options['label']}\">";
 
-							foreach($options["values"] as $option_label=>$option_value)
-							{
-								$selected = "";
-								if($field["selected"] == $option_value)
-								{
-									$selected = "selected=\"selected\"";
-								}
-								$form .= "<option $selected value=\"$option_value\">$option_label</option>\n";
-							}
-							$form .= "</optgroup>";
-						}
-					}//Compatibility up to here
+                            foreach($options["values"] as $option_label=>$option_value)
+                            {
+                                $selected = "";
+                                if($field["selected"] == $option_value)
+                                {
+                                    $selected = "selected=\"selected\"";
+                                }
+                                $form .= "<option $selected value=\"$option_value\">$option_label</option>\n";
+                            }
+                            $form .= "</optgroup>";
+                        }
+                    }//Compatibility up to here
                     else
                     {
-    					$selected = "";
-    					if($field["multiple"] || is_array($field["selected"]))
-    					{
-    						if(is_array($field["selected"]))
-    						{
-    							foreach($field["selected"] as $selected_value)
-    							{
-    								if("" . $selected_value . "" == "" . $value . "")
-    								{
-    									$selected = "selected=\"selected\"";
-    								}
-    							}
-    						}
-    						else if("" . $field["selected"] . "" == "" . $value . "")
-    						{
-    							$selected = "selected=\"selected\"";
-    						}
-    					}
-    					else if("" . $field["selected"] . "" == "" . $value . "")
-    					{
-    						$selected = "selected=\"selected\"";
-    					}
-    					$value = htmlspecialchars($value);
-    					$form .= "<option $selected value=\"$value\">$label</option>\n";
+                        $selected = "";
+                        if($field["multiple"] || is_array($field["selected"]))
+                        {
+                            if(is_array($field["selected"]))
+                            {
+                                foreach($field["selected"] as $selected_value)
+                                {
+                                    if("" . $selected_value . "" == "" . $value . "")
+                                    {
+                                        $selected = "selected=\"selected\"";
+                                    }
+                                }
+                            }
+                            else if("" . $field["selected"] . "" == "" . $value . "")
+                            {
+                                $selected = "selected=\"selected\"";
+                            }
+                        }
+                        else if("" . $field["selected"] . "" == "" . $value . "")
+                        {
+                            $selected = "selected=\"selected\"";
+                        }
+                        $value = htmlspecialchars($value);
+                        $form .= "<option $selected value=\"$value\">$label</option>\n";
                     }
-				}
-				$form .= "</select>\n";
-				$form .= "</div>\n";
-			}
-			elseif($field["type"] == "textarea")
-			{
-				$readonly = null;
-				if($field["readonly"])
-				{
-					$readonly = "readonly=\"readonly\"";
-				}
+                }
+                $form .= "</select>\n";
+                $form .= "</div>\n";
+            }
+            elseif($field["type"] == "textarea")
+            {
+                $readonly = null;
+                if($field["readonly"])
+                {
+                    $readonly = "readonly=\"readonly\"";
+                }
                 
 
-				$form .= "<div class=\"field\">\n";
-				$form .= "<textarea $readonly {$field['code']} id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" name=\"{$field['name']}\" >\n";
-				$form .= $field["value"];
-				$form .= "</textarea>\n";
-				$form .= "</div>\n";
+                $form .= "<div class=\"field\">\n";
+                $form .= "<textarea $readonly {$field['code']} id=\"{$field['id']}\" class=\"form-{$field['type']}{$field['class']}\" name=\"{$field['name']}\" >\n";
+                $form .= $field["value"];
+                $form .= "</textarea>\n";
+                $form .= "</div>\n";
                 
                 if($field["limit"])
                 {
@@ -737,11 +737,11 @@ function Generate($parameters, $fieldsets)
                     $field["description"] .= " <span class=\"form-chars-left\" id=\"{$field["id"]}-limit\">{$field['limit']}</span>&nbsp;" . "<span class=\"form-chars-left-label\">" . t("characters left") . "</span>";
                     $scripts .= "<script>$(\"#{$field["id"]}\").limit('{$field['limit']}', '#{$field["id"]}-limit')</script>"; 
                 }
-			}
-			elseif($field["type"] == "other")
-			{
-				$form .= $field["html_code"];
-			}
+            }
+            elseif($field["type"] == "other")
+            {
+                $form .= $field["html_code"];
+            }
             elseif($field["type"] == "validate_sum")
             {
                 $num1 = rand(1, 10);
@@ -751,40 +751,40 @@ function Generate($parameters, $fieldsets)
                 $_SESSION["validation_fields"][$parameters["name"]][$field["name"]] = array("type"=>$field["type"], "name"=>$field["name"], "value"=>$result);
                 
                 $form .= "<div class=\"field\">";
-				$form .= "<input {$field['code']} id=\"{$field['id']}\" class=\"form-{$field['class']}\" type=\"text\" name=\"{$field['name']}\" size=\"{$field['size']}\" />";
-				$form .= "</div>\n";
+                $form .= "<input {$field['code']} id=\"{$field['id']}\" class=\"form-{$field['class']}\" type=\"text\" name=\"{$field['name']}\" size=\"{$field['size']}\" />";
+                $form .= "</div>\n";
                 
                 $field["description"] .= "<span class=\"form-validate-sum\" >" . t("Enter the sum of") . " <strong>$num1</strong> + <strong>$num2</strong></span>"; 
             }
-			elseif($field["type"] == "submit" || $field["type"] == "reset")
-			{
-				$form .= "<input {$field['code']} id=\"{$field['name']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" /> ";
-			}
+            elseif($field["type"] == "submit" || $field["type"] == "reset")
+            {
+                $form .= "<input {$field['code']} id=\"{$field['name']}\" class=\"form-{$field['type']}{$field['class']}\" type=\"{$field['type']}\" name=\"{$field['name']}\" value=\"{$field['value']}\" size=\"{$field['size']}\" /> ";
+            }
 
-			//Print description of field
-			if($field["description"])
-			{
-				$form .= "<div class=\"description\">\n";
-				$form .= "<span>{$field['description']}</span>\n";
-				$form .= "</div>\n";
-			}
-		}
+            //Print description of field
+            if($field["description"])
+            {
+                $form .= "<div class=\"description\">\n";
+                $form .= "<span>{$field['description']}</span>\n";
+                $form .= "</div>\n";
+            }
+        }
 
-		if($fieldset["name"])
-		{
-			if($fieldset["description"])
-			{
-				$form .= "<p class=\"fieldset-description\">{$fieldset['description']}</p>\n";
-			}
+        if($fieldset["name"])
+        {
+            if($fieldset["description"])
+            {
+                $form .= "<p class=\"fieldset-description\">{$fieldset['description']}</p>\n";
+            }
 
-			$form .= "</fieldset>\n";
-		}
-	}
+            $form .= "</fieldset>\n";
+        }
+    }
 
-	$form .= "</form>\n";
-	
-	$form .= $scripts;
+    $form .= "</form>\n";
+    
+    $form .= $scripts;
 
-	return $form;
+    return $form;
 }
 ?>

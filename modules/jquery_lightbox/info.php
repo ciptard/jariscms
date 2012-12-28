@@ -22,11 +22,11 @@ $module["website"] = "http://www.jegoyalu.com";
 
 Version 1.1 - Date 23/06/2012
  
-	* Fix to pages to display asterik (*) to regular expression conversion (.*)
+    * Fix to pages to display asterik (*) to regular expression conversion (.*)
 
 Version 1.0 - Date 18/04/2010
-	
-	* Initial development
+    
+    * Initial development
 */
 
 ?>

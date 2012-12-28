@@ -13,25 +13,25 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		admin/settings/whizzywig
-	field;
+    field: uri
+        admin/settings/whizzywig
+    field;
 row;
 
 row: 1
-	field: uri
-		whizzypic
-	field;
+    field: uri
+        whizzypic
+    field;
 row;
 
 row: 2
-	field: uri
-		whizzylink
-	field;
+    field: uri
+        whizzylink
+    field;
 row;
 
 row: 3
-	field: uri
-		whizzylang
-	field;
+    field: uri
+        whizzylang
+    field;
 row;

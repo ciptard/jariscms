@@ -59,127 +59,127 @@ jdPicker.DEFAULT_OPTS = {
 };
 jdPicker.prototype = {
   build: function() {
-	
-	this.wrapp = this.input.wrap('<div class="jdpicker_w">');
+    
+    this.wrapp = this.input.wrap('<div class="jdpicker_w">');
 
-	if(this.input.context.type!="hidden"){
-		var clearer = $('<span class="date_clearer">&times;</span>');
-		clearer.click(this.bindToObj(function(){this.input.val(""); this.selectDate();}));
-		this.input.after(clearer);
-	}
-	
-	switch (this.date_format){
-		case "dd/mm/YYYY": 
-			this.reg = new RegExp(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); 
-			this.date_decode = "new Date(matches[3], parseInt(matches[2]-1), matches[1]);";
-			this.date_encode = 'this.strpad(date.getDate()) + "/" + this.strpad(date.getMonth()+1) + "/" + date.getFullYear();';
-			this.date_encode_s = 'this.strpad(date.getDate()) + "/" + this.strpad(date.getMonth()+1)';
-		break;
-		case "FF dd YYYY": 
-			this.reg = new RegExp(/^([a-zA-Z]+) (\d{1,2}) (\d{4})$/); 
-			this.date_decode = "new Date(matches[3], this.indexFor(this.month_names, matches[1]), matches[2]);"; 
-			this.date_encode = 'this.month_names[date.getMonth()] + " " + this.strpad(date.getDate()) + " " + date.getFullYear();';
-			this.date_encode_s = 'this.month_names[date.getMonth()] + " " + this.strpad(date.getDate());';
-		break;
-		case "dd MM YYYY": 
-			this.reg = new RegExp(/^(\d{1,2}) ([a-zA-Z]{3}) (\d{4})$/); 
-			this.date_decode = "new Date(matches[3], this.indexFor(this.short_month_names, matches[2]), matches[1]);"; 
-			this.date_encode = 'this.strpad(date.getDate()) + " " + this.short_month_names[date.getMonth()] + " " + date.getFullYear();'; 
-			this.date_encode_s = 'this.strpad(date.getDate()) + " " + this.short_month_names[date.getMonth()];'; 
-		break;
-		case "MM dd YYYY": 
-			this.reg = new RegExp(/^([a-zA-Z]{3}) (\d{1,2}) (\d{4})$/); 
-			this.date_decode = "new Date(matches[3], this.indexFor(this.short_month_names, matches[1]), matches[2]);"; 
-			this.date_encode = 'this.short_month_names[date.getMonth()] + " " + this.strpad(date.getDate()) + " " + date.getFullYear();'; 
-			this.date_encode_s = 'this.short_month_names[date.getMonth()] + " " + this.strpad(date.getDate());'; 
-		break;
-		case "dd FF YYYY": 
-			this.reg = new RegExp(/^(\d{1,2}) ([a-zA-Z]+) (\d{4})$/); 
-			this.date_decode = "new Date(matches[3], this.indexFor(this.month_names, matches[2]), matches[1]);"; 
-			this.date_encode = 'this.strpad(date.getDate()) + " " + this.month_names[date.getMonth()] + " " + date.getFullYear();'; 
-			this.date_encode_s = 'this.strpad(date.getDate()) + " " + this.month_names[date.getMonth()];'; 
-		break;
-		case "YYYY/mm/dd": 
-		default: 
-			this.reg = new RegExp(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/); 
-			this.date_decode = "new Date(matches[1], parseInt(matches[2]-1), matches[3]);"; 
-			this.date_encode = 'date.getFullYear() + "/" + this.strpad(date.getMonth()+1) + "/" + this.strpad(date.getDate());'; 
-			this.date_encode_s = 'this.strpad(date.getMonth()+1) + "/" + this.strpad(date.getDate());'; 
-		break;
-	}
-	
-	if(this.date_max != "" && this.date_max.match(this.reg)){
-		var matches = this.date_max.match(this.reg);
-		this.date_max = eval(this.date_decode);
-	}else
-		this.date_max = "";
-	
-	if(this.date_min != "" && this.date_min.match(this.reg)){
-		var matches = this.date_min.match(this.reg);
-		this.date_min = eval(this.date_decode);
-	}else
-		this.date_min = "";
-	
+    if(this.input.context.type!="hidden"){
+        var clearer = $('<span class="date_clearer">&times;</span>');
+        clearer.click(this.bindToObj(function(){this.input.val(""); this.selectDate();}));
+        this.input.after(clearer);
+    }
+    
+    switch (this.date_format){
+        case "dd/mm/YYYY": 
+            this.reg = new RegExp(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); 
+            this.date_decode = "new Date(matches[3], parseInt(matches[2]-1), matches[1]);";
+            this.date_encode = 'this.strpad(date.getDate()) + "/" + this.strpad(date.getMonth()+1) + "/" + date.getFullYear();';
+            this.date_encode_s = 'this.strpad(date.getDate()) + "/" + this.strpad(date.getMonth()+1)';
+        break;
+        case "FF dd YYYY": 
+            this.reg = new RegExp(/^([a-zA-Z]+) (\d{1,2}) (\d{4})$/); 
+            this.date_decode = "new Date(matches[3], this.indexFor(this.month_names, matches[1]), matches[2]);"; 
+            this.date_encode = 'this.month_names[date.getMonth()] + " " + this.strpad(date.getDate()) + " " + date.getFullYear();';
+            this.date_encode_s = 'this.month_names[date.getMonth()] + " " + this.strpad(date.getDate());';
+        break;
+        case "dd MM YYYY": 
+            this.reg = new RegExp(/^(\d{1,2}) ([a-zA-Z]{3}) (\d{4})$/); 
+            this.date_decode = "new Date(matches[3], this.indexFor(this.short_month_names, matches[2]), matches[1]);"; 
+            this.date_encode = 'this.strpad(date.getDate()) + " " + this.short_month_names[date.getMonth()] + " " + date.getFullYear();'; 
+            this.date_encode_s = 'this.strpad(date.getDate()) + " " + this.short_month_names[date.getMonth()];'; 
+        break;
+        case "MM dd YYYY": 
+            this.reg = new RegExp(/^([a-zA-Z]{3}) (\d{1,2}) (\d{4})$/); 
+            this.date_decode = "new Date(matches[3], this.indexFor(this.short_month_names, matches[1]), matches[2]);"; 
+            this.date_encode = 'this.short_month_names[date.getMonth()] + " " + this.strpad(date.getDate()) + " " + date.getFullYear();'; 
+            this.date_encode_s = 'this.short_month_names[date.getMonth()] + " " + this.strpad(date.getDate());'; 
+        break;
+        case "dd FF YYYY": 
+            this.reg = new RegExp(/^(\d{1,2}) ([a-zA-Z]+) (\d{4})$/); 
+            this.date_decode = "new Date(matches[3], this.indexFor(this.month_names, matches[2]), matches[1]);"; 
+            this.date_encode = 'this.strpad(date.getDate()) + " " + this.month_names[date.getMonth()] + " " + date.getFullYear();'; 
+            this.date_encode_s = 'this.strpad(date.getDate()) + " " + this.month_names[date.getMonth()];'; 
+        break;
+        case "YYYY/mm/dd": 
+        default: 
+            this.reg = new RegExp(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/); 
+            this.date_decode = "new Date(matches[1], parseInt(matches[2]-1), matches[3]);"; 
+            this.date_encode = 'date.getFullYear() + "/" + this.strpad(date.getMonth()+1) + "/" + this.strpad(date.getDate());'; 
+            this.date_encode_s = 'this.strpad(date.getMonth()+1) + "/" + this.strpad(date.getDate());'; 
+        break;
+    }
+    
+    if(this.date_max != "" && this.date_max.match(this.reg)){
+        var matches = this.date_max.match(this.reg);
+        this.date_max = eval(this.date_decode);
+    }else
+        this.date_max = "";
+    
+    if(this.date_min != "" && this.date_min.match(this.reg)){
+        var matches = this.date_min.match(this.reg);
+        this.date_min = eval(this.date_decode);
+    }else
+        this.date_min = "";
+    
     var monthNav = $('<p class="month_nav">' +
       '<span class="button prev" title="[Page-Up]">&#171;</span>' +
       ' <span class="month_name"></span> ' +
       '<span class="button next" title="[Page-Down]">&#187;</span>' +
       '</p>');
-	  
+      
     this.monthNameSpan = $(".month_name", monthNav);
     $(".prev", monthNav).click(this.bindToObj(function() { this.moveMonthBy(-1); }));
     $(".next", monthNav).click(this.bindToObj(function() { this.moveMonthBy(1); }));
     
-	this.monthNameSpan.dblclick(this.bindToObj(function(){
-		this.monthNameSpan.empty().append(this.getMonthSelect());
-		$('select', this.monthNameSpan).change(this.bindToObj(function(){
-			this.moveMonthBy(parseInt($('select :selected', this.monthNameSpan).val()) - this.currentMonth.getMonth());
-		}));
-	}));
-	
+    this.monthNameSpan.dblclick(this.bindToObj(function(){
+        this.monthNameSpan.empty().append(this.getMonthSelect());
+        $('select', this.monthNameSpan).change(this.bindToObj(function(){
+            this.moveMonthBy(parseInt($('select :selected', this.monthNameSpan).val()) - this.currentMonth.getMonth());
+        }));
+    }));
+    
     var yearNav = $('<p class="year_nav">' +
       '<span class="button prev" title="[Ctrl+Page-Up]">&#171;</span>' +
       ' <span class="year_name" id="year_name"></span> ' +
       '<span class="button next" title="[Ctrl+Page-Down]">&#187;</span>' +
       '</p>');
-	  
+      
     this.yearNameSpan = $(".year_name", yearNav);
     $(".prev", yearNav).click(this.bindToObj(function() { this.moveMonthBy(-12); }));
     $(".next", yearNav).click(this.bindToObj(function() { this.moveMonthBy(12); }));
     
     this.yearNameSpan.dblclick(this.bindToObj(function(){
-    	
-    	if($('.year_name input', this.rootLayers).length==0){
-			var initialDate = this.yearNameSpan.html();
-			
-			var yearNameInput = $('<input type="text" class="text year_input" value="'+initialDate+'" />');
-			this.yearNameSpan.empty().append(yearNameInput);
-			
-			$(".year_input", yearNav).keyup(this.bindToObj(function(){
-				if($('input',this.yearNameSpan).val().length == 4 && $('input',this.yearNameSpan).val() != initialDate && parseInt($('input',this.yearNameSpan).val()) == $('input',this.yearNameSpan).val()){
-					this.moveMonthBy(parseInt(parseInt(parseInt($('input',this.yearNameSpan).val()) - initialDate)*12));
-				}else if($('input',this.yearNameSpan).val().length>4)
-					$('input',this.yearNameSpan).val($('input',this.yearNameSpan).val().substr(0, 4));
-			}));
-			
-			$('input',this.yearNameSpan).focus();
-			$('input',this.yearNameSpan).select();
-    	}
-		
+        
+        if($('.year_name input', this.rootLayers).length==0){
+            var initialDate = this.yearNameSpan.html();
+            
+            var yearNameInput = $('<input type="text" class="text year_input" value="'+initialDate+'" />');
+            this.yearNameSpan.empty().append(yearNameInput);
+            
+            $(".year_input", yearNav).keyup(this.bindToObj(function(){
+                if($('input',this.yearNameSpan).val().length == 4 && $('input',this.yearNameSpan).val() != initialDate && parseInt($('input',this.yearNameSpan).val()) == $('input',this.yearNameSpan).val()){
+                    this.moveMonthBy(parseInt(parseInt(parseInt($('input',this.yearNameSpan).val()) - initialDate)*12));
+                }else if($('input',this.yearNameSpan).val().length>4)
+                    $('input',this.yearNameSpan).val($('input',this.yearNameSpan).val().substr(0, 4));
+            }));
+            
+            $('input',this.yearNameSpan).focus();
+            $('input',this.yearNameSpan).select();
+        }
+        
     }));
 
-	var error_msg = $('<div class="error_msg"></div>');
-	
+    var error_msg = $('<div class="error_msg"></div>');
+    
     var nav = $('<div class="nav"></div>').append(error_msg, monthNav, yearNav);
     
     var tableShell = "<table><thead><tr>";
-	
-	if(this.show_week == 1) tableShell +='<th class="week_label">'+(this.week_label)+'</th>';
-	
+    
+    if(this.show_week == 1) tableShell +='<th class="week_label">'+(this.week_label)+'</th>';
+    
     $(this.adjustDays(this.short_day_names)).each(function() {
       tableShell += "<th>" + this + "</th>";
     });
-	
+    
     tableShell += "</tr></thead><tbody></tbody></table>";
 
     var style = (this.input.context.type=="hidden")?' style="display:block; position:static; margin:0 auto"':'';    
@@ -199,74 +199,74 @@ jdPicker.prototype = {
 
     this.input.change(this.bindToObj(function() { this.selectDate(); }));
     this.selectDate();
-	
+    
   },
   
   selectMonth: function(date) {
     var newMonth = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     if(this.isNewDateAllowed(newMonth)){
-		if (!this.currentMonth || !(this.currentMonth.getFullYear() == newMonth.getFullYear() &&
-									this.currentMonth.getMonth() == newMonth.getMonth())) {
-		  
-		  this.currentMonth = newMonth;
-		  
-		  var rangeStart = this.rangeStart(date), rangeEnd = this.rangeEnd(date);
-		  var numDays = this.daysBetween(rangeStart, rangeEnd);
-		  var dayCells = "";
-		  
-		  for (var i = 0; i <= numDays; i++) {
-			var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i, 12, 00);
-			
-			if (this.isFirstDayOfWeek(currentDay)){
-			
-				var firstDayOfWeek = currentDay;
-				var lastDayOfWeek = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()+6, 12, 00);
-			
-				if(this.select_week && this.isNewDateAllowed(firstDayOfWeek))
-					dayCells += "<tr date='" + this.dateToString(currentDay) + "' class='selectable_week'>";
-				else
-					dayCells += "<tr>";
-					
-				if(this.show_week==1)
-					dayCells += '<td class="week_num">'+this.getWeekNum(currentDay)+'</td>';
-			}
-			if ((this.select_week == 0 && currentDay.getMonth() == date.getMonth() && this.isNewDateAllowed(currentDay) && !this.isHoliday(currentDay)) || (this.select_week==1 && currentDay.getMonth() == date.getMonth() && this.isNewDateAllowed(firstDayOfWeek))) {
-			  dayCells += '<td class="selectable_day" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>';
-			} else {
-			  dayCells += '<td class="unselected_month" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>';
-			};
-			
-			if (this.isLastDayOfWeek(currentDay)) dayCells += "</tr>";
-		  };
-		  this.tbody.empty().append(dayCells);
-		  
-		  this.monthNameSpan.empty().append(this.monthName(date));
-		  this.yearNameSpan.empty().append(this.currentMonth.getFullYear());
-		  
-		  if(this.select_week == 0){
-			  $(".selectable_day", this.tbody).click(this.bindToObj(function(event) {
-				this.changeInput($(event.target).attr("date"));
-			  }));
-		  }else{
-			  $(".selectable_week", this.tbody).click(this.bindToObj(function(event) {
-				this.changeInput($(event.target.parentNode).attr("date"));
-			  }));
-		  }
-		  
-		  $("td[date='" + this.dateToString(new Date()) + "']", this.tbody).addClass("today");
-		  if(this.select_week == 1){
-			  $("tr", this.tbody).mouseover(function() { $(this).addClass("hover"); });
-			  $("tr", this.tbody).mouseout(function() { $(this).removeClass("hover"); });
-		  }else{
-			  $("td.selectable_day", this.tbody).mouseover(function() { $(this).addClass("hover"); });
-			  $("td.selectable_day", this.tbody).mouseout(function() { $(this).removeClass("hover"); });
-		  }
-		};
-		
-		$('.selected', this.tbody).removeClass("selected");
-		$('td[date="' + this.selectedDateString + '"], tr[date="' + this.selectedDateString + '"]', this.tbody).addClass("selected");
-	}else
-		this.show_error(this.error_out_of_range);
+        if (!this.currentMonth || !(this.currentMonth.getFullYear() == newMonth.getFullYear() &&
+                                    this.currentMonth.getMonth() == newMonth.getMonth())) {
+          
+          this.currentMonth = newMonth;
+          
+          var rangeStart = this.rangeStart(date), rangeEnd = this.rangeEnd(date);
+          var numDays = this.daysBetween(rangeStart, rangeEnd);
+          var dayCells = "";
+          
+          for (var i = 0; i <= numDays; i++) {
+            var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i, 12, 00);
+            
+            if (this.isFirstDayOfWeek(currentDay)){
+            
+                var firstDayOfWeek = currentDay;
+                var lastDayOfWeek = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate()+6, 12, 00);
+            
+                if(this.select_week && this.isNewDateAllowed(firstDayOfWeek))
+                    dayCells += "<tr date='" + this.dateToString(currentDay) + "' class='selectable_week'>";
+                else
+                    dayCells += "<tr>";
+                    
+                if(this.show_week==1)
+                    dayCells += '<td class="week_num">'+this.getWeekNum(currentDay)+'</td>';
+            }
+            if ((this.select_week == 0 && currentDay.getMonth() == date.getMonth() && this.isNewDateAllowed(currentDay) && !this.isHoliday(currentDay)) || (this.select_week==1 && currentDay.getMonth() == date.getMonth() && this.isNewDateAllowed(firstDayOfWeek))) {
+              dayCells += '<td class="selectable_day" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>';
+            } else {
+              dayCells += '<td class="unselected_month" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>';
+            };
+            
+            if (this.isLastDayOfWeek(currentDay)) dayCells += "</tr>";
+          };
+          this.tbody.empty().append(dayCells);
+          
+          this.monthNameSpan.empty().append(this.monthName(date));
+          this.yearNameSpan.empty().append(this.currentMonth.getFullYear());
+          
+          if(this.select_week == 0){
+              $(".selectable_day", this.tbody).click(this.bindToObj(function(event) {
+                this.changeInput($(event.target).attr("date"));
+              }));
+          }else{
+              $(".selectable_week", this.tbody).click(this.bindToObj(function(event) {
+                this.changeInput($(event.target.parentNode).attr("date"));
+              }));
+          }
+          
+          $("td[date='" + this.dateToString(new Date()) + "']", this.tbody).addClass("today");
+          if(this.select_week == 1){
+              $("tr", this.tbody).mouseover(function() { $(this).addClass("hover"); });
+              $("tr", this.tbody).mouseout(function() { $(this).removeClass("hover"); });
+          }else{
+              $("td.selectable_day", this.tbody).mouseover(function() { $(this).addClass("hover"); });
+              $("td.selectable_day", this.tbody).mouseout(function() { $(this).removeClass("hover"); });
+          }
+        };
+        
+        $('.selected', this.tbody).removeClass("selected");
+        $('td[date="' + this.selectedDateString + '"], tr[date="' + this.selectedDateString + '"]', this.tbody).addClass("selected");
+    }else
+        this.show_error(this.error_out_of_range);
   },
   
   selectDate: function(date) {
@@ -275,29 +275,29 @@ jdPicker.prototype = {
     };
     if (!date) date = new Date();
     
-	if(this.select_week == 1 && !this.isFirstDayOfWeek(date))
-		date = new Date(date.getFullYear(), date.getMonth(), (date.getDate() - date.getDay() + this.start_of_week), 12, 00);	
-	
-	if(this.isNewDateAllowed(date)){
-		this.selectedDate = date;
-		this.selectedDateString = this.dateToString(this.selectedDate);
-		this.selectMonth(this.selectedDate);
-	}else if((this.date_min) && this.daysBetween(this.date_min, date)<0){
-			this.selectedDate = this.date_min;
-			this.selectMonth(this.date_min);
-			this.input.val(" ");
-	}else{
-			this.selectMonth(this.date_max);
-			this.input.val(" ");
-	}
+    if(this.select_week == 1 && !this.isFirstDayOfWeek(date))
+        date = new Date(date.getFullYear(), date.getMonth(), (date.getDate() - date.getDay() + this.start_of_week), 12, 00);    
+    
+    if(this.isNewDateAllowed(date)){
+        this.selectedDate = date;
+        this.selectedDateString = this.dateToString(this.selectedDate);
+        this.selectMonth(this.selectedDate);
+    }else if((this.date_min) && this.daysBetween(this.date_min, date)<0){
+            this.selectedDate = this.date_min;
+            this.selectMonth(this.date_min);
+            this.input.val(" ");
+    }else{
+            this.selectMonth(this.date_max);
+            this.input.val(" ");
+    }
   },
   
   isNewDateAllowed: function(date){
-	return ((!this.date_min) || this.daysBetween(this.date_min, date)>=0) && ((!this.date_max) || this.daysBetween(date, this.date_max)>=0);
+    return ((!this.date_min) || this.daysBetween(this.date_min, date)>=0) && ((!this.date_max) || this.daysBetween(date, this.date_max)>=0);
   },
 
   isHoliday: function(date){
-	return ((this.indexFor(this.selectable_days, date.getDay())===false || this.indexFor(this.non_selectable, this.dateToString(date))!==false) || this.indexFor(this.rec_non_selectable, this.dateToShortString(date))!==false);
+    return ((this.indexFor(this.selectable_days, date.getDay())===false || this.indexFor(this.non_selectable, this.dateToString(date))!==false) || this.indexFor(this.rec_non_selectable, this.dateToShortString(date))!==false);
   },
   
   changeInput: function(dateString) {
@@ -307,23 +307,23 @@ jdPicker.prototype = {
   },
   
   show: function() {
-	$('.error_msg', this.rootLayers).css('display', 'none');
+    $('.error_msg', this.rootLayers).css('display', 'none');
     this.rootLayers.slideDown();
     $([window, document.body]).click(this.hideIfClickOutside);
     this.input.unbind("focus", this.show);
-	this.input.attr('readonly', true);
+    this.input.attr('readonly', true);
     $(document.body).keydown(this.keydownHandler);
     this.setPosition();
   },
   
   hide: function() {
-	if(this.input.context.type!="hidden"){
-		this.input.removeAttr('readonly');
-		this.rootLayers.slideUp();
-		$([window, document.body]).unbind("click", this.hideIfClickOutside);
-		this.input.focus(this.show);
-		$(document.body).unbind("keydown", this.keydownHandler);
-	}
+    if(this.input.context.type!="hidden"){
+        this.input.removeAttr('readonly');
+        this.rootLayers.slideUp();
+        $([window, document.body]).unbind("click", this.hideIfClickOutside);
+        this.input.focus(this.show);
+        $(document.body).unbind("keydown", this.keydownHandler);
+    }
   },
   
   hideIfClickOutside: function(event) {
@@ -352,8 +352,8 @@ jdPicker.prototype = {
         return;
       break;
       case 13:
-		if(this.isNewDateAllowed(this.stringToDate(this.selectedDateString)) && !this.isHoliday(this.stringToDate(this.selectedDateString)))
-	        this.changeInput(this.selectedDateString);
+        if(this.isNewDateAllowed(this.stringToDate(this.selectedDateString)) && !this.isHoliday(this.stringToDate(this.selectedDateString)))
+            this.changeInput(this.selectedDateString);
       break;
       case 33:
         this.moveDateMonthBy(event.ctrlKey ? -12 : -1);
@@ -381,10 +381,10 @@ jdPicker.prototype = {
   
   stringToDate: function(string) {
     var matches;
-	
+    
     if (matches = string.match(this.reg)) {
       if(matches[3]==0 && matches[2]==0 && matches[1]==0)
-    	return null;
+        return null;
       else
         return eval(this.date_decode);
     } else {
@@ -429,10 +429,10 @@ jdPicker.prototype = {
   },
   
   moveMonthBy: function(amount) {
-	if(amount<0)
-		var newMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + amount+1, -1);
+    if(amount<0)
+        var newMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + amount+1, -1);
     else
-		var newMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + amount, 1);
+        var newMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + amount, 1);
     this.selectMonth(newMonth);
   },
   
@@ -441,16 +441,16 @@ jdPicker.prototype = {
   },
   
   getMonthSelect:function(){
-  	var month_select = '<select>';
-	for(var i = 0; i<this.month_names.length; i++){
-		if(i==this.currentMonth.getMonth())
-			month_select += '<option value="'+(i)+'" selected="selected">'+this.month_names[i]+'</option>';
-		else
-			month_select += '<option value="'+(i)+'">'+this.month_names[i]+'</option>';
-	}
-	month_select += '</select>';
-	
-	return month_select;
+      var month_select = '<select>';
+    for(var i = 0; i<this.month_names.length; i++){
+        if(i==this.currentMonth.getMonth())
+            month_select += '<option value="'+(i)+'" selected="selected">'+this.month_names[i]+'</option>';
+        else
+            month_select += '<option value="'+(i)+'">'+this.month_names[i]+'</option>';
+    }
+    month_select += '</select>';
+    
+    return month_select;
   },
   
   bindToObj: function(fn) {
@@ -468,7 +468,7 @@ jdPicker.prototype = {
     for (var i = 0; i < array.length; i++) {
       if (value == array[i]) return i;
     };
-	return false;
+    return false;
   },
   
   monthNum: function(month_name) {
@@ -507,10 +507,10 @@ jdPicker.prototype = {
   },
   
   getWeekNum:function(date){
-	date_week= new Date(date.getFullYear(), date.getMonth(), date.getDate()+6);
-	var firstDayOfYear = new Date(date_week.getFullYear(), 0, 1, 12, 00);
-	var n = parseInt(this.daysBetween(firstDayOfYear, date_week)) + 1;
-	return Math.floor((date_week.getDay() + n + 5)/7) - Math.floor(date_week.getDay() / 5);
+    date_week= new Date(date.getFullYear(), date.getMonth(), date.getDate()+6);
+    var firstDayOfYear = new Date(date_week.getFullYear(), 0, 1, 12, 00);
+    var n = parseInt(this.daysBetween(firstDayOfYear, date_week)) + 1;
+    return Math.floor((date_week.getDay() + n + 5)/7) - Math.floor(date_week.getDay() / 5);
   },
   
   isLastDayOfWeek: function(date) {
@@ -518,10 +518,10 @@ jdPicker.prototype = {
   },
   
   show_error: function(error){
-	$('.error_msg', this.rootLayers).html(error);
-	$('.error_msg', this.rootLayers).slideDown(400, function(){
-		setTimeout("$('.error_msg', this.rootLayers).slideUp(200);", 2000);
-	});
+    $('.error_msg', this.rootLayers).html(error);
+    $('.error_msg', this.rootLayers).slideDown(400, function(){
+        setTimeout("$('.error_msg', this.rootLayers).slideUp(200);", 2000);
+    });
   },
   
   adjustDays: function(days) {
@@ -533,8 +533,8 @@ jdPicker.prototype = {
   },
   
   strpad: function(num){
-	if(parseInt(num)<10)	return "0"+parseInt(num);
-	else	return parseInt(num);
+    if(parseInt(num)<10)    return "0"+parseInt(num);
+    else    return parseInt(num);
   }
   
 };

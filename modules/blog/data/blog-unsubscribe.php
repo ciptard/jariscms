@@ -13,11 +13,11 @@ exit;
 ?>
 
 row: 0
-	field: title
-		Blog Unsubscribe
-	field;
+    field: title
+        Blog Unsubscribe
+    field;
 
-	field: content
+    field: content
         <?php
             if(!JarisCMS\Group\GetTypePermission("blog", JarisCMS\Security\GetCurrentUserGroup()))
             { 
@@ -40,10 +40,10 @@ row: 0
             JarisCMS\System\AddMessage(t("Blog does not exist."));
             JarisCMS\System\GoToPage("");  
             
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

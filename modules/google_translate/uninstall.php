@@ -13,9 +13,9 @@
 namespace JarisCMS\Module\GoogleTranslate;
 
 function Uninstall()
-{	
-	//Remove shopping cart block
-	JarisCMS\Block\DeleteByField("block_name", "google_translate_block");
+{    
+    //Remove shopping cart block
+    JarisCMS\Block\DeleteByField("block_name", "google_translate_block");
 }
 
 ?>

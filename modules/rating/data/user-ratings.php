@@ -13,12 +13,12 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("My Ratings") ?>
-	field;
+    field: title
+        <?php print t("My Ratings") ?>
+    field;
 
-	field: content
-		<?php 
+    field: content
+        <?php 
             JarisCMS\Security\ProtectPage(array("add_comments"));
             
             JarisCMS\Module\Comments\CleanUserComments(JarisCMS\Security\GetCurrentUser());
@@ -26,21 +26,21 @@ row: 0
             JarisCMS\System\AddStyle("modules/comments/styles/user.css");
             
             $page = 1;
-			
-			if(isset($_REQUEST["page"]))
-			{
-				$page = $_REQUEST["page"];
-			}
+            
+            if(isset($_REQUEST["page"]))
+            {
+                $page = $_REQUEST["page"];
+            }
             
             $comments_count = JarisCMS\SQLite\CountColumn("comments", "comments", "id", "", JarisCMS\Module\Comments\GetUserPath(JarisCMS\Security\GetCurrentUser()));
-			
-			print "<h2>" . t("Total Comments:") . " " . $comments_count . "</h2>";
-			
+            
+            print "<h2>" . t("Total Comments:") . " " . $comments_count . "</h2>";
+            
             $comments = JarisCMS\SQLite\GetDataList("comments", "comments", $page-1, 10, "order by created_timestamp desc", "*", JarisCMS\Module\Comments\GetUserPath(JarisCMS\Security\GetCurrentUser()));
-			
-			JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
-			
-			foreach($comments as $data)
+            
+            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
+            
+            foreach($comments as $data)
             {
                 $page_data = JarisCMS\Page\GetData($data["uri"]);
                 $comment_data = JarisCMS\Module\Comments\GetData($data["id"], $data["uri"]);
@@ -68,12 +68,12 @@ row: 0
             {
                 JarisCMS\System\AddMessage(t("No comments posted by you yet."));
             }
-			
-			JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
+            
+            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
         ?>
-	field;
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

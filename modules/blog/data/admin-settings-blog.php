@@ -13,41 +13,41 @@ exit;
 ?>
 
 row: 0
-	field: title
-		<?php print t("Blog Settings") ?>
-	field;
+    field: title
+        <?php print t("Blog Settings") ?>
+    field;
 
-	field: content
-		<?php
+    field: content
+        <?php
 
-			JarisCMS\Security\ProtectPage(array("edit_settings"));
+            JarisCMS\Security\ProtectPage(array("edit_settings"));
 
-			//Get exsiting settings or defualt ones if main settings table doesn't exist
-			$blog_settings = JarisCMS\Module\Blog\GetSettings();
+            //Get exsiting settings or defualt ones if main settings table doesn't exist
+            $blog_settings = JarisCMS\Module\Blog\GetSettings();
 
-			if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("edit-blog-settings"))
-			{
-				//Check if write is possible and continue to write settings
-				if(JarisCMS\Setting\Save("main_category", $_REQUEST["main_category"], "blogs"))
-				{
-					JarisCMS\System\AddMessage(t("Your settings have been successfully saved."));
-				}
-				else
-				{
-					JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
-				}
+            if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("edit-blog-settings"))
+            {
+                //Check if write is possible and continue to write settings
+                if(JarisCMS\Setting\Save("main_category", $_REQUEST["main_category"], "blogs"))
+                {
+                    JarisCMS\System\AddMessage(t("Your settings have been successfully saved."));
+                }
+                else
+                {
+                    JarisCMS\System\AddMessage(JarisCMS\System\GetErrorMessage("write_error_data"), "error");
+                }
 
-				JarisCMS\System\GoToPage("admin/settings");
-			}
-			elseif(isset($_REQUEST["btnCancel"]))
-			{
-				JarisCMS\System\GoToPage("admin/settings");
-			}
+                JarisCMS\System\GoToPage("admin/settings");
+            }
+            elseif(isset($_REQUEST["btnCancel"]))
+            {
+                JarisCMS\System\GoToPage("admin/settings");
+            }
 
-			$parameters["name"] = "edit-blog-settings";
-			$parameters["class"] = "edit-blog-settings";
-			$parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog"));
-			$parameters["method"] = "post";
+            $parameters["name"] = "edit-blog-settings";
+            $parameters["class"] = "edit-blog-settings";
+            $parameters["action"] = JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog"));
+            $parameters["method"] = "post";
             
             $categories[t("-None Selected-")] = "";
             $category_data = JarisCMS\Category\GetList();
@@ -61,17 +61,17 @@ row: 0
             
             $fields[] = array("type"=>"select", "name"=>"main_category", "label"=>t("Blog categories:"), "id"=>"main_category", "value"=>$categories, "selected"=>$blog_settings["main_category"], "description"=>t("The main category where users can select a sub category that represent its blog content."));
 
-			$fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
-			$fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
+            $fields[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Save"));
+            $fields[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
 
-			$fieldset[] = array("fields"=>$fields);
+            $fieldset[] = array("fields"=>$fields);
 
-			print JarisCMS\Form\Generate($parameters, $fieldset);
+            print JarisCMS\Form\Generate($parameters, $fieldset);
 
-		?>
-	field;
+        ?>
+    field;
 
-	field: is_system
-		1
-	field;
+    field: is_system
+        1
+    field;
 row;

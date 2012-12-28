@@ -13,25 +13,25 @@ exit;
 ?>
 
 row: 0
-	field: uri
-		add/rating
-	field;
+    field: uri
+        add/rating
+    field;
 row;
 
 row: 1
-	field: uri
-		admin/ratings/list
-	field;
+    field: uri
+        admin/ratings/list
+    field;
 row;
 
 row: 2
-	field: uri
-		admin/types/ratings
-	field;
+    field: uri
+        admin/types/ratings
+    field;
 row;
 
 row: 3
-	field: uri
-		ratings-script
-	field;
+    field: uri
+        ratings-script
+    field;
 row;
