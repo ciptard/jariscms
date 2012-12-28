@@ -1,27 +1,23 @@
 Note: Most of this document applies, but parts of it are outdated.
 
 # Table of Contents
-1. [Introduction](#introduction)
 
-2. [Features](#features)
-
-3. [How It Works?](#how-it-works)
+* [Introduction](#introduction)
+* [Features](#features)
+* [How It Works?](#how-it-works)
     * [Blocks](#blocks)
     * [Menus](#menus)
     * [Pages](#pages)
     * [Settings](#settings)
     * [Users](#users)
     * [Groups](#groups)
-
-4. [Database File Format](#database-file-format)
+* [Database File Format](#database-file-format)
     * [Database File Example](#database-file-example)
-
-5. [Install](#install)
+* [Install](#install)
     * [Requirements](#requirements)
     * [Url Rewriting](#url-rewriting)
     * [Running with PHP HipHop HHVM](#running-with-php-hiphop-hhvm)
-
-6. [Contact Info](#contact-info)
+* [Contact Info](#contact-info)
 
 
 ## Introduction
@@ -50,8 +46,8 @@ This are some of the features and characteristics implemented on Jaris.
     * Clean Url's
     * Translations
     * Global Blocks
-    * Page Images Uploads
-    * Page Files Uploads
+    * Page Image Uploads
+    * Page File Uploads
     * Page blocks
     * Content Search
     * Modules
@@ -177,22 +173,21 @@ Lets explain each line:
 5. field; - The fields ending
 6. row; - The rows ending
 
-It is a really simple syntax and easy to parse with php built in functions so im
-sure you understand the database file format. Is simple and easy.
+It is a really simple syntax and easy to parse with php built in functions.
 
 
 ## Install
 
-For installing Jaris CMS this is what you want to read :-)
+For installing Jaris CMS just copy the source files to a directory on your
+public_html directory and visit it on the browser to launch the installer.
 
 ### Requirements
 
-    * PHP 5 or greater (It could be fixed to work with php 4 too)
-    * PHP GD library to manage images.
-    * Linux OS (or set of unix tools for windows like rm, mv, cp, etc)
-    * Write permission for the data directory (at least 755)
-    * Apache with mod rewrite for clean url system (you can disable clean url)
-    * Modify settings.php to meet your needs.
+* PHP 5 or greater (It could be fixed to work with php 4 too)
+* PHP GD library to manage images.
+* Write permission for the data directory (at least 755)
+* Apache with mod rewrite for clean url system (you can disable clean url)
+* Modify settings.php to meet your needs. (optional)
         
 ### Url Rewriting
        
@@ -208,6 +203,10 @@ good looking url's here is the lines you need to add on lighttpd:
     )
     
 ### Running with PHP HipHop HHVM
+
+Testing was done on original version of jaris that doesn't uses namespaces and 
+it works pretty well. Since hiphop hasn't implemented namespaces full support
+yet this version may not work.
 
 On the current jariscms directory execute the hhvm binary as follows:
 
