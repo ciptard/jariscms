@@ -1,0 +1,63 @@
+#comments
+{
+    margin-top: 10px;
+}
+
+.comment
+{
+    margin: 5px 0 5px 0;
+    padding: 5px 0 5px 0;
+    border-bottom:  dashed 1px #d3d3d3;
+}
+
+.comment-user
+{
+    font-weight:  bold;
+    float: left;
+}
+
+.comment-actions
+{
+    float: right;
+}
+
+.comment-actions a
+{
+    cursor: pointer;
+}
+
+.comment-reply-to
+{
+    font-style: italic;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+}
+
+.comment-content
+{
+    padding: 10px;
+}
+
+.reply-input
+{
+    margin: 5px;
+    border: solid 1px #d3d3d3;
+    padding: 5px;
+}
+
+#reply-chars-left, #add-comment-left
+{
+    font-weight: bold;
+}
+
+.reply-textarea
+{
+    width: 95%;
+}
+
+.comment-login
+{
+    padding: 5px;
+    border: solid 1px #d3d3d3;
+    margin: 10px 0 10px 0;
+}

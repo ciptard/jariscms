@@ -1,0 +1,37 @@
+#rating
+{
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    border: solid 1px #d3d3d3;
+}
+
+#rating .message .display
+{
+    padding: 3px;
+    border: solid 1px #56B832;
+    color: #333;
+    font-weight: bold;
+}
+
+#rating .login
+{
+    float: right;
+    padding-bottom: 5px;
+}
+
+#rating .content
+{
+    float: right;
+}
+
+#rating .content .label
+{
+    float: left;
+    padding-right: 8px;
+    font-weight: bold;
+}
+
+#rating .content .select
+{
+    float: right;
+}

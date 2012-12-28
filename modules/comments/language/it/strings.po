@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JarisCMS Comments Module v1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-05 14:24+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
+"Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:38
+#: functions.php:62
+#: functions.php:69
+#: functions.php:111
+#: functions.php:119
+msgid "Comments"
+msgstr "Commenti"
+
+#: functions.php:53
+#: functions.php:66
+msgid "View"
+msgstr "Visualizza"
+
+#: functions.php:54
+msgid "Add"
+msgstr "Aggiungi"
+
+#: functions.php:55
+msgid "Edit"
+msgstr "Modifica"
+
+#: functions.php:56
+msgid "Delete"
+msgstr "Elimina"
+
+#: functions.php:57
+#: functions.php:67
+msgid "Flag"
+msgstr "Flag"
+
+#: functions.php:58
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: functions.php:59
+msgid "Manage Flags"
+msgstr "Gestisci Flags"
+
+#: functions.php:77
+msgid "Content"
+msgstr "Contenuto"
+
+#: functions.php:85
+msgid "Manage Comment Flags"
+msgstr "Gestisci Flag Commenti"
+
+#: functions.php:85
+msgid "To see which comments has been flagged and delete them."
+msgstr "Per visualizzare i commenti che sono stati segnati ed eliminati."
+
+#: templates/comments.php:14
+msgid "Reply to:"
+msgstr "Rispondi a:"
+
+#: data/comments_script.php:84
+msgid "reply"
+msgstr "rispondi"
+
+#: data/comments_script.php:85
+msgid "cancel"
+msgstr "annulla"
+
+#: data/comments_script.php:86
+msgid "characters left"
+msgstr "caratteri rimanenti"
+
+#: data/add-comment.php:51
+msgid "You have a new comment on"
+msgstr "Hai un nuovo commento in"
+
+#: data/add-comment.php:52
+msgid "A user posted the following comment on your post:"
+msgstr "Un utente ha scritto il seguente commento nella tua pubblicazione:"
+
+#: data/add-comment.php:54
+msgid "To reply or view your original post click on the following link:"
+msgstr "Per rispondere o visualizzare la tua pubblicazione originale clicca sul seguente collegamento:"
+
+#: data/admin-types-comments.php:17
+msgid "Comment Settings"
+msgstr "Impostazioni Commento"
+
+#: data/admin-types-comments.php:36
+msgid "Your comment settings have been successfully saved."
+msgstr "Le tue impostazioni dei commenti sono state salvate con successo."
+
+#: data/admin-types-comments.php:50
+msgid "Edit Type"
+msgstr "Modifica Tipo"
+
+#: data/admin-types-comments.php:59
+msgid "Enable"
+msgstr "Attiva"
+
+#: data/admin-types-comments.php:60
+msgid "Disable"
+msgstr "DIsattiva"
+
+#: data/admin-types-comments.php:64
+msgid "Maximun characters:"
+msgstr "Limite caratteri:"
+
+#: data/admin-types-comments.php:64
+msgid "The maximun characters allowed per user post."
+msgstr "Limite massimo permesso per ogni pubblicazione."
+
+#: data/admin-types-comments.php:66
+msgid "Save"
+msgstr "Salva"
+
+#: data/admin-types-comments.php:67
+msgid "Cancel"
+msgstr "Annulla"
+
+#: data/user-comments.php:17
+msgid "My Comments"
+msgstr "Miei Commenti"
+
+#: data/user-comments.php:37
+msgid "Total Comments:"
+msgstr "Totale Commenti:"
+
+#: data/user-comments.php:56
+msgid "Recent replies to this comment"
+msgstr "Risposte recenti a questo commento"
+
+#: data/user-comments.php:69
+msgid "No comments posted by you yet."
+msgstr "Nessuno commento pubblicato da te."
+
+#: data/admin-comments-flags-remove.php:17
+msgid "Remove Flags"
+msgstr "Elimina Flag"
+
+#: data/admin-comments-flags-remove.php:28
+msgid "Flags successfully removed."
+msgstr "Flag rimossa con successo."
+
+#: data/admin-comments-flags-delete.php:17
+msgid "Delete Flag"
+msgstr "Elimina Flag"
+
+#: data/admin-comments-flags-delete.php:28
+msgid "Comment successfully deleted."
+msgstr "Commento eliminato con successo."
+
+#: data/admin-comments-flags.php:17
+msgid "Flagged Comments List"
+msgstr "Lista Commenti Contrassegnati"
+
+#: data/admin-comments-flags.php:33
+msgid "Total flags:"
+msgstr "Totale flag:"
+
+#: data/admin-comments-flags.php:42
+msgid "Page Title"
+msgstr "Titolo Pagina:"
+
+#: data/admin-comments-flags.php:43
+msgid "Comment"
+msgstr "Commento"
+
+#: data/admin-comments-flags.php:44
+msgid "User"
+msgstr "Utente"
+
+#: data/admin-comments-flags.php:45
+msgid "Added on"
+msgstr "Aggiunto in"
+
+#: data/admin-comments-flags.php:46
+msgid "Flags"
+msgstr "Flag"
+
+#: data/admin-comments-flags.php:47
+msgid "Actions"
+msgstr "Azioni"
+
+#: data/admin-comments-flags.php:74
+msgid "Unflag"
+msgstr "Rimuovi Flag"
+
+#: include/theme.php:40
+msgid "flag"
+msgstr "flag"
+
+#: include/theme.php:54
+msgid "delete"
+msgstr "elimina"
+
+#: include/theme.php:143
+msgid "Post a comment:"
+msgstr "Pubblica un commento:"
+
+#: include/theme.php:143
+msgid "<span id=\"add-comment-left\"></span>&nbsp;characters left"
+msgstr "<span id=\"add-comment-left\"></span>&nbsp;caratteri rimanenti"
+
+#: include/theme.php:145
+msgid "Post"
+msgstr "Pubblica"
+
+#: include/theme.php:147
+msgid "Reset"
+msgstr "Reimposta"
+
+#: include/theme.php:157
+msgid "Login"
+msgstr "Entra"
+
+#: include/theme.php:157
+msgid "or"
+msgstr "o"
+
+#: include/theme.php:159
+msgid "Register"
+msgstr "Registra"
+
+#: include/theme.php:159
+msgid "to post a comment."
+msgstr "per pubblicare un commento."
+
+#: include/theme.php:206
+msgid "Previous"
+msgstr "Precedente"
+
+#: include/theme.php:231
+msgid "Next"
+msgstr "Successivo"
+

@@ -1,0 +1,14 @@
+.primary-links
+{
+	display: inline;
+}
+
+.primary-links li
+{
+	display: inline;
+}
+
+.primary-links a:hover
+{
+	color: #800000;
+}

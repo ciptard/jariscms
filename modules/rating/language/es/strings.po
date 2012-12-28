@@ -1,0 +1,189 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JarisCMS Ecommerce v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-24 13:24-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jefferson González <jgonzalez@jegoyalu.com>\n"
+"Language-Team: JegoYalu <servicios@jegoyalu.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: PUERTO RICO\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:49
+#: functions.php:58
+msgid "View"
+msgstr "Ver"
+
+#: functions.php:50
+msgid "Navigate"
+msgstr "Navegar"
+
+#: functions.php:51
+msgid "Delete"
+msgstr "Borrar"
+
+#: functions.php:52
+msgid "Rate content"
+msgstr "Clasifica el contenido"
+
+#: functions.php:54
+#: functions.php:60
+#: functions.php:110
+msgid "Ratings"
+msgstr "Votaciones"
+
+#: functions.php:68
+msgid "Content"
+msgstr "Contenido"
+
+#: functions.php:76
+msgid "Navigate Rated Content"
+msgstr "Navegar Contenido Clasificado"
+
+#: functions.php:76
+msgid "To see which content have been flagged."
+msgstr "Para ver cual contenido ha sido reportado."
+
+#: data/admin-ratings-list.php:17
+msgid "Rated Content List"
+msgstr "Lista de Contenido Clasificado"
+
+#: data/admin-ratings-list.php:33
+msgid "Total Rated Content:"
+msgstr "Total del Contenido Clasificado"
+
+#: data/admin-ratings-list.php:42
+msgid "Page Title"
+msgstr "Titulo de Página:"
+
+#: data/admin-ratings-list.php:43
+msgid "Last Rate Date"
+msgstr "Última Fecha de Clasificación"
+
+#: data/admin-ratings-list.php:44
+msgid "Points"
+msgstr "Puntos"
+
+#: data/admin-ratings-list.php:45
+msgid "Total Rates"
+msgstr "Total de Votos"
+
+#: data/admin-types-ratings.php:17
+msgid "Rating Settings"
+msgstr "Configuraciones de Votaciones"
+
+#: data/admin-types-ratings.php:40
+msgid "Your rating settings have been successfully saved."
+msgstr "Tus configuraciones de votaciones ha sido guardadas exitosamente."
+
+#: data/admin-types-ratings.php:54
+msgid "Edit Type"
+msgstr "Editar Tipo"
+
+#: data/admin-types-ratings.php:63
+msgid "Enable"
+msgstr "Activado"
+
+#: data/admin-types-ratings.php:64
+msgid "Disable"
+msgstr "Desactivado"
+
+#: data/admin-types-ratings.php:68
+msgid "Number of points:"
+msgstr "Número de puntos:"
+
+#: data/admin-types-ratings.php:68
+msgid "The maximun numbers of points user can selecte when rating."
+msgstr "El máximo de números de puntos que un usuario puede seleccionar cuando vota."
+
+#: data/admin-types-ratings.php:69
+msgid "On icon:"
+msgstr "En el ícono:"
+
+#: data/admin-types-ratings.php:69
+msgid "The image used to indicate the active points."
+msgstr "La imagen a usar para indicar los puntos activos."
+
+#: data/admin-types-ratings.php:70
+msgid "Off icon:"
+msgstr "Fuera del ícono:"
+
+#: data/admin-types-ratings.php:70
+msgid "The image used to indicate the disabled points."
+msgstr "La imagen a usar para indicar los puntos deshabilitados."
+
+#: data/admin-types-ratings.php:71
+msgid "Half icon:"
+msgstr "Medio ícono:"
+
+#: data/admin-types-ratings.php:71
+msgid "The image used to indicate a half point."
+msgstr "La imagen a usar para indicar un medio punto."
+
+#: data/admin-types-ratings.php:72
+msgid "Hints:"
+msgstr "Consejos:"
+
+#: data/admin-types-ratings.php:72
+msgid "A list of hints seperated by comma that describe each point. An example for 5 points would be: bad, poor, regular, good, gorgeous"
+msgstr "Una lista de consejos separados por coma que describa cada punto. Un ejemplo de 5 puntos podría ser: malo, pobre, regular, bueno, magnífico."
+
+#: data/admin-types-ratings.php:74
+msgid "Save"
+msgstr "Guardar"
+
+#: data/admin-types-ratings.php:75
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: data/ratings_script.php:46
+msgid "Your rating has been submitted, thank you!"
+msgstr "Tu votación ha sido sometida, gracias!"
+
+#: data/user-ratings.php:17
+msgid "My Ratings"
+msgstr "Mis Votos"
+
+#: data/user-ratings.php:37
+msgid "Total Comments:"
+msgstr "Total de Comentarios:"
+
+#: data/user-ratings.php:56
+msgid "Recent replies to this comment"
+msgstr "Respuestas recientes a este comentario"
+
+#: data/user-ratings.php:69
+msgid "No comments posted by you yet."
+msgstr "Ningún comentario hecho por tí aún."
+
+#: include/ratings.php:233
+msgid "Login"
+msgstr "Iniciar"
+
+#: include/ratings.php:233
+msgid "or"
+msgstr "o"
+
+#: include/ratings.php:234
+msgid "Register"
+msgstr "Regístrate"
+
+#: include/ratings.php:234
+msgid "to rate."
+msgstr "para votar."
+
+#: include/ratings.php:246
+msgid "Rate this:"
+msgstr "Haz tu Voto:"
+
+#: include/ratings.php:250
+msgid "Rating:"
+msgstr "Clasificación:"
+
