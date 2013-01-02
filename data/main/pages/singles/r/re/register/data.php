@@ -103,11 +103,11 @@ row: 0
             $groups_approval = unserialize(get_setting("registration_groups_approval", "main"));
             
             $valid_group = true;
-            if(JarisCMS\Setting\Get("registration_can_select_group", "main"))
+            if(JarisCMS\Setting\Get("registration_can_select_group", "main") && isset($_REQUEST["btnSave"]))
             {  
                 if(count($groups) > 0)
                 {
-                    if(!in_array($_REQUEST["group"], $groups) && isset($_REQUEST["group"]))
+                    if(!in_array($_REQUEST["group"], $groups) || !isset($_REQUEST["group"]))
                     {
                         JarisCMS\System\AddMessage(t("Please select a valid Account Type."), "error");
                         $valid_group = false;
