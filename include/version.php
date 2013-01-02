@@ -8,11 +8,16 @@
  *@file Holds the current version of Jaris CMS as a changelog for reference
  */
 
-define("JARIS_CMS_VERSION", "4.9.5 MS");
+define("JARIS_CMS_VERSION", "4.9.6 MS");
 
 /**
 
 =Change Log=
+
+Version 4.9.6 - Date 02/01/2013
+ 
+	* Added new feature to enable selection of account type at registration.
+    * Added validation field to registration form.
 
 Version 4.9.5 - Date 17/11/2012
  

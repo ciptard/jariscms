@@ -106,7 +106,10 @@ function LoginUser()
         
         if($user_data && crypt($_REQUEST["password"], $user_data["password"]) == $user_data["password"])
         {
-            if(\JarisCMS\Setting\Get("registration_needs_approval", "main") && $user_data["status"] == "0")
+            $groups_approval = unserialize(\JarisCMS\Setting\Get("registration_groups_approval", "main"));
+            
+            if((\JarisCMS\Setting\Get("registration_needs_approval", "main") && $user_data["status"] == "0" && !\JarisCMS\Setting\Get("registration_can_select_group", "main")) ||
+               (\JarisCMS\Setting\Get("registration_can_select_group", "main") && $user_data["status"] == "0" && in_array($user_data["group"], $groups_approval)))
             {
                 \JarisCMS\System\AddMessage(t("Your registration is awaiting for approval. If the registration is approved you will receive an email notification."));
                 

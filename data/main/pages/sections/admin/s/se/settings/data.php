@@ -51,6 +51,9 @@ row: 0
                 $site_settings["clean_urls"] = $clean_urls;
                 $site_settings["new_registrations"] = false;
                 $site_settings["registration_needs_approval"] = false;
+                $site_settings["registration_can_select_group"] = false;
+                $site_settings["registration_groups"] = "";
+                $site_settings["registration_groups_approval"] = "";
                 $site_settings["validate_ip"] = false;
                 $site_settings["enable_cache"] = false;
                 $site_settings["cache_php_pages"] = false;
@@ -69,6 +72,8 @@ row: 0
             }
             $site_settings["cache_ignore_db"] = unserialize($site_settings["cache_ignore_db"]);
             $site_settings["cache_ignore_types"] = unserialize($site_settings["cache_ignore_types"]);
+            $site_settings["registration_groups"] = unserialize($site_settings["registration_groups"]);
+            $site_settings["registration_groups_approval"] = unserialize($site_settings["registration_groups_approval"]);
 
             if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("edit-site-settings"))
             {    
@@ -90,6 +95,9 @@ row: 0
                     JarisCMS\Setting\Save("clean_urls", $_REQUEST["clean_urls"], "main");
                     JarisCMS\Setting\Save("new_registrations", $_REQUEST["new_registrations"], "main");
                     JarisCMS\Setting\Save("registration_needs_approval", $_REQUEST["registration_needs_approval"], "main");
+                    JarisCMS\Setting\Save("registration_can_select_group", $_REQUEST["registration_can_select_group"], "main");
+                    JarisCMS\Setting\Save("registration_groups", serialize($_REQUEST["registration_groups"]), "main");
+                    JarisCMS\Setting\Save("registration_groups_approval", serialize($_REQUEST["registration_groups_approval"]), "main");
                     JarisCMS\Setting\Save("registration_benefits", $_REQUEST["registration_benefits"], "main");
                     JarisCMS\Setting\Save("registration_terms", $_REQUEST["registration_terms"], "main");
                     JarisCMS\Setting\Save("validate_ip", $_REQUEST["validate_ip"], "main");
@@ -208,8 +216,56 @@ row: 0
             $new_registrations[t("Disable")] = false;
 
             $new_registration_fields[] = array("type"=>"radio", "name"=>"new_registrations", "id"=>"new_registrations", "value"=>$new_registrations, "checked"=>$site_settings["new_registrations"]);
-            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Require administrator approval?") . "</h4>");
+			$new_registration_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Require administrator approval?") . "</h4>");
             $new_registration_fields[] = array("type"=>"radio", "name"=>"registration_needs_approval", "id"=>"registration_needs_approval", "value"=>$new_registrations, "checked"=>$site_settings["registration_needs_approval"]);
+            
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Registrator can select group?") . "</h4>");
+            $new_registration_fields[] = array("type"=>"radio", "name"=>"registration_can_select_group", "id"=>"registration_can_select_group", "value"=>$new_registrations, "checked"=>$site_settings["registration_can_select_group"]);
+            
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Groups the registrator can select") . "</h4>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<table class=\"groups-list\">");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<thead>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<tr>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<td>".t("Enable")."</td>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<td>".t("Group")."</td>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<td>".t("Description")."</td>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<td>".t("Requires Approval")."</td>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"</tr>");
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"</thead>");
+            
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"<tbody>");
+            
+            foreach(JarisCMS\Group\GetList() as $group_name=>$group_machine_name)
+            {
+                $group_data = JarisCMS\Group\GetData($group_machine_name);
+                
+                $group_html_code = "<tr>";
+                
+                $group_checked = "";
+                $group_approval_checked = "";
+                
+                if(in_array($group_machine_name, $site_settings["registration_groups"]))
+                {
+                    $group_checked = "checked=\"checked\"";
+                }
+                
+                if(in_array($group_machine_name, $site_settings["registration_groups_approval"]))
+                {
+                    $group_approval_checked = "checked=\"checked\"";
+                }
+                
+                $group_html_code .= "<td><input type=\"checkbox\" $group_checked name=\"registration_groups[]\" value=\"$group_machine_name\" /></td>";
+                $group_html_code .= "<td>".t($group_name)."</td>";
+                $group_html_code .= "<td>".t($group_data["description"])."</td>";
+                $group_html_code .= "<td><input type=\"checkbox\" $group_approval_checked name=\"registration_groups_approval[]\" value=\"$group_machine_name\" /></td>";
+        
+                $group_html_code .= "</tr>";
+                
+                $new_registration_fields[] = array("type"=>"other", "html_code"=>$group_html_code);
+            }
+            
+            $new_registration_fields[] = array("type"=>"other", "html_code"=>"</tbody></table>");
+            
             $new_registration_fields[] = array("type"=>"textarea", "name"=>"registration_benefits", "label"=>t("Benefits:"), "id"=>"registration_benefits", "value"=>$site_settings["registration_benefits"], "description"=>t("This will be displayed on My Account (admin/user) login page. You can input html and php code."));
             $new_registration_fields[] = array("type"=>"textarea", "name"=>"registration_terms", "label"=>t("Terms and conditions:"), "id"=>"registration_terms", "value"=>$site_settings["registration_terms"], "description"=>t("The terms and conditions users have to agree before registering."));
 

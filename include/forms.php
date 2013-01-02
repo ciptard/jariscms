@@ -127,6 +127,10 @@ function CheckNumber($input, $number_type="float")
              }
          }
     }
+    else
+    {
+        \JarisCMS\System\GoToPage("access-denied");
+    }
     
     DisableUploading();
     

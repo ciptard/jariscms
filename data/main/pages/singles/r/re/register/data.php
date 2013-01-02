@@ -98,17 +98,42 @@ row: 0
                     JarisCMS\System\AddMessage(t("You must agree to the terms and conditions of this website in order to register."), "error");
                 }
             }
+            
+            $groups = unserialize(get_setting("registration_groups", "main"));
+            $groups_approval = unserialize(get_setting("registration_groups_approval", "main"));
+            
+            $valid_group = true;
+            if(JarisCMS\Setting\Get("registration_can_select_group", "main"))
+            {  
+                if(count($groups) > 0)
+                {
+                    if(!in_array($_REQUEST["group"], $groups) && isset($_REQUEST["group"]))
+                    {
+                        JarisCMS\System\AddMessage(t("Please select a valid Account Type."), "error");
+                        $valid_group = false;
+                    }
+                }
+                else
+                {
+                    $_REQUEST["group"] = "regular";
+                }
+            }
+            else
+            {
+                $_REQUEST["group"] = "regular";
+            }
 
-            if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("register-user") && $valid_email && $valid_username && $agree_terms)
+            if(isset($_REQUEST["btnSave"]) && !JarisCMS\Form\CheckFields("register-user") && $valid_email && $valid_username && $valid_group && $agree_terms)
             {
                 $fields["name"] = substr(JarisCMS\Search\StripHTMLTags($_REQUEST["full_name"]), 0, 65);
-                $fields["group"] = "regular";
+                $fields["group"] = $_REQUEST["group"];
                 $fields["register_date"] = time();
                 $fields["ip_address"] = $_SERVER["REMOTE_ADDR"];
                 $fields["gender"] = $_REQUEST["gender"];
                 $fields["birth_date"] = mktime(0, 0, 0, $_REQUEST["month"], $_REQUEST["day"], $_REQUEST["year"]);
                 
-                if(JarisCMS\Setting\Get("registration_needs_approval", "main"))
+                if((JarisCMS\Setting\Get("registration_needs_approval", "main") && !JarisCMS\Setting\Get("registration_can_select_group", "main")) ||
+                   (JarisCMS\Setting\Get("registration_can_select_group", "main") && in_array($_REQUEST["group"], $groups_approval)))
                 {
                     $fields["status"] = "0";
                 }
@@ -154,7 +179,8 @@ row: 0
 
                     if($message == "true")
                     {
-                        if(JarisCMS\Setting\Get("registration_needs_approval", "main"))
+                        if((JarisCMS\Setting\Get("registration_needs_approval", "main") && !JarisCMS\Setting\Get("registration_can_select_group", "main")) ||
+                           (JarisCMS\Setting\Get("registration_can_select_group", "main") && in_array($_REQUEST["group"], $groups_approval)))
                         {
                             JarisCMS\System\AddMessage(t("Your registration is awaiting for approval. If the registration is approved you will receive an email notification."));
                             
@@ -227,6 +253,28 @@ row: 0
                 $fieldset[] = array("name"=>t("Picture"), "fields"=>$fields_picture);
             }
             
+            if(JarisCMS\Setting\Get("registration_can_select_group", "main"))
+            {   
+                if(count($groups) > 0)
+                {
+                    $fields_group = array();
+                    foreach($groups as $group_machine_name)
+                    {
+                        $group_data = JarisCMS\Group\GetData($group_machine_name);
+                        
+                        $requires_approval = "";
+                        if(in_array($group_machine_name, $groups_approval))
+                        {
+                            $requires_approval .= t("(requires approval)");
+                        }
+                        
+                        $fields_group[] = array("type"=>"radio", "checked"=>$group_machine_name==$_REQUEST["group"]?true:false, "name"=>"group", "description"=>$group_data["description"] . " " . $requires_approval, "value"=>array($group_data["name"]=>$group_machine_name));
+                    }
+                    
+                    $fieldset[] = array("name"=>t("Account Type"), "fields"=>$fields_group);
+                }
+            }
+            
             if(JarisCMS\Setting\Get("registration_terms", "main"))
             {
                 $terms[t("I do not agree")] = false;
@@ -235,6 +283,8 @@ row: 0
                 $fields_submit[] = array("type"=>"textarea", "name"=>"terms_conditions", "label"=>t("Terms and Conditions:"), "id"=>"terms_conditions", "value"=>JarisCMS\Setting\Get("registration_terms", "main"), "readonly"=>true, "description"=>t("The terms and conditions that you have to accept in order to register."));
                 $fields_submit[] = array("type"=>"radio", "name"=>"accept_terms_conditions", "id"=>"accept_terms_conditions", "value"=>$terms, "checked"=>false);
             }
+            
+            $fields_submit[] = array("type"=>"validate_sum", "label"=>t("Validation:"), "required"=>true, "name"=>"captcha", "id"=>"captcha");
 
             $fields_submit[] = array("type"=>"submit", "name"=>"btnSave", "value"=>t("Register"));
             $fields_submit[] = array("type"=>"submit", "name"=>"btnCancel", "value"=>t("Cancel"));
