@@ -57,7 +57,14 @@ function Parse($file)
             else
             {
                 $field =  $arrFile[$i];
-                $field = ltrim($field, "\t");
+                
+                $stripped = preg_replace("/^(\t\t)/", "", $field, 1);
+
+                if($stripped != $field)
+                    $field = $stripped;
+                else
+                    $field = preg_replace("/^(        )/", "", $field, 1);
+                
 
                 if($row[$currentRow][$currentField] != "")
                 {
@@ -136,6 +143,8 @@ function Write($data, $file)
 
         foreach($fields as $name => $value)
         {
+            $value = str_replace("\n", "\n\t\t", $value);
+            
             $content .= "\tfield: $name\n";
             $content .= "\t\t" . trim($value);
             $content .= "\n\tfield;\n\n";
