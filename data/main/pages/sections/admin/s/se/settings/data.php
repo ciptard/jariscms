@@ -244,14 +244,20 @@ row: 0
                 $group_checked = "";
                 $group_approval_checked = "";
                 
-                if(in_array($group_machine_name, $site_settings["registration_groups"]))
+                if(is_array($site_settings["registration_groups"]))
                 {
-                    $group_checked = "checked=\"checked\"";
+                    if(in_array($group_machine_name, $site_settings["registration_groups"]))
+                    {
+                        $group_checked = "checked=\"checked\"";
+                    }
                 }
                 
-                if(in_array($group_machine_name, $site_settings["registration_groups_approval"]))
+                if(is_array($site_settings["registration_groups_approval"]))
                 {
-                    $group_approval_checked = "checked=\"checked\"";
+                    if(in_array($group_machine_name, $site_settings["registration_groups_approval"]))
+                    {
+                        $group_approval_checked = "checked=\"checked\"";
+                    }
                 }
                 
                 $group_html_code .= "<td><input type=\"checkbox\" $group_checked name=\"registration_groups[]\" value=\"$group_machine_name\" /></td>";

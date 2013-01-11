@@ -315,6 +315,8 @@ function Generate($parameters, $fieldsets)
     //Call Generate hook before running function
     \JarisCMS\Module\Hook("Form", "Generate", $parameters, $fieldsets);
     
+    $_SESSION["required_fields"][$parameters["name"]] = array();
+    
     //Check if a field of file type exists
     foreach($fieldsets as $fieldset)
     {
