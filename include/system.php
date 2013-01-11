@@ -574,17 +574,17 @@ function ErrorCatchHook($errno, $errmsg, $filename, $linenum, $vars)
 {
     $errortype[E_ERROR]    = t('Error');
     $errortype[E_WARNING] = t('Warning');
-     $errortype[E_PARSE] = t('Parsing Error');
+    $errortype[E_PARSE] = t('Parsing Error');
     $errortype[E_NOTICE] = t('Notice');
     $errortype[E_CORE_ERROR] = t('Core Error');
     $errortype[E_CORE_WARNING] = t('Core Warning');
     $errortype[E_COMPILE_ERROR] = t('Compile Error');
-     $errortype[E_COMPILE_WARNING] = t('Compile Warning');
-      $errortype[E_USER_ERROR] = t('User Error');
+    $errortype[E_COMPILE_WARNING] = t('Compile Warning');
+    $errortype[E_USER_ERROR] = t('User Error');
     $errortype[E_USER_WARNING] = t('User Warning');
     $errortype[E_USER_NOTICE] = t('User Notice');
     $errortype[E_STRICT] = t('Runtime Notice');
-     $errortype[E_RECOVERABLE_ERROR] = t('Catchable Fatal Error');          
+    $errortype[E_RECOVERABLE_ERROR] = t('Catchable Fatal Error');          
 
     if($errno != E_NOTICE && $errno != E_WARNING && $errno != E_STRICT)
     {
