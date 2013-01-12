@@ -42,7 +42,16 @@ function Install()
     $strings[] = t("Translate");
     
     //User notification
-    \JarisCMS\System\AddMessage(t("Remember to set the google translate configurations to work properly.") . " <a href=\"" . \JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/google-translate", "google_translate")) . "\">" . t("Configure Now") . "</a>");
+    \JarisCMS\System\AddMessage(
+        t("Remember to set the google translate configurations to work properly.") . 
+        " <a href=\"" . 
+        \JarisCMS\URI\PrintURL(
+            \JarisCMS\Module\GetPageURI(
+                "admin/settings/google-translate", 
+                "google_translate"
+        )) . "\">" . 
+        t("Configure Now") . "</a>"
+    );
 }
 
 ?>

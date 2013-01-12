@@ -348,7 +348,17 @@ function Install()
     
     \JarisCMS\Block\Add($block_categories_blog, "left");
     
-    \JarisCMS\System\AddMessage(t("Remember to set the blog configurations to work properly.") . " <a href=\"" . \JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog")) . "\">" . t("Configure Now") . "</a>");
+    \JarisCMS\System\AddMessage(
+        t("Remember to set the blog configurations to work properly.") . 
+        " <a href=\"" . 
+        \JarisCMS\URI\PrintURL(
+            \JarisCMS\Module\GetPageURI(
+                "admin/settings/blog", 
+                "blog"
+        )) . "\">" . 
+        t("Configure Now") . 
+        "</a>"
+    );
 }
 
 ?>
