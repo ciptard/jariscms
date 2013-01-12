@@ -14,7 +14,7 @@ namespace JarisCMS\Module\JQueryLightBox;
 
 function Install()
 {
-    JarisCMS\System\AddMessage(t("Remember to set the jquery lightbox configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/jquery/lightbox", "jquery_lightbox")) . "\">" . t("Configure Now") . "</a>");
+    \JarisCMS\System\AddMessage(t("Remember to set the jquery lightbox configurations to work properly.") . " <a href=\"" . \JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/jquery/lightbox", "jquery_lightbox")) . "\">" . t("Configure Now") . "</a>");
 }
 
 ?>

@@ -14,7 +14,7 @@ namespace JarisCMS\Module\Rss;
 
 function Install()
 {
-    JarisCMS\System\AddMessage(t("You can use the rss selecter tool to generate rss by content type.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("rss/selector", "rss")) . "\">" . t("Goto the Rss Selector Page") . "</a>");
+    \JarisCMS\System\AddMessage(t("You can use the rss selecter tool to generate rss by content type.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("rss/selector", "rss")) . "\">" . t("Goto the Rss Selector Page") . "</a>");
 }
 
 ?>

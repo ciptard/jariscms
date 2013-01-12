@@ -15,19 +15,19 @@ namespace JarisCMS\Module\Blog;
 function Uninstall()
 {
     //Remove related blog block
-    JarisCMS\Block\DeleteByField("block_name", "blog_user_archive");
+    \JarisCMS\Block\DeleteByField("block_name", "blog_user_archive");
     
     //Remove recent user post block
-    JarisCMS\Block\DeleteByField("block_name", "blog_recent_user_posts");
+    \JarisCMS\Block\DeleteByField("block_name", "blog_recent_user_posts");
     
     //Remove recent blog block
-    JarisCMS\Block\DeleteByField("block_name", "blog_new_blogs");
+    \JarisCMS\Block\DeleteByField("block_name", "blog_new_blogs");
     
     //Remove most viewed blog block
-    JarisCMS\Block\DeleteByField("block_name", "blog_most_viewed_blogs");
+    \JarisCMS\Block\DeleteByField("block_name", "blog_most_viewed_blogs");
     
     //Remove navigate by categories block
-    JarisCMS\Block\DeleteByField("block_name", "blog_categories_blogs");
+    \JarisCMS\Block\DeleteByField("block_name", "blog_categories_blogs");
 }
 
 ?>

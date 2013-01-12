@@ -20,30 +20,30 @@ function Install()
     //Add blog type
     $blog_fields["name"] = "Blog Post";
     $blog_fields["description"] = "Message automatically posted on your personal blog";
-    JarisCMS\Type\Add("blog", $blog_fields);
+    \JarisCMS\Type\Add("blog", $blog_fields);
     
     //Create blog data base
-    if(!JarisCMS\SQLite\DBExists("blog"))
+    if(!\JarisCMS\SQLite\DBExists("blog"))
     {
-        $db = JarisCMS\SQLite\Open("blog");
+        $db = \JarisCMS\SQLite\Open("blog");
         
-        JarisCMS\SQLite\Query("create table blogs (id integer primary key, created_timestamp text, edited_timestamp text, title text, description text, tags text, views integer, user text, category text)", $db);
+        \JarisCMS\SQLite\Query("create table blogs (id integer primary key, created_timestamp text, edited_timestamp text, title text, description text, tags text, views integer, user text, category text)", $db);
         
-        JarisCMS\SQLite\Query("create index blogs_index on blogs (created_timestamp desc, title desc, description desc, tags desc, views desc, user desc, category desc)", $db);
+        \JarisCMS\SQLite\Query("create index blogs_index on blogs (created_timestamp desc, title desc, description desc, tags desc, views desc, user desc, category desc)", $db);
         
-        JarisCMS\SQLite\Close($db);
+        \JarisCMS\SQLite\Close($db);
     }
     
     //Create blog subscriptions data base
-    if(!JarisCMS\SQLite\DBExists("blog_subscriptions"))
+    if(!\JarisCMS\SQLite\DBExists("blog_subscriptions"))
     {
-        $db = JarisCMS\SQLite\Open("blog_subscriptions");
+        $db = \JarisCMS\SQLite\Open("blog_subscriptions");
         
-        JarisCMS\SQLite\Query("create table subscriptions (id integer primary key, user text, subscriber text, created_timestamp text)", $db);
+        \JarisCMS\SQLite\Query("create table subscriptions (id integer primary key, user text, subscriber text, created_timestamp text)", $db);
         
-        JarisCMS\SQLite\Query("create index subscriptions_index on subscriptions (user desc, subscriber desc, created_timestamp desc)", $db);
+        \JarisCMS\SQLite\Query("create index subscriptions_index on subscriptions (user desc, subscriber desc, created_timestamp desc)", $db);
         
-        JarisCMS\SQLite\Close($db);
+        \JarisCMS\SQLite\Close($db);
     }
     
     //Add user blog archive navigation
@@ -140,7 +140,7 @@ function Install()
     $block_blog_archive["is_system"] = true;
     $block_blog_archive["block_name"] = "blog_user_archive";
     
-    JarisCMS\Block\Add($block_blog_archive, "left");
+    \JarisCMS\Block\Add($block_blog_archive, "left");
     
     
     //Add recent user posts
@@ -192,7 +192,7 @@ function Install()
     $block_recent_post["is_system"] = true;
     $block_recent_post["block_name"] = "blog_recent_user_posts";
     
-    JarisCMS\Block\Add($block_recent_post, "left");
+    \JarisCMS\Block\Add($block_recent_post, "left");
     
     
     //Add new created blogs
@@ -254,7 +254,7 @@ function Install()
     $block_new_blogs["is_system"] = true;
     $block_new_blogs["block_name"] = "blog_new_blogs";
     
-    JarisCMS\Block\Add($block_new_blogs, "none");
+    \JarisCMS\Block\Add($block_new_blogs, "none");
     
     //Add most viewed blogs block
     $text = t("Most Viewed Blogs");
@@ -315,7 +315,7 @@ function Install()
     $block_most_viewed_blogs["is_system"] = true;
     $block_most_viewed_blogs["block_name"] = "blog_most_viewed_blogs";
     
-    JarisCMS\Block\Add($block_most_viewed_blogs, "none");
+    \JarisCMS\Block\Add($block_most_viewed_blogs, "none");
     
     
     //Add navigate by categories blogs block
@@ -346,9 +346,9 @@ function Install()
     $block_categories_blog["is_system"] = true;
     $block_categories_blog["block_name"] = "blog_categories_blogs";
     
-    JarisCMS\Block\Add($block_categories_blog, "left");
+    \JarisCMS\Block\Add($block_categories_blog, "left");
     
-    JarisCMS\System\AddMessage(t("Remember to set the blog configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog")) . "\">" . t("Configure Now") . "</a>");
+    \JarisCMS\System\AddMessage(t("Remember to set the blog configurations to work properly.") . " <a href=\"" . \JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/blog", "blog")) . "\">" . t("Configure Now") . "</a>");
 }
 
 ?>

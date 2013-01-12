@@ -65,10 +65,11 @@ function Parse($file)
                 else
                     $field = preg_replace("/^(        )/", "", $field, 1);
                 
+                $field = str_replace("\\field;", "field;", $field);
 
                 if($row[$currentRow][$currentField] != "")
                 {
-                    $row[$currentRow][$currentField] .= $field . "";
+                    $row[$currentRow][$currentField] .= $field;
                 }
                 else
                 {
@@ -143,7 +144,7 @@ function Write($data, $file)
 
         foreach($fields as $name => $value)
         {
-            $value = str_replace("\n", "\n\t\t", $value);
+            $value = str_replace(array("\n", "field;"), array("\n\t\t", "\\field;"), $value);
             
             $content .= "\tfield: $name\n";
             $content .= "\t\t" . trim($value);

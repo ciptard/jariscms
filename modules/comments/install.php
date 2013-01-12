@@ -15,15 +15,15 @@ namespace JarisCMS\Module\Comments;
 function Install()
 {
     //Create comments data base
-    if(!JarisCMS\SQLite\DBExists("comments"))
+    if(!\JarisCMS\SQLite\DBExists("comments"))
     {
-        $db = JarisCMS\SQLite\Open("comments");
+        $db = \JarisCMS\SQLite\Open("comments");
         
-        JarisCMS\SQLite\Query("create table comments (id integer, created_timestamp text, uri text, type text, flags integer)", $db);
+        \JarisCMS\SQLite\Query("create table comments (id integer, created_timestamp text, uri text, type text, flags integer)", $db);
         
-        JarisCMS\SQLite\Query("create index comments_index on comments (created_timestamp desc, uri desc, type desc, flags desc)", $db);
+        \JarisCMS\SQLite\Query("create index comments_index on comments (created_timestamp desc, uri desc, type desc, flags desc)", $db);
         
-        JarisCMS\SQLite\Close($db);
+        \JarisCMS\SQLite\Close($db);
     }
 }
 

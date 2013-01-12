@@ -36,13 +36,13 @@ function Install()
     $translate_block["is_system"] = "1";
     $translate_block["block_name"] = "google_translate_block";
                     
-    JarisCMS\Block\Add($translate_block, "none");
+    \JarisCMS\Block\Add($translate_block, "none");
     
     //Strings to enable translations programs to scan them
     $strings[] = t("Translate");
     
     //User notification
-    JarisCMS\System\AddMessage(t("Remember to set the google translate configurations to work properly.") . " <a href=\"" . JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/google-translate", "google_translate")) . "\">" . t("Configure Now") . "</a>");
+    \JarisCMS\System\AddMessage(t("Remember to set the google translate configurations to work properly.") . " <a href=\"" . \JarisCMS\URI\PrintURL(JarisCMS\Module\GetPageURI("admin/settings/google-translate", "google_translate")) . "\">" . t("Configure Now") . "</a>");
 }
 
 ?>

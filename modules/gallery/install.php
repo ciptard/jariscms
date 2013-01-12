@@ -21,7 +21,7 @@ function Install()
     $new_type["name"] = "Gallery";
     $new_type["description"] = "For creating image galleries using lightbox.";
     
-    JarisCMS\Type\Add("gallery", $new_type);
+    \JarisCMS\Type\Add("gallery", $new_type);
 }
 
 ?>

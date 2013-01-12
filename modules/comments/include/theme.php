@@ -32,26 +32,26 @@ function Theme($comment_data, $page, $type)
     $flags = $comment_data["flags"];
     if($reply_to)
     {
-        $reply_to_data = JarisCMS\Module\Comments\GetData($reply_to, $page);
+        $reply_to_data = \JarisCMS\Module\Comments\GetData($reply_to, $page);
         $reply_to_user = $reply_to_data["user"];
     }
     
     $flag_url = "";
-    if(JarisCMS\Group\GetPermission("flag_comments", JarisCMS\Security\GetCurrentUserGroup()))
+    if(\JarisCMS\Group\GetPermission("flag_comments", \JarisCMS\Security\GetCurrentUserGroup()))
     {
         $flag_url = "<a id=\"comment-flag-$id-$user\" class=\"comment-flag-link\">" . t("flag") . "</a>";
     }
     
     $reply_url = "";
-    if(JarisCMS\Group\GetPermission("add_comments", JarisCMS\Security\GetCurrentUserGroup()))
+    if(\JarisCMS\Group\GetPermission("add_comments", \JarisCMS\Security\GetCurrentUserGroup()))
     {
         $reply_url = "<a id=\"comment-reply-$id-$user\" class=\"comment-reply-link\">" . t("reply") . "</a>";
     }
     
     $delete_url = "";
-    if(JarisCMS\Group\GetPermission("delete_comments", JarisCMS\Security\GetCurrentUserGroup()))
+    if(\JarisCMS\Group\GetPermission("delete_comments", \JarisCMS\Security\GetCurrentUserGroup()))
     {
-        if(JarisCMS\Security\IsAdminLogged() || JarisCMS\Security\GetCurrentUser() == $user)
+        if(\JarisCMS\Security\IsAdminLogged() || \JarisCMS\Security\GetCurrentUser() == $user)
         {
             $delete_url = "<a id=\"comment-delete-$id-$user\" class=\"comment-delete-link\">" . t("delete") . "</a>";
         }
@@ -113,14 +113,14 @@ function PrintAll($page, $type, $page_number=1)
 {   
     $comments_content = "<div id=\"comments\">";
     
-    $comments = JarisCMS\Module\Comments\GetList($page_number-1, 10, $page);
+    $comments = \JarisCMS\Module\Comments\GetList($page_number-1, 10, $page);
     
     foreach($comments as $comment_data)
     {
         $comments_content .= Theme($comment_data, $page, $type);
     }
     
-    $comments_count = JarisCMS\SQLite\CountColumn("comments", "comments", "id", "", JarisCMS\Module\Comments\GetPagePath($page));
+    $comments_count = \JarisCMS\SQLite\CountColumn("comments", "comments", "id", "", \JarisCMS\Module\Comments\GetPagePath($page));
     
     ob_start();
         PrintNavigation($comments_count, $page_number, $page, 10);
@@ -134,7 +134,7 @@ function PrintAll($page, $type, $page_number=1)
 
 function PrintPost()
 {
-    if(JarisCMS\Group\GetPermission("add_comments", JarisCMS\Security\GetCurrentUserGroup()))
+    if(\JarisCMS\Group\GetPermission("add_comments", \JarisCMS\Security\GetCurrentUserGroup()))
     {
         $parameters["name"] = "add-comment";
         $parameters["class"] = "add-comment";
@@ -147,14 +147,14 @@ function PrintPost()
     
         $fieldset[] = array("fields"=>$fields);
     
-        return JarisCMS\Form\Generate($parameters, $fieldset);
+        return \JarisCMS\Form\Generate($parameters, $fieldset);
     }
-    elseif(!JarisCMS\Security\IsUserLogged())
+    elseif(!\JarisCMS\Security\IsUserLogged())
     {
         return "<div class=\"comment-login\">
-        <a href=\"" . JarisCMS\URI\PrintURL("admin/user", array("return"=>JarisCMS\URI\Get())) . "\">" . 
+        <a href=\"" . \JarisCMS\URI\PrintURL("admin/user", array("return"=>\JarisCMS\URI\Get())) . "\">" . 
         t("Login") . "</a> " . t("or") . " " .
-        "<a href=\"" . JarisCMS\URI\PrintURL("register", array("return"=>JarisCMS\URI\Get())) . "\">" . 
+        "<a href=\"" . \JarisCMS\URI\PrintURL("register", array("return"=>\JarisCMS\URI\Get())) . "\">" . 
         t("Register") . "</a> " . t("to post a comment.") . 
         "</div>";
     }
@@ -201,7 +201,6 @@ function PrintNavigation($total_count, $page, $uri, $amount=30)
     print "<div class=\"navigation\">\n";
     if($page != 1)
     {
-        $previous_page = JarisCMS\URI\PrintURL($uri, array("page"=>$page - 1));
         $previous_text = t("Previous");
         print "<a class=\"previous\" href=\"javascript:comments_page(" . ($page - 1) . ")\">$previous_text</a>";
     }
@@ -215,7 +214,6 @@ function PrintNavigation($total_count, $page, $uri, $amount=30)
 
         if($start_page > $page || $start_page < $page)
         {
-            $url = JarisCMS\URI\PrintURL($uri, array("page"=>$start_page));
             print "<a class=\"page\" href=\"javascript:comments_page(" . $start_page . ")\">$text</a>";
         }
         else
@@ -226,11 +224,11 @@ function PrintNavigation($total_count, $page, $uri, $amount=30)
 
     if($page < $page_count)
     {
-        $next_page = JarisCMS\URI\PrintURL($uri, array("page"=>$page + 1));
         $next_text = t("Next");
         print "<a class=\"next\" href=\"javascript:comments_page(" . ($page + 1) . ")\">$next_text</a>";
     }
     print "</div>\n";
     print "</div>\n";
 }
+
 ?>
