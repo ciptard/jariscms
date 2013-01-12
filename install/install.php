@@ -84,11 +84,11 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "begin")
     "<h3>" . t("Requirements:", "install.po") . "</h3>
 
     <ul>
-        <li>" . t("PHP 5 or greater", "install.po") . "</li>
+        <li>" . t("PHP 5.3 or greater", "install.po") . "</li>
         <li>" . t("PHP GD library for graphics processing", "install.po") . "</li>
         <li>" . t("Write permissions on <b>data</b> directory", "install.po") . "</li>
         <li>" . t("Apache with mod rewrite for clean url system", "install.po") . "</li>
-        <li>" . t("Sqlite just for search engine optimizations.", "install.po") . "</li>
+        <li>" . t("Sqlite for search engine, users listing and third party modules.", "install.po") . "</li>
     </ul>
     ";
 
@@ -120,7 +120,7 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "check_requirements
 
     //Check php version.
     $content .= "<tr>";
-    if(substr(PHP_VERSION, 0, 1) > 4)
+    if(substr(PHP_VERSION, 0, 1) > 4 && substr(PHP_VERSION, 2, 1) >= 3)
     {
         $content .= "<td style=\"width: 100%; border-bottom: solid #000000 1px; padding-top: 25px; text-align: left;\">";
         $content .= "<b>" . t("PHP version installed:", "install.po") . "</b> " . substr(PHP_VERSION, 0, 5);
@@ -135,7 +135,7 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "check_requirements
     else
     {
         $content .= "<td style=\"width: 100%; border-bottom: solid #000000 1px; padding-top: 25px; text-align: left;\">";
-        $content .= "<b>" . t("PHP version installed:", "install.po") . "</b> " . substr(PHP_VERSION, 0, 5) . " " . t("Version 5 or greater is needed.", "install.po");
+        $content .= "<b>" . t("PHP version installed:", "install.po") . "</b> " . substr(PHP_VERSION, 0, 5) . " " . t("Version 5.3 or greater is needed.", "install.po");
         $content .= "</td>";
 
         $content .= "<td style=\"width: 150px; border-bottom: solid #000000 1px; padding-top: 25px; text-align: left;\">";
