@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JarisCMS Ecommerce v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-13 04:33-0400\n"
+"POT-Creation-Date: 2013-01-13 05:15-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Jefferson González <jgonzalez@jegoyalu.com>\n"
 "Language-Team: JegoYalu <servicios@jegoyalu.com>\n"
@@ -138,50 +138,58 @@ msgid "Text color for submenus."
 msgstr "Color de texto para submenus."
 
 #: data/admin-settings-control_menu.php:126
+msgid "Submenu text border:"
+msgstr "Borde del texto de submenus:"
+
+#: data/admin-settings-control_menu.php:126
+msgid "Text border color for submenus."
+msgstr "Color para el borde del texto de los submenus."
+
+#: data/admin-settings-control_menu.php:127
 msgid "Submenu text hover:"
 msgstr "Texto señalado para submenu:"
 
-#: data/admin-settings-control_menu.php:126
+#: data/admin-settings-control_menu.php:127
 msgid "Hover effect text color for submenus."
 msgstr "Color del efecto señalado del texto para submenus."
 
-#: data/admin-settings-control_menu.php:127
+#: data/admin-settings-control_menu.php:128
 msgid "Submenu background hover:"
 msgstr "Color de fondo para el submenu señalado:"
 
-#: data/admin-settings-control_menu.php:127
+#: data/admin-settings-control_menu.php:128
 msgid "Hover effect background color for submenus."
 msgstr "Efecto de señalado para el color de fondo para los submenus."
 
-#: data/admin-settings-control_menu.php:129
+#: data/admin-settings-control_menu.php:130
 msgid "Colors"
 msgstr "Colores"
 
-#: data/admin-settings-control_menu.php:131
+#: data/admin-settings-control_menu.php:132
 msgid "Blue"
 msgstr "Azul"
 
-#: data/admin-settings-control_menu.php:132
-msgid "Black."
+#: data/admin-settings-control_menu.php:133
+msgid "Black"
 msgstr "Negro"
 
-#: data/admin-settings-control_menu.php:133
-msgid "White."
+#: data/admin-settings-control_menu.php:134
+msgid "White"
 msgstr "Blanco"
 
-#: data/admin-settings-control_menu.php:137
+#: data/admin-settings-control_menu.php:138
 msgid "Images color"
 msgstr "Color de imagenes"
 
-#: data/admin-settings-control_menu.php:139
+#: data/admin-settings-control_menu.php:140
 msgid "Reset Colors"
 msgstr "Reiniciar Colores"
 
-#: data/admin-settings-control_menu.php:140
+#: data/admin-settings-control_menu.php:141
 msgid "Save"
 msgstr "Guardar"
 
-#: data/admin-settings-control_menu.php:141
+#: data/admin-settings-control_menu.php:142
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -197,136 +205,3 @@ msgstr "ayuda"
 msgid "logout"
 msgstr "salir"
 
-#~ msgid "Backgrounds"
-#~ msgstr "Fondos"
-
-#~ msgid "To see, add and edit the background images of the site."
-#~ msgstr "Para ver, agregar y editar las imagenes de fondo del sitio."
-
-#~ msgid ""
-#~ "Remember to add backgrounds on the Settings section of the Control Center."
-#~ msgstr ""
-#~ "Recuerda agregar fondos en la sección de Configuraciones en el Centro de "
-#~ "Control."
-
-#~ msgid "Add Backgrounds Now"
-#~ msgstr "Agregar Fondos Ahora"
-
-#~ msgid "Add Background"
-#~ msgstr "Agregar Fondo"
-
-#~ msgid "Background successfully added."
-#~ msgstr "Fondo exitosamente agregado."
-
-#~ msgid "Description:"
-#~ msgstr "Descripción:"
-
-#~ msgid ""
-#~ "Description of the background image like for example: January 2011 "
-#~ "special product promotion."
-#~ msgstr ""
-#~ "Descripción de la imagen de fondo como por ejemplo: Promoción especial de "
-#~ "producto para Enero 2011."
-
-#~ msgid "Background image file:"
-#~ msgstr "Archivo de imagen de fondo:"
-
-#~ msgid "Top position:"
-#~ msgstr "Posición superior:"
-
-#~ msgid ""
-#~ "The top position of the background in pixels, for example 200. Default is "
-#~ "0"
-#~ msgstr ""
-#~ "La posición superior del fondo en pixeles, por ejemplo 200. "
-#~ "Predeterminado es 0"
-
-#~ msgid "Left"
-#~ msgstr "Izquierda"
-
-#~ msgid "Center"
-#~ msgstr "Centro"
-
-#~ msgid "Right"
-#~ msgstr "Derecha"
-
-#~ msgid "Position"
-#~ msgstr "Posición"
-
-#~ msgid "Repeat"
-#~ msgstr "Repetir"
-
-#~ msgid "No Repeat"
-#~ msgstr "No Repetir"
-
-#~ msgid "Mode"
-#~ msgstr "Modo"
-
-#~ msgid "Scroll"
-#~ msgstr "DInamico"
-
-#~ msgid "Fixed"
-#~ msgstr "Fijo"
-
-#~ msgid "Attachment"
-#~ msgstr "Fijación"
-
-#~ msgid "Display in all pages except the listed ones."
-#~ msgstr "Mostrar en todas las páginas excepto en las que se listan."
-
-#~ msgid "Just display on the listed pages."
-#~ msgstr "Solo mostrar en las páginas listadas."
-
-#~ msgid "Pages:"
-#~ msgstr "Páginas:"
-
-#~ msgid ""
-#~ "List of uri's seperated by comma (,). Also supports the wildcard (*), for "
-#~ "example: my-section/*"
-#~ msgstr ""
-#~ "Lista de uri separados por coma (,). Tambien soporta la expresion (*), "
-#~ "por ejemplo: mi-seccion/*"
-
-#~ msgid "Delete Background"
-#~ msgstr "Borrar Fondo"
-
-#~ msgid "Background successfully deleted."
-#~ msgstr "Fondo borrado exitosamente."
-
-#~ msgid "Are you sure you want to delete the background image?"
-#~ msgstr "¿Estas seguro que deseas borrar el fondo?"
-
-#~ msgid "Yes"
-#~ msgstr "Si"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Edit Background"
-#~ msgstr "Editar Fondo"
-
-#~ msgid "Current image:"
-#~ msgstr "Imagen actual:"
-
-#~ msgid "New background image file:"
-#~ msgstr "Nuevo archivo de imagen de fondo:"
-
-#~ msgid "Description"
-#~ msgstr "Descripción"
-
-#~ msgid "Actions"
-#~ msgstr "Acciones"
-
-#~ msgid "View Image"
-#~ msgstr "Ver Imagen"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
-
-#~ msgid "Delete"
-#~ msgstr "Borrar"
-
-#~ msgid "No background images available. Click Add Background to add one."
-#~ msgstr ""
-#~ "No hay imagenes de fondo disponibles. Haz clic en Agregar Fondo para "
-#~ "comenzar."

@@ -123,14 +123,15 @@ row: 0
             $fields_colors[] = array("type"=>"color", "name"=>"submenu_background", "label"=>t("Submenu:"), "id"=>"submenu_background", "value"=>$menu_settings["submenu_background"], "description"=>t("Background color for submenus."));
             $fields_colors[] = array("type"=>"color", "name"=>"submenu_border", "label"=>t("Submenu border:"), "id"=>"submenu_border", "value"=>$menu_settings["submenu_border"], "description"=>t("Border color for submenus."));
             $fields_colors[] = array("type"=>"color", "name"=>"submenu_text", "label"=>t("Submenu text:"), "id"=>"submenu_text", "value"=>$menu_settings["submenu_text"], "description"=>t("Text color for submenus."));
+            $fields_colors[] = array("type"=>"color", "name"=>"submenu_text_border", "label"=>t("Submenu text border:"), "id"=>"submenu_text_border", "value"=>$menu_settings["submenu_text_border"], "description"=>t("Text border color for submenus."));
             $fields_colors[] = array("type"=>"color", "name"=>"submenu_text_hover", "label"=>t("Submenu text hover:"), "id"=>"submenu_text_hover", "value"=>$menu_settings["submenu_text_hover"], "description"=>t("Hover effect text color for submenus."));
             $fields_colors[] = array("type"=>"color", "name"=>"submenu_text_background_hover", "label"=>t("Submenu background hover:"), "id"=>"submenu_text_background_hover", "value"=>$menu_settings["submenu_text_background_hover"], "description"=>t("Hover effect background color for submenus."));
             
             $fieldset[] = array("fields"=>$fields_colors, "name"=>t("Colors"), "collapsible"=>true, "collapsed"=>true);
             
             $image_colors[t("Blue")] = "";
-            $image_colors[t("Black.")] = "-blk";
-            $image_colors[t("White.")] = "-wht";
+            $image_colors[t("Black")] = "-blk";
+            $image_colors[t("White")] = "-wht";
             
             $fields_image_color[] = array("type"=>"radio", "checked"=>$menu_settings["image_color"], "name"=>"image_color", "id"=>"image_color", "value"=>$image_colors);
             
