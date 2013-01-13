@@ -13,7 +13,7 @@
 $module["name"] = "Comments";
 $module["description"] = "Add comments functionality to Jaris CMS";
 $module["namespace"] = "Comments";
-$module["version"] = "1.2";
+$module["version"] = "1.3";
 $module["author"] = "Jefferson González";
 $module["email"] = "jgonzalez@jegoyalu.com";
 $module["website"] = "http://www.jegoyalu.com";
@@ -21,6 +21,10 @@ $module["website"] = "http://www.jegoyalu.com";
 /**
 
 =Change Log=
+
+Version 1.3 - Date 12/01/2013
+
+    * Renamed user/comments to commments/user due to conflicts with new profiles sytem.
 
 Version 1.2 - Date 20/05/2011
 

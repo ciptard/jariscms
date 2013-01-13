@@ -9,11 +9,13 @@
  *
  *@note File with general functions
  */
- 
-function rating_get_settings($type)
+
+namespace JarisCMS\Module\Rating;
+
+function GetSettings($type)
 {
     $settings = array();
-    if(!($settings = JarisCMS\Setting\Get($type, "ratings")))
+    if(!($settings = \JarisCMS\Setting\Get($type, "ratings")))
     {
          $settings["enabled"] = false;
          $settings["number_of_points"] = 5;
@@ -37,38 +39,38 @@ function rating_get_settings($type)
     return $settings;
 }
 
-function rating_get($page, $db_path=null)
+function Get($page, $db_path=null)
 {
     $fields["uri"] = $page;
     
-    JarisCMS\SQLite\EscapeArray($fields);
+    \JarisCMS\SQLite\EscapeArray($fields);
     
-    if(!JarisCMS\SQLite\DBExists("ratings", $db_path))
+    if(!\JarisCMS\SQLite\DBExists("ratings", $db_path))
     {
         return null;
     }
     
-    $db = JarisCMS\SQLite\Open("ratings", $db_path);
+    $db = \JarisCMS\SQLite\Open("ratings", $db_path);
     
     $select = "select * from ratings where uri='{$fields['uri']}'";
     
-    $result = JarisCMS\SQLite\Query($select, $db);
+    $result = \JarisCMS\SQLite\Query($select, $db);
     
-    $data = JarisCMS\SQLite\FetchArray($result);
+    $data = \JarisCMS\SQLite\FetchArray($result);
     
-    JarisCMS\SQLite\Close($db);
+    \JarisCMS\SQLite\Close($db);
     
     return $data;
 }
 
-function rating_add($points, $page)
+function Add($points, $page)
 {
-    if(!valid_number($points))
+    if(!\JarisCMS\Form\CheckNumber($points))
     {
         return;
     }
     
-    $page_data = JarisCMS\Page\GetData($page);
+    $page_data = \JarisCMS\Page\GetData($page);
     
     if(!is_array($page_data))
     {
@@ -82,12 +84,12 @@ function rating_add($points, $page)
     $fields["year"] = date("Y", $page_data["created_date"]);
     $fields["type"] = $page_data["type"];
     
-    JarisCMS\SQLite\EscapeArray($fields);
+    \JarisCMS\SQLite\EscapeArray($fields);
     
-    $db = JarisCMS\SQLite\Open("ratings");
+    $db = \JarisCMS\SQLite\Open("ratings");
     
     //Create rating record on database if not exists
-    if(!is_array(rating_get($page)))
+    if(!is_array(Get($page)))
     {
         $insert = "insert into ratings 
         (content_timestamp, last_rate_timestamp, day, month, year, uri, type, points, rates_count)
@@ -104,14 +106,14 @@ function rating_add($points, $page)
         0
         )";
         
-        JarisCMS\SQLite\Query($insert, $db);
+        \JarisCMS\SQLite\Query($insert, $db);
     }
     
-    $db_user = JarisCMS\User\GeneratePath(JarisCMS\Security\GetCurrentUser(), JarisCMS\Security\GetCurrentUserGroup());
+    $db_user = \JarisCMS\User\GeneratePath(\JarisCMS\Security\GetCurrentUser(), \JarisCMS\Security\GetCurrentUserGroup());
     $db_user = str_replace("data.php", "", $db_user);
     
     //Only sum points if user hasnt already voted
-    if(!is_array(rating_get($page, $db_user)))
+    if(!is_array(Get($page, $db_user)))
     {
         $update = "update ratings set
         points = points+$points,
@@ -119,39 +121,39 @@ function rating_add($points, $page)
         last_rate_timestamp = '{$fields['last_rate_timestamp']}'
         where uri='{$fields['uri']}'";
         
-        JarisCMS\SQLite\Query($update, $db);
+        \JarisCMS\SQLite\Query($update, $db);
         
-        rating_add_to_user_db($points, $fields);
+        AddToUserDB($points, $fields);
     }
     
-    JarisCMS\SQLite\Close($db);
+    \JarisCMS\SQLite\Close($db);
 }
 
 /**
  * To be only called from rating_add, so a record of rating is created
  * for the user that is rating the content and cant rate it again.
  */
-function rating_add_to_user_db($points, $data)
+function AddToUserDB($points, $data)
 {
-    $db_path = JarisCMS\User\GeneratePath(JarisCMS\Security\GetCurrentUser(), JarisCMS\Security\GetCurrentUserGroup());
+    $db_path = \JarisCMS\User\GeneratePath(\JarisCMS\Security\GetCurrentUser(), \JarisCMS\Security\GetCurrentUserGroup());
     $db_path = str_replace("data.php", "", $db_path);
     
     //Create ratings data base
-    if(!JarisCMS\SQLite\DBExists("ratings", $db_path))
+    if(!\JarisCMS\SQLite\DBExists("ratings", $db_path))
     {        
-        $db = JarisCMS\SQLite\Open("ratings", $db_path);
+        $db = \JarisCMS\SQLite\Open("ratings", $db_path);
         
-        JarisCMS\SQLite\Query("create table ratings (last_rate_timestamp text, day integer, month integer, year integer, uri text, type text, points integer)", $db);
+        \JarisCMS\SQLite\Query("create table ratings (last_rate_timestamp text, day integer, month integer, year integer, uri text, type text, points integer)", $db);
         
-        JarisCMS\SQLite\Query("create index ratings_index on ratings (last_rate_timestamp desc, day desc, month desc, year desc, uri desc, type desc, points desc)", $db);
+        \JarisCMS\SQLite\Query("create index ratings_index on ratings (last_rate_timestamp desc, day desc, month desc, year desc, uri desc, type desc, points desc)", $db);
         
-        JarisCMS\SQLite\Close($db);
+        \JarisCMS\SQLite\Close($db);
     }
     
     //Create rating record on user database if not exists
-    if(!is_array(rating_get($page, $db_path)))
+    if(!is_array(Get($page, $db_path)))
     {
-        $db = JarisCMS\SQLite\Open("ratings", $db_path);
+        $db = \JarisCMS\SQLite\Open("ratings", $db_path);
         
         $insert = "insert into ratings 
         (last_rate_timestamp, day, month, year, uri, type, points)
@@ -166,13 +168,19 @@ function rating_add_to_user_db($points, $data)
         $points
         )";
         
-        JarisCMS\SQLite\Query($insert, $db);
+        \JarisCMS\SQLite\Query($insert, $db);
         
-        JarisCMS\SQLite\Close($db);
+        \JarisCMS\SQLite\Close($db);
     }
 }
 
-function rating_calculate_total_points($rating_data, $maximun_points)
+/**
+ * Calculate total amount of points from a given overall rating data.
+ * @param array $rating_data Overall rating data of a rated content.
+ * @param integer $maximun_points The maximum amount of points the rater can select.
+ * @return integer Amount of points to display.
+ */
+function TotalPoints($rating_data, $maximun_points)
 {   
     $total_rates = $rating_data["rates_count"];
     $total_points = $rating_data["points"];
@@ -198,7 +206,7 @@ function rating_calculate_total_points($rating_data, $maximun_points)
     return $total_display_points;
 }
 
-function rating_print_hints($hints)
+function PrintHints($hints)
 {
     $hints_array = explode(",", $hints);
     
@@ -209,16 +217,16 @@ function rating_print_hints($hints)
         $hints_string .= "'" . t(trim($hint)) . "',";
     }
     
-    $hints_string = trim($hints_string, ",");
+    $hints_string .= trim($hints_string, ",");
     
     $hints_string .= "]";
     
     return $hints_string;
 }
 
-function rating_print($page, $type)
+function PrintContent($page, $type)
 {   
-    $rating_data = rating_get($page);
+    $rating_data = Get($page);
     
     $ratings_content = "<div id=\"rating\">\n";
     
@@ -227,21 +235,21 @@ function rating_print($page, $type)
     $ratings_content .= "<div style=\"clear: both\"></div>\n";
     
     //Check if user not logged and encourage user to login and vote
-    if(JarisCMS\Security\GetCurrentUserGroup() == "guest")
+    if(\JarisCMS\Security\GetCurrentUserGroup() == "guest")
     {
         $ratings_content .= "<div class=\"login\">" . 
-        "<a href=\"" . JarisCMS\URI\PrintURL("admin/user", array("return"=>JarisCMS\URI\Get())) ."\">" . t("Login") . "</a> " . t("or") . " " .
-        "<a href=\"" . JarisCMS\URI\PrintURL("register", array("return"=>JarisCMS\URI\Get())) ."\">" . t("Register") . "</a> " . t("to rate.") .
+        "<a href=\"" . \JarisCMS\URI\PrintURL("admin/user", array("return"=>\JarisCMS\URI\Get())) ."\">" . t("Login") . "</a> " . t("or") . " " .
+        "<a href=\"" . \JarisCMS\URI\PrintURL("register", array("return"=>\JarisCMS\URI\Get())) ."\">" . t("Register") . "</a> " . t("to rate.") .
         "</div>\n";
     }
     
     $ratings_content .= "<div class=\"content\">\n";
     
-    $db_user = JarisCMS\User\GeneratePath(JarisCMS\Security\GetCurrentUser(), JarisCMS\Security\GetCurrentUserGroup());
+    $db_user = \JarisCMS\User\GeneratePath(\JarisCMS\Security\GetCurrentUser(), \JarisCMS\Security\GetCurrentUserGroup());
     $db_user = str_replace("data.php", "", $db_user);
     
     //Check if user has permissions to rate and have not rated yet
-    if(JarisCMS\Group\GetPermission("rate_content", JarisCMS\Security\GetCurrentUserGroup()) && !is_array(rating_get($page, $db_user)))
+    if(\JarisCMS\Group\GetPermission("rate_content", \JarisCMS\Security\GetCurrentUserGroup()) && !is_array(Get($page, $db_user)))
     {
         $ratings_content .= "<div class=\"label\">" . t("Rate this:") . "</div>\n";
     }

@@ -13,7 +13,7 @@
 namespace JarisCMS\Module\GoogleTranslate;
 
 function Install()
-{    
+{
     //Create block for shopping cart
     $translate_block["description"] = "google translate";
     $translate_block["title"] = "Translate";
@@ -22,7 +22,7 @@ function Install()
     <div id=\"google_translate_element\"></div><script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: '<?php if(\$language = get_setting(\"input_language\", \"google_translate\")){print \$language;}else{print \"en\";} ?>'
+        pageLanguage: '<?php if(\$language = JarisCMS\Setting\Get(\"input_language\", \"google_translate\")){print \$language;}else{print \"en\";} ?>'
       }, 'google_translate_element');
     }
     </script><script src=\"http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>

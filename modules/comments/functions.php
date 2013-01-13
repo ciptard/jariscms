@@ -17,10 +17,11 @@ namespace JarisCMS\Module\Comments\System
     use JarisCMS\Module;
     use JarisCMS\System;
     use JarisCMS\Security;
+    use JarisCMS\Module\Comments;
     
     function GetPageData(&$page_data)
     {   
-        $comment_settings = JarisCMS\Module\Comments\GetSettings($page_data[0]["type"]);
+        $comment_settings = Comments\GetSettings($page_data[0]["type"]);
 
         if($comment_settings["enabled"])
         {    
@@ -108,7 +109,7 @@ namespace JarisCMS\Module\Comments\User
     {
         if(Group\GetPermission("add_comments", Security\GetCurrentUserGroup()))
         {
-            $tabs[t("Comments")] = array("uri"=>Module\GetPageURI("user/comments", "comments"));
+            $tabs[t("Comments")] = array("uri"=>Module\GetPageURI("comments/user", "comments"));
         }
     }
 }
@@ -119,20 +120,21 @@ namespace JarisCMS\Module\Comments\Theme
     use JarisCMS\Group;
     use JarisCMS\Module;
     use JarisCMS\Security;
+    use JarisCMS\Module\Comments;
     
     function MakeContent(&$content, &$content_title, &$content_data)
     {
-        $comment_settings = JarisCMS\Module\Comments\GetSettings($content_data["type"]);
+        $comment_settings = Comments\GetSettings($content_data["type"]);
 
         if($comment_settings["enabled"])
         {    
             if(Group\GetPermission("view_comments", Security\GetCurrentUserGroup()))
             {   
-                $comments_content = JarisCMS\Module\Comments\PrintPost();
+                $comments_content = Comments\PrintPost();
 
                 $comments_content .= "<h3 class=\"comments-head\">" . t("Comments") . "</h3>";
 
-                $comments_content .= JarisCMS\Module\Comments\PrintAll(URI\Get(), $content_data["type"]);
+                $comments_content .= Comments\PrintAll(URI\Get(), $content_data["type"]);
 
                 $content .= $comments_content;
 

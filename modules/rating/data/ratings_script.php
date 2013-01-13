@@ -19,13 +19,13 @@ row: 0
 
     field: content
         <?php 
-            $settings = rating_get_settings($_REQUEST["type"]);
-            $rating_data = rating_get($_REQUEST["page"]); 
+            $settings = JarisCMS\Module\Rating\GetSettings($_REQUEST["type"]);
+            $rating_data = JarisCMS\Module\Rating\Get($_REQUEST["page"]); 
             $db_user = JarisCMS\User\GeneratePath(JarisCMS\Security\GetCurrentUser(), JarisCMS\Security\GetCurrentUserGroup());
             $db_user = str_replace("data.php", "", $db_user);
         ?>
         //<script>
-        <?php if(JarisCMS\Group\GetPermission("rate_content", JarisCMS\Security\GetCurrentUserGroup()) && !is_array(rating_get($_REQUEST["page"], $db_user))) { ?>
+        <?php if(JarisCMS\Group\GetPermission("rate_content", JarisCMS\Security\GetCurrentUserGroup()) && !is_array(JarisCMS\Module\Rating\Get($_REQUEST["page"], $db_user))) { ?>
         function rating_submit(score)
         {
             $.post(
@@ -59,13 +59,13 @@ row: 0
                 path: '<?php print JarisCMS\URI\PrintURL("modules/rating/scripts/raty/img/") ?>',
                 showHalf: true,
                 starHalf: '<?php print $settings["half_icon"] ?>',
-                start: <?php print rating_calculate_total_points($rating_data, $settings["number_of_points"]) ?>,
+                start: <?php print JarisCMS\Module\Rating\TotalPoints($rating_data, $settings["number_of_points"]) ?>,
                 starOff: '<?php print $settings["off_icon"] ?>',
                 starOn: '<?php print $settings["on_icon"] ?>',
                 <?php if($settings["hints"]) { ?>
-                hintList: <?php print rating_print_hints($settings["hints"]) ?>,
+                hintList: <?php print JarisCMS\Module\PrintHints($settings["hints"]) ?>,
                 <?php } ?>
-                <?php if(JarisCMS\Group\GetPermission("rate_content", JarisCMS\Security\GetCurrentUserGroup()) && !is_array(rating_get($_REQUEST["page"], $db_user))) { ?>
+                <?php if(JarisCMS\Group\GetPermission("rate_content", JarisCMS\Security\GetCurrentUserGroup()) && !is_array(JarisCMS\Module\Rating\Get($_REQUEST["page"], $db_user))) { ?>
                 onClick: rating_submit
                 <?php } else{ ?>
                 readOnly: true

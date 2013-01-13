@@ -23,7 +23,7 @@ row: 0
             JarisCMS\Security\ProtectPage(array("view_types", "edit_types"));
 
             //Get exsiting settings or defualt ones if main settings table doesn't exist
-            $rating_settings = rating_get_settings($_REQUEST["type"]);
+            $rating_settings = JarisCMS\Module\Rating\GetSettings($_REQUEST["type"]);
 
             if(isset($_REQUEST["btnSave"]))
             {

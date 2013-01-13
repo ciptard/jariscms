@@ -74,6 +74,6 @@ row;
 
 row: 10
     field: uri
-        user/comments
+        comments/user
     field;
 row;

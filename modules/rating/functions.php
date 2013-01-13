@@ -17,10 +17,11 @@ namespace JarisCMS\Module\Rating\System
     use JarisCMS\Module;
     use JarisCMS\System;
     use JarisCMS\Security;
+    use JarisCMS\Module\Rating;
     
     function GetPageData(&$page_data)
     {   
-        $rating_settings = rating_get_settings($page_data[0]["type"]);
+        $rating_settings = Rating\GetSettings($page_data[0]["type"]);
 
         if($rating_settings["enabled"])
         {    
@@ -81,10 +82,11 @@ namespace JarisCMS\Module\Rating\Page
 {
     use JarisCMS\Page;
     use JarisCMS\SQLite;
+    use JarisCMS\Module\Rating;
     
     function Create(&$uri, &$data, &$path)
     {
-        $rating_settings = rating_get_settings($data["type"]);
+        $rating_settings = Rating\GetSettings($data["type"]);
 
         if($rating_settings["enabled"])
         {
@@ -135,7 +137,7 @@ namespace JarisCMS\Module\Rating\Page
     {
         $page_data = Page\GetData($actual_uri);
 
-        $rating_settings = rating_get_settings($page_data["type"]);
+        $rating_settings = Rating\GetSettings($page_data["type"]);
 
         if($rating_settings["enabled"])
         {
@@ -156,16 +158,17 @@ namespace JarisCMS\Module\Rating\Theme
     use JarisCMS\Group;
     use JarisCMS\Module;
     use JarisCMS\Security;
+    use JarisCMS\Module\Rating;
     
     function MakeContent(&$content, &$content_title, &$content_data)
     {
-        $rating_settings = rating_get_settings($content_data["type"]);
+        $rating_settings = Rating\GetSettings($content_data["type"]);
 
         if($rating_settings["enabled"])
         {    
             if(Group\GetPermission("view_ratings", Security\GetCurrentUserGroup()))
             {   
-                $ratings_content = rating_print(URI\Get(), $content_data["type"]);
+                $ratings_content = Rating\PrintContent(URI\Get(), $content_data["type"]);
 
                 $content = $ratings_content . $content;
 

@@ -2,3 +2,4 @@ files/
 doc/api/
 nbproject/
 data/default/
+modules/.gitignore

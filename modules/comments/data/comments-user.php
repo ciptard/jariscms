@@ -38,7 +38,7 @@ row: 0
             
             $comments = JarisCMS\SQLite\GetDataList("comments", "comments", $page-1, 10, "order by created_timestamp desc", "*", JarisCMS\Module\Comments\GetUserPath(JarisCMS\Security\GetCurrentUser()));
             
-            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
+            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "comments/user", "comments", 10);
             
             foreach($comments as $data)
             {
@@ -69,7 +69,7 @@ row: 0
                 JarisCMS\System\AddMessage(t("No comments posted by you yet."));
             }
             
-            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "user/comments", "comments", 10);
+            JarisCMS\System\PrintGenericNavigation($comments_count, $page, "comments/user", "comments", 10);
         ?>
     field;
 

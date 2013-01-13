@@ -19,30 +19,30 @@ row: 0
 
     field: content
         <?php
-            if(isset($_REQUEST["s"]) && current_user() == "Guest")
+            if(isset($_REQUEST["s"]) && JarisCMS\Security\GetCurrentUser() == "Guest")
             {
                 session_destroy();
                 session_id($_REQUEST["s"]);
                 session_start();
             }
             
-            protected_page(array("rate_content"));
+            JarisCMS\Security\ProtectPage(array("rate_content"));
             
             if(isset($_REQUEST["point"]) && isset($_REQUEST["page"]) && isset($_REQUEST["type"]))
             {
-                $type_settings = rating_get_settings($_REQUEST["type"]);
+                $type_settings = JarisCMS\Module\Rating\GetSettings($_REQUEST["type"]);
                 
                 if($type_settings["enabled"])
                 { 
                     //Ensure rate point is between a valid range
                     if($_REQUEST["point"] >= 1 && $_REQUEST["point"] <= $type_settings["number_of_points"])
                     {
-                        rating_add($_REQUEST["point"], $_REQUEST["page"]);
+                        JarisCMS\Module\Rating\Add($_REQUEST["point"], $_REQUEST["page"]);
                     }
                     
-                    $rating_data = rating_get($_REQUEST["page"]);
+                    $rating_data = JarisCMS\Module\Rating\Get($_REQUEST["page"]);
                     
-                    print rating_calculate_total_points($rating_data, $type_settings["number_of_points"]);
+                    print JarisCMS\Module\Rating\TotalPoints($rating_data, $type_settings["number_of_points"]);
                 }
             }
         ?>

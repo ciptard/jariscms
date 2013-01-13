@@ -86,14 +86,14 @@
                             print "<tr>\n";
                         }
                         
-                        $image_title = "<div class=\"gallery-title\"><a class=\"lightbox\" href=\"" . print_url("image/" . get_uri() . "/" . $images_to_show[$i]) . "\">" . t($images[$images_to_show[$i]]["description"]) . "</a></div>";
+                        $image_title = "<div class=\"gallery-title\"><a class=\"lightbox\" href=\"" . JarisCMS\URI\PrintURL("image/" . JarisCMS\URI\Get() . "/" . $images_to_show[$i]) . "\">" . t($images[$images_to_show[$i]]["description"]) . "</a></div>";
                 
                         print "<td align=\"center\" style=\"padding-bottom: 10px;\">\n";
                         if($content_data["show_title"] && $content_data["title_position"] == "top")
                         {
                             print $image_title;
                         }
-                        print "<a class=\"lightbox\" rel=\"gallery\" title=\" " . t($images[$images_to_show[$i]]["description"]) . "\" href=\"" . print_url("image/" . get_uri() . "/" . $images[$images_to_show[$i]]["name"]) . "\"><img style=\"border: solid #666666 2px\" src=\"" . print_url("image/" . get_uri() . "/" . $images[$images_to_show[$i]]["name"], array("w"=>$content_data["thumbnails_width"],"h"=>$content_data["thumbnails_height"], "ar"=>$content_data["aspect_ratio"], "bg"=>$content_data["background_color"])) . "\" /></a>\n";
+                        print "<a class=\"lightbox\" rel=\"gallery\" title=\" " . t($images[$images_to_show[$i]]["description"]) . "\" href=\"" . JarisCMS\URI\PrintURL("image/" . JarisCMS\URI\Get() . "/" . $images[$images_to_show[$i]]["name"]) . "\"><img style=\"border: solid #666666 2px\" src=\"" . JarisCMS\URI\PrintURL("image/" . JarisCMS\URI\Get() . "/" . $images[$images_to_show[$i]]["name"], array("w"=>$content_data["thumbnails_width"],"h"=>$content_data["thumbnails_height"], "ar"=>$content_data["aspect_ratio"], "bg"=>$content_data["background_color"])) . "\" /></a>\n";
                         if($content_data["show_title"] && $content_data["title_position"] == "bottom")
                         {
                             print $image_title;
@@ -111,8 +111,8 @@
                 
                     print "</table>";
                 
-                    $anterior_enlace = ($position > 1)?print_url(get_uri(), array("position"=>$position-1)):"javascript:void(0)";
-                    $despues_enlace = ($pages > 1 && $position != $pages)?print_url(get_uri(), array("position"=>$position+1)):"javascript:void(0)";
+                    $anterior_enlace = ($position > 1)?JarisCMS\URI\PrintURL(JarisCMS\URI\Get(), array("position"=>$position-1)):"javascript:void(0)";
+                    $despues_enlace = ($pages > 1 && $position != $pages)?JarisCMS\URI\PrintURL(JarisCMS\URI\Get(), array("position"=>$position+1)):"javascript:void(0)";
                 
                     print "<div style=\"text-align: center\">\n";
                     if($anterior_enlace == "javascript:void(0)")
@@ -121,7 +121,7 @@
                     }
                     else
                     {
-                        print "<a title=\"" . t("previous") . "\" style=\"float: left;\" href=\"" . $anterior_enlace ."\"><img alt=\"" . t("Previous") . "\" src=\"" . print_url("modules/gallery/images/btn-previous.png") . "\" /></a>";
+                        print "<a title=\"" . t("previous") . "\" style=\"float: left;\" href=\"" . $anterior_enlace ."\"><img alt=\"" . t("Previous") . "\" src=\"" . JarisCMS\URI\PrintURL("modules/gallery/images/btn-previous.png") . "\" /></a>";
                     }
                 
                     if($despues_enlace == "javascript:void(0)")
@@ -130,7 +130,7 @@
                     }
                     else
                     {
-                        print "<a title=\"" . t("next") . "\" style=\"float: right;\" href=\"" . $despues_enlace ."\"><img alt=\"" . t("Next") . "\" src=\"" . print_url("modules/gallery/images/btn-next.png") . "\" /></a>";
+                        print "<a title=\"" . t("next") . "\" style=\"float: right;\" href=\"" . $despues_enlace ."\"><img alt=\"" . t("Next") . "\" src=\"" . JarisCMS\URI\PrintURL("modules/gallery/images/btn-next.png") . "\" /></a>";
                     }
                     print "</div>\n";
                 ?>
