@@ -18,6 +18,7 @@ namespace JarisCMS\Module\Blog\System
     use JarisCMS\Group;
     use JarisCMS\Module;
     use JarisCMS\System;
+    use JarisCMS\Module\Blog;
     
     function GetPageData(&$page_data)
     {
@@ -32,8 +33,8 @@ namespace JarisCMS\Module\Blog\System
                     if(Group\GetTypePermission("blog", $user_data["group"]))
                     {
                         $_REQUEST["user"] = $segments[2];
-                        JarisCMS\Module\Blog\Create($_REQUEST["user"]);
-                        JarisCMS\Module\Blog\CountView($_REQUEST["user"]);
+                        Blog\Create($_REQUEST["user"]);
+                        Blog\CountView($_REQUEST["user"]);
                         $page_data[0] = Page\GetData(Module\GetPageURI("blog/user", "blog"));
                         $page_data[0]["title"] = System\PHPEval($page_data[0]["title"]);
                     }
@@ -49,12 +50,13 @@ namespace JarisCMS\Module\Blog\Page
     use JarisCMS\SQLite;
     use JarisCMS\User;
     use JarisCMS\Group;
+    use JarisCMS\Module\Blog;
     
     function Create(&$page, &$data, &$path)
     {
         if($data["type"] == "blog")
         {
-            JarisCMS\Module\Blog\AddPost($page, $data);
+            Blog\AddPost($page, $data);
         }
     }
     
@@ -64,7 +66,7 @@ namespace JarisCMS\Module\Blog\Page
 
         if($page_data["type"] == "blog")
         {
-            JarisCMS\Module\Blog\DeletePost($page, $page_data["author"]);
+            Blog\DeletePost($page, $page_data["author"]);
         }
     }
     
@@ -80,12 +82,12 @@ namespace JarisCMS\Module\Blog\Page
         }
 
         //In case users blog database doesnt exists yet
-        JarisCMS\Module\Blog\Create($username);
+        Blog\Create($username);
 
         //Ensure that if user changed content type from blog to another to delete the post from the blog listing
         if($new_data["type"] != "blog")
         {
-            JarisCMS\Module\Blog\DeletePost($page, $username);
+            Blog\DeletePost($page, $username);
         }
 
         //If some one took an existing content and changed the content type from another one to blog and it to the users post list
@@ -108,7 +110,7 @@ namespace JarisCMS\Module\Blog\Page
 
             if(!is_array($in_db))
             {
-                JarisCMS\Module\Blog\AddPost($page, $new_data);
+                Blog\AddPost($page, $new_data);
             }
         }
     }
@@ -119,7 +121,7 @@ namespace JarisCMS\Module\Blog\Page
 
         if($page_data["type"] == "blog")
         {
-            JarisCMS\Module\Blog\EditPost($actual_uri, $new_uri, $page_data["author"]);
+            Blog\EditPost($actual_uri, $new_uri, $page_data["author"]);
         }
     }
 }
@@ -129,10 +131,11 @@ namespace JarisCMS\Module\Blog\User
     use JarisCMS\Group;
     use JarisCMS\Security;
     use JarisCMS\Module;
+    use JarisCMS\Module\Blog;
     
     function Delete(&$username, &$group)
     {
-        JarisCMS\Module\Blog\DeleteFromDB($username);
+        Blog\DeleteFromDB($username);
     }
     
     function PrintPage(&$content, &$tabs)

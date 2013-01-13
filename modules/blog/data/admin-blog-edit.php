@@ -41,11 +41,11 @@ row: 0
                 
                 JarisCMS\System\AddMessage(t("Blog settings successfully updated."));
                 
-                JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("user/blog", "blog"));
+                JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("users/blog", "blog"));
             }
             elseif(isset($_REQUEST["btnCancel"]))
             {
-                JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("user/blog", "blog"));
+                JarisCMS\System\GoToPage(JarisCMS\Module\GetPageURI("users/blog", "blog"));
             }
             
             $blog_data = JarisCMS\Module\Blog\GetFromDB(JarisCMS\Security\GetCurrentUser());

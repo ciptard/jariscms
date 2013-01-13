@@ -40,7 +40,7 @@ row: 0
             {
                 if(JarisCMS\Group\GetPermission("add_content", $user_data["group"]) && JarisCMS\Group\GetTypePermission("blog", $user_data["group"]))
                 {
-                    JarisCMS\System\AddTab(t("Manage Blog"), JarisCMS\Module\GetPageURI("user/blog", "blog"));
+                    JarisCMS\System\AddTab(t("Manage Blog"), JarisCMS\Module\GetPageURI("users/blog", "blog"));
             
                     JarisCMS\System\AddTab(t("Add Post"), JarisCMS\Module\GetPageURI("admin/pages/add", "blog"), array("type"=>"blog"));
                 }

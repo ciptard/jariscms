@@ -51,7 +51,7 @@ row: 0
             
             $blogs = JarisCMS\SQLite\GetDataList("blog", "post", $page-1, 10, "order by created_timestamp desc", "*", $user_path);
             
-            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "user/blog", "blog", 10);
+            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "users/blog", "blog", 10);
             
             print "<table class=\"navigation-list\">";
             print "<thead>";
@@ -114,7 +114,7 @@ row: 0
             
             print "</table>";
             
-            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "user/blog", "blog", 10);
+            JarisCMS\System\PrintGenericNavigation($blog_count, $page, "users/blog", "blog", 10);
         ?>
     field;
 

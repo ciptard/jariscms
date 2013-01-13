@@ -13,7 +13,7 @@
 $module["name"] = "Blog";
 $module["description"] = "Provides a better blog functionality than content blocks.";
 $module["namespace"] = "Blog";
-$module["version"] = "1.4.1";
+$module["version"] = "1.4.2";
 $module["author"] = "Jefferson González";
 $module["email"] = "jgonzalez@jegoyalu.com";
 $module["website"] = "http://www.jegoyalu.com";
@@ -21,6 +21,10 @@ $module["website"] = "http://www.jegoyalu.com";
 /**
 
 =Change Log=
+
+Version 1.4.2 - Date 15/10/2012
+
+    * Renamed user/blog to users/blog due to conflicts with new user profiles.
 
 Version 1.4.1 - Date 15/10/2012
 
