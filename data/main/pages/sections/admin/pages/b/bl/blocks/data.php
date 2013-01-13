@@ -74,8 +74,8 @@ row: 0
                 JarisCMS\Security\ProtectPage();
             }
             
-            add_script("scripts/jquery-ui/jquery.ui.js");
-            add_script("scripts/jquery-ui/jquery.ui.touch-punch.min.js");
+            JarisCMS\System\AddScript("scripts/jquery-ui/jquery.ui.js");
+            JarisCMS\System\AddScript("scripts/jquery-ui/jquery.ui.touch-punch.min.js");
 
             global $base_url;
 
@@ -133,7 +133,7 @@ row: 0
                 for($i=0; $i<count($_REQUEST["id"]); $i++)
                 {
                     $new_block_data = JarisCMS\Block\GetData($_REQUEST["id"][$i], $_REQUEST["previous_position"][$i], $page_uri);
-                    $new_block_data["order"] = $_REQUEST["order"][$i];
+                    $new_block_data["order"] = $i;
 
                     if(!JarisCMS\Block\Edit($_REQUEST["id"][$i], $_REQUEST["previous_position"][$i], $new_block_data, $page_uri))
                     {
@@ -208,7 +208,7 @@ row: 0
                         <a class=\"sort-handle\"></a>\n
                         <input type=\"hidden\" name=\"previous_position[]\" value=\"$block_name\" />\n
                         <input type=\"hidden\" name=\"id[]\" value=\"$id\" />\n
-                        <input type=\"hidden\" name=\"order[]\" value=\"" . $fields["order"] . "\" />\n
+                        <input type=\"hidden\" name=\"order[]\" />\n
                         </td>\n";
 
                         print "<td>" . t($fields["description"]) . "</td>\n";
