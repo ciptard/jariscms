@@ -142,7 +142,7 @@ namespace JarisCMS\Module\Blog\User
     {
         if(Group\GetTypePermission("blog", Security\GetCurrentUserGroup()))
         {
-            $tabs[t("Blog")] = array("uri"=>Module\GetPageURI("user/blog", "blog"));
+            $tabs[t("Blog")] = array("uri"=>Module\GetPageURI("users/blog", "blog"));
         }
     }
 }

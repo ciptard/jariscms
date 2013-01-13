@@ -56,6 +56,6 @@ row;
 
 row: 7
     field: uri
-        user/blog
+        users/blog
     field;
 row;
