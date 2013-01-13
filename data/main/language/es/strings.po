@@ -24,7 +24,7 @@ msgstr "Usuario:"
 
 #: data/default/blocks/left.php:34
 msgid "Password:"
-msgstr "ContraseÃ±a:"
+msgstr "Contraseña:"
 
 #: data/default/blocks/left.php:35
 msgid "Login"
@@ -72,11 +72,11 @@ msgstr "Desactivado"
 
 #: data/default/pages/sections/admin/b/bl/blocks/data.php:97
 msgid "Description"
-msgstr "DescripciÃ³n"
+msgstr "Descripción"
 
 #: data/default/pages/sections/admin/b/bl/blocks/data.php:98
 msgid "Position"
-msgstr "PosiciÃ³n"
+msgstr "Posición"
 
 #: data/default/pages/sections/admin/b/bl/blocks/data.php:99
 msgid "Order"
@@ -84,7 +84,7 @@ msgstr "Orden"
 
 #: data/default/pages/sections/admin/b/bl/blocks/data.php:100
 msgid "Operation"
-msgstr "OperaciÃ³n"
+msgstr "Operación"
 
 #: data/default/pages/sections/admin/b/bl/blocks/data.php:128
 msgid "Edit"
@@ -117,7 +117,7 @@ msgstr "El bloque fue creado exitosamente."
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:70
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:92
 msgid "Position:"
-msgstr "PosiciÃ³n:"
+msgstr "Posición:"
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:71
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:93
@@ -128,7 +128,7 @@ msgstr "PosiciÃ³n:"
 #: data/default/pages/sections/admin/groups/a/ad/add/data.php:56
 #: data/default/pages/sections/admin/groups/e/ed/edit/data.php:69
 msgid "Description:"
-msgstr "DescripciÃ³n:"
+msgstr "Descripción:"
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:72
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:94
@@ -136,7 +136,7 @@ msgstr "DescripciÃ³n:"
 #: data/default/pages/sections/admin/categories/subcategories/d/de/delete/data.php:48
 #: data/default/pages/sections/admin/categories/subcategories/e/ed/edit/data.php:83
 msgid "Title:"
-msgstr "TÃ­tulo:"
+msgstr "Título:"
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:73
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:98
@@ -161,17 +161,17 @@ msgstr "Seleccione los grupos que pueden ver el bloque. No seleccione nada para 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:90
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:119
 msgid "Display in all pages except the listed ones."
-msgstr "Mostrar en todas las pÃ¡ginas excepto en las que se listan."
+msgstr "Mostrar en todas las páginas excepto en las que se listan."
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:91
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:120
 msgid "Just display on the listed pages."
-msgstr "Solo mostrar en las pÃ¡ginas listadas."
+msgstr "Solo mostrar en las páginas listadas."
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:94
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:123
 msgid "Pages:"
-msgstr "PÃ¡ginas:"
+msgstr "Páginas:"
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:96
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:125
@@ -181,12 +181,12 @@ msgstr "Lista de uri separados por coma (,). Tambien soporta la expresion (*), p
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:100
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:129
 msgid "Return Code:"
-msgstr "CÃ³digo de Regreso:"
+msgstr "Código de Regreso:"
 
 #: data/default/pages/sections/admin/blocks/a/ad/add/data.php:100
 #: data/default/pages/sections/admin/blocks/e/ed/edit/data.php:129
 msgid "PHP code enclosed with &lt;?php code ?&gt; to evaluate if block should display by printing true or false. for example: &lt;?php if(JarisCMS\Security\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"
-msgstr "CÃ³digo php encerrado en &lt;?php code ?&gt; para evaluar si se debe mostrar haciendo print \"true\". por ejemplo: &lt;?php if(JarisCMS\Security\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"
+msgstr "Código php encerrado en &lt;?php code ?&gt; para evaluar si se debe mostrar haciendo print \"true\". por ejemplo: &lt;?php if(JarisCMS\Security\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"
 
 #: data/default/pages/sections/admin/blocks/d/de/delete/data.php:17
 msgid "Delete Block"
@@ -206,7 +206,7 @@ msgstr "Esta seguro que desea borrar el bloque?"
 
 #: data/default/pages/sections/admin/blocks/d/de/delete/data.php:54
 msgid "Description: "
-msgstr "DescripciÃ³n:"
+msgstr "Descripción:"
 
 #: data/default/pages/sections/admin/blocks/d/de/delete/data.php:56
 #: data/default/pages/sections/admin/categories/d/de/delete/data.php:50
@@ -233,12 +233,12 @@ msgstr "Tus cambios han sido guardados en el bloque."
 #: data/default/pages/sections/admin/c/ca/categories/data.php:18
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:24
 msgid "Categories"
-msgstr "CategorÃ­as"
+msgstr "Categorías"
 
 #: data/default/pages/sections/admin/c/ca/categories/data.php:25
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:17
 msgid "Create Category"
-msgstr "Crear CategorÃ­a"
+msgstr "Crear Categoría"
 
 #: data/default/pages/sections/admin/c/ca/categories/data.php:66
 #: data/default/pages/sections/admin/g/gr/groups/data.php:37
@@ -248,22 +248,22 @@ msgstr "Nombre"
 #: data/default/pages/sections/admin/c/ca/categories/data.php:92
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:17
 msgid "Subcategories"
-msgstr "SubcategorÃ­as"
+msgstr "Subcategorías"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:37
 msgid "The category has been successfully created."
-msgstr "La categorÃ­a fue creada exitosamente."
+msgstr "La categoría fue creada exitosamente."
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:56
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:58
 #: data/default/pages/sections/admin/groups/a/ad/add/data.php:54
 #: data/default/pages/sections/admin/groups/e/ed/edit/data.php:67
 msgid "Machine name:"
-msgstr "Nombre de mÃ¡quina:"
+msgstr "Nombre de máquina:"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:56
 msgid "A readable machine name, like for example: my-category."
-msgstr "Un nombre de mÃ¡quina leÃ­ble, por ejemplo: mi-categoria"
+msgstr "Un nombre de máquina leíble, por ejemplo: mi-categoria"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:57
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:59
@@ -275,17 +275,17 @@ msgstr "Nombre:"
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:57
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:59
 msgid "A human readable name like for example: My Category."
-msgstr "Un nombre leÃ­ble por ejemplo: Mi CategorÃ­a."
+msgstr "Un nombre leíble por ejemplo: Mi Categoría."
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:58
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:60
 msgid "A brief description of the category."
-msgstr "Una descripciÃ³n breve de la categorÃ­a."
+msgstr "Una descripción breve de la categoría."
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:62
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:64
 msgid "Enable multiple selection?:"
-msgstr "Activar multiple selecciÃ³n?:"
+msgstr "Activar multiple selección?:"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:63
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:65
@@ -295,90 +295,90 @@ msgstr "Multiple"
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:65
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:67
 msgid "Enable subcategory name sorting?:"
-msgstr "Habilitar ordenamiento de subcategorÃ­as por nombre?:"
+msgstr "Habilitar ordenamiento de subcategorías por nombre?:"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:66
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:68
 msgid "Subcategory sorting"
-msgstr "Ordenar subcategorÃ­a"
+msgstr "Ordenar subcategoría"
 
 #: data/default/pages/sections/admin/categories/a/ad/add/data.php:66
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:68
 msgid "To enable or disable automatic sorting."
-msgstr "Para habilitar o deshabilitar ordenamiento automÃ¡tico."
+msgstr "Para habilitar o deshabilitar ordenamiento automático."
 
 #: data/default/pages/sections/admin/categories/d/de/delete/data.php:17
 msgid "Delete Category"
-msgstr "Eliminar CategorÃ­a"
+msgstr "Eliminar Categoría"
 
 #: data/default/pages/sections/admin/categories/d/de/delete/data.php:29
 msgid "Category successfully deleted."
-msgstr "CategorÃ­a  borrada exitosamente."
+msgstr "Categoría  borrada exitosamente."
 
 #: data/default/pages/sections/admin/categories/d/de/delete/data.php:47
 msgid "Are you sure you want to delete the category?"
-msgstr "Estas seguro de querer borrar la categorÃ­a?"
+msgstr "Estas seguro de querer borrar la categoría?"
 
 #: data/default/pages/sections/admin/categories/d/de/delete/data.php:48
 msgid "Category:"
-msgstr "CategorÃ­a:"
+msgstr "Categoría:"
 
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:17
 msgid "Edit Category"
-msgstr "Editar categorÃ­a"
+msgstr "Editar categoría"
 
 #: data/default/pages/sections/admin/categories/e/ed/edit/data.php:58
 msgid "The machine name of the category."
-msgstr "El nombre mÃ¡quina de la categorÃ­a."
+msgstr "El nombre máquina de la categoría."
 
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:25
 msgid "Create Subcategory"
-msgstr "Crear SubcategorÃ­a"
+msgstr "Crear Subcategoría"
 
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:154
 msgid "Title"
-msgstr "TÃ­tulo"
+msgstr "Título"
 
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:155
 msgid "Parent"
-msgstr "RaÃ­z"
+msgstr "Raíz"
 
 #: data/default/pages/sections/admin/categories/s/su/subcategories/data.php:167
 msgid "No subcategories available."
-msgstr "No hay subcategorÃ­as disponible."
+msgstr "No hay subcategorías disponible."
 
 #: data/default/pages/sections/admin/categories/subcategories/a/ad/add/data.php:17
 msgid "Add Subcategory"
-msgstr "Agregar SubcategorÃ­a"
+msgstr "Agregar Subcategoría"
 
 #: data/default/pages/sections/admin/categories/subcategories/a/ad/add/data.php:33
 msgid "The subcategory was successfully created."
-msgstr "La subcategorÃ­a fue creada exitosamente."
+msgstr "La subcategoría fue creada exitosamente."
 
 #: data/default/pages/sections/admin/categories/subcategories/a/ad/add/data.php:67
 #: data/default/pages/sections/admin/categories/subcategories/e/ed/edit/data.php:85
 msgid "Parent:"
-msgstr "RaÃ­z:"
+msgstr "Raíz:"
 
 #: data/default/pages/sections/admin/categories/subcategories/d/de/delete/data.php:17
 msgid "Delete Subcategory"
-msgstr "Eliminar SubcategorÃ­a"
+msgstr "Eliminar Subcategoría"
 
 #: data/default/pages/sections/admin/categories/subcategories/d/de/delete/data.php:29
 msgid "Subcategory successfully deleted."
-msgstr "subcategorÃ­a borrada exitosamente."
+msgstr "subcategoría borrada exitosamente."
 
 #: data/default/pages/sections/admin/categories/subcategories/d/de/delete/data.php:47
 msgid "Are you sure you want to delete the subcategory?"
-msgstr "Estas seguro de querer borrar la subcategorÃ­a?"
+msgstr "Estas seguro de querer borrar la subcategoría?"
 
 #: data/default/pages/sections/admin/categories/subcategories/e/ed/edit/data.php:17
 msgid "Edit Subcategory"
-msgstr "Editar SubcategorÃ­a"
+msgstr "Editar Subcategoría"
 
 #: data/default/pages/sections/admin/categories/subcategories/e/ed/edit/data.php:50
 msgid "The subcategory was successfully edited."
-msgstr "La subcategorÃ­a fue editada exitosamente."
+msgstr "La subcategoría fue editada exitosamente."
 
 #: data/default/pages/sections/admin/g/gr/groups/data.php:17
 #: data/default/pages/sections/admin/groups/p/pe/permissions/data.php:25
@@ -405,17 +405,17 @@ msgstr "El grupo fue creado exitosamente."
 #: data/default/pages/sections/admin/groups/a/ad/add/data.php:54
 #: data/default/pages/sections/admin/groups/e/ed/edit/data.php:67
 msgid "A readable machine name, like for example: my-group."
-msgstr "Un nombre de mÃ¡quina leÃ­ble, por ejemplo: mi-grupo."
+msgstr "Un nombre de máquina leíble, por ejemplo: mi-grupo."
 
 #: data/default/pages/sections/admin/groups/a/ad/add/data.php:55
 #: data/default/pages/sections/admin/groups/e/ed/edit/data.php:68
 msgid "A human readable name like for example: My Group."
-msgstr "Un nombre humanamente leÃ­ble por ejemplo: Mi Grupo."
+msgstr "Un nombre humanamente leíble por ejemplo: Mi Grupo."
 
 #: data/default/pages/sections/admin/groups/a/ad/add/data.php:56
 #: data/default/pages/sections/admin/groups/e/ed/edit/data.php:69
 msgid "A brief description of the group."
-msgstr "Una breve descripciÃ³n del grupo."
+msgstr "Una breve descripción del grupo."
 
 #: data/default/pages/sections/admin/groups/d/de/delete/data.php:17
 msgid "Delete Group"
@@ -468,17 +468,17 @@ msgstr "El formato de entrada fue exitosamente creado."
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:57
 msgid "A readable machine name, like for example: my-input-format."
-msgstr "Un nombre de mÃ¡quina leÃ­ble, por ejemplo: mi-formato-de-entrada"
+msgstr "Un nombre de máquina leíble, por ejemplo: mi-formato-de-entrada"
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:58
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:70
 msgid "A human readable name like for example: My Input Format."
-msgstr "Un nombre leÃ­ble por ejemplo: Mi Formato de Entrada."
+msgstr "Un nombre leíble por ejemplo: Mi Formato de Entrada."
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:59
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:71
 msgid "A brief description of the input format."
-msgstr "Una descripciÃ³n breve del formato de entrada."
+msgstr "Una descripción breve del formato de entrada."
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:60
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:72
@@ -503,32 +503,32 @@ msgstr "Desactivar"
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:68
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:80
 msgid "Parse url's"
-msgstr "ConversiÃ³n de los url"
+msgstr "Conversión de los url"
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:68
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:80
 msgid "To enable or disable parsing of url's."
-msgstr "Para activar o desactivar la conversiÃ³n de los url."
+msgstr "Para activar o desactivar la conversión de los url."
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:71
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:83
 msgid "Parse emails"
-msgstr "ConversiÃ³n de correos electrÃ³nicos"
+msgstr "Conversión de correos electrónicos"
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:71
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:83
 msgid "To enable or disable parsing of emails."
-msgstr "Para activar o desactivar la conversiÃ³n de correos electrÃ³nicos."
+msgstr "Para activar o desactivar la conversión de correos electrónicos."
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:74
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:86
 msgid "Convert line breaks"
-msgstr "Convertir saltos de lÃ­nea"
+msgstr "Convertir saltos de línea"
 
 #: data/default/pages/sections/admin/input-formats/a/ad/add/data.php:74
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:86
 msgid "To enable or disable conversion of line breaks to &lt;br&gt; tag."
-msgstr "Para activar o desactivar la conversiÃ³n de salots de lÃ­nea a la etiqueta &lt;br&gt;."
+msgstr "Para activar o desactivar la conversión de salots de línea a la etiqueta &lt;br&gt;."
 
 #: data/default/pages/sections/admin/input-formats/d/de/delete/data.php:17
 msgid "Delete Input Format"
@@ -540,7 +540,7 @@ msgstr "El formato de entrada fue exitosamente borrado."
 
 #: data/default/pages/sections/admin/input-formats/d/de/delete/data.php:49
 msgid "Are you sure you want to delete the input format?"
-msgstr "Â¿Esta seguro que desea borrar el formato de entrada?"
+msgstr "¿Esta seguro que desea borrar el formato de entrada?"
 
 #: data/default/pages/sections/admin/input-formats/d/de/delete/data.php:50
 msgid "Input format:"
@@ -552,7 +552,7 @@ msgstr "Editar Formato de Entrada"
 
 #: data/default/pages/sections/admin/input-formats/e/ed/edit/data.php:69
 msgid "The machine name of the input format."
-msgstr "El nombre mÃ¡quina del formato de entrada."
+msgstr "El nombre máquina del formato de entrada."
 
 #: data/default/pages/sections/admin/l/la/languages/data.php:17
 msgid "Languages"
@@ -565,11 +565,11 @@ msgstr "Agregar Lenguaje"
 
 #: data/default/pages/sections/admin/l/la/languages/data.php:36
 msgid "Code"
-msgstr "CÃ³digo"
+msgstr "Código"
 
 #: data/default/pages/sections/admin/l/la/languages/data.php:42
 msgid "View language info."
-msgstr "Ver informaciÃ³n del lenguaje."
+msgstr "Ver información del lenguaje."
 
 #: data/default/pages/sections/admin/l/la/languages/data.php:53
 msgid "Edit strings"
@@ -585,7 +585,7 @@ msgstr "Exitosamente desconectado,"
 
 #: data/default/pages/sections/admin/l/lo/logout/data.php:28
 msgid "Click Here"
-msgstr "presione aquÃ­"
+msgstr "presione aquí"
 
 #: data/default/pages/sections/admin/l/lo/logout/data.php:30
 msgid "to go back to home page."
@@ -618,12 +618,12 @@ msgstr "Traductor principal para este lenguaje."
 #: data/default/pages/sections/admin/languages/e/ed/edit-info/data.php:61
 #: data/default/pages/sections/admin/languages/i/in/info/data.php:59
 msgid "E-mail:"
-msgstr "Correo ElectrÃ³nico:"
+msgstr "Correo Electrónico:"
 
 #: data/default/pages/sections/admin/languages/a/ad/add/data.php:56
 #: data/default/pages/sections/admin/languages/e/ed/edit-info/data.php:61
 msgid "E-mail of the main translator."
-msgstr "Correo electrÃ³nico del traductor primario."
+msgstr "Correo electrónico del traductor primario."
 
 #: data/default/pages/sections/admin/languages/a/ad/add/data.php:58
 #: data/default/pages/sections/admin/languages/e/ed/edit-info/data.php:63
@@ -634,7 +634,7 @@ msgstr "Colaboradores:"
 #: data/default/pages/sections/admin/languages/a/ad/add/data.php:58
 #: data/default/pages/sections/admin/languages/e/ed/edit-info/data.php:63
 msgid "A list of contributors seperated by a new line for this translation."
-msgstr "Una lista de colaboradores seperados por una nueva lÃ­nea para esta traducciÃ³n."
+msgstr "Una lista de colaboradores seperados por una nueva línea para esta traducción."
 
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:17
 msgid "Edit language strings"
@@ -653,7 +653,7 @@ msgstr "Cadena original a traducir."
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:50
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:86
 msgid "Translation:"
-msgstr "TraducciÃ³n"
+msgstr "Traducción"
 
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:50
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:86
@@ -704,11 +704,11 @@ msgstr "Original"
 
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:259
 msgid "Translation"
-msgstr "TraducciÃ³n"
+msgstr "Traducción"
 
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:319
 msgid "Goto Page:"
-msgstr "Ir a PÃ¡gina"
+msgstr "Ir a Página"
 
 #: data/default/pages/sections/admin/languages/e/ed/edit/data.php:334
 msgid "Go"
@@ -725,7 +725,7 @@ msgstr "El lenguaje fue modificado exitosamente."
 #: data/default/pages/sections/admin/languages/e/ed/edit-info/data.php:55
 #: data/default/pages/sections/admin/languages/i/in/info/data.php:49
 msgid "Code:"
-msgstr "CÃ³digo:"
+msgstr "Código:"
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:17
 msgid "Import POT File"
@@ -733,7 +733,7 @@ msgstr "Importar Archivo POT"
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:28
 msgid "Here you can update language strings by uploading a po translation file."
-msgstr "AquÃ­ puedes actualizar las cadenas del lenguaje subiendo un archivo de traducciÃ³n po."
+msgstr "Aquí puedes actualizar las cadenas del lenguaje subiendo un archivo de traducción po."
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:65
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:86
@@ -762,7 +762,7 @@ msgstr "Archivo PO:"
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:110
 msgid "A po translation file to import into current translations."
-msgstr "Un archivo de traducciÃ³n po a importar a la traducciÃ³n actual."
+msgstr "Un archivo de traducción po a importar a la traducción actual."
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:113
 msgid "Just insert new strings"
@@ -774,7 +774,7 @@ msgstr "Insertar y actualizar las nuevas cadenas"
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:118
 msgid "Import method"
-msgstr "MÃ©todo de importe"
+msgstr "Método de importe"
 
 #: data/default/pages/sections/admin/languages/i/im/import/data.php:120
 msgid "Upload"
@@ -782,11 +782,11 @@ msgstr "Subir"
 
 #: data/default/pages/sections/admin/languages/i/in/info/data.php:17
 msgid "Language Info"
-msgstr "InformaciÃ³n del Lenguaje"
+msgstr "Información del Lenguaje"
 
 #: data/default/pages/sections/admin/languages/i/in/info/data.php:37
 msgid "Edit Info"
-msgstr "Editar InformaciÃ³n"
+msgstr "Editar Información"
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:17
 msgid "Translate content"
@@ -794,7 +794,7 @@ msgstr "Traducir contenido"
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:47
 msgid "Used to generate the meta description for search engines. Leave blank for default."
-msgstr "Utilizado para la etiqueta meta de descripciÃ³n para los motores de bÃºsqueda. Dejar en blanco para usar predeterminado."
+msgstr "Utilizado para la etiqueta meta de descripción para los motores de búsqueda. Dejar en blanco para usar predeterminado."
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:48
 msgid "Keywords:"
@@ -802,7 +802,7 @@ msgstr "Palabras claves:"
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:48
 msgid "List of words seperated by comma (,) used to generate the meta keywords for search engines. Leave blank for default."
-msgstr "Lista de palabras separadas por coma (,) para los motores de bÃºsqueda. Dejar en blanco para usar predeterminado."
+msgstr "Lista de palabras separadas por coma (,) para los motores de búsqueda. Dejar en blanco para usar predeterminado."
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:50
 msgid "Meta tags"
@@ -814,7 +814,7 @@ msgstr "Verifica tus permisos de escritura en el directorio de <b>language</b>."
 
 #: data/default/pages/sections/admin/languages/t/tr/translate/data.php:93
 msgid "Translation saved successfully!"
-msgstr "TraducciÃ³n creada exitosamente!"
+msgstr "Traducción creada exitosamente!"
 
 #: data/default/pages/sections/admin/m/me/menus/data.php:17
 msgid "Menus"
@@ -827,7 +827,7 @@ msgstr "Crear Menu"
 
 #: data/default/pages/sections/admin/m/me/menus/data.php:27
 msgid "Configuration"
-msgstr "ConfiguraciÃ³n"
+msgstr "Configuración"
 
 #: data/default/pages/sections/admin/m/me/menus/data.php:155
 msgid "Add Item"
@@ -843,7 +843,7 @@ msgstr "No hay menu item disponible."
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:17
 msgid "Modules"
-msgstr "MÃ³dulos"
+msgstr "Módulos"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:32
 msgid "Status"
@@ -855,7 +855,7 @@ msgstr "Dependencias"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:42
 msgid "View module info."
-msgstr "Ver informaciÃ³n del mÃ³dulo."
+msgstr "Ver información del módulo."
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:53
 msgid "Enabled"
@@ -863,11 +863,11 @@ msgstr "Activado"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:54
 msgid "Version installed:"
-msgstr "VersiÃ³n instalada:"
+msgstr "Versión instalada:"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:58
 msgid "Actual version:"
-msgstr "VersiÃ³n actual:"
+msgstr "Versión actual:"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:63
 msgid "Disabled"
@@ -875,7 +875,7 @@ msgstr "Desactivado"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:64
 msgid "Version:"
-msgstr "VersiÃ³n:"
+msgstr "Versión:"
 
 #: data/default/pages/sections/admin/m/mo/modules/data.php:71
 msgid "Install"
@@ -895,11 +895,11 @@ msgstr "Menu creado exitosamente."
 
 #: data/default/pages/sections/admin/menus/a/ad/add/data.php:62
 msgid "A machine readable name. For example: my-menu"
-msgstr "Un nombre en formato mÃ¡quina como por ejemplo: mi-menu"
+msgstr "Un nombre en formato máquina como por ejemplo: mi-menu"
 
 #: data/default/pages/sections/admin/menus/a/ad/add-item/data.php:17
 msgid "Add Menu Item"
-msgstr "Agregar MenÃº Ãtems"
+msgstr "Agregar Menú Ãtems"
 
 #: data/default/pages/sections/admin/menus/a/ad/add-item/data.php:41
 msgid "The menu item was successfully created."
@@ -911,7 +911,7 @@ msgstr "Url:"
 
 #: data/default/pages/sections/admin/menus/a/ad/add-item/data.php:62
 msgid "The relative path to access a page, for example: section/page, section or the full url like http://domain.com/section. Leave empty to auto-generate."
-msgstr "La ruta de acceso a la pÃ¡gina, por ejemplo: seccion/pagina, mi-acceso-directo o un enlace completo como http://domain.com/section. Dejar en vacÃ­o para auto generar."
+msgstr "La ruta de acceso a la página, por ejemplo: seccion/pagina, mi-acceso-directo o un enlace completo como http://domain.com/section. Dejar en vacío para auto generar."
 
 #: data/default/pages/sections/admin/menus/a/ad/add-item/data.php:65
 msgid "New Window"
@@ -947,7 +947,7 @@ msgstr "Menu:"
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:17
 msgid "Menu Configuration"
-msgstr "ConfiguraciÃ³n de los Menu"
+msgstr "Configuración de los Menu"
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:29
 msgid "Your changes have been successfully saved."
@@ -955,35 +955,35 @@ msgstr "Tus configuraciones han sido almacenadas exitosamente."
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:55
 msgid "Primary menu:"
-msgstr "MenÃº primario:"
+msgstr "Menú primario:"
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:55
 msgid "Menu returned on the $primary_links template variable"
-msgstr "MenÃº devolvido en la variable $primary_links de las plantillas."
+msgstr "Menú devolvido en la variable $primary_links de las plantillas."
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:56
 msgid "Secondary menu:"
-msgstr "MenÃº secundario:"
+msgstr "Menú secundario:"
 
 #: data/default/pages/sections/admin/menus/c/co/configuration/data.php:56
 msgid "Menu returned on the $secondary_links template variable"
-msgstr "MenÃº devolvido en la variable $secondary_links de las plantillas."
+msgstr "Menú devolvido en la variable $secondary_links de las plantillas."
 
 #: data/default/pages/sections/admin/menus/d/de/delete/data.php:17
 msgid "Delete Menu"
-msgstr "Eliminar MenÃº"
+msgstr "Eliminar Menú"
 
 #: data/default/pages/sections/admin/menus/d/de/delete/data.php:49
 msgid "Menu successfully deleted."
-msgstr "MenÃº borrado exitosamente."
+msgstr "Menú borrado exitosamente."
 
 #: data/default/pages/sections/admin/menus/d/de/delete/data.php:60
 msgid "Can't delete primary menu."
-msgstr "No se puede borrar el menÃº primario."
+msgstr "No se puede borrar el menú primario."
 
 #: data/default/pages/sections/admin/menus/d/de/delete/data.php:64
 msgid "Can't delete secondary menu."
-msgstr "No se puede borrar el menÃº secundario."
+msgstr "No se puede borrar el menú secundario."
 
 #: data/default/pages/sections/admin/menus/d/de/delete/data.php:78
 msgid "Are you sure you want to delete the menu?"
@@ -991,7 +991,7 @@ msgstr "Esta seguro que desea borrar el menu?"
 
 #: data/default/pages/sections/admin/menus/d/de/delete-item/data.php:17
 msgid "Delete Menu Item"
-msgstr "Eliminar MenÃº Ãtems"
+msgstr "Eliminar Menú Ãtems"
 
 #: data/default/pages/sections/admin/menus/d/de/delete-item/data.php:29
 msgid "Menu item successfully deleted."
@@ -1003,7 +1003,7 @@ msgstr "Esta seguro que desea borrar el item de menu?"
 
 #: data/default/pages/sections/admin/menus/e/ed/edit-item/data.php:17
 msgid "Edit Menu Item"
-msgstr "Editar MenÃº Ãtems"
+msgstr "Editar Menú Ãtems"
 
 #: data/default/pages/sections/admin/menus/e/ed/edit-item/data.php:58
 msgid "The menu item was successfully edited."
@@ -1027,15 +1027,15 @@ msgstr "Instalar Modulo"
 
 #: data/default/pages/sections/admin/modules/i/in/install/data.php:29
 msgid "Module successfully installed."
-msgstr "MÃ³dulo instalado exitosamente."
+msgstr "Módulo instalado exitosamente."
 
 #: data/default/pages/sections/admin/modules/u/un/uninstall/data.php:17
 msgid "Uninstall Module"
-msgstr "Desinstalar MÃ³dulo"
+msgstr "Desinstalar Módulo"
 
 #: data/default/pages/sections/admin/modules/u/un/uninstall/data.php:29
 msgid "Module successfully uninstalled."
-msgstr "MÃ³dulo desinstalado exitosamente."
+msgstr "Módulo desinstalado exitosamente."
 
 #: data/default/pages/sections/admin/modules/u/up/upgrade/data.php:17
 msgid "Upgrade Module"
@@ -1043,11 +1043,11 @@ msgstr "Actualizar Modulo"
 
 #: data/default/pages/sections/admin/modules/u/up/upgrade/data.php:28
 msgid "Module successfully upgraded."
-msgstr "MÃ³dulo actualizado exitosamente."
+msgstr "Módulo actualizado exitosamente."
 
 #: data/default/pages/sections/admin/modules/v/vi/view/data.php:17
 msgid "Module Info"
-msgstr "InformaciÃ³n del MÃ³dulo"
+msgstr "Información del Módulo"
 
 #: data/default/pages/sections/admin/modules/v/vi/view/data.php:51
 msgid "Author:"
@@ -1055,7 +1055,7 @@ msgstr "Autor:"
 
 #: data/default/pages/sections/admin/modules/v/vi/view/data.php:55
 msgid "Email:"
-msgstr "Correo ElectrÃ³nico:"
+msgstr "Correo Electrónico:"
 
 #: data/default/pages/sections/admin/modules/v/vi/view/data.php:59
 msgid "Website:"
@@ -1064,7 +1064,7 @@ msgstr "Sitio:"
 #: data/default/pages/sections/admin/p/pa/pages/data.php:17
 #: data/default/pages/sections/admin/p/pa/pages/data.php:96
 msgid "Pages"
-msgstr "PÃ¡ginas"
+msgstr "Páginas"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:29
 msgid "You are currently navigating:"
@@ -1077,7 +1077,7 @@ msgstr "Secciones"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:81
 msgid "Alphabetical"
-msgstr "&Aacute;lfabeto"
+msgstr "Álfabeto"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:112
 msgid "List View"
@@ -1085,11 +1085,11 @@ msgstr "Vista en Listado"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:113
 msgid "Create Page"
-msgstr "Crear PÃ¡gina"
+msgstr "Crear Página"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:117
 msgid "Navigation"
-msgstr "NavegaciÃ³n"
+msgstr "Navegación"
 
 #: data/default/pages/sections/admin/p/pa/pages/data.php:118
 msgid "Singles"
@@ -1102,7 +1102,7 @@ msgstr "Agregar"
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:93
 #: data/default/pages/sections/admin/pages/blocks/add/p/pa/page/data.php:67
 msgid "The page was successfully created."
-msgstr "La pÃ¡gina fue creada exitosamente."
+msgstr "La página fue creada exitosamente."
 
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:122
 msgid "You do not have permissions to add content of that type."
@@ -1110,7 +1110,7 @@ msgstr "No tienes permisos para agregar contenido de ese tipo."
 
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:145
 msgid "Overrides the original page title on search engine results. Leave blank for default."
-msgstr "Sobre escribe el tÃ­tulo original de la pÃ¡gina en los resultados de los motores de bÃºsqueda. Dejar en blanco para usar predeterminado."
+msgstr "Sobre escribe el título original de la página en los resultados de los motores de búsqueda. Dejar en blanco para usar predeterminado."
 
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:179
 msgid "Select the groups that can see this content. Don't select anything to display content to everyone."
@@ -1125,7 +1125,7 @@ msgstr "Uri:"
 
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:184
 msgid "The relative path to access the page, for example: section/page, section. Leave empty to auto-generate."
-msgstr "La ruta de acceso a la pÃ¡gina, por ejemplo: seccion/pagina Ã³ mi-acceso-directo. Dejar en vacÃ­o para auto generar."
+msgstr "La ruta de acceso a la página, por ejemplo: seccion/pagina ó mi-acceso-directo. Dejar en vacío para auto generar."
 
 #: data/default/pages/sections/admin/pages/a/ad/add/data.php:196
 #: data/default/pages/sections/admin/pages/blocks/add/p/pa/page/data.php:164
@@ -1134,7 +1134,7 @@ msgstr "Tipo:"
 
 #: data/default/pages/sections/admin/pages/b/bl/blocks/data.php:18
 msgid "Page Blocks"
-msgstr "Bloques de PÃ¡ginas"
+msgstr "Bloques de Páginas"
 
 #: data/default/pages/sections/admin/pages/b/bl/blocks/data.php:40
 msgid "View"
@@ -1142,7 +1142,7 @@ msgstr "Ver"
 
 #: data/default/pages/sections/admin/pages/b/bl/blocks/data.php:47
 msgid "Images"
-msgstr "ImÃ¡genes"
+msgstr "Imágenes"
 
 #: data/default/pages/sections/admin/pages/b/bl/blocks/data.php:51
 msgid "Files"
@@ -1164,7 +1164,7 @@ msgstr "Configuraciones de Envios"
 
 #: data/default/pages/sections/admin/pages/blocks/a/ad/add/data.php:17
 msgid "Add Page Block"
-msgstr "Agregar Bloque de PÃ¡gina"
+msgstr "Agregar Bloque de Página"
 
 #: data/default/pages/sections/admin/pages/blocks/a/ad/add/data.php:50
 #: data/default/pages/sections/admin/pages/blocks/add/p/pa/page/data.php:91
@@ -1182,19 +1182,19 @@ msgstr "Agregar Bloque de Envio"
 
 #: data/default/pages/sections/admin/pages/blocks/add/p/pa/page/data.php:127
 msgid "Displayed on the web browser title bar and inside the website."
-msgstr "Mostrado en el tÃ­tulo del navegador y dentro del contenido."
+msgstr "Mostrado en el título del navegador y dentro del contenido."
 
 #: data/default/pages/sections/admin/pages/blocks/add/p/pa/page/data.php:155
 msgid "The relative path to access the page, for example: section/page, section"
-msgstr "La ruta de acceso a la pÃ¡gina, por ejemplo: secciÃ³m/pagina Ã³ mi-acceso-directo"
+msgstr "La ruta de acceso a la página, por ejemplo: seccióm/pagina ó mi-acceso-directo"
 
 #: data/default/pages/sections/admin/pages/blocks/d/de/delete/data.php:17
 msgid "Delete Page Block"
-msgstr "Eliminar Bloque de PÃ¡gina"
+msgstr "Eliminar Bloque de Página"
 
 #: data/default/pages/sections/admin/pages/blocks/e/ed/edit/data.php:17
 msgid "Edit Page Block"
-msgstr "Editar Bloque de PÃ¡gina"
+msgstr "Editar Bloque de Página"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:17
 msgid "Blocks Post Settings"
@@ -1206,7 +1206,7 @@ msgstr "Configuraciones de envio guardadas exitosamente."
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:84
 msgid "Display post title"
-msgstr "Mostrar tÃ­tulo del envio"
+msgstr "Mostrar título del envio"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:87
 msgid "Thumbnail width:"
@@ -1214,7 +1214,7 @@ msgstr "Ancho de miniatura:"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:87
 msgid "The maximum width of the image thumbnail in pixels."
-msgstr "MÃ¡ximo ancho en pixeles en el cual las imÃ¡genes de previsualizaciÃ³n se van a mostrar."
+msgstr "Máximo ancho en pixeles en el cual las imágenes de previsualización se van a mostrar."
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:88
 msgid "Thumbnail height:"
@@ -1222,7 +1222,7 @@ msgstr "Alto de miniatura:"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:88
 msgid "The maximum height of the image thumbnail in pixels."
-msgstr "Alto mÃ¡ximo en pixeles de la miniatura."
+msgstr "Alto máximo en pixeles de la miniatura."
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:89
 msgid "Background color:"
@@ -1234,7 +1234,7 @@ msgstr "El color de fondo de la miniatura en caso de ser necesario."
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:91
 msgid "Keep aspect ratio?"
-msgstr "Â¿Mantener relaciÃ³n de aspecto?"
+msgstr "¿Mantener relación de aspecto?"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:92
 msgid "Display image thumbnail"
@@ -1242,7 +1242,7 @@ msgstr "Mostrar miniatura de imagen"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:95
 msgid "Display view more link"
-msgstr "Mostar enlace de ver mÃ¡s"
+msgstr "Mostar enlace de ver más"
 
 #: data/default/pages/sections/admin/pages/blocks/post/s/se/settings/data.php:97
 msgid "Maximun amount of words:"
@@ -1254,11 +1254,11 @@ msgstr "Cantidad de palabras mostradas en el resumen del envio."
 
 #: data/default/pages/sections/admin/pages/d/de/delete/data.php:68
 msgid "Page successfully deleted."
-msgstr "PÃ¡gina eliminada exitosamente."
+msgstr "Página eliminada exitosamente."
 
 #: data/default/pages/sections/admin/pages/d/de/delete/data.php:78
 msgid "Translations successfully deleted."
-msgstr "TraducciÃ³n borrada exitosamente."
+msgstr "Traducción borrada exitosamente."
 
 #: data/default/pages/sections/admin/pages/d/de/delete/data.php:110
 msgid "Are you sure you want to delete this?"
@@ -1267,7 +1267,7 @@ msgstr "Estas seguro que deseas eliminar esto?"
 #: data/default/pages/sections/admin/pages/e/ed/edit/data.php:36
 #: data/default/pages/sections/admin/pages/e/ed/edit/data.php:55
 msgid "The content you was trying to edit is a system page."
-msgstr "El contenido que tratabas de editar es una pÃ¡gina del sistema."
+msgstr "El contenido que tratabas de editar es una página del sistema."
 
 #: data/default/pages/sections/admin/pages/e/ed/edit/data.php:143
 msgid "Translations repositioned."
@@ -1323,12 +1323,12 @@ msgstr "Estas seguro que deseas eliminar el archivo?"
 #: data/default/pages/sections/admin/pages/i/im/images/data.php:36
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:36
 msgid "Image uploads not permitted for this content type."
-msgstr "Subida de imÃ¡genes no permitida para este tipo de contenido."
+msgstr "Subida de imágenes no permitida para este tipo de contenido."
 
 #: data/default/pages/sections/admin/pages/i/im/images/data.php:40
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:41
 msgid "Maximum image uploads reached."
-msgstr "Cantidad maxima de imÃ¡genes subidas alcanzada."
+msgstr "Cantidad maxima de imágenes subidas alcanzada."
 
 #: data/default/pages/sections/admin/pages/i/im/images/data.php:76
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:17
@@ -1345,11 +1345,11 @@ msgstr "Presiona para agrandar"
 
 #: data/default/pages/sections/admin/pages/i/im/images/data.php:169
 msgid "No images available click Add Image to create one."
-msgstr "No existe imÃ¡genes disponibles. Favor de dar un click a Agregar Imagen para crear una."
+msgstr "No existe imágenes disponibles. Favor de dar un click a Agregar Imagen para crear una."
 
 #: data/default/pages/sections/admin/pages/i/im/images/data.php:173
 msgid "No images available."
-msgstr "No hay imÃ¡genes disponible."
+msgstr "No hay imágenes disponible."
 
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:90
 msgid "The image was successfully added."
@@ -1362,11 +1362,11 @@ msgstr "Archivo de imagen:"
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:119
 #: data/default/pages/sections/admin/s/se/settings/data.php:324
 msgid "Maximun width:"
-msgstr "Ancho mÃ¡ximo:"
+msgstr "Ancho máximo:"
 
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:119
 msgid "The width the image should be resized to."
-msgstr "El ancho al que la imagen debe ser cambiada de tamaÃ±o."
+msgstr "El ancho al que la imagen debe ser cambiada de tamaño."
 
 #: data/default/pages/sections/admin/pages/images/a/ad/add/data.php:119
 msgid "default:"
@@ -1386,11 +1386,11 @@ msgstr "Esta seguro que desea borrar la imagen?"
 
 #: data/default/pages/sections/admin/pages/l/li/list/data.php:17
 msgid "Pages List"
-msgstr "Listado de PÃ¡ginas"
+msgstr "Listado de Páginas"
 
 #: data/default/pages/sections/admin/pages/l/li/list/data.php:23
 msgid "Navigation View"
-msgstr "Vista en NavegaciÃ³n"
+msgstr "Vista en Navegación"
 
 #: data/default/pages/sections/admin/pages/l/li/list/data.php:61
 msgid "Filter by type:"
@@ -1414,7 +1414,7 @@ msgstr "Autor"
 
 #: data/default/pages/sections/admin/pages/l/li/list/data.php:99
 msgid "Dates"
-msgstr "DÃ­as"
+msgstr "Días"
 
 #: data/default/pages/sections/admin/pages/l/li/list/data.php:100
 msgid "Type"
@@ -1435,11 +1435,11 @@ msgstr "Editado:"
 
 #: data/default/pages/sections/admin/pages/t/tr/translate/data.php:17
 msgid "Translate Page"
-msgstr "Traducir PÃ¡gina"
+msgstr "Traducir Página"
 
 #: data/default/pages/sections/admin/pages/t/ty/types/data.php:18
 msgid "Add Content"
-msgstr "AÃ±adir Contenido"
+msgstr "Añadir Contenido"
 
 #: data/default/pages/sections/admin/pages/t/ty/types/data.php:76
 msgid "You do not have permissions to add content of any type. Ask the administrator for access."
@@ -1464,11 +1464,11 @@ msgstr "Cron Jobs"
 #: data/default/pages/sections/admin/s/se/settings/data.php:28
 #: data/default/pages/sections/admin/settings/c/cl/clear-image-cache/data.php:17
 msgid "Clear Image Cache"
-msgstr "Limpar Cache de ImÃ¡genes"
+msgstr "Limpar Cache de Imágenes"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:29
 msgid "Clear Page Cache"
-msgstr "Limpar Cache de PÃ¡ginas"
+msgstr "Limpar Cache de Páginas"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:30
 msgid "Sqlite Backups"
@@ -1488,27 +1488,27 @@ msgstr "Sobre escribir configuraciones"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:169
 msgid "Online"
-msgstr "En lÃ­nea"
+msgstr "En línea"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:170
 msgid "Offline"
-msgstr "Fuera de lÃ­nea"
+msgstr "Fuera de línea"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:173
 msgid "Status title:"
-msgstr "TÃ­tulo del estado:"
+msgstr "Título del estado:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:173
 msgid "A brief description of site status like: Under Construction"
-msgstr "Una descripciÃ³n breve del estado."
+msgstr "Una descripción breve del estado."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:174
 msgid "Status Description:"
-msgstr "DescripciÃ³n del estado:"
+msgstr "Descripción del estado:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:174
 msgid "A detailed description of the site status."
-msgstr "Una descripciÃ³n mÃ¡s detallada del estado."
+msgstr "Una descripción más detallada del estado."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:176
 msgid "Site Status"
@@ -1516,11 +1516,11 @@ msgstr "Estado del Sitio"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:178
 msgid "Site title:"
-msgstr "TÃ­tulo del sitio:"
+msgstr "Título del sitio:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:180
 msgid "Auto detect base url?"
-msgstr "Â¿Auto detectar url base?"
+msgstr "¿Auto detectar url base?"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:181
 msgid "Site url:"
@@ -1532,7 +1532,7 @@ msgstr "Lema:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:182
 msgid "A short phrase that describes your company or organization goals."
-msgstr "Una frase corta que describa tu compaÃ±Ã­a o metas de la organizaciÃ³n."
+msgstr "Una frase corta que describa tu compañía o metas de la organización."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:183
 msgid "Footer message:"
@@ -1540,7 +1540,7 @@ msgstr "Mensaje del pie:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:185
 msgid "Site info"
-msgstr "InformaciÃ³n del sitio"
+msgstr "Información del sitio"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:188
 msgid "auto-detect"
@@ -1560,7 +1560,7 @@ msgstr "Lenguaje y Horario de Zona"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:211
 msgid "Require administrator approval?"
-msgstr "Requiere aprobaciÃ³n del administrador?"
+msgstr "Requiere aprobación del administrador?"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:213
 msgid "Benefits:"
@@ -1568,7 +1568,7 @@ msgstr "Beneficios:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:213
 msgid "This will be displayed on My Account (admin/user) login page. You can input html and php code."
-msgstr "Esto serÃ¡ mostrado en la pÃ¡gina de inicio Mi Cuenta (admin/user). Puedes entrar html y cÃ³digo php."
+msgstr "Esto será mostrado en la página de inicio Mi Cuenta (admin/user). Puedes entrar html y código php."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:214
 msgid "Terms and conditions:"
@@ -1588,31 +1588,31 @@ msgstr "Activa o desactiva el registro publico al sitio en la pagina de register
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:223
 msgid "Login and Authentication"
-msgstr "Inicio y AutentificaciÃ³n"
+msgstr "Inicio y Autentificación"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:223
 msgid "Enables or disable the validation of user ip address, this increases security but may result on user logout on dynamic mobile connections that constantly change ip address."
-msgstr "Activa o desactiva la verificaciÃ³n de ip del usuario, esto aumenta la seguridad pero puede resultar en el cierre de sesiÃ³n para usuarios con conexiones moviles dinÃ¡micas que constantemente cambian de ip."
+msgstr "Activa o desactiva la verificación de ip del usuario, esto aumenta la seguridad pero puede resultar en el cierre de sesión para usuarios con conexiones moviles dinámicas que constantemente cambian de ip."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:230
 msgid "PHP pages caching?"
-msgstr "Cache de pÃ¡ginas en php?"
+msgstr "Cache de páginas en php?"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:234
 msgid "Select databases to ignore on timestamp check"
-msgstr "Bases de datos a ignorar al verificar la fecha de modificaciÃ³n"
+msgstr "Bases de datos a ignorar al verificar la fecha de modificación"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:262
 msgid "Select types to disable page caching"
-msgstr "Selecciona los tipos a ignorar el cache de pÃ¡ginas"
+msgstr "Selecciona los tipos a ignorar el cache de páginas"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:285
 msgid "Page Caching"
-msgstr "Cache de PÃ¡ginas"
+msgstr "Cache de Páginas"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:285
 msgid "Enables or disable the caching of pages content for fast retrieving."
-msgstr "Activar o desactivar el cache del contenido de las pÃ¡ginas para un mejor rendimiento."
+msgstr "Activar o desactivar el cache del contenido de las páginas para un mejor rendimiento."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:293
 msgid "Data Caching"
@@ -1620,19 +1620,19 @@ msgstr "Cache de Data"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:293
 msgid "Special option that improves performance on embedded devices or low performance servers."
-msgstr "OpciÃ³n especial que mejora el rendimiento en dispositivos  integrados o servidores de bajo rendimiento."
+msgstr "Opción especial que mejora el rendimiento en dispositivos  integrados o servidores de bajo rendimiento."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:301
 msgid "Script stats"
-msgstr "EstadÃ­sticas de la aplicaciÃ³n"
+msgstr "Estadísticas de la aplicación"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:301
 msgid "Enables or disable the display of script stats at the end of page. For the purpose of measuring JarisCMS performance."
-msgstr "Activa o desactiva la muestra de estadÃ­sticas de la aplicaciÃ³n al final de la pÃ¡gina. Con el propÃ³sito de medir el rendimiento de JarisCMS."
+msgstr "Activa o desactiva la muestra de estadísticas de la aplicación al final de la página. Con el propósito de medir el rendimiento de JarisCMS."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:307
 msgid "Public profiles"
-msgstr "Perfiles PÃºblicos"
+msgstr "Perfiles Públicos"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:310
 msgid "User profiles"
@@ -1640,11 +1640,11 @@ msgstr "Perfil de usuarios"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:316
 msgid "Size:"
-msgstr "TamaÃ±o:"
+msgstr "Tamaño:"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:316
 msgid "The maximun width and height of the picture in the format 100x150 where 100 = width and 150 height."
-msgstr "MÃ¡ximo ancho y alto de una imagen de 100x150 donde el 100 = ancho y 150 el alto."
+msgstr "Máximo ancho y alto de una imagen de 100x150 donde el 100 = ancho y 150 el alto."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:318
 msgid "User picture"
@@ -1652,7 +1652,7 @@ msgstr "Foto del Usuario"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:324
 msgid "The maximun width for uploaded images."
-msgstr "MÃ¡ximo ancho para la subida de imÃ¡genes."
+msgstr "Máximo ancho para la subida de imágenes."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:325
 msgid "Image quality:"
@@ -1664,7 +1664,7 @@ msgstr "Un valor desde 0 (peor calidad, menor peso) hasta 100 (mejor calidad, ma
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:327
 msgid "Image compression"
-msgstr "CompresiÃ³n de ImÃ¡genes"
+msgstr "Compresión de Imágenes"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:334
 msgid "Clean url"
@@ -1676,15 +1676,15 @@ msgstr "El uri utilizado para la pagina de inicio."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:338
 msgid "Home page"
-msgstr "PÃ¡gina de Inicio"
+msgstr "Página de Inicio"
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:340
 msgid "The uri to the page used as the page not found result."
-msgstr "El uri utilizado para la pÃ¡gina de resultado no encontrado."
+msgstr "El uri utilizado para la página de resultado no encontrado."
 
 #: data/default/pages/sections/admin/s/se/settings/data.php:342
 msgid "Page not found"
-msgstr "PÃ¡gina no encontrada"
+msgstr "Página no encontrada"
 
 #: data/default/pages/sections/admin/s/st/start/data.php:17
 msgid "Control Center"
@@ -1712,19 +1712,19 @@ msgstr "y esta bajo la licencia GPLPP"
 
 #: data/default/pages/sections/admin/settings/c/cl/clear-image-cache/data.php:29
 msgid "Image cache cleared successfully."
-msgstr "Cache de imÃ¡genes limpiado  exitosamente."
+msgstr "Cache de imágenes limpiado  exitosamente."
 
 #: data/default/pages/sections/admin/settings/c/cl/clear-image-cache/data.php:46
 msgid "Are you sure you want to clear the image cache?"
-msgstr "Esta seguro que desea limpiar el cache de imÃ¡genes?"
+msgstr "Esta seguro que desea limpiar el cache de imágenes?"
 
 #: data/default/pages/sections/admin/settings/c/cl/clear-page-cache/data.php:29
 msgid "Page cache cleared successfully."
-msgstr "Cache de PÃ¡ginas limpiado  exitosamente."
+msgstr "Cache de Páginas limpiado  exitosamente."
 
 #: data/default/pages/sections/admin/settings/c/cl/clear-page-cache/data.php:46
 msgid "Are you sure you want to clear the page cache?"
-msgstr "Esta seguro que desea limpiar el cache de pÃ¡ginas?"
+msgstr "Esta seguro que desea limpiar el cache de páginas?"
 
 #: data/default/pages/sections/admin/settings/c/cr/cron/data.php:38
 msgid "To run cron jobs automatically you need to set a command to execute on your operating system crontab as the following examples:"
@@ -1732,7 +1732,7 @@ msgstr "Para ejecutar los cron jobs automaticamente necesitas establecer un coma
 
 #: data/default/pages/sections/admin/settings/c/cr/cron/data.php:47
 msgid "Last time cron jobs executed:"
-msgstr "Ãšltima vez que ejecutaron los cron jobs:"
+msgstr "Última vez que ejecutaron los cron jobs:"
 
 #: data/default/pages/sections/admin/settings/c/cr/cron/data.php:54
 msgid "never"
@@ -1740,11 +1740,11 @@ msgstr "nunca"
 
 #: data/default/pages/sections/admin/settings/c/cr/cron/data.php:65
 msgid "Run cron jobs?"
-msgstr "Â¿Ejecutar los cron jobs?"
+msgstr "¿Ejecutar los cron jobs?"
 
 #: data/default/pages/sections/admin/settings/c/cr/cron/data.php:68
 msgid "The process of running the cron jobs could take a long time. Execute jobs now?"
-msgstr "El proceso de ejecutar los cron jobs puede tomar un tiempo largo. Â¿Ejecutar ahora?"
+msgstr "El proceso de ejecutar los cron jobs puede tomar un tiempo largo. ¿Ejecutar ahora?"
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:17
 msgid "Mailer Settings"
@@ -1772,19 +1772,19 @@ msgstr "Nombre para desde:"
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:71
 msgid "The name used on the from email."
-msgstr "El nombre usado para el envio de correos electrÃ³nicos."
+msgstr "El nombre usado para el envio de correos electrónicos."
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:72
 msgid "From e-mail:"
-msgstr "Correo electrÃ³nico para desde:"
+msgstr "Correo electrónico para desde:"
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:72
 msgid "The email used on the from email."
-msgstr "El correo electrÃ³nico utilizado en el evÃ­o de correos."
+msgstr "El correo electrónico utilizado en el evío de correos."
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:79
 msgid "Authentication:"
-msgstr "AutentificaciÃ³n:"
+msgstr "Autentificación:"
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:80
 msgid "SSL:"
@@ -1800,19 +1800,19 @@ msgstr "Puerto:"
 
 #: data/default/pages/sections/admin/settings/m/ma/mailer/data.php:86
 msgid "SMTP Configuration"
-msgstr "ConfiguraciÃ³n SMTP"
+msgstr "Configuración SMTP"
 
 #: data/default/pages/sections/admin/settings/r/re/reindex-search/data.php:17
 msgid "Reindex SQLite Search Engine Database"
-msgstr "Re-indexear Base De Datos SQLite del Motor de BÃºsqueda"
+msgstr "Re-indexear Base De Datos SQLite del Motor de Búsqueda"
 
 #: data/default/pages/sections/admin/settings/r/re/reindex-search/data.php:31
 msgid "Indexation of SQLite search database completed."
-msgstr "OperaciÃ³n de recreaciÃ³n de la base de datos de bÃºsqueda completado."
+msgstr "Operación de recreación de la base de datos de búsqueda completado."
 
 #: data/default/pages/sections/admin/settings/r/re/reindex-search/data.php:48
 msgid "The proces of recreating sqlite search engine index could take some time. Are you sure you want do this?"
-msgstr "El proceso de recrear la base de datos de sqlite del motor de bÃºsqueda puede tomar un tiempo largo. Â¿Estas seguro que deseas hacer esto?"
+msgstr "El proceso de recrear la base de datos de sqlite del motor de búsqueda puede tomar un tiempo largo. ¿Estas seguro que deseas hacer esto?"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:17
 msgid "Search Settings"
@@ -1820,11 +1820,11 @@ msgstr "Configuraciones del buscador"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:67
 msgid "Enables displaying the searched categories as the title of the search page."
-msgstr "Activa la muestra de las categorÃ­as buscadas como el tÃ­tulo de la pÃ¡gina."
+msgstr "Activa la muestra de las categorías buscadas como el título de la página."
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:69
 msgid "Display category titles?"
-msgstr "Â¿Mostrar el tÃ­tulo de las categorÃ­as?"
+msgstr "¿Mostrar el título de las categorías?"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:75
 msgid "Width:"
@@ -1832,7 +1832,7 @@ msgstr "Ancho:"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:75
 msgid "The pixels width of the image displayed on search results. Default: 60px"
-msgstr "El ancho en pixeles de la imagen mostrada en los resultados de bÃºsqueda. Predeterminado: 60px"
+msgstr "El ancho en pixeles de la imagen mostrada en los resultados de búsqueda. Predeterminado: 60px"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:76
 msgid "Height:"
@@ -1840,19 +1840,19 @@ msgstr "Alto:"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:76
 msgid "The pixels height of the image displayed on search results. Default: 60px"
-msgstr "El largo en pixeles de la imagen mostrada en los resultados de bÃºsqueda. Predeterminado: 60px"
+msgstr "El largo en pixeles de la imagen mostrada en los resultados de búsqueda. Predeterminado: 60px"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:79
 msgid "The background color of images when forced aspect ratio in html notation, example: d3d3d3."
-msgstr "El color de fondo para las imÃ¡genes cuando se fuerza la relaciÃ³n de aspecto, en formato html, ejemplo: d3d3d3."
+msgstr "El color de fondo para las imágenes cuando se fuerza la relación de aspecto, en formato html, ejemplo: d3d3d3."
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:81
 msgid "Display Images"
-msgstr "Mostrar imÃ¡genes"
+msgstr "Mostrar imágenes"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:83
 msgid "Types where displaying images"
-msgstr "Los tipos donde se mostrarÃ¡n imÃ¡genes"
+msgstr "Los tipos donde se mostrarán imágenes"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:91
 msgid "Content type fields"
@@ -1860,7 +1860,7 @@ msgstr "Campos de tipos de contenido"
 
 #: data/default/pages/sections/admin/settings/s/se/search/data.php:91
 msgid "A list of field names in the format Label:field_name separated by comma for each content type that are displayed on search results. Example: Description:content, Page Views:views, etc."
-msgstr "Un listado de nombres de campos en el formato Etiqueta:nombre_de_campo separados por coma para cada tipo de contenido que es mostrado en los resultados de bÃºsqueda. Ejemplo: DescripciÃ³n:content, Vistas de PÃ¡ginas:views, etc."
+msgstr "Un listado de nombres de campos en el formato Etiqueta:nombre_de_campo separados por coma para cada tipo de contenido que es mostrado en los resultados de búsqueda. Ejemplo: Descripción:content, Vistas de Páginas:views, etc."
 
 #: data/default/pages/sections/admin/settings/s/sq/sqlite/data.php:17
 msgid "Sqlite Database Center"
@@ -1958,7 +1958,7 @@ msgstr "Cambios guardados exitosamente."
 #: data/default/pages/sections/admin/t/th/themes/data.php:50
 #: data/default/pages/sections/admin/themes/v/vi/view/data.php:65
 msgid "Preview"
-msgstr "PrevisualizaciÃ³n:"
+msgstr "Previsualización:"
 
 #: data/default/pages/sections/admin/t/th/themes/data.php:52
 msgid "Default"
@@ -1970,7 +1970,7 @@ msgstr "Vista no disponible"
 
 #: data/default/pages/sections/admin/t/th/themes/data.php:64
 msgid "View theme info."
-msgstr "Ver informaciÃ³n del tema."
+msgstr "Ver información del tema."
 
 #: data/default/pages/sections/admin/t/ty/types/data.php:18
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:25
@@ -1988,7 +1988,7 @@ msgstr "Campos"
 
 #: data/default/pages/sections/admin/themes/v/vi/view/data.php:17
 msgid "Theme Info"
-msgstr "InformaciÃ³n de Tema"
+msgstr "Información de Tema"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:42
 msgid "The type has been successfully created."
@@ -1996,22 +1996,22 @@ msgstr "El tipo fue creado exitosamente."
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:61
 msgid "A readable machine name, like for example: my-type."
-msgstr "Un nombre de mÃ¡quina leÃ­ble, por ejemplo: mi-tipo"
+msgstr "Un nombre de máquina leíble, por ejemplo: mi-tipo"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:62
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:79
 msgid "A human readable name like for example: My Type."
-msgstr "Un nombre leÃ­ble por ejemplo: Mi Tipo"
+msgstr "Un nombre leíble por ejemplo: Mi Tipo"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:63
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:80
 msgid "A brief description of the type."
-msgstr "Una descripciÃ³n del tipo."
+msgstr "Una descripción del tipo."
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:69
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:86
 msgid "The categories a user can select for this type of content."
-msgstr "Las categorÃ­as que los usuarios pueden seleccionar para este tipo de contenido."
+msgstr "Las categorías que los usuarios pueden seleccionar para este tipo de contenido."
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:74
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:91
@@ -2021,7 +2021,7 @@ msgstr "Esquema del Uri"
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:74
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:91
 msgid "The scheme used for the auto generation of every path (uri) created under this type. Available placeholders: {user}, {type} and {title}"
-msgstr "El esquema usado para la auto generaciÃ³n de todas las rutas (uri) creadas bajo este tipo. Marcadores de posiciÃ³n disponible: {user}, {type} y {title}"
+msgstr "El esquema usado para la auto generación de todas las rutas (uri) creadas bajo este tipo. Marcadores de posición disponible: {user}, {type} y {title}"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:81
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:98
@@ -2036,12 +2036,12 @@ msgstr "La etiqueta del titulo de entrada."
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:84
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:101
 msgid "Title description:"
-msgstr "DescripciÃ³n del tÃ­tulo:"
+msgstr "Descripción del título:"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:84
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:101
 msgid "The description of the title."
-msgstr "La descripciÃ³n del tÃ­tulo:"
+msgstr "La descripción del título:"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:85
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:102
@@ -2051,12 +2051,12 @@ msgstr "La etiqueta de la entrada del contenido."
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:86
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:103
 msgid "Content description:"
-msgstr "DescripciÃ³n del contenido:"
+msgstr "Descripción del contenido:"
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:86
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:103
 msgid "The description of the content."
-msgstr "La descripciÃ³n del contenido."
+msgstr "La descripción del contenido."
 
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:88
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:105
@@ -2066,7 +2066,7 @@ msgstr "Etiquetas"
 #: data/default/pages/sections/admin/types/a/ad/add/data.php:88
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:105
 msgid "To replace original labels of title and content when user is adding or editing content of this type."
-msgstr "Para reemplazar las etiquetas originales del tÃ­tulo y contenido cuando un usuario estÃ¡ aÃ±adiendo o editando contenido de este tipo."
+msgstr "Para reemplazar las etiquetas originales del título y contenido cuando un usuario está añadiendo o editando contenido de este tipo."
 
 #: data/default/pages/sections/admin/types/d/de/delete/data.php:17
 msgid "Delete Type"
@@ -2090,11 +2090,11 @@ msgstr "Subidas"
 
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:29
 msgid "Maximum Posts"
-msgstr "MÃ¡ximo de Publicaciones"
+msgstr "Máximo de Publicaciones"
 
 #: data/default/pages/sections/admin/types/e/ed/edit/data.php:78
 msgid "The machine name of the type also used on the content template."
-msgstr "El nombre mÃ¡quina el tipo tÃ¡mbien utilizado en los temas de contenido."
+msgstr "El nombre máquina el tipo támbien utilizado en los temas de contenido."
 
 #: data/default/pages/sections/admin/types/f/fi/fields/data.php:18
 msgid "Content Type Fields"
@@ -2128,17 +2128,17 @@ msgstr "Nombre de variable:"
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:65
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:68
 msgid "The name of the variable used for this field when generating the form code."
-msgstr "El nombre de la variable usada para este campo cuando genera el cÃ³digo de la forma."
+msgstr "El nombre de la variable usada para este campo cuando genera el código de la forma."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:66
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:69
 msgid "A human readable name displayed when the form is generated."
-msgstr "Un nombre leÃ­ble para mostrarse cuando la forma es generada."
+msgstr "Un nombre leíble para mostrarse cuando la forma es generada."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:67
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:70
 msgid "A brief description of how the user should fill this field or it's purpose."
-msgstr "Una breve descripciÃ³n de como el usuario debe llenar este campo o el propÃ³sito."
+msgstr "Una breve descripción de como el usuario debe llenar este campo o el propósito."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:69
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:72
@@ -2180,7 +2180,7 @@ msgstr "Otro"
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:76
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:79
 msgid "Password"
-msgstr "ContraseÃ±a"
+msgstr "Contraseña"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:77
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:80
@@ -2210,12 +2210,12 @@ msgstr "El tipo de campo de la forma."
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:84
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:87
 msgid "Input limit:"
-msgstr "LÃ­mite de entrada:"
+msgstr "Límite de entrada:"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:84
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:87
 msgid "The maximun amount of character the user can insert if this is a text or textarea field. 0 for unlimited."
-msgstr "La mÃ¡xima cantidad de caracteres que un usuario puede insertar si es un texto o campo de area de texto. 0 para ilimitado."
+msgstr "La máxima cantidad de caracteres que un usuario puede insertar si es un texto o campo de area de texto. 0 para ilimitado."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:86
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:89
@@ -2225,7 +2225,7 @@ msgstr "Valor Predeterminado:"
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:86
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:89
 msgid "The default value for a text, textarea, password, hidden, other or a list like select, radio and checkbox."
-msgstr "El valor predeterminado para el campo de texto, area de texto, contraseÃ±a, valor \"hidden\", otro or una lista de selecciÃ³n, \"radio\" y \"checkbox\"."
+msgstr "El valor predeterminado para el campo de texto, area de texto, contraseña, valor \"hidden\", otro or una lista de selección, \"radio\" y \"checkbox\"."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:88
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:91
@@ -2235,7 +2235,7 @@ msgstr "Ancho de imagen:"
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:88
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:91
 msgid "Maximum width of the image in pixels in case this field is an image upload. 0 for unlimited."
-msgstr "Ancho mÃ¡ximo de la imagen en pixeles en caso que este campo es una subida de imagen. 0 para ilimitado."
+msgstr "Ancho máximo de la imagen en pixeles en caso que este campo es una subida de imagen. 0 para ilimitado."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:92
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:95
@@ -2250,17 +2250,17 @@ msgstr "Un listado de extensiones de archivo permitidos para subir separadas por
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:94
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:97
 msgid "File size:"
-msgstr "TamaÃ±o del archivo:"
+msgstr "Tamaño del archivo:"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:94
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:97
 msgid "The maximum permitted file size in kilobytes. For example: 100k"
-msgstr "El tamaÃ±o mÃ¡ximo permitido en kilobytes.  Por ejemplo: 100k"
+msgstr "El tamaño máximo permitido en kilobytes.  Por ejemplo: 100k"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:94
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:97
 msgid "The maximum file upload size allowed by this server is:"
-msgstr "El tamaÃ±o mÃ¡ximo de subida de archivos permitido por este server es:"
+msgstr "El tamaño máximo de subida de archivos permitido por este server es:"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:96
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:99
@@ -2295,7 +2295,7 @@ msgstr "Eliminar html:"
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:100
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:103
 msgid "To enable stripping of any html tags."
-msgstr "Para activar la eliminaciÃ³n de cualquier tag de html."
+msgstr "Para activar la eliminación de cualquier tag de html."
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:102
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:105
@@ -2320,7 +2320,7 @@ msgstr "Una lista de valores separados por coma para el \"select\", \"radio\" y 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:105
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:108
 msgid "Captions:"
-msgstr "TÃ­tulos:"
+msgstr "Títulos:"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:105
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:108
@@ -2330,7 +2330,7 @@ msgstr "Una lista de titulos separados por coma en el mismo orden entrado en val
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:107
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:110
 msgid "Multiple options"
-msgstr "Opciones mÃºltiples"
+msgstr "Opciones múltiples"
 
 #: data/default/pages/sections/admin/types/fields/a/ad/add/data.php:107
 #: data/default/pages/sections/admin/types/fields/e/ed/edit/data.php:110
@@ -2363,7 +2363,7 @@ msgstr "El campo del tipo de contenido ha sido exitosamente modificado."
 
 #: data/default/pages/sections/admin/types/p/po/posts/data.php:17
 msgid "Type Maximum Posts"
-msgstr "Cantidad MÃ¡xima de Publicaciones del Tipo"
+msgstr "Cantidad Máxima de Publicaciones del Tipo"
 
 #: data/default/pages/sections/admin/types/p/po/posts/data.php:68
 msgid "Posts:"
@@ -2371,19 +2371,19 @@ msgstr "Publicaciones:"
 
 #: data/default/pages/sections/admin/types/p/po/posts/data.php:68
 msgid "Maximum number of posts per user. 0 for unlimited"
-msgstr "Cantidad mÃ¡xima de publicaciones. 0 para ilimitado"
+msgstr "Cantidad máxima de publicaciones. 0 para ilimitado"
 
 #: data/default/pages/sections/admin/types/u/up/uploads/data.php:17
 msgid "Type Upload Settings"
-msgstr "ConfiguraciÃ³n de Subidas para el Tipo"
+msgstr "Configuración de Subidas para el Tipo"
 
 #: data/default/pages/sections/admin/types/u/up/uploads/data.php:66
 msgid "Images:"
-msgstr "ImÃ¡genes:"
+msgstr "Imágenes:"
 
 #: data/default/pages/sections/admin/types/u/up/uploads/data.php:66
 msgid "Maximum images user can upload per post. -1 for unlimited"
-msgstr "Cantidad maxima de imÃ¡genes que un usuario puede subir por publicaciÃ³n. -1 para ilimitado"
+msgstr "Cantidad maxima de imágenes que un usuario puede subir por publicación. -1 para ilimitado"
 
 #: data/default/pages/sections/admin/types/u/up/uploads/data.php:67
 msgid "Files:"
@@ -2391,7 +2391,7 @@ msgstr "Archivos:"
 
 #: data/default/pages/sections/admin/types/u/up/uploads/data.php:67
 msgid "Maximum files user can upload per post. -1 for unlimited"
-msgstr "Cantidad maxima de archivos que un usuario puede subir por publicaciÃ³n. -1 para ilimitado"
+msgstr "Cantidad maxima de archivos que un usuario puede subir por publicación. -1 para ilimitado"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:17
 msgid "My Account"
@@ -2399,11 +2399,11 @@ msgstr "Mi Cuenta"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:51
 msgid "Username or E-mail:"
-msgstr "Usuario o Correo ElectrÃ³nico:"
+msgstr "Usuario o Correo Electrónico:"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:52
 msgid "the password is case sensitive"
-msgstr "la contraseÃ±a es sensible a mayÃºsculas"
+msgstr "la contraseña es sensible a mayúsculas"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:54
 msgid "Reset"
@@ -2415,7 +2415,7 @@ msgstr "Usuario Existente"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:69
 msgid "Forgot Password?"
-msgstr "Â¿Olvidaste tu contraseÃ±a?"
+msgstr "¿Olvidaste tu contraseña?"
 
 #: data/default/pages/sections/admin/u/us/user/data.php:76
 msgid "Create Account"
@@ -2447,15 +2447,15 @@ msgstr "Mi Contenido"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:31
 msgid "The email you entered is not a valid one."
-msgstr "El correo electrÃ³nico que entraste no es vÃ¡lido."
+msgstr "El correo electrónico que entraste no es válido."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:43
 msgid "The email you entered already has a registered account associated to it."
-msgstr "El correo electrÃ³nico que entraste ya es parte de una cuenta existente."
+msgstr "El correo electrónico que entraste ya es parte de una cuenta existente."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:57
 msgid "The username you provided has invalid characters."
-msgstr "El nombre de usuario que proveiste tiene caracteres invÃ¡lidos."
+msgstr "El nombre de usuario que proveiste tiene caracteres inválidos."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:65
 msgid "The username should be at least 3 characters long."
@@ -2467,11 +2467,11 @@ msgstr "El nombre de usuario excede los 60 caracteres."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:92
 msgid "The Password and Verify password doesn't match."
-msgstr "La contraseÃ±a y la contraseÃ±a de verificaciÃ³n no coinciden."
+msgstr "La contraseña y la contraseña de verificación no coinciden."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:102
 msgid "The e-mail and verify e-mail doesn't match."
-msgstr "El correo electrÃ³nico y el correo electrÃ³nico de verificaciÃ³n no coinciden."
+msgstr "El correo electrónico y el correo electrónico de verificación no coinciden."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:121
 msgid "The user has been successfully created."
@@ -2487,32 +2487,32 @@ msgstr "Tu nombre real completo."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:146
 msgid "The name that you are going to use to log in, at least 3 characters long. Permitted characters are A to Z, 0 to 9 and underscores."
-msgstr "El nombre que vas a utilizar para iniciar sesiÃ³n de al menos 3 carÃ¡cteres de longitud. Los caracteres permitidos son A hasta Z, 0 hasta 9 y lÃ­neas de subrayado (underscores)."
+msgstr "El nombre que vas a utilizar para iniciar sesión de al menos 3 carácteres de longitud. Los caracteres permitidos son A hasta Z, 0 hasta 9 y líneas de subrayado (underscores)."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:148
 msgid "The password used to login, should be at least 6 characters long."
-msgstr "ContraseÃ±a utilizada para iniciar sesiÃ³n, este debe ser de 6 carÃ¡cteres de longitud."
+msgstr "Contraseña utilizada para iniciar sesión, este debe ser de 6 carácteres de longitud."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:149
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:162
 msgid "Verify password:"
-msgstr "Verificar contraseÃ±a:"
+msgstr "Verificar contraseña:"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:149
 msgid "Re-enter the password to verify it."
-msgstr "Re-escriba su contraseÃ±a para verificarlo."
+msgstr "Re-escriba su contraseña para verificarlo."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:151
 msgid "The email used in case you forgot your password."
-msgstr "Correo electrÃ³nico utilizado en caso de pÃ©rdida de contraseÃ±a."
+msgstr "Correo electrónico utilizado en caso de pérdida de contraseña."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:153
 msgid "Verify the e-mail:"
-msgstr "VerificaciÃ³n de correo electrÃ³nico:"
+msgstr "Verificación de correo electrónico:"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:153
 msgid "Re-enter the e-mail to verify is correct."
-msgstr "Re-escriba su correo electrÃ³nico para verificarlo."
+msgstr "Re-escriba su correo electrónico para verificarlo."
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:158
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:167
@@ -2527,12 +2527,12 @@ msgstr "Femenino"
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:163
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:172
 msgid "Gender"
-msgstr "GÃ©nero"
+msgstr "Género"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:166
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:179
 msgid "Day:"
-msgstr "DÃ­a:"
+msgstr "Día:"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:167
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:180
@@ -2542,7 +2542,7 @@ msgstr "Mes:"
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:168
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:181
 msgid "Year:"
-msgstr "AÃ±o:"
+msgstr "Año:"
 
 #: data/default/pages/sections/admin/users/a/ad/add/data.php:170
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:183
@@ -2583,7 +2583,7 @@ msgstr "Usuario borrado exitosamente."
 
 #: data/default/pages/sections/admin/users/d/de/delete/data.php:51
 msgid "This action will also delete all users content."
-msgstr "Esta acciÃ³n tambiÃ©n borrara el contenido del usuario."
+msgstr "Esta acción también borrara el contenido del usuario."
 
 #: data/default/pages/sections/admin/users/d/de/delete/data.php:51
 msgid "Are you sure you want to delete the user?"
@@ -2599,7 +2599,7 @@ msgstr "Detalles de Mi Cuenta"
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:77
 msgid "The New password and Verify password doesn't match."
-msgstr "La nueva contraseÃ±a y la contraseÃ±a de verificaciÃ³n no coinciden."
+msgstr "La nueva contraseña y la contraseña de verificación no coinciden."
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:106
 msgid "Your account has been activated."
@@ -2623,23 +2623,23 @@ msgstr "Texto personal:"
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:159
 msgid "Writing displayed on your profile page."
-msgstr "Escrito mostrado en la pÃ¡gina de tu perfil."
+msgstr "Escrito mostrado en la página de tu perfil."
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:160
 msgid "The email used in case you forgot your password or to contact you."
-msgstr "Correo electrÃ³nico utilizado en caso de pÃ©rdida de contraseÃ±a para ser contactado."
+msgstr "Correo electrónico utilizado en caso de pérdida de contraseña para ser contactado."
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:161
 msgid "New password:"
-msgstr "Nueva contraseÃ±a:"
+msgstr "Nueva contraseña:"
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:161
 msgid "You can enter a new password to change actual one."
-msgstr "Puedes entrar una contraseÃ±a nueva para cambiar la actual."
+msgstr "Puedes entrar una contraseña nueva para cambiar la actual."
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:162
 msgid "Re-enter the new password to verify it."
-msgstr "Re-escriba su contraseÃ±a para verificarla."
+msgstr "Re-escriba su contraseña para verificarla."
 
 #: data/default/pages/sections/admin/users/e/ed/edit/data.php:204
 msgid "A picture displayed in user post, comments, etc. Maximun size of:"
@@ -2655,11 +2655,11 @@ msgstr "Exportar Listado de Usuarios"
 
 #: data/default/pages/sections/admin/users/e/ex/export/data.php:33
 msgid "Download Last Generated"
-msgstr "Descargar el Ãšltimo Generado"
+msgstr "Descargar el Último Generado"
 
 #: data/default/pages/sections/admin/users/e/ex/export/data.php:82
 msgid "The process of creating a csv file of the users database could take a long time.<br />Do you want to the generate export file?"
-msgstr "El proceso de crear un archivo csv de la base de datos de usuarios puede tomar un tiempo largo.<br />Â¿Desea generar el archivo csv?"
+msgstr "El proceso de crear un archivo csv de la base de datos de usuarios puede tomar un tiempo largo.<br />¿Desea generar el archivo csv?"
 
 #: data/default/pages/sections/admin/users/l/li/list/data.php:17
 msgid "Users List"
@@ -2688,11 +2688,11 @@ msgstr "Usuario"
 
 #: data/default/pages/sections/admin/users/l/li/list/data.php:125
 msgid "E-mail"
-msgstr "Correo ElectrÃ³nico"
+msgstr "Correo Electrónico"
 
 #: data/default/pages/sections/admin/users/l/li/list/data.php:127
 msgid "Register date"
-msgstr "DÃ­a de registro"
+msgstr "Día de registro"
 
 #: data/default/pages/sections/admin/users/l/li/list/data.php:143
 msgid "Active"
@@ -2704,11 +2704,11 @@ msgstr "Re-indexear Base De Datos de Usuarios"
 
 #: data/default/pages/sections/admin/users/r/re/re-index/data.php:37
 msgid "Indexation of users database completed."
-msgstr "IndexaciÃ³n de la base de datos de usuarios completada."
+msgstr "Indexación de la base de datos de usuarios completada."
 
 #: data/default/pages/sections/admin/users/r/re/re-index/data.php:101
 msgid "The process of recreating the users database list could take a long time. Are you sure you want to do this?"
-msgstr "El proceso de recrear la base de datos de usuarios puede tomar un tiempo largo. Â¿Estas seguro que deseas hacer esto?"
+msgstr "El proceso de recrear la base de datos de usuarios puede tomar un tiempo largo. ¿Estas seguro que deseas hacer esto?"
 
 #: data/default/pages/singles/a/ac/access-denied/data.php:19
 msgid "Access Denied"
@@ -2716,15 +2716,15 @@ msgstr "Acceso Denegado"
 
 #: data/default/pages/singles/a/ac/access-denied/data.php:25
 msgid "You dont have sufficient permissions to access the page."
-msgstr "No tienes los permisos suficientes para accesar la pÃ¡gina."
+msgstr "No tienes los permisos suficientes para accesar la página."
 
 #: data/default/pages/singles/f/fo/forgot-password/data.php:19
 msgid "Forgot your password?"
-msgstr "Â¿Olvidaste tu contraseÃ±a?"
+msgstr "¿Olvidaste tu contraseña?"
 
 #: data/default/pages/singles/f/fo/forgot-password/data.php:40
 msgid "Your password has been reset successfully. Check your e-mail inbox for details."
-msgstr "Tu contraseÃ±a fue reinicializada exitosamente. Verifica la bandeja de entrada de tu correo electrÃ³nico para detalles."
+msgstr "Tu contraseña fue reinicializada exitosamente. Verifica la bandeja de entrada de tu correo electrónico para detalles."
 
 #: data/default/pages/singles/f/fo/forgot-password/data.php:60
 msgid "If you remember your username write it down."
@@ -2736,23 +2736,23 @@ msgstr "O"
 
 #: data/default/pages/singles/f/fo/forgot-password/data.php:64
 msgid "If you remember the e-mail that you used to register the account write it down."
-msgstr "Si recuerdas el correo electrÃ³nico que utilizaste para registrar tu cuenta favor de escribirlo."
+msgstr "Si recuerdas el correo electrónico que utilizaste para registrar tu cuenta favor de escribirlo."
 
 #: data/default/pages/singles/f/fo/forgot-password/data.php:66
 msgid "Reset Password"
-msgstr "Reiniciar ContraseÃ±a"
+msgstr "Reiniciar Contraseña"
 
 #: data/default/pages/singles/h/ho/home/data.php:17
 msgid "Welcome to your new Jaris website!"
-msgstr "Bienvenido a tu nuevo sitio contruÃ­do con Jaris CMS!"
+msgstr "Bienvenido a tu nuevo sitio contruído con Jaris CMS!"
 
 #: data/default/pages/singles/h/ho/home/data.php:24
 msgid "Enjoy your new webiste, to start working on it login on the left block with your administration account"
-msgstr "Disfruta tu nueva pÃ¡gina, para comenzar a trabajar en la misma inicia en el bloque izquierdo con el nombre de usuario y contraseÃ±a."
+msgstr "Disfruta tu nueva página, para comenzar a trabajar en la misma inicia en el bloque izquierdo con el nombre de usuario y contraseña."
 
 #: data/default/pages/singles/h/ho/home/data.php:28
 msgid "Now that you are logged in you can start by using the administration navigation menu to modify your web page as you like."
-msgstr "Ahora que iniciaste puedes usar el menu de administraciÃ³n para editar el sitio como sientas sea necesario."
+msgstr "Ahora que iniciaste puedes usar el menu de administración para editar el sitio como sientas sea necesario."
 
 #: data/default/pages/singles/o/of/offline/data.php:24
 msgid "Under mantainance"
@@ -2760,7 +2760,7 @@ msgstr "Bajo mantenimiento"
 
 #: data/default/pages/singles/o/of/offline/data.php:37
 msgid "The site is down for mantainance, sorry for any inconvenience it may cause you. Try again later."
-msgstr "El sitio esta abajo por mantenimiento, perdone por los inconvenientes que pueda causarle. Trate mÃ¡s tarde."
+msgstr "El sitio esta abajo por mantenimiento, perdone por los inconvenientes que pueda causarle. Trate más tarde."
 
 #: data/default/pages/singles/r/re/register/data.php:17
 msgid "Create My Account"
@@ -2776,7 +2776,7 @@ msgstr "Debes aceptar los terminos y condiciones de este sitio para poder regist
 
 #: data/default/pages/singles/r/re/register/data.php:159
 msgid "Your registration is awaiting for approval. If the registration is approved you will receive an email notification."
-msgstr "Tu registraciÃ³n esta en proceso de aprobaciÃ³n. Si es aprobada recibirÃ¡s una notificaciÃ³n por correo electrÃ³nico ."
+msgstr "Tu registración esta en proceso de aprobación. Si es aprobada recibirás una notificación por correo electrónico ."
 
 #: data/default/pages/singles/r/re/register/data.php:165
 msgid "Your account has been successfully created. Enter your details to login."
@@ -2812,11 +2812,11 @@ msgstr "Ordenamiento"
 
 #: data/default/pages/singles/s/se/search/data.php:135
 msgid "Title ascending"
-msgstr "TÃ­tulo ascendente"
+msgstr "Título ascendente"
 
 #: data/default/pages/singles/s/se/search/data.php:136
 msgid "Title descending"
-msgstr "TÃ­tulo descendente"
+msgstr "Título descendente"
 
 #: data/default/pages/singles/s/se/search/data.php:137
 msgid "Newest first"
@@ -2844,7 +2844,7 @@ msgstr "El tipo de contenido que estas buscando."
 
 #: data/default/pages/singles/s/se/search/data.php:165
 msgid "Search text:"
-msgstr "Texto de bÃºsqueda"
+msgstr "Texto de búsqueda"
 
 #: data/default/pages/singles/s/se/search/data.php:213
 msgid "Results"
@@ -2868,7 +2868,7 @@ msgstr "El usuario solicitado no existe."
 
 #: data/default/pages/singles/u/us/user/data.php:76
 msgid "Latest post"
-msgstr "Ãšltimas publicaciones"
+msgstr "Últimas publicaciones"
 
 #: data/default/pages/singles/u/us/user/data.php:84
 msgid "Date"
@@ -2880,7 +2880,7 @@ msgstr "Miembro desde:"
 
 #: data/default/pages/singles/u/us/user/data.php:119
 msgid "Gender:"
-msgstr "GÃ©nero:"
+msgstr "Género:"
 
 #: data/default/pages/singles/u/us/user/data.php:120
 msgid "Birth date:"
@@ -2888,7 +2888,7 @@ msgstr "Fecha de Nacimiento:"
 
 #: data/default/types/pages.php:11
 msgid "Page"
-msgstr "PÃ¡gina"
+msgstr "Página"
 
 #: include/forms.php:128
 msgid "You need to provide all the required fields, the ones marked with asterik."
@@ -3026,7 +3026,7 @@ msgstr "SA"
 
 #: include/forms.php:327
 msgid "Selected date is out of range"
-msgstr "El dÃ­a seleccionado estÃ¡ fuera de rango."
+msgstr "El día seleccionado está fuera de rango."
 
 #: include/forms.php:478
 msgid "Enter the sum of"
@@ -3042,31 +3042,31 @@ msgstr "El lenguaje no se pudo crear, verifica tus permisos de escritura en el d
 
 #: include/login.php:132
 msgid "The username or password you entered is incorrect."
-msgstr "El usuario o contraseÃ±a que escribio es incorrecto."
+msgstr "El usuario o contraseña que escribio es incorrecto."
 
 #: include/login.php:173
 msgid "A new account has been created and is pending for administration approval."
-msgstr "Una nueva cuenta a sido creado y esta esperando por aprobaciÃ³n de parte de los administradores."
+msgstr "Una nueva cuenta a sido creado y esta esperando por aprobación de parte de los administradores."
 
 #: include/login.php:177
 msgid "For more details or approve this registration visit the users management page:"
-msgstr "Para mÃ¡s detalles o aprobar esta registraciÃ³n visita la secciÃ³n de manejo de usuarios:"
+msgstr "Para más detalles o aprobar esta registración visita la sección de manejo de usuarios:"
 
 #: include/login.php:180
 msgid "New registration pending for approval"
-msgstr "Nueva registraciÃ³n esperado por aprobaciÃ³n"
+msgstr "Nueva registración esperado por aprobación"
 
 #: include/module.php:239
 msgid "The following modules need to be installed first:"
-msgstr "Los siguientes mÃ³dulos deben ser instalados primero:"
+msgstr "Los siguientes módulos deben ser instalados primero:"
 
 #: include/module.php:383
 msgid "This module is a dependency and can't be uninstalled."
-msgstr "Este mÃ³dulo es una dependencia y no puede ser desinstalado."
+msgstr "Este módulo es una dependencia y no puede ser desinstalado."
 
 #: include/system.php:21
 msgid "The page you was searching doesn't exists."
-msgstr "La pÃ¡gina que estabas buscando no existe."
+msgstr "La página que estabas buscando no existe."
 
 #: include/system.php:240
 msgid "JarisCMS - Copyright JegoYalu.com. All rights reserved."
@@ -3082,19 +3082,19 @@ msgstr "Verifica tus permisos de escritura en el directorio de language."
 
 #: include/system.php:397
 msgid "Translations could not be repositioned with the new uri. Check your write permissions on the language directory."
-msgstr "La traducciÃ³n no pudo ser reposisionada al nuevo uri. Verifica tus permisos de escritura en el directorio de language."
+msgstr "La traducción no pudo ser reposisionada al nuevo uri. Verifica tus permisos de escritura en el directorio de language."
 
 #: include/system.php:400
 msgid "Translations could not be deleted. Check your write permissions on the language directory."
-msgstr "La traducciÃ³n no pudo ser borrada. Verifica tus permisos de escritura en el directorio de language."
+msgstr "La traducción no pudo ser borrada. Verifica tus permisos de escritura en el directorio de language."
 
 #: include/system.php:403
 msgid "The file type must be JPEG, PNG or GIF."
-msgstr "El tipo de archivo debe ser JPEG, PNG Ã³ GIF."
+msgstr "El tipo de archivo debe ser JPEG, PNG ó GIF."
 
 #: include/system.php:406
 msgid "The group machine name is already in use."
-msgstr "El nombre mÃ¡quina del grupo esta ya en uso."
+msgstr "El nombre máquina del grupo esta ya en uso."
 
 #: include/system.php:409
 msgid "This is a system group and can not be deleted."
@@ -3102,23 +3102,23 @@ msgstr "Esto es un grupo del sistema y no puede ser borrado."
 
 #: include/system.php:412
 msgid "This is a system group and its machine name can not be modified."
-msgstr "Esto es un grupo del sistema y su nombre mÃ¡quina no puede ser cambiado."
+msgstr "Esto es un grupo del sistema y su nombre máquina no puede ser cambiado."
 
 #: include/system.php:415
 msgid "The menu machine name is already in use."
-msgstr "El nombre mÃ¡quina del menu ya esta en uso"
+msgstr "El nombre máquina del menu ya esta en uso"
 
 #: include/system.php:418
 msgid "The type machine name is already in use."
-msgstr "El nombre mÃ¡quina del tipo ya esta en uso."
+msgstr "El nombre máquina del tipo ya esta en uso."
 
 #: include/system.php:421
 msgid "The input format machine name is already in use."
-msgstr "El nombre mÃ¡quina del formato de entrada ya esta en uso"
+msgstr "El nombre máquina del formato de entrada ya esta en uso"
 
 #: include/system.php:424
 msgid "The category machine name is already in use."
-msgstr "El nombre mÃ¡quina de la categorÃ­a ya esta en uso."
+msgstr "El nombre máquina de la categoría ya esta en uso."
 
 #: include/system.php:427
 msgid "This is a system type and can not be deleted."
@@ -3134,7 +3134,7 @@ msgstr "No hay ningun usuario en el sistema con los criterios que entro."
 
 #: include/system.php:436
 msgid "Operation could not be completed."
-msgstr "OperaciÃ³n no puede ser completada."
+msgstr "Operación no puede ser completada."
 
 #: include/system.php:573
 msgid "Error"
@@ -3218,7 +3218,7 @@ msgstr "Ver y editar tipos de contenido existente."
 
 #: include/system.php:625
 msgid "Add Input Format"
-msgstr "AÃ±adir Formato de Entrada"
+msgstr "Añadir Formato de Entrada"
 
 #: include/system.php:625
 msgid "Create new content input format."
@@ -3234,19 +3234,19 @@ msgstr "Ver y editar los formatos de entrada de contenido existente."
 
 #: include/system.php:635
 msgid "Add Category"
-msgstr "Agregar CategorÃ­a"
+msgstr "Agregar Categoría"
 
 #: include/system.php:635
 msgid "Create new content categories."
-msgstr "Crear nuevas categorÃ­as de contenido."
+msgstr "Crear nuevas categorías de contenido."
 
 #: include/system.php:640
 msgid "Manage Categories"
-msgstr "Manejar CategorÃ­as"
+msgstr "Manejar Categorías"
 
 #: include/system.php:640
 msgid "View and edit existing content categories."
-msgstr "Ver y editar tipos de categorÃ­as existente."
+msgstr "Ver y editar tipos de categorías existente."
 
 #: include/system.php:645
 msgid "Content"
@@ -3276,7 +3276,7 @@ msgstr "Crear nuevo menu."
 
 #: include/system.php:672
 msgid "View and edit existing menus and its menu items."
-msgstr "Ver y editar menÃºs y sus Ã­tems existentes."
+msgstr "Ver y editar menús y sus ítems existentes."
 
 #: include/system.php:683
 msgid "Create new user."
@@ -3300,11 +3300,11 @@ msgstr "Modificar configuraciones del sitio."
 
 #: include/system.php:720
 msgid "Search Engine"
-msgstr "Motor de bÃºsqueda"
+msgstr "Motor de búsqueda"
 
 #: include/system.php:720
 msgid "Change the settings of the search page."
-msgstr "Cambiar las configuraciones de la pÃ¡gina de bÃºsquedas."
+msgstr "Cambiar las configuraciones de la página de búsquedas."
 
 #: include/system.php:725
 msgid "Theme"
@@ -3316,7 +3316,7 @@ msgstr "Ver y escoger tema para el sitio."
 
 #: include/system.php:730
 msgid "View current jaris version and developer information."
-msgstr "Ver versiÃ³n actual de JarisCMS e informaciÃ³n del desarrollador."
+msgstr "Ver versión actual de JarisCMS e información del desarrollador."
 
 #: include/system.php:735
 msgid "Settings"
@@ -3332,7 +3332,7 @@ msgstr "Manejar lenguajes disponibles al sistema."
 
 #: include/system.php:757
 msgid "Install or uninstall modules to the system."
-msgstr "Instalar o desinstalar mÃ³dulos al sistema."
+msgstr "Instalar o desinstalar módulos al sistema."
 
 #: include/theme.php:121
 #: include/theme.php:206
@@ -3345,7 +3345,7 @@ msgstr "error:"
 
 #: include/data_managers/block_manager.php:441
 msgid "view more"
-msgstr "ver mÃ¡s"
+msgstr "ver más"
 
 #: include/data_managers/category_manager.php:416
 msgid "-None Selected-"
@@ -3353,11 +3353,11 @@ msgstr "-Nada Seleccionado-"
 
 #: include/data_managers/fields_manager.php:202
 msgid "File size exceeded by"
-msgstr "El tamaÃ±o de archivo excedio por"
+msgstr "El tamaño de archivo excedio por"
 
 #: include/data_managers/fields_manager.php:202
 msgid "Maximum size permitted is:"
-msgstr "TamaÃ±o mÃ¡ximo permitido es:"
+msgstr "Tamaño máximo permitido es:"
 
 #: include/data_managers/fields_manager.php:229
 msgid "Incorrect file type uploaded for"
@@ -3385,7 +3385,7 @@ msgstr "todo"
 
 #: include/data_managers/fields_manager.php:414
 msgid "Maximum allowed size is:"
-msgstr "EL tamaÃ±o mÃ¡ximo permitido es:"
+msgstr "EL tamaño máximo permitido es:"
 
 #: include/data_managers/fields_manager.php:429
 msgid "Current file:"
@@ -3393,7 +3393,7 @@ msgstr "Archivo actual:"
 
 #: include/data_managers/fields_manager.php:441
 msgid "Allowed image types: jpeg, png, gif"
-msgstr "Tipos de imÃ¡genes permitidas:"
+msgstr "Tipos de imágenes permitidas:"
 
 #: include/data_managers/fields_manager.php:447
 msgid "Current image:"
@@ -3419,7 +3419,7 @@ msgstr "Crear"
 #: include/data_managers/group_manager.php:253
 #: include/data_managers/group_manager.php:262
 msgid "Return Code"
-msgstr "CÃ³digo de Regreso"
+msgstr "Código de Regreso"
 
 #: include/data_managers/group_manager.php:254
 #: include/data_managers/group_manager.php:263
@@ -3441,7 +3441,7 @@ msgstr "Seleccionar los grupos"
 
 #: include/data_managers/group_manager.php:272
 msgid "Add/Edit Meta Tags"
-msgstr "AÃ±adir/Editar Meta Tags"
+msgstr "Añadir/Editar Meta Tags"
 
 #: include/data_managers/group_manager.php:274
 msgid "Permit manually enter uri"
@@ -3485,15 +3485,15 @@ msgstr "Soporta todas las etiquetas de html."
 
 #: include/data_managers/input_formats_manager.php:203
 msgid "PHP Code"
-msgstr "CÃ³digo PHP"
+msgstr "Código PHP"
 
 #: include/data_managers/input_formats_manager.php:203
 msgid "For executing php code with no filtering."
-msgstr "Para ejecutar cÃ³digo php sin filtraje."
+msgstr "Para ejecutar código php sin filtraje."
 
 #: include/data_managers/user_manager.php:491
 msgid "Pending Approval"
-msgstr "Esperando AprobaciÃ³n"
+msgstr "Esperando Aprobación"
 
 #: include/data_managers/user_manager.php:492
 msgid "Blocked"
@@ -3501,7 +3501,7 @@ msgstr "Bloqueado"
 
 #: include/data_managers/user_manager.php:597
 msgid "Your password has been reset."
-msgstr "Tu contraseÃ±a fue reinicializada."
+msgstr "Tu contraseña fue reinicializada."
 
 #: include/data_managers/user_manager.php:601
 msgid "Hi"
@@ -3513,11 +3513,11 @@ msgstr "Tu nombre de usuario actual es:"
 
 #: include/data_managers/user_manager.php:603
 msgid "The new password for your account is:"
-msgstr "La nueva contraseÃ±a para tu cuenta es:"
+msgstr "La nueva contraseña para tu cuenta es:"
 
 #: include/data_managers/user_manager.php:604
 msgid "Is recommended that you log in and change the password as soon as possible."
-msgstr "Es recomendable que inicies y cambies tu contraseÃ±a lo mÃ¡s pronto posible."
+msgstr "Es recomendable que inicies y cambies tu contraseña lo más pronto posible."
 
 #: include/data_managers/user_manager.php:605
 msgid "To log in access the following url:"
@@ -3541,7 +3541,7 @@ msgstr "Ahora que iniciaste puedes comenzar a editar el sitio como gustes."
 
 #: include/data_managers/user_manager.php:644
 msgid "Welcome"
-msgstr "Â¡Bienvenid@"
+msgstr "Bienvenid@"
 
 #: include/data_managers/user_manager.php:646
 msgid "Now that you are logged in you can enjoy the privileges of registered users on"
