@@ -38,7 +38,12 @@ row: 0
             }
             
             //Get page data
-            $page_data = JarisCMS\Page\GetData($_REQUEST["uri"]);
+            $page_data = array();
+            
+            if(isset($_REQUEST["actual_uri"]))
+                $page_data = JarisCMS\Page\GetData($_REQUEST["actual_uri"]);
+            else
+                $page_data = JarisCMS\Page\GetData($_REQUEST["uri"]);
             
             //If page has no type defaults to 'page' type
             $current_type = trim($page_data["type"]);
