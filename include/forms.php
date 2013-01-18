@@ -95,8 +95,8 @@ function CheckNumber($input, $number_type="float")
   * @return bool true if a required field is empty or false if ok.
   */
  function CheckFields($form_name)
- {     
-     $required = false;
+ {
+    $required = false;
     if(is_array($_SESSION["required_fields"][$form_name]))
     {
          foreach($_SESSION["required_fields"][$form_name] as $fields)
