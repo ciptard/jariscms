@@ -90,7 +90,7 @@ row: 0
             $fields[] = array("type"=>"hidden", "name"=>"menu", "value"=>$_REQUEST["menu"]);
             $fields[] = array("type"=>"text", "name"=>"title", "label"=>t("Title:"), "id"=>"title", "value"=>$current_menu_data["title"], "required"=>true);
             $fields[] = array("type"=>"uri", "name"=>"url", "label"=>t("Url:"), "id"=>"url", "value"=>$current_menu_data["url"], "description"=>t("The relative path to access a page, for example: section/page, section or the full url like http://domain.com/section. Leave empty to auto-generate."));
-            $fields[] = array("type"=>"text", "name"=>"description", "label"=>t("Description:"), "id"=>"description", "value"=>$current_menu_data["description"], "description"=>T("Small descriptive popup shown to user on mouse over."));
+            $fields[] = array("type"=>"text", "name"=>"description", "label"=>t("Description:"), "id"=>"description", "value"=>$current_menu_data["description"], "description"=>t("Small descriptive popup shown to user on mouse over."));
             
             $targets[t("New Window")] = "_blank";
             $targets[t("Current Window")] = "_self";

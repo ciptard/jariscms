@@ -11,6 +11,6 @@
 $language["code"] = "it";
 $language["name"] = "Italian";
 $language["translator"] = "Andrea Zanellato";
-$language["translator_email"] = "zanellato.andrea@gmail.com";
+$language["translator_email"] = "italian.jariscms@gmail.com";
 $language["contributors"] = "";
 ?>
