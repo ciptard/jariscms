@@ -27,20 +27,20 @@ function GetAll()
     while(($file = readdir($dir_handle)) !== false)
     {
         //just add directories
-        if(strcmp($file, ".") != 0 && strcmp($file, "..") != 0)
-        {
-            $info_file = $theme_dir . $file . "/info.php";
+		if(
+            strcmp($file, ".") != 0 && 
+            strcmp($file, "..") != 0 &&
+            is_dir($theme_dir . $file)
+        )
+		{
+			$info_file = $theme_dir . $file . "/info.php";
 
-            if(file_exists($info_file))
-            {
-                include($info_file);
-                $themes[$file] = $theme;
-            }
-            else
-            {
-                $themes[$file] = null;
-            }
-        }
+			if(file_exists($info_file))
+			{
+				include($info_file);
+				$themes[$file] = $theme;
+			}
+		}
     }
 
     return $themes;
