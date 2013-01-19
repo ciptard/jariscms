@@ -4,8 +4,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-20 10:51-0400\n"
 "PO-Revision-Date: 2012-10-05 13:34+0100\n"
-"Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
-"Language-Team: Jaris CMS Translators\n"
+"Last-Translator: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "Requisiti:"
 
 #: install/install.php:77
 msgid "PHP 5 or greater"
-msgstr "PHP 5 o superiore"
+msgstr "PHP 5.3 o superiore"
 
 #: install/install.php:78
 msgid "PHP GD library for graphics processing"
@@ -64,7 +64,7 @@ msgstr "Apache con modulo mod_rewrite"
 
 #: install/install.php:81
 msgid "Sqlite just for search engine optimizations."
-msgstr "Sqlite per l'ottimizzazione del motore di ricerca."
+msgstr "SQLite per l'ottimizzazione del motore di ricerca."
 
 #: install/install.php:90
 msgid "Check Requirements"
@@ -88,7 +88,7 @@ msgstr "(OK)"
 
 #: install/install.php:128
 msgid "Version 5 or greater is needed."
-msgstr "Versione 5 o superiore richiesta."
+msgstr "Versione 5.3 o superiore richiesta."
 
 #: install/install.php:132
 #: install/install.php:160
@@ -145,7 +145,7 @@ msgstr "CMS basato su archivi di file"
 #: install/install.php:320
 #: install/install.php:411
 msgid "Configuration could not be save. Check your write permissions on the data directory."
-msgstr "La configurazione non puÃ² essere salvata. Verifica i permessi in scrittura della directory data."
+msgstr "La configurazione non può essere salvata. Verifica i permessi in scrittura della directory data."
 
 #: install/install.php:325
 #: install/install.php:416
@@ -278,7 +278,7 @@ msgstr "Passo Quattro - Verifica URL (Apache mod_write)"
 
 #: install/install.php:467
 msgid "Url rewrites make url's more readable and easy to acess. Here are the results of the test:"
-msgstr "La riscrittura delle URL le rende piÃ¹ leggibili e accessibili. Risultati del test:"
+msgstr "La riscrittura delle URL le rende più leggibili e accessibili. Risultati del test:"
 
 #: install/install.php:482
 msgid "SUPPORTED and Activated"
@@ -290,7 +290,7 @@ msgstr "NON SUPPORTATO"
 
 #: install/install.php:488
 msgid "There are many factors that make clean url not work. If using apache server check if mod_rewrite is activated."
-msgstr "Il mancato funzionamento del mod_rewrite puÃ² essere causato da diversi fattori. Se stai usando apache, verifica che il modulo sia attivato."
+msgstr "Il mancato funzionamento del mod_rewrite può essere causato da diversi fattori. Se stai usando apache, verifica che il modulo sia attivato."
 
 #: install/install.php:508
 msgid "Step Five - You are done!"
@@ -298,11 +298,11 @@ msgstr "Passo Cinque - Installazione terminata!"
 
 #: install/install.php:510
 msgid "<b>Congratulations,</b> you have successfully installed Jaris content management system. To visit your index site click"
-msgstr "<b>Congratulazioni,</b> Jaris CMS Ã© stato installato con successo. Per visitare la pagina principale clicca"
+msgstr "<b>Congratulazioni,</b> Jaris CMS é stato installato con successo. Per visitare la pagina principale clicca"
 
 #: install/install.php:512
 msgid "here"
-msgstr "qui"
+msgstr "QUI"
 
 #: install/install.php:512
 msgid "and login with the username <b>admin</b> and the password you specified"
