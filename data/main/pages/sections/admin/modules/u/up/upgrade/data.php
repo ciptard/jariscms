@@ -23,7 +23,7 @@ row: 0
 
             if(isset($_REQUEST["path"]))
             {
-                if(upgrade_module($_REQUEST["path"]))
+                if(JarisCMS\Module\Upgrade($_REQUEST["path"]))
                 {
                     JarisCMS\System\AddMessage(t("Module successfully upgraded."));
                 }

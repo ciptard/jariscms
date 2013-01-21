@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  *Copyright 2008, Jefferson González (JegoYalu.com)
  *This file is part of Jaris CMS and licensed under the GPL,
@@ -15,31 +15,38 @@ exit;
 row: 0
 
     field: title
-        <?php print t("Themes") ?>
+        <?php print t("Tablet Themes") ?>
     field;
 
     field: content
         <?php
-            JarisCMS\Security\ProtectPage(array("edit_settings"));
+            use JarisCMS\URI;
+            use JarisCMS\Theme;
+            use JarisCMS\Module;
+            use JarisCMS\Security;
+            use JarisCMS\Setting;
+            use JarisCMS\System;
+            
+            Security\ProtectPage(array("edit_settings"));
 
-            $is_override_on = JarisCMS\Setting\Get("override", "main");
+            $is_override_on = Setting\Get("override", "main");
 
             if(!$is_override_on)
             {
-                JarisCMS\System\AddMessage(t("In order to change the default theme you need to enable Override settings"), "error");
+                System\AddMessage(t("In order to change the default theme you need to enable Override settings"), "error");
             }
 
             if(isset($_REQUEST["btnSave"]))
             {
-                JarisCMS\Setting\Save("theme", $_REQUEST["theme"], "main");
+                Setting\Save("tablet_theme", $_REQUEST["theme"] . "/tablet", "mobile_detect");
 
-                JarisCMS\System\AddMessage(t("Changes successfully saved."));
+                System\AddMessage(t("Changes successfully saved."));
 
-                JarisCMS\System\GoToPage("admin/themes");
+                System\GoToPage("admin/themes/tablet");
             }
         ?>
 
-        <form class="themes" action="<?php print JarisCMS\URI\PrintURL("admin/themes"); ?>" method="post">
+    <form class="themes" action="<?php print URI\PrintURL(Module\GetPageURI("admin/themes/tablet", "mobile_detect")); ?>" method="post">
 
         <?php
 
@@ -52,21 +59,37 @@ row: 0
             print "<td>" . t("Default") . "</td>\n";
 
             print  "</tr></thead>\n";
-
-            $themes = JarisCMS\Theme\GetAll();
             
-            $default_theme = JarisCMS\Setting\Get("theme", "main");
+            $current_theme = Setting\Get("tablet_theme", "mobile_detect");
 
+            $tablet_themes = array();
+            $themes = Theme\GetAll();
+            
             foreach($themes as $theme_path=>$theme_info)
+            {
+                if(
+                    file_exists("themes/" . $theme_path . "/tablet/info.php")
+                )
+                {
+                    $tablet_themes[$theme_path] = $theme_info;
+                }
+            }
+            
+            if(count($tablet_themes) <= 0)
+            {
+                System\AddMessage(t("None of the current themes has tablet support."));
+            }
+
+            foreach($tablet_themes as $theme_path=>$theme_info)
             {
                 //Used to print the theme preview
                 global $base_url;
 
                 $alt = t("Preview not available");
                 $title = t("View theme info.");
-                $more_url = JarisCMS\URI\PrintURL("admin/themes/view", array("path"=>$theme_path));
+                $more_url = URI\PrintURL("admin/themes/view", array("path"=>$theme_path));
                 $thumbnail = $base_url . "/themes/$theme_path/preview.png";
-                $selected = $default_theme == $theme_path?"checked=\"checked\"":"";
+                $selected = $current_theme == $theme_path."/tablet"?"checked=\"checked\"":"";
 
                 print "<tr>\n";
                 if($theme_info != null)

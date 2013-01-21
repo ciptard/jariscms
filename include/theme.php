@@ -495,6 +495,7 @@ function Display($page, $content, $left, $center, $right, $header, $footer)
     global $title, $primary_links, $secondary_links, $base_url, $theme,
            $theme_path, $slogan, $footer_message, $content_title, $tabs_list;
 
+    $site_title = \JarisCMS\Setting\Get("title", "main");
     $footer_message = \JarisCMS\System\PHPEval($footer_message);
     $slogan = \JarisCMS\System\PHPEval($slogan);
     $meta = \JarisCMS\System\GetPageMetaTags();
