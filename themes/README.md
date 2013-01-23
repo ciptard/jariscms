@@ -160,94 +160,94 @@ Each of the template files discussed so far have access to a set of predefined v
 
 Variables used on the head section of the page:
 
- * $title - A combination of $site_title and $content_title.
- * $header_info - System generated metatags.
- * $meta - Meta description and other meta tags appended by modules.
- * $styles - Dynamically generated styles required for the page.
- * $scripts = Dynamically generated scripts required for the page.
+ * **$title** - A combination of $site_title and $content_title.
+ * **$header_info** - System generated metatags.
+ * **$meta** - Meta description and other meta tags appended by modules.
+ * **$styles** - Dynamically generated styles required for the page.
+ * **$scripts** - Dynamically generated scripts required for the page.
  
 Other variables used through the page content:
 
- * $page - Uri of the current page.
- * $base_url - Main url of the site.
- * $theme_path - Path to current theme.
- * $slogan - Slogan of the site.
- * $content - The main content of the page as generated from content.php
- * $left - Global blocks for left.
- * $center - Global blocks for center.
- * $right - Global blocks for right.
- * $header - Global blocks for header.
- * $footer - Global blocks for footer.
- * $primary_links - UL HTML code of primary menu.
- * $secondary_links - UL HTML code of secondary menu.
- * $site_title - Main title of the site.
- * $tabs - List of essential buttons to perform many actions.
- * $messages - Automatically generated system messages.
- * $content_title - Title of the current content.
- * $footer_message - Usually the copyright message of the site.
- * $breadcrumb - Site navigation menu (currently disabled).
+ * **$page** - Uri of the current page.
+ * **$base_url** - Main url of the site.
+ * **$theme_path** - Path to current theme.
+ * **$slogan** - Slogan of the site.
+ * **$content** - The main content of the page as generated from content.php
+ * **$left** - Global blocks for left.
+ * **$center** - Global blocks for center.
+ * **$right** - Global blocks for right.
+ * **$header** - Global blocks for header.
+ * **$footer** - Global blocks for footer.
+ * **$primary_links** - UL HTML code of primary menu.
+ * **$secondary_links** - UL HTML code of secondary menu.
+ * **$site_title** - Main title of the site.
+ * **$tabs** - List of essential buttons to perform many actions.
+ * **$messages** - Automatically generated system messages.
+ * **$content_title** - Title of the current content.
+ * **$footer_message** - Usually the copyright message of the site.
+ * **$breadcrumb** - Site navigation menu (currently disabled).
 
 ###content.php
 
- * $page - Uri of current page.
- * $title - Title of current content.
- * $content - The main content.
- * $views - The amount of times the content has been seen.
- * $content_data - Array with all the fields of the content.
- * $images - Array of images uploaded to the content.
- * $files - Array of files uploaded for the content.
- * $header - Content blocks for header.
- * $footer - Content blocks for footer.
- * $left - Content blocks for left.
- * $right - Content blocks for right.
- * $center - Content blocks for center.
+ * **$page** - Uri of current page.
+ * **$title** - Title of current content.
+ * **$content** - The main content.
+ * **$views** - The amount of times the content has been seen.
+ * **$content_data** - Array with all the fields of the content.
+ * **$images** - Array of images uploaded to the content.
+ * **$files** - Array of files uploaded for the content.
+ * **$header** - Content blocks for header.
+ * **$footer** - Content blocks for footer.
+ * **$left** - Content blocks for left.
+ * **$right** - Content blocks for right.
+ * **$center** - Content blocks for center.
 
 ###block.php
 
- * $page - Uri of current page.
- * $position - Current position of block.
- * $id - Numerical id of the current block.
- * $title - Title of the block.
- * $content - Content of the block.
- * $field - Array with all the fields of the block.
+ * **$page** - Uri of current page.
+ * **$position** - Current position of block.
+ * **$id** - Numerical id of the current block.
+ * **$title** - Title of the block.
+ * **$content** - Content of the block.
+ * **$field** - Array with all the fields of the block.
  
 ###block-content.php
 
- * $page - Uri of current page.
- * $position - Current position of block.
- * $id - Numerical id of the current block.
- * $title - Title of the block.
- * $content - Content of the block.
- * $field - Array with all the fields of the block.
- * $post - Boolean that indicate if the block should be displayed as post.
- * $image - HTML for image preview in case of $post == true.
- * $image_path - Individual path to image in case of $post == true.
- * $post_title - HTML for post title in case of $post == true.
- * $post_title_plain - Title of post without HTML in case of $post == true.
- * $view_more - HTML for post title in case of $post == true.
- * $view_url - Plain url of view more in case of $Post == true.
+ * **$page** - Uri of current page.
+ * **$position** - Current position of block.
+ * **$id** - Numerical id of the current block.
+ * **$title** - Title of the block.
+ * **$content** - Content of the block.
+ * **$field** - Array with all the fields of the block.
+ * **$post** - Boolean that indicate if the block should be displayed as post.
+ * **$image** - HTML for image preview in case of $post == true.
+ * **$image_path** - Individual path to image in case of $post == true.
+ * **$post_title** - HTML for post title in case of $post == true.
+ * **$post_title_plain** - Title of post without HTML in case of $post == true.
+ * **$view_more** - HTML for post title in case of $post == true.
+ * **$view_url** - Plain url of view more in case of $Post == true.
  
 ###user-profile.php
 
- * $username
- * $user_data - Array with all the individual data of user.
- * $age - Age in years of the user.
- * $gender - Male or Female.
- * $personal_text - Some information entered by the user itself.
- * $birth_date - Date of birth in 'Month day' format
- * $register_date - Day the user registered on the site as 'd/m/Y' format.
- * $latest_post - HTML list with latest posts.
+ * **$username**
+ * **$user_data** - Array with all the individual data of user.
+ * **$age** - Age in years of the user.
+ * **$gender** - Male or Female.
+ * **$personal_text** - Some information entered by the user itself.
+ * **$birth_date** - Date of birth in 'Month day' format
+ * **$register_date** - Day the user registered on the site as 'd/m/Y' format.
+ * **$latest_post** - HTML list with latest posts.
  
 ## Theme info file
 
 The theme info.php file purpose is to provide you with a facility to include the theme author and some other details. It consist of an associative array named $theme with the following indexes:
 
- * name - Name of the theme.
- * description - Description of the theme.
- * version - Numerical version of the theme.
- * author - Main author name.
- * email - Main author e-mail.
- * website  - Main author site.
+ * **name** - Name of the theme.
+ * **description** - Description of the theme.
+ * **version** - Numerical version of the theme.
+ * **author** - Main author name.
+ * **email** - Main author e-mail.
+ * **website**  - Main author site.
  
 Here is some example of the info.php content:
 
