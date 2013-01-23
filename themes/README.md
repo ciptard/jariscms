@@ -5,6 +5,7 @@
 	* Mixing it all together
 * Granularity
 	* Pages
+	* Content
 	* Blocks
 	* Content Blocks
 	* User Profiles
