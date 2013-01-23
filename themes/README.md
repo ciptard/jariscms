@@ -27,27 +27,27 @@ Learning another theme system can be tedious, so if you are already doing PHP co
 
 Each theme consist of a basic set of base files that constitute the skeleton needed for a working theme. These files are:
 
- * block.php - A block is a special way of adding snippets of content to the page. You can place them on the header, center, left, right and footer of the page. This template file is used for global blocks and is displayed within page.php.
+ * **block.php** - A block is a special way of adding snippets of content to the page. You can place them on the header, center, left, right and footer of the page. This template file is used for global blocks and is displayed within page.php.
  
- * block-content.php - Content blocks share the same use of global blocks but at the content level. They can only be assigned to a single page and are displayed within the content.php template. 
+ * **block-content.php** - Content blocks share the same use of global blocks but at the content level. They can only be assigned to a single page and are displayed within the content.php template. 
 
- * content.php - Html for the part of the site that displays the main content, this template also makes use of content blocks and is displayed within page.php.
+ * **content.php** - Html for the part of the site that displays the main content, this template also makes use of content blocks and is displayed within page.php.
 
- * info.php - Store the information of the theme like main author, contact details as theme name and version.
+ * **info.php** - Store the information of the theme like main author, contact details as theme name and version.
 
- * page.php - The main skeleton of each displayed page. This is the final theme file used to combine all other theme files.
+ * **page.php** - The main skeleton of each displayed page. This is the final theme file used to combine all other theme files.
 
- * preview.png - A preview image of the theme with a size of 200px x 150px
+ * **preview.png** - A preview image of the theme with a size of 200px x 150px
  
- * search-header.php - Heading of search results (optional)
+ * **search-header.php** - Heading of search results (optional)
  
- * search-result.php - Results row (optional)
+ * **search-result.php** - Results row (optional)
  
- * search-footer.php - Footer of search results (optional)
+ * **search-footer.php** - Footer of search results (optional)
 
- * style.css - The main style of the theme automatically appended to the head section of the page.
+ * **style.css** - The main style of the theme automatically appended to the head section of the page.
 
- * user-profile.php - If user profiles are enabled on the cms settings then this template is used for that purpose.
+ * **user-profile.php** - If user profiles are enabled on the cms settings then this template is used for that purpose.
  
 ###Mixing it all together
 
