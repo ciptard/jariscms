@@ -14,6 +14,7 @@
 	* block.php
 	* block-content.php
 	* user-profile.php
+* Theme info file
 
 ##Introduction
 
@@ -235,3 +236,25 @@ Other variables used through the page content:
  * $birth_date - Date of birth in 'Month day' format
  * $register_date - Day the user registered on the site as 'd/m/Y' format.
  * $latest_post - HTML list with latest posts.
+ 
+## Theme info file
+
+The theme info.php file purpose is to provide you with a facility to include the theme author and some other details. It consist of an associative array named $theme with the following indexes:
+
+ * name - Name of the theme.
+ * description - Description of the theme.
+ * version - Numerical version of the theme.
+ * author - Main author name.
+ * email - Main author e-mail.
+ * website  - Main author site.
+ 
+Here is some example of the info.php content:
+
+	<?php
+		$theme["name"] = "My Theme";
+		$theme["description"] = "A theme created by me.";
+		$theme["version"] = "1.0";
+		$theme["author"] = "My Name";
+		$theme["email"] = "myemail@mypersonalorcorporatesite.com";
+		$theme["website"] = "http://mypersonalorcorporatesite.com";
+	?>
