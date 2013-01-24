@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jaris CMS Control Menu Module v1.0\n"
+"Project-Id-Version: Jaris CMS Control Menu Module v1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-28 14:00-0400\n"
+"POT-Creation-Date: 2013-01-24 17:01+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
+"Last-Translator: Andrea Zanellato\n"
 "Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,208 +17,329 @@ msgstr ""
 "X-Poedit-KeywordsList: t\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:17
-msgid "Settings"
-msgstr "Impostazioni"
+#: install.php:18
+msgid "Remember to customize your control menu."
+msgstr "Ricordati di impostare il tuo menù di controllo."
 
-#: functions.php:25
-#: functions.php:98
-#: data/admin-settings-backgrounds.php:17
-msgid "Backgrounds"
-msgstr "Sfondi"
+#: install.php:25
+msgid "Configure Now"
+msgstr "Imposta Adesso"
 
-#: functions.php:25
-msgid "To see, add and edit the background images of the site."
-msgstr "Per la visualizzare, aggiungere e modificare l'immagine di sfondo del sito."
+#: functions.php:46
+msgid "Control Menu"
+msgstr "Menù di Controllo"
 
-#: install.php:20
-msgid "Remember to add backgrounds on the Settings section of the Control Center."
-msgstr "Ricorda di aggiungere sfondi nella sezione Impostazioni del Centro di Controllo."
+#: data/script-control_menu.php:62
+msgid "about jariscms"
+msgstr "Informazioni su JarisCMS"
 
-#: install.php:20
-msgid "Add Backgrounds Now"
-msgstr "Aggiungi Sfondi Adesso"
+#: data/script-control_menu.php:66
+msgid "help"
+msgstr "Aiuto"
 
-#: data/admin-settings-backgrounds-add.php:16
-#: data/admin-settings-backgrounds.php:24
-msgid "Add Background"
-msgstr "Aggiungi Sfondo"
+#: data/script-control_menu.php:70
+msgid "logout"
+msgstr "Esci"
 
-#: data/admin-settings-backgrounds-add.php:55
-msgid "Background successfully added."
-msgstr "Sfondo aggiunto con successo."
+#: data/admin-settings-control_menu.php:17
+msgid "Control Menu Settings"
+msgstr "Impostazioni Menù di Controllo"
 
-#: data/admin-settings-backgrounds-add.php:86
-#: data/admin-settings-backgrounds-edit.php:102
-msgid "Description:"
-msgstr "Descrizione:"
+#: data/admin-settings-control_menu.php:49
+msgid "Your settings have been successfully saved."
+msgstr "Modifiche salvate con successo."
 
-#: data/admin-settings-backgrounds-add.php:86
-#: data/admin-settings-backgrounds-edit.php:102
-msgid "Description of the background image like for example: January 2011 special product promotion."
-msgstr "Descrizione dell'immagine di sfondo, per esempio: Promozione prodotto Gennaio 2013."
+#: data/admin-settings-control_menu.php:77
+msgid "Colors have been successfully reset."
+msgstr "Colori reimpostati con successo."
 
-#: data/admin-settings-backgrounds-add.php:87
-msgid "Background image file:"
-msgstr "Immagine di sfondo:"
+#: data/admin-settings-control_menu.php:111
+msgid "Help link:"
+msgstr "Aiuto:"
 
-#: data/admin-settings-backgrounds-add.php:88
-#: data/admin-settings-backgrounds-edit.php:105
-msgid "Top position:"
-msgstr "Posizione superiore:"
+#: data/admin-settings-control_menu.php:111
+msgid "A link to the help page for administrators."
+msgstr "Collegamento alla pagina di aiuto per gli amministratori."
 
-#: data/admin-settings-backgrounds-add.php:88
-#: data/admin-settings-backgrounds-edit.php:105
-msgid "The top position of the background in pixels, for example 200. Default is 0"
-msgstr "La posizione superiore dello sfondo in pixel, per esempio 200. Predefinito è 0"
+#: data/admin-settings-control_menu.php:115
+msgid "Main bar:"
+msgstr "Barra principale:"
 
-#: data/admin-settings-backgrounds-add.php:89
-#: data/admin-settings-backgrounds-edit.php:106
-msgid "Background color:"
-msgstr "Colore di sfondo:"
+#: data/admin-settings-control_menu.php:115
+msgid "Background color of the main bar."
+msgstr "Colore di sfondo per la barra principale."
 
-#: data/admin-settings-backgrounds-add.php:89
-#: data/admin-settings-backgrounds-edit.php:106
-msgid "The overall background color of the body."
-msgstr "Il colore di sfondo per il corpo di tutte le pagine."
+#: data/admin-settings-control_menu.php:116
+msgid "Main bar border:"
+msgstr "Bordo barra principale:"
 
-#: data/admin-settings-backgrounds-add.php:93
-#: data/admin-settings-backgrounds-edit.php:111
-msgid "Left"
-msgstr "Sinistra"
+#: data/admin-settings-control_menu.php:116
+msgid "The border color of the main bar."
+msgstr "Colore del bordo della barra principale."
 
-#: data/admin-settings-backgrounds-add.php:94
-#: data/admin-settings-backgrounds-edit.php:112
-msgid "Center"
-msgstr "Centro"
+#: data/admin-settings-control_menu.php:117
+msgid "User button:"
+msgstr "Pulsante utente:"
 
-#: data/admin-settings-backgrounds-add.php:95
-#: data/admin-settings-backgrounds-edit.php:113
-msgid "Right"
-msgstr "Destra"
+#: data/admin-settings-control_menu.php:117
+msgid "Background color of the user account button."
+msgstr "Colore di sfondo per il pulsante account utente."
 
-#: data/admin-settings-backgrounds-add.php:99
-#: data/admin-settings-backgrounds-edit.php:117
-msgid "Position"
-msgstr "Posizione"
+#: data/admin-settings-control_menu.php:118
+msgid "User button text:"
+msgstr "Testo pulsante utente:"
 
-#: data/admin-settings-backgrounds-add.php:102
-#: data/admin-settings-backgrounds-edit.php:120
-msgid "Repeat"
-msgstr "Ripeti"
+#: data/admin-settings-control_menu.php:118
+msgid "Text color for the user account button."
+msgstr "Colore del testo del pulsante account utente."
 
-#: data/admin-settings-backgrounds-add.php:103
-#: data/admin-settings-backgrounds-edit.php:121
-msgid "No Repeat"
-msgstr "Non RIpetere"
+#: data/admin-settings-control_menu.php:119
+msgid "Images hover:"
+msgstr "Colore sfondo pulsanti immagine al passaggio:"
 
-#: data/admin-settings-backgrounds-add.php:107
-#: data/admin-settings-backgrounds-edit.php:125
-msgid "Mode"
-msgstr "Modo"
+#: data/admin-settings-control_menu.php:119
+msgid "Background color when hovering an image button."
+msgstr "Colore di sfondo per i pulsanti con immagine al passaggio del mouse."
 
-#: data/admin-settings-backgrounds-add.php:110
-#: data/admin-settings-backgrounds-edit.php:128
-msgid "Scroll"
-msgstr "Scorrimento"
+#: data/admin-settings-control_menu.php:120
+msgid "Main menus text:"
+msgstr "Colore testo menù:"
 
-#: data/admin-settings-backgrounds-add.php:111
-#: data/admin-settings-backgrounds-edit.php:129
-msgid "Fixed"
-msgstr "Fisso"
+#: data/admin-settings-control_menu.php:120
+msgid "Text color for main menus."
+msgstr "Colore del testo per i menù principali."
 
-#: data/admin-settings-backgrounds-add.php:115
-#: data/admin-settings-backgrounds-edit.php:133
-msgid "Attachment"
-msgstr "Allegato"
+#: data/admin-settings-control_menu.php:121
+msgid "Main menus text hover:"
+msgstr "Colore testo menù al passaggio:"
 
-#: data/admin-settings-backgrounds-add.php:117
-#: data/admin-settings-backgrounds-edit.php:136
-msgid "Display in all pages except the listed ones."
-msgstr "Visualizza in tutte le pagine eccetto quelle in lista."
+#: data/admin-settings-control_menu.php:121
+msgid "Hover effect text color for main menus."
+msgstr "Colore del testo per i menù principali al passaggio del mouse."
 
-#: data/admin-settings-backgrounds-add.php:118
-#: data/admin-settings-backgrounds-edit.php:137
-msgid "Just display on the listed pages."
-msgstr "Visualizza solamente nelle pagine in lista."
+#: data/admin-settings-control_menu.php:122
+msgid "Main menus background hover:"
+msgstr "Colore menù al passaggio del mouse:"
 
-#: data/admin-settings-backgrounds-add.php:121
-#: data/admin-settings-backgrounds-edit.php:140
-msgid "Pages:"
-msgstr "Pagine:"
+#: data/admin-settings-control_menu.php:122
+msgid "Hover effect background color for main menus."
+msgstr "Colore di sfondo per i menù al passaggio del mouse."
 
-#: data/admin-settings-backgrounds-add.php:123
-#: data/admin-settings-backgrounds-edit.php:142
-msgid "List of uri's seperated by comma (,). Also supports the wildcard (*), for example: my-section/*"
-msgstr "Lista di URI separate da virgola. Carattere jolly * supportato, per esempio: mia-sezione/*"
+#: data/admin-settings-control_menu.php:123
+msgid "Submenu:"
+msgstr "Sub-menù:"
 
-#: data/admin-settings-backgrounds-add.php:125
-#: data/admin-settings-backgrounds-edit.php:144
+#: data/admin-settings-control_menu.php:123
+msgid "Background color for submenus."
+msgstr "Colore di sfondo per i sub-menù."
+
+#: data/admin-settings-control_menu.php:124
+msgid "Submenu border:"
+msgstr "Bordo sub-menù:"
+
+#: data/admin-settings-control_menu.php:124
+msgid "Border color for submenus."
+msgstr "Colore bordo dei sub-menù."
+
+#: data/admin-settings-control_menu.php:125
+msgid "Submenu text:"
+msgstr "Colore testo sub-menù:"
+
+#: data/admin-settings-control_menu.php:125
+msgid "Text color for submenus."
+msgstr "Colore testo per i sub-menù."
+
+#: data/admin-settings-control_menu.php:126
+msgid "Submenu text border:"
+msgstr "Colore bordo testo sub-menù:"
+
+#: data/admin-settings-control_menu.php:126
+msgid "Text border color for submenus."
+msgstr "Colore bordo del testo dei sub-menù."
+
+#: data/admin-settings-control_menu.php:127
+msgid "Submenu text hover:"
+msgstr "Colore sub-menù al passaggio del mouse:"
+
+#: data/admin-settings-control_menu.php:127
+msgid "Hover effect text color for submenus."
+msgstr "Colore del testo dei sub-menù al passaggio del mouse"
+
+#: data/admin-settings-control_menu.php:128
+msgid "Submenu background hover:"
+msgstr "Colore di sfondo per i sub-menù al passaggio del mouse:"
+
+#: data/admin-settings-control_menu.php:128
+msgid "Hover effect background color for submenus."
+msgstr "Colore di sfondo per i sub-menù al passaggio del mouse."
+
+#: data/admin-settings-control_menu.php:130
+msgid "Colors"
+msgstr "Colori"
+
+#: data/admin-settings-control_menu.php:132
+msgid "Blue"
+msgstr "Blu"
+
+#: data/admin-settings-control_menu.php:133
+msgid "Black"
+msgstr "Nero"
+
+#: data/admin-settings-control_menu.php:134
+msgid "White"
+msgstr "Bianco"
+
+#: data/admin-settings-control_menu.php:138
+msgid "Images color"
+msgstr "Colore immagini"
+
+#: data/admin-settings-control_menu.php:140
+msgid "Reset Colors"
+msgstr "Reimposta Colori"
+
+#: data/admin-settings-control_menu.php:141
 msgid "Save"
 msgstr "Salva"
 
-#: data/admin-settings-backgrounds-add.php:126
-#: data/admin-settings-backgrounds-edit.php:145
+#: data/admin-settings-control_menu.php:142
 msgid "Cancel"
 msgstr "Annulla"
 
-#: data/admin-settings-backgrounds-delete.php:17
-msgid "Delete Background"
-msgstr "Elimina Sfondo"
+#~ msgid "Settings"
+#~ msgstr "Impostazioni"
 
-#: data/admin-settings-backgrounds-delete.php:39
-msgid "Background successfully deleted."
-msgstr "Sfondo eliminato con successo."
+#~ msgid "Backgrounds"
+#~ msgstr "Sfondi"
 
-#: data/admin-settings-backgrounds-delete.php:56
-msgid "Are you sure you want to delete the background image?"
-msgstr "Sicuro di voler eliminare l'immagine di sfondo?"
+#~ msgid "To see, add and edit the background images of the site."
+#~ msgstr ""
+#~ "Per la visualizzare, aggiungere e modificare l'immagine di sfondo del "
+#~ "sito."
 
-#: data/admin-settings-backgrounds-delete.php:63
-msgid "Yes"
-msgstr "Si"
+#~ msgid ""
+#~ "Remember to add backgrounds on the Settings section of the Control Center."
+#~ msgstr ""
+#~ "Ricorda di aggiungere sfondi nella sezione Impostazioni del Centro di "
+#~ "Controllo."
 
-#: data/admin-settings-backgrounds-delete.php:64
-msgid "No"
-msgstr "No"
+#~ msgid "Add Backgrounds Now"
+#~ msgstr "Aggiungi Sfondi Adesso"
 
-#: data/admin-settings-backgrounds-edit.php:16
-msgid "Edit Background"
-msgstr "Modifica Sfondo"
+#~ msgid "Add Background"
+#~ msgstr "Aggiungi Sfondo"
 
-#: data/admin-settings-backgrounds-edit.php:70
-msgid "Changes successfully saved."
-msgstr "Modifiche salvate con successo."
+#~ msgid "Background successfully added."
+#~ msgstr "Sfondo aggiunto con successo."
 
-#: data/admin-settings-backgrounds-edit.php:103
-msgid "Current image:"
-msgstr "Immagine corrente:"
+#~ msgid "Description:"
+#~ msgstr "Descrizione:"
 
-#: data/admin-settings-backgrounds-edit.php:104
-msgid "New background image file:"
-msgstr "Nuova immagine di sfondo:"
+#~ msgid ""
+#~ "Description of the background image like for example: January 2011 "
+#~ "special product promotion."
+#~ msgstr ""
+#~ "Descrizione dell'immagine di sfondo, per esempio: Promozione prodotto "
+#~ "Gennaio 2013."
 
-#: data/admin-settings-backgrounds.php:35
-msgid "Description"
-msgstr "Descrizione"
+#~ msgid "Background image file:"
+#~ msgstr "Immagine di sfondo:"
 
-#: data/admin-settings-backgrounds.php:36
-msgid "Actions"
-msgstr "Azioni"
+#~ msgid "Top position:"
+#~ msgstr "Posizione superiore:"
 
-#: data/admin-settings-backgrounds.php:44
-msgid "View Image"
-msgstr "Visualizza Immagine"
+#~ msgid ""
+#~ "The top position of the background in pixels, for example 200. Default is "
+#~ "0"
+#~ msgstr ""
+#~ "La posizione superiore dello sfondo in pixel, per esempio 200. "
+#~ "Predefinito è 0"
 
-#: data/admin-settings-backgrounds.php:47
-msgid "Edit"
-msgstr "Modifica"
+#~ msgid "Left"
+#~ msgstr "Sinistra"
 
-#: data/admin-settings-backgrounds.php:48
-msgid "Delete"
-msgstr "Elimina"
+#~ msgid "Center"
+#~ msgstr "Centro"
 
-#: data/admin-settings-backgrounds.php:58
-msgid "No background images available. Click Add Background to add one."
-msgstr "Nessuna immagine di sfondo disponibile. Clicca Aggiungi Sfondo per aggiungerne una."
+#~ msgid "Right"
+#~ msgstr "Destra"
 
+#~ msgid "Position"
+#~ msgstr "Posizione"
+
+#~ msgid "Repeat"
+#~ msgstr "Ripeti"
+
+#~ msgid "No Repeat"
+#~ msgstr "Non RIpetere"
+
+#~ msgid "Mode"
+#~ msgstr "Modo"
+
+#~ msgid "Scroll"
+#~ msgstr "Scorrimento"
+
+#~ msgid "Fixed"
+#~ msgstr "Fisso"
+
+#~ msgid "Attachment"
+#~ msgstr "Allegato"
+
+#~ msgid "Display in all pages except the listed ones."
+#~ msgstr "Visualizza in tutte le pagine eccetto quelle in lista."
+
+#~ msgid "Just display on the listed pages."
+#~ msgstr "Visualizza solamente nelle pagine in lista."
+
+#~ msgid "Pages:"
+#~ msgstr "Pagine:"
+
+#~ msgid ""
+#~ "List of uri's seperated by comma (,). Also supports the wildcard (*), for "
+#~ "example: my-section/*"
+#~ msgstr ""
+#~ "Lista di URI separate da virgola. Carattere jolly * supportato, per "
+#~ "esempio: mia-sezione/*"
+
+#~ msgid "Delete Background"
+#~ msgstr "Elimina Sfondo"
+
+#~ msgid "Background successfully deleted."
+#~ msgstr "Sfondo eliminato con successo."
+
+#~ msgid "Are you sure you want to delete the background image?"
+#~ msgstr "Sicuro di voler eliminare l'immagine di sfondo?"
+
+#~ msgid "Yes"
+#~ msgstr "Si"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "Edit Background"
+#~ msgstr "Modifica Sfondo"
+
+#~ msgid "Current image:"
+#~ msgstr "Immagine corrente:"
+
+#~ msgid "New background image file:"
+#~ msgstr "Nuova immagine di sfondo:"
+
+#~ msgid "Description"
+#~ msgstr "Descrizione"
+
+#~ msgid "Actions"
+#~ msgstr "Azioni"
+
+#~ msgid "View Image"
+#~ msgstr "Visualizza Immagine"
+
+#~ msgid "Edit"
+#~ msgstr "Modifica"
+
+#~ msgid "Delete"
+#~ msgstr "Elimina"
+
+#~ msgid "No background images available. Click Add Background to add one."
+#~ msgstr ""
+#~ "Nessuna immagine di sfondo disponibile. Clicca Aggiungi Sfondo per "
+#~ "aggiungerne una."
