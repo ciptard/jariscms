@@ -149,7 +149,7 @@ row: 0
             
             if(JarisCMS\Group\GetPermission("return_code_content_blocks", JarisCMS\Security\GetCurrentUserGroup()))
             {
-                $fields_other[] = array("type"=>"textarea", "name"=>"return", "label"=>t("Return Code:"), "id"=>"return", "description"=>t("PHP code enclosed with &lt;?php code ?&gt; to evaluate if block should display by printing true or false. for example: &lt;?php if(JarisCMS\Security\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"));
+                $fields_other[] = array("type"=>"textarea", "name"=>"return", "label"=>t("Return Code:"), "id"=>"return", "description"=>t("PHP code enclosed with &lt;?php code ?&gt; to evaluate if block should display by printing true or false. for example: &lt;?php if(JarisCMS\\Security\\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"));
             }
             
             $fields_other[] = array("type"=>"text", "name"=>"page_uri", "value"=>$_REQUEST["page_uri"], "label"=>t("Uri:"), "id"=>"page_uri", "required"=>true, "description"=>t("The relative path to access the page, for example: section/page, section"));

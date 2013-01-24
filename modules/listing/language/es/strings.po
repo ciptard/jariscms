@@ -390,7 +390,7 @@ msgstr ""
 
 #: data/admin-blocks-listing-add.php:170
 #: data/admin-blocks-listing-edit.php:188
-msgid "PHP code enclosed with &lt;?php code ?&gt; to evaluate if block should display by printing true or false. for example: &lt;?php if(JarisCMS\Security\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"
+msgid "PHP code enclosed with &lt;?php code ?&gt; to evaluate if block should display by printing true or false. for example: &lt;?php if(JarisCMS\\Security\\IsUserLogged()) print \"true\"; else print \"false\"; ?&gt;"
 msgstr ""
 
 #: data/admin-blocks-listing-add.php:173
