@@ -20,7 +20,7 @@ namespace JarisCMS\Module\Markdown\Theme
         {
             require_once("modules/markdown/phpmarkdown/markdown.php");
 
-            $content = Markdown($content);
+            $content = "<div class=\"markdown\">".Markdown($content)."</div>";
         }
     }
 }
