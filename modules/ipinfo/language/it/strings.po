@@ -1,0 +1,747 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JarisCMS IPInfo module v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-06 15:39+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
+"Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:22
+msgid "IP Info"
+msgstr "IP Info"
+
+#: install.php:15
+msgid "Remember to set the ipinfo configurations to work properly."
+msgstr "Ricordati di impostare IPInfo per il corretto funzionamento."
+
+#: install.php:15
+msgid "Configure Now"
+msgstr "Imposta Adesso"
+
+#: data/admin-settings-ipinfo.php:17
+msgid "IP Info Settings"
+msgstr "Impostazioni IP Info"
+
+#: data/admin-settings-ipinfo.php:34
+msgid "Your changes have been saved."
+msgstr "Le tue modifiche sono state salvate."
+
+#: data/admin-settings-ipinfo.php:49
+msgid "Enable"
+msgstr "Attiva"
+
+#: data/admin-settings-ipinfo.php:50
+msgid "Disable"
+msgstr "Disattiva"
+
+#: data/admin-settings-ipinfo.php:54
+msgid "IP info API"
+msgstr "IP Info API"
+
+#: data/admin-settings-ipinfo.php:54
+msgid "To control wheter the module offers api access for retreiving IP information. For this to work you need to have the ip_group_city and ip_group_country databases on the module db directory."
+msgstr "Per controllare se il modulo offre l'accesso alle API per ricevere le informazioni sugli IP. Per permetterne il funzionamento devi avere i database ip_group_city e ip_group_country presenti nella directory db."
+
+#: data/admin-settings-ipinfo.php:58
+msgid "Use external api?"
+msgstr "Usa API esterne?"
+
+#: data/admin-settings-ipinfo.php:58
+msgid "If you dont enable this you will need to have the ip_group_city and ip_group_country databases on the module db directory."
+msgstr "Se non abiliti questa opzione dovrai avere i database ip_group_city e ip_group_country presenti nella directory db del modulo."
+
+#: data/admin-settings-ipinfo.php:59
+msgid "City group url:"
+msgstr "URL gruppo città:"
+
+#: data/admin-settings-ipinfo.php:59
+msgid "The url of the external city group api to use."
+msgstr "URL delle API esterne del gruppo città da utilizzare."
+
+#: data/admin-settings-ipinfo.php:60
+msgid "Country group url:"
+msgstr "URL gruppo paese:"
+
+#: data/admin-settings-ipinfo.php:60
+msgid "The url of the external country group api to use."
+msgstr "URL delle API esterne del gruppo paese da utilizzare."
+
+#: data/admin-settings-ipinfo.php:62
+msgid "IP information retrieval"
+msgstr "Recupero informazioni IP"
+
+#: data/admin-settings-ipinfo.php:62
+msgid "The way in wich the api internal functions will retreive IP information."
+msgstr "Il modo col quale le funzioni delle API interne recupereranno le informazioni IP."
+
+#: data/admin-settings-ipinfo.php:66
+msgid "Save"
+msgstr "Salva"
+
+#: data/admin-settings-ipinfo.php:67
+msgid "Cancel"
+msgstr "Annulla"
+
+#~ msgid "Enable Editor"
+#~ msgstr "Activar Editor"
+
+#~ msgid "Whizzywig Editor"
+#~ msgstr "Editor Whizzywig"
+
+#~ msgid ""
+#~ "Here you specify what items are showed on the toolbar of whizzywig "
+#~ "editor. The default value is <b>all</b> equivalent to the following:"
+#~ msgstr ""
+#~ "Aquí puedes especificar que botones se mostrarán en la barra del editor "
+#~ "whizzywig. El valor predeterminado es <b>all</b> equivalente a lo "
+#~ "siguiente:"
+
+#~ msgid "Toolbar Items:"
+#~ msgstr "Items de la barra de herramientas:"
+
+#~ msgid "Users Access"
+#~ msgstr "Acceso de Usuarios"
+
+#~ msgid ""
+#~ "Select the groups that can see the editor. Don't select anything to "
+#~ "display editor to everyone."
+#~ msgstr ""
+#~ "Selecciona los grupos que pueden ver el editor visual. No seleccione nada "
+#~ "para mostrar el editor a todos."
+
+#~ msgid "Textarea Id:"
+#~ msgstr "Id del textarea:"
+
+#~ msgid "List of textarea id's seperated by comma (,)."
+#~ msgstr "Listado de id para diferentes textarea separados por coma (,)."
+
+#~ msgid "Form names:"
+#~ msgstr "Nombre formularios:"
+
+#~ msgid "List of form names seperated by comma (,)."
+#~ msgstr "Listado de nombres de formularios separados por coma (,)."
+
+#~ msgid "Rows"
+#~ msgstr "Filas"
+
+#~ msgid "Border width"
+#~ msgstr "Ancho del borde"
+
+#~ msgid "Columns"
+#~ msgstr "Columnas"
+
+#~ msgid "Open link in new window"
+#~ msgstr "Abrir enlace en nueva ventana"
+
+#~ msgid "Insert Image"
+#~ msgstr "Insertar imágen"
+
+#~ msgid "Insert Table"
+#~ msgstr "Insertar tabla"
+
+#~ msgid "Fixed width"
+#~ msgstr "Ancho fijo"
+
+#~ msgid "editor not available for your browser"
+#~ msgstr "editor no disponible para su navegador"
+
+#~ msgid "Bold"
+#~ msgstr "Negrita"
+
+#~ msgid "Italic"
+#~ msgstr "Cursiva"
+
+#~ msgid "Underline"
+#~ msgstr "Subrayar"
+
+#~ msgid "Left"
+#~ msgstr "Izquierda"
+
+#~ msgid "Center"
+#~ msgstr "Centro"
+
+#~ msgid "Right"
+#~ msgstr "Derecha"
+
+#~ msgid "Number"
+#~ msgstr "Lista numerada"
+
+#~ msgid "Bullet"
+#~ msgstr "Lista no numerada"
+
+#~ msgid "Indent"
+#~ msgstr "Sangrar"
+
+#~ msgid "Outdent"
+#~ msgstr "Quitar sangrado"
+
+#~ msgid "Undo"
+#~ msgstr "Deshacer"
+
+#~ msgid "Redo"
+#~ msgstr "Rehacer"
+
+#~ msgid "Color"
+#~ msgstr "Color"
+
+#~ msgid "Hilite"
+#~ msgstr "Remarcar"
+
+#~ msgid "Rule"
+#~ msgstr "Línea"
+
+#~ msgid "Link"
+#~ msgstr "Enlace"
+
+#~ msgid "Image"
+#~ msgstr "Imágen"
+
+#~ msgid "Clean"
+#~ msgstr "Limpiar"
+
+#~ msgid "Html"
+#~ msgstr "HTML"
+
+#~ msgid "Spellcheck"
+#~ msgstr "Comprobar ortografía"
+
+#~ msgid "Select some text first"
+#~ msgstr "Selecciona algun texto primero"
+
+#~ msgid "Insert"
+#~ msgstr "Insertar"
+
+#~ msgid "Add row above"
+#~ msgstr "Agregar fila encima"
+
+#~ msgid "Add row below"
+#~ msgstr "Agregar fila debajo"
+
+#~ msgid "Delete row"
+#~ msgstr "Borrar fila"
+
+#~ msgid "Add column before"
+#~ msgstr "Agregar columna anterior"
+
+#~ msgid "Add column after"
+#~ msgstr "Agregar columna posterior"
+
+#~ msgid "click below or enter a"
+#~ msgstr "Haz click debajo o escribe un"
+
+#~ msgid "color name"
+#~ msgstr "nombre de color"
+
+#~ msgid "Delete column"
+#~ msgstr "Borrar columna"
+
+#~ msgid "Choose style"
+#~ msgstr "Elegir estilo"
+
+#~ msgid "Paragraph"
+#~ msgstr "Párrafo"
+
+#~ msgid "Heading"
+#~ msgstr "Encabezado"
+
+#~ msgid "Address"
+#~ msgstr "Dirección"
+
+#~ msgid "Big"
+#~ msgstr "Grande"
+
+#~ msgid "Small"
+#~ msgstr "Pequeña"
+
+#~ msgid "large"
+#~ msgstr "Grande"
+
+#~ msgid "Font"
+#~ msgstr "Fuente"
+
+#~ msgid "Font size"
+#~ msgstr "Tamaño de fuente"
+
+#~ msgid "Browse"
+#~ msgstr "Buscar"
+
+#~ msgid "OK"
+#~ msgstr "Acpetar"
+
+#~ msgid "Hide HTML"
+#~ msgstr "Ocultar HTML"
+
+#~ msgid "Image address (URL)"
+#~ msgstr "Direcci&oacute;n de la imagen (URL)"
+
+#~ msgid "Link address (URL)"
+#~ msgstr "Direcci&oacute;n del enlace(URL)"
+
+#~ msgid "to display if image unavailable"
+#~ msgstr "a mostrar si la imagen no esta disponible"
+
+#~ msgid "Alternate text"
+#~ msgstr "Texto alternativo"
+
+#~ msgid "Align"
+#~ msgstr "Alinear"
+
+#~ msgid "normal"
+#~ msgstr "normal"
+
+#~ msgid "left"
+#~ msgstr "izquierda"
+
+#~ msgid "right"
+#~ msgstr "derecha"
+
+#~ msgid "inside"
+#~ msgstr "dentro"
+
+#~ msgid "Border"
+#~ msgstr "Borde"
+
+#~ msgid "Margin"
+#~ msgstr "Margen"
+
+#~ msgid "Insert image"
+#~ msgstr "Insertar imagen"
+
+#~ msgid "ieSpell is not installed on your computer."
+#~ msgstr "ieSpell no está instalado en tu ordenador."
+
+#~ msgid "Click [OK] to go to download page."
+#~ msgstr "Haz click en [Aceptar] para ir a la página de descarga."
+
+#~ msgid "Click [OK] for instructions to download and install"
+#~ msgstr ""
+#~ "Haz click en [Aceptar] para instrucciones de descarga e instalación de"
+
+#~ msgid "SpellBound on your computer."
+#~ msgstr "SpellBound en tu ordenador."
+
+#~ msgid "If you already have it, click [Cancel] then right"
+#~ msgstr "Si ya lo tienes, haz click en [Cancelar] y con el boton derecho"
+
+#~ msgid "click in the edit area and select 'Check Spelling'."
+#~ msgstr ""
+#~ "haz click en el área de edición y selecciona 'Check Spelling'(Comprobar "
+#~ "ortografía)"
+
+#~ msgid "File browser"
+#~ msgstr "Nagevador de archivos"
+
+#~ msgid "Click a name below to select."
+#~ msgstr "Pincha un nombre para seleccionar."
+
+#~ msgid "No files available."
+#~ msgstr "No hay archivos disponibles."
+
+#~ msgid "Image browser"
+#~ msgstr "Navegador de imágenes"
+
+#~ msgid "Image preview"
+#~ msgstr "Prevista de la imágenes"
+
+#~ msgid "Hover over a name below to preview, click it to select."
+#~ msgstr ""
+#~ "Pasa el ratón encima de un nombre para previsualizar. pinchalo para "
+#~ "seleccionar."
+
+#~ msgid "No images available."
+#~ msgstr "No hay imágenes disponibles."
+
+#~ msgid "Add Product"
+#~ msgstr "Añadir Producto"
+
+#~ msgid "Create a product for selling."
+#~ msgstr "Crea un producto para vender."
+
+#~ msgid "Edit Product"
+#~ msgstr "Editar Producto"
+
+#~ msgid "E-commerce"
+#~ msgstr "Tienda Electrónica"
+
+#~ msgid "Featured Products"
+#~ msgstr "Productos Destacados"
+
+#~ msgid "Remember to configure paypal."
+#~ msgstr "Recuerda configurar paypal."
+
+#~ msgid "The product was successfully added."
+#~ msgstr "El podructo fue creado exitosamente."
+
+#~ msgid "Categories"
+#~ msgstr "Categorías"
+
+#~ msgid "Title:"
+#~ msgstr "Titulo:"
+
+#~ msgid "Content:"
+#~ msgstr "Contenido:"
+
+#~ msgid "Price:"
+#~ msgstr "Precio:"
+
+#~ msgid "The price of the product."
+#~ msgstr "El precio del producto."
+
+#~ msgid "Stock Quantity:"
+#~ msgstr "Cantidad Disponible:"
+
+#~ msgid "To keep track stock. -1 to disable this feature."
+#~ msgstr ""
+#~ "Para mantener monitoreada la cantidad disponible. -1 para desactivar esta "
+#~ "función."
+
+#~ msgid "Maximun quantity:"
+#~ msgstr "Cantidad maxima:"
+
+#~ msgid ""
+#~ "Maximun amount a client can order of this product on a single purchase. 0 "
+#~ "to disable this feature."
+#~ msgstr ""
+#~ "Cantidad maxima que un cliente puede ordenar de un producto en una misma "
+#~ "compra. 0 para desactivar esta opción."
+
+#~ msgid "The weight of the product in pounds."
+#~ msgstr "El peso del producto en libras."
+
+#~ msgid "Description:"
+#~ msgstr "Descripción:"
+
+#~ msgid "Product successfully deleted."
+#~ msgstr "Producto borrado exitosamente."
+
+#~ msgid "Are you sure you want to delete the product?"
+#~ msgstr "¿Esta seguro que desea borrar el producto?"
+
+#~ msgid "Featured Product Settings"
+#~ msgstr "Configuraciones de Productos Destacados"
+
+#~ msgid "Featured product added."
+#~ msgstr "Producto destacado añadido."
+
+#~ msgid "Featured product removed."
+#~ msgstr "Producto destacado removido."
+
+#~ msgid "Featured products order updated."
+#~ msgstr "Orden de productos destacados actualizado."
+
+#~ msgid "The uri of the featured product."
+#~ msgstr "La (uri) dirección de acceso del producto destacado."
+
+#~ msgid "Product:"
+#~ msgstr "Producto:"
+
+#~ msgid "Add Featured Product"
+#~ msgstr "Añadir Producto Destacado"
+
+#~ msgid "No featured products available click Add Product"
+#~ msgstr ""
+#~ "No hay productos destacados disponibles, pincha en Añadir Producto "
+#~ "Destacado."
+
+#~ msgid "Delete order"
+#~ msgstr "Borrar orden"
+
+#~ msgid "Order successfully deleted."
+#~ msgstr "Orden borrada exitosamente."
+
+#~ msgid "Are you sure you want to delete the order?"
+#~ msgstr "¿Estas seguro que deseas borrar la orden?"
+
+#~ msgid "ID:"
+#~ msgstr "I"
+
+#~ msgid "Edit and view order"
+#~ msgstr "Editar y ver orden"
+
+#~ msgid "Order details successfully saved"
+#~ msgstr "Detalles de la orden guardados exitosamente"
+
+#~ msgid "Last name:"
+#~ msgstr "Apellido paterno:"
+
+#~ msgid "Company:"
+#~ msgstr "Compañía:"
+
+#~ msgid "E-mail:"
+#~ msgstr "Correo electrónico:"
+
+#~ msgid "Confirm e-mail:"
+#~ msgstr "Confirmar correo electrónico:"
+
+#~ msgid "Telephone:"
+#~ msgstr "Teléfono:"
+
+#~ msgid "Mobile:"
+#~ msgstr "Movíl:"
+
+#~ msgid "Contact Info"
+#~ msgstr "Información de Contacto"
+
+#~ msgid "Adrress Line 1:"
+#~ msgstr "Dirección 1:"
+
+#~ msgid "Adrress Line 2:"
+#~ msgstr "Dirección 1:"
+
+#~ msgid "Town:"
+#~ msgstr "Pueblo:"
+
+#~ msgid "Zipcode:"
+#~ msgstr "Código postal:"
+
+#~ msgid "Shipping address"
+#~ msgstr "Dirección de envio"
+
+#~ msgid "IPN Values"
+#~ msgstr "Valores IPN"
+
+#~ msgid "Ecommerce order management"
+#~ msgstr "Manejo de ordenes para la tienda electrónica"
+
+#~ msgid "New"
+#~ msgstr "Nuevo"
+
+#~ msgid "Completed"
+#~ msgstr "Completado"
+
+#~ msgid "Closed"
+#~ msgstr "Cerrado"
+
+#~ msgid "view"
+#~ msgstr "ver"
+
+#~ msgid "Date"
+#~ msgstr "Día"
+
+#~ msgid "Status"
+#~ msgstr "Estado"
+
+#~ msgid "Actions"
+#~ msgstr "Acciones"
+
+#~ msgid "Payment:"
+#~ msgstr "Pago:"
+
+#~ msgid "Status:"
+#~ msgstr "Estado:"
+
+#~ msgid "pending"
+#~ msgstr "pendiente"
+
+#~ msgid "Use paypal sandbox?"
+#~ msgstr "¿Usar el sandbox de paypal?"
+
+#~ msgid "Paypal e-mail:"
+#~ msgstr "Correo electrónico de paypal:"
+
+#~ msgid "The paypal account e-mail to receive payments."
+#~ msgstr ""
+#~ "El correo electrónico de la cuenta de paypal donde va a recibir pagos."
+
+#~ msgid "Paypal"
+#~ msgstr "Paypal"
+
+#~ msgid "Tax rate:"
+#~ msgstr "Tasa de impuesto:"
+
+#~ msgid "A percentage of tax applied to total cost."
+#~ msgstr "Un porcentajede de inpuesto aplicado al costo total."
+
+#~ msgid "USPS username:"
+#~ msgstr "Nombre de usuario de USPS:"
+
+#~ msgid ""
+#~ "The user id used to communicate with usps api to retreive shipping rates."
+#~ msgstr ""
+#~ "El id de usuario utilizado para comunicarse con el api de usps para "
+#~ "opener los costos de envio."
+
+#~ msgid "UPS xml access code:"
+#~ msgstr "Código de acceso xml para UPS:"
+
+#~ msgid ""
+#~ "Access code used to communicate with ups xml api to retreive shipping "
+#~ "rates."
+#~ msgstr ""
+#~ "Código de acceso utilizado para comunicarse con el api de ups para "
+#~ "obtener los costos de envio."
+
+#~ msgid "UPS username:"
+#~ msgstr "Nombre de usuario UPS:"
+
+#~ msgid "Yor normal username used to log in on ups.com."
+#~ msgstr "Tu nombre de usuario normal utilizado para iniciar en ups.com"
+
+#~ msgid "UPS password:"
+#~ msgstr "Contraseña UPS:"
+
+#~ msgid "The password used to log in ups.com."
+#~ msgstr "La contraseña utilizada para iniciar en ups.com."
+
+#~ msgid "UPS account number:"
+#~ msgstr "Número de cuenta de UPS:"
+
+#~ msgid "You ups shipping account number."
+#~ msgstr "Tu número de cuenta para envios."
+
+#~ msgid "Country origination:"
+#~ msgstr "País de orígen:"
+
+#~ msgid "The country where you are shipping products."
+#~ msgstr "El país de donde enviaras los productos."
+
+#~ msgid "Zipcode origination:"
+#~ msgstr "Código postal de orígen:"
+
+#~ msgid "The senders zipcode origin."
+#~ msgstr "El código postal de donde enviaras los productos."
+
+#~ msgid "Shipping Calculator"
+#~ msgstr "Calculadora de envios"
+
+#~ msgid "Shopping Cart"
+#~ msgstr "Carrito de Compras"
+
+#~ msgid "Maximun order quantity for"
+#~ msgstr "Cantidad maxima para"
+
+#~ msgid "is"
+#~ msgstr "es"
+
+#~ msgid "Your order is exceeding our stock quantity for product"
+#~ msgstr ""
+#~ "Tu orden esta sobre pasando el límite disponible de mercancía para el "
+#~ "producto"
+
+#~ msgid "Update Cart"
+#~ msgstr "Actualizar Carrito"
+
+#~ msgid "Description"
+#~ msgstr "Descripción"
+
+#~ msgid "Quantity"
+#~ msgstr "cantidad"
+
+#~ msgid "Price"
+#~ msgstr "Precio"
+
+#~ msgid "remove"
+#~ msgstr "remover"
+
+#~ msgid "Tax amount:"
+#~ msgstr "Total de impuesto:"
+
+#~ msgid "Shipping:"
+#~ msgstr "Envio:"
+
+#~ msgid "Total:"
+#~ msgstr "Total:"
+
+#~ msgid "Continue to checkout"
+#~ msgstr "Procesar orden"
+
+#~ msgid ""
+#~ "No shipping method selected. You need to specify zipcode, press calculate "
+#~ "button, select shipping method and press calculate."
+#~ msgstr ""
+#~ "No has seleccionado método de envio. Debes especificar un codigo postal y "
+#~ "presionar calcular, luego seleccionar el método de envio y nuevamente "
+#~ "presionar calcular."
+
+#~ msgid "You shopping cart is empty."
+#~ msgstr "Tu carrito de compras esta vacio."
+
+#~ msgid "Checkout"
+#~ msgstr "Procesar orden"
+
+#~ msgid "The e-mail and confirm email fields does not match."
+#~ msgstr "Tu correo electrónico y correo de confirmación no equivalen."
+
+#~ msgid "Your data could not be saved at this moment please try again later."
+#~ msgstr ""
+#~ "Tus valores no pudieron ser almacenados en el momento, por favor trate "
+#~ "más tarde."
+
+#~ msgid "Your details could not be updated at the moment please try later."
+#~ msgstr ""
+#~ "Tus detalles no puedieron ser actualizados por el momento por favor trate "
+#~ "más tarde."
+
+#~ msgid "Order details"
+#~ msgstr "Detalles de orden"
+
+#~ msgid "Shipping address:"
+#~ msgstr "Dirección de envio:"
+
+#~ msgid "Contact info:"
+#~ msgstr "Información de contacto:"
+
+#~ msgid "Tax Rate"
+#~ msgstr "Tasa de Impuesto"
+
+#~ msgid "Shipping"
+#~ msgstr "Envio"
+
+#~ msgid "Method:"
+#~ msgstr "Método:"
+
+#~ msgid "Total"
+#~ msgstr "Total"
+
+#~ msgid "Finalize Transaction"
+#~ msgstr "Finalizar Transacción"
+
+#~ msgid "Purchase on"
+#~ msgstr "Compra en"
+
+#~ msgid "Review and Pay"
+#~ msgstr "Revisar y Pagar"
+
+#~ msgid "IPN Listener"
+#~ msgstr "Proceso IPN"
+
+#~ msgid "Thanks for your Order"
+#~ msgstr "Gracias por tu orden"
+
+#~ msgid "Your order number:"
+#~ msgstr "Tu número de orden es:"
+
+#~ msgid "Save this link to check the status of your order:"
+#~ msgstr "Guarda este enlace para verificar el estado de tu orden:"
+
+#~ msgid ""
+#~ "We will send you shortly a notification at your e-mail with the order "
+#~ "number and instructions to check order status."
+#~ msgstr ""
+#~ "Se te enviara prontamente una notificación por correo electrónico con tu "
+#~ "número de orden e instrucciónes de como verificar el estado de la orden."
+
+#~ msgid "Order status"
+#~ msgstr "Estado de orden"
+
+#~ msgid "Order number:"
+#~ msgstr "Número de orden:"
+
+#~ msgid "The number of your order"
+#~ msgstr "El número de tu orden"
+
+#~ msgid "View Status"
+#~ msgstr "Ver Estado"
+
+#~ msgid "Buy Now"
+#~ msgstr "Comprar Ahora"

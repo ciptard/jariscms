@@ -95,7 +95,7 @@ The above graphic is just a general concept so that you can quickly understand h
 
 As you can notice the page.php file serves as the main skeleton for all pages. What happens if you want to add a custom skeleton for a specific section of your site? Lets say you have a section named 'About' and the uri to access this section is 'about' (mydomain.com/about), you would need to create another page.php file renamed to page-about.php to give a custom look to this page.
 
-You can add more theme files to theme specific parts of the site. To do this you copy one of the base theme files and rename it to match one individual element of your choice. Obviously there are certain rules and conventions for the extra theme files name used.
+You can add more template files to theme specific parts of the site. To do this you copy one of the base ones and rename it to match one individual element of your choice. Obviously there are certain rules and conventions for the extra template files name used.
 
 ###Pages
 
