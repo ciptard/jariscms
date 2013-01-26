@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jaris CMS Whizzywig Module v4.4\n"
+"Project-Id-Version: Jaris CMS Revisions Module v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-28 15:05+0100\n"
+"POT-Creation-Date: 2013-01-25 13:34+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
 "Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
@@ -17,389 +17,407 @@ msgstr ""
 "X-Poedit-KeywordsList: t\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:95
-msgid "Disable Editor"
-msgstr "Disabilita Editor"
+#: functions.php:62
+msgid "You are viewing revision of:"
+msgstr "Stai visualizzando la revisione di:"
 
-#: functions.php:123
-msgid "Enable Editor"
-msgstr "Attiva Editor"
+#: functions.php:136
+#: data/revision-compare.php:66
+#: data/revisions.php:54
+#: data/revisions.php:120
+msgid "View"
+msgstr "Visualizza"
 
-#: functions.php:194
-msgid "Whizzywig Editor"
-msgstr ""
+#: functions.php:137
+#: data/revisions.php:140
+msgid "Delete"
+msgstr "Elimina"
 
-#: data/admin-settings-whizzywig.php:61
-msgid "Your changes have been saved."
-msgstr "Le tue modifiche sono state salvate con successo."
+#: functions.php:138
+#: data/revisions.php:130
+msgid "Revert"
+msgstr "Ripristina"
 
-#: data/admin-settings-whizzywig.php:76
-msgid "Groups"
-msgstr "Gruppi"
+#: functions.php:140
+#: functions.php:163
+#: info.php:13
+#: data/revision-compare.php:67
+#: data/revisions.php:17
+#: data/revisions.php:55
+msgid "Revisions"
+msgstr "Revisioni"
 
-#: data/admin-settings-whizzywig.php:80
-msgid "Description"
-msgstr "Descrizione"
+#: functions.php:175
+msgid "Revert to this revision"
+msgstr "Ritorna a questa revisione"
 
-#: data/admin-settings-whizzywig.php:109
-msgid "edit"
-msgstr "modifica"
+#: info.php:14
+msgid "Adds content revision support."
+msgstr "Aggiunge supporto per la revisione dei contenuti."
 
-#: data/admin-settings-whizzywig.php:127
-msgid "Enable Whizzywig?"
-msgstr "Attivare Whizzywig?"
+#: install.php:18
+msgid "Remember to set the group permissions for the revisions system to meet your needs."
+msgstr "Ricordati di impostare i permessi dei gruppi per le revisioni di sistema per un corretto funzionamento."
 
-#: data/admin-settings-whizzywig.php:130
-msgid "Here you specify what items are showed on the toolbar of whizzywig editor. The default value is <b>all</b> equivalent to the following:"
-msgstr "Qui puoi specificare quali oggetti da visualizzare sulla barra degli strumenti di whizzywig editor. Il valore predefinito é <b>tutti</b> equivalente ai seguenti:"
+#: install.php:22
+msgid "Revise Permissions"
+msgstr "Imposta Permessi"
 
-#: data/admin-settings-whizzywig.php:132
-msgid "Toolbar Items:"
-msgstr "Oggetti della Barra degli Strumenti:"
+#: data/revision-compare.php:17
+msgid "Revisions Comparison"
+msgstr "Confronta Revisioni"
 
-#: data/admin-settings-whizzywig.php:136
-msgid "Textarea Id:"
-msgstr "Id Area Testo:"
+#: data/revision-compare.php:41
+#: data/revisions.php:39
+#: data/revisions.php:152
+msgid "No revisions found."
+msgstr "Nessuna revisione trovata."
 
-#: data/admin-settings-whizzywig.php:136
-msgid "List of textarea id's seperated by comma (,)."
-msgstr "Lista di id separati da virgola dell'area di testo."
+#: data/revision-compare.php:50
+msgid "Invalid revisions."
+msgstr "Revisioni non valide."
 
-#: data/admin-settings-whizzywig.php:137
-msgid "Form names:"
-msgstr "Nomi campo:"
+#: data/revision-compare.php:61
+#: data/revisions.php:50
+msgid "Edit"
+msgstr "Modifica"
 
-#: data/admin-settings-whizzywig.php:139
-msgid "List of form names seperated by comma (,)."
-msgstr "Lista di campi separati da virgola."
+#: data/revision-compare.php:72
+#: data/revisions.php:60
+msgid "Page:"
+msgstr "Pagina:"
 
-#: data/admin-settings-whizzywig.php:142
-msgid "Show disable editor button?"
-msgstr "Visualizzare il pulsante per disabilitare l'editor?"
+#: data/revision-compare.php:92
+#: data/revisions.php:77
+msgid "Older:"
+msgstr "Originale:"
 
-#: data/admin-settings-whizzywig.php:146
-msgid "Save"
-msgstr "Salva"
+#: data/revision-compare.php:111
+#: data/revisions.php:82
+msgid "Newer:"
+msgstr "Nuova:"
 
-#: data/admin-settings-whizzywig.php:147
-#: data/whizzylang.php:74
-msgid "Cancel"
-msgstr "Annulla"
+#: data/revision-compare.php:116
+#: data/revisions.php:87
+msgid "Compare"
+msgstr "Confronta"
 
-#: data/admin-settings-whizzywig.php:152
-msgid "Selected group:"
-msgstr "Gruppo selezionato:"
+#: data/revision-delete.php:17
+msgid "Delete Revision"
+msgstr "Elimina Revisione"
 
-#: data/whizzylang.php:23
-msgid "Rows"
-msgstr "Righe"
+#: data/revision-delete.php:47
+msgid "Revision successfully removed."
+msgstr "Revisione rimossa con successo."
 
-#: data/whizzylang.php:24
-msgid "Border width"
-msgstr "Larghezza bordo"
+#: data/revision-delete.php:66
+msgid "Are you sure you want to delete this revision?"
+msgstr "Sicuro di voler eliminare questa revisione?"
 
-#: data/whizzylang.php:25
-msgid "Columns"
-msgstr "Colonne"
+#: data/revision-delete.php:67
+#: data/revision-revert.php:70
+msgid "Revision:"
+msgstr "Revisione:"
 
-#: data/whizzylang.php:26
-msgid "Open link in new window"
-msgstr "Apri link in una nuova finestra"
+#: data/revision-delete.php:69
+#: data/revision-revert.php:72
+msgid "Yes"
+msgstr "Sì"
 
-#: data/whizzylang.php:27
-msgid "Insert Image"
-msgstr "Inserisci Immagine"
+#: data/revision-delete.php:70
+#: data/revision-revert.php:73
+msgid "No"
+msgstr "No"
 
-#: data/whizzylang.php:28
-msgid "Insert Table"
-msgstr "Inserisci Tabella"
+#: data/revision-revert.php:17
+msgid "Revert to Revision"
+msgstr "Ripristina alla Revisione"
 
-#: data/whizzylang.php:29
-#: data/whizzylang.php:69
-msgid "Fixed width"
-msgstr "Larghezza fissa"
+#: data/revision-revert.php:50
+msgid "Revert to revision was successfull."
+msgstr "Ripristino della revisione eseguito con successo."
 
-#: data/whizzylang.php:30
-msgid "editor not available for your browser"
-msgstr "editor non disponibile per il tuo browser"
+#: data/revision-revert.php:69
+msgid "Are you sure you want to revert to this revision?"
+msgstr "Sicuro di voler ripristinare questa revisione?"
 
-#: data/whizzylang.php:31
-msgid "Bold"
-msgstr "Grassetto"
+#: data/revisions.php:98
+msgid "Date"
+msgstr "Data"
 
-#: data/whizzylang.php:32
-msgid "Italic"
-msgstr "Corsivo"
+#: data/revisions.php:99
+msgid "Action"
+msgstr "Azione"
 
-#: data/whizzylang.php:33
-msgid "Underline"
-msgstr "Sottolineato"
+#~ msgid "Disable Editor"
+#~ msgstr "Disabilita Editor"
 
-#: data/whizzylang.php:34
-msgid "Left"
-msgstr "Sinistra"
+#~ msgid "Enable Editor"
+#~ msgstr "Attiva Editor"
 
-#: data/whizzylang.php:35
-msgid "Center"
-msgstr "Centro"
+#~ msgid "Your changes have been saved."
+#~ msgstr "Le tue modifiche sono state salvate con successo."
 
-#: data/whizzylang.php:36
-msgid "Right"
-msgstr "Destra"
+#~ msgid "Groups"
+#~ msgstr "Gruppi"
 
-#: data/whizzylang.php:37
-msgid "Number"
-msgstr "Numero"
+#~ msgid "Description"
+#~ msgstr "Descrizione"
 
-#: data/whizzylang.php:38
+#~ msgid "edit"
+#~ msgstr "modifica"
+
+#~ msgid "Enable Whizzywig?"
+#~ msgstr "Attivare Whizzywig?"
+
+#~ msgid ""
+#~ "Here you specify what items are showed on the toolbar of whizzywig "
+#~ "editor. The default value is <b>all</b> equivalent to the following:"
+#~ msgstr ""
+#~ "Qui puoi specificare quali oggetti da visualizzare sulla barra degli "
+#~ "strumenti di whizzywig editor. Il valore predefinito é <b>tutti</b> "
+#~ "equivalente ai seguenti:"
+
+#~ msgid "Toolbar Items:"
+#~ msgstr "Oggetti della Barra degli Strumenti:"
+
+#~ msgid "Textarea Id:"
+#~ msgstr "Id Area Testo:"
+
+#~ msgid "List of textarea id's seperated by comma (,)."
+#~ msgstr "Lista di id separati da virgola dell'area di testo."
+
+#~ msgid "Form names:"
+#~ msgstr "Nomi campo:"
+
+#~ msgid "List of form names seperated by comma (,)."
+#~ msgstr "Lista di campi separati da virgola."
+
+#~ msgid "Show disable editor button?"
+#~ msgstr "Visualizzare il pulsante per disabilitare l'editor?"
+
+#~ msgid "Save"
+#~ msgstr "Salva"
+
+#~ msgid "Cancel"
+#~ msgstr "Annulla"
+
+#~ msgid "Selected group:"
+#~ msgstr "Gruppo selezionato:"
+
+#~ msgid "Rows"
+#~ msgstr "Righe"
+
+#~ msgid "Border width"
+#~ msgstr "Larghezza bordo"
+
+#~ msgid "Columns"
+#~ msgstr "Colonne"
+
+#~ msgid "Open link in new window"
+#~ msgstr "Apri link in una nuova finestra"
+
+#~ msgid "Insert Image"
+#~ msgstr "Inserisci Immagine"
+
+#~ msgid "Insert Table"
+#~ msgstr "Inserisci Tabella"
+
+#~ msgid "Fixed width"
+#~ msgstr "Larghezza fissa"
+
+#~ msgid "editor not available for your browser"
+#~ msgstr "editor non disponibile per il tuo browser"
+
+#~ msgid "Bold"
+#~ msgstr "Grassetto"
+
+#~ msgid "Italic"
+#~ msgstr "Corsivo"
+
+#~ msgid "Underline"
+#~ msgstr "Sottolineato"
+
+#~ msgid "Left"
+#~ msgstr "Sinistra"
+
+#~ msgid "Center"
+#~ msgstr "Centro"
+
+#~ msgid "Right"
+#~ msgstr "Destra"
+
+#~ msgid "Number"
+#~ msgstr "Numero"
+
+#~ msgid "Indent"
+#~ msgstr "Indentazione"
+
 #, fuzzy
-msgid "Bullet"
-msgstr ""
+#~ msgid "Outdent"
+#~ msgstr "Non indentare"
 
-#: data/whizzylang.php:39
-msgid "Indent"
-msgstr "Indentazione"
+#~ msgid "Undo"
+#~ msgstr "Annulla"
 
-#: data/whizzylang.php:40
+#~ msgid "Redo"
+#~ msgstr "Ripeti"
+
+#~ msgid "Color"
+#~ msgstr "Colore"
+
+#~ msgid "Hilite"
+#~ msgstr "Evidenzia"
+
 #, fuzzy
-msgid "Outdent"
-msgstr "Non indentare"
+#~ msgid "Rule"
+#~ msgstr "Linea"
 
-#: data/whizzylang.php:41
-msgid "Undo"
-msgstr "Annulla"
+#~ msgid "Link"
+#~ msgstr "Collega"
 
-#: data/whizzylang.php:42
-msgid "Redo"
-msgstr "Ripeti"
+#~ msgid "Image"
+#~ msgstr "Immagine"
 
-#: data/whizzylang.php:43
-msgid "Color"
-msgstr "Colore"
+#~ msgid "Table"
+#~ msgstr "Tabella"
 
-#: data/whizzylang.php:44
-msgid "Hilite"
-msgstr "Evidenzia"
+#~ msgid "Clean"
+#~ msgstr "Pulisci"
 
-#: data/whizzylang.php:45
+#~ msgid "Html"
+#~ msgstr "HTML"
+
+#~ msgid "Spellcheck"
+#~ msgstr "Correttore ortografico"
+
+#~ msgid "Select some text first"
+#~ msgstr "Seleziona prima del testo"
+
+#~ msgid "Insert"
+#~ msgstr "Inserisci"
+
+#~ msgid "Add row above"
+#~ msgstr "Aggiungi riga sopra"
+
+#~ msgid "Add row below"
+#~ msgstr "Aggiungi riga sotto"
+
+#~ msgid "Add column before"
+#~ msgstr "Aggiungi colonna prima"
+
+#~ msgid "Add column after"
+#~ msgstr "Aggiungi colonna dopo"
+
+#~ msgid "click below or enter a"
+#~ msgstr "clicca sotto o inserisci un"
+
+#~ msgid "color name"
+#~ msgstr "nome colore"
+
+#~ msgid "Choose style"
+#~ msgstr "Scegli stile"
+
+#~ msgid "Paragraph"
+#~ msgstr "Paragrafo"
+
+#~ msgid "Heading"
+#~ msgstr "Intestazione"
+
+#~ msgid "Address"
+#~ msgstr "Indirizzo"
+
+#~ msgid "Big"
+#~ msgstr "Grande"
+
+#~ msgid "Small"
+#~ msgstr "Piccolo"
+
+#~ msgid "large"
+#~ msgstr "largo"
+
+#~ msgid "Font"
+#~ msgstr "Carattere"
+
+#~ msgid "Font size"
+#~ msgstr "Grandezza carattere"
+
+#~ msgid "Browse"
+#~ msgstr "Sfoglia"
+
+#~ msgid "Hide HTML"
+#~ msgstr "Nascondi HTML"
+
+#~ msgid "Image address (URL)"
+#~ msgstr "Indirizzo immagine (URL)"
+
+#~ msgid "Link address (URL)"
+#~ msgstr "Indirizzo collegamento (URL)"
+
+#~ msgid "to display if image unavailable"
+#~ msgstr "per visualizzare se l'immagine non é disponibile"
+
+#~ msgid "Alternate text"
+#~ msgstr "Testo alternativo"
+
+#~ msgid "Align"
+#~ msgstr "Allinea"
+
+#~ msgid "normal"
+#~ msgstr "normale"
+
+#~ msgid "left"
+#~ msgstr "sinistra"
+
+#~ msgid "right"
+#~ msgstr "destra"
+
+#~ msgid "inside"
+#~ msgstr "dentro"
+
+#~ msgid "Border"
+#~ msgstr "Bordo"
+
+#~ msgid "Margin"
+#~ msgstr "Margine"
+
+#~ msgid "Insert image"
+#~ msgstr "Inserisci immagine"
+
+#~ msgid "ieSpell is not installed on your computer."
+#~ msgstr "ieSpell non é installato nel tuo computer."
+
+#~ msgid "Click [OK] to go to download page."
+#~ msgstr "Clicca [OK] per andare alla pagina di scaricamento."
+
+#~ msgid "Click [OK] for instructions to download and install"
+#~ msgstr "Clicca [OK] per le istruzioni per scaricare ed installare"
+
+#~ msgid "SpellBound on your computer."
+#~ msgstr "SpellBound nel tuo computer."
+
 #, fuzzy
-msgid "Rule"
-msgstr "Linea"
+#~ msgid "If you already have it, click [Cancel] then right"
+#~ msgstr "Se lo hai già installato, clicca [Annulla]"
 
-#: data/whizzylang.php:46
-msgid "Link"
-msgstr "Collega"
+#~ msgid "click in the edit area and select 'Check Spelling'."
+#~ msgstr "clicca nell'area di modifica e seleziona 'Controllo Ortografico'."
 
-#: data/whizzylang.php:47
-msgid "Image"
-msgstr "Immagine"
+#~ msgid "Fullscreen"
+#~ msgstr "Pieno schermo"
 
-#: data/whizzylang.php:48
-msgid "Table"
-msgstr "Tabella"
+#~ msgid "Click a name below to select."
+#~ msgstr "Clicca un nome qui sotto da selezionare."
 
-#: data/whizzylang.php:49
-msgid "Clean"
-msgstr "Pulisci"
+#~ msgid "No files available."
+#~ msgstr "Nessun file disponibile."
 
-#: data/whizzylang.php:50
-msgid "Html"
-msgstr "HTML"
+#~ msgid "Image preview"
+#~ msgstr "Anteprima immagine"
 
-#: data/whizzylang.php:51
-msgid "Spellcheck"
-msgstr "Correttore ortografico"
+#~ msgid "Hover over a name below to preview, click it to select."
+#~ msgstr ""
+#~ "Passa sopra un nome di seguito per l'anteprima, clicca per selezionarlo."
 
-#: data/whizzylang.php:52
-msgid "Select some text first"
-msgstr "Seleziona prima del testo"
-
-#: data/whizzylang.php:53
-msgid "Insert"
-msgstr "Inserisci"
-
-#: data/whizzylang.php:54
-msgid "Add row above"
-msgstr "Aggiungi riga sopra"
-
-#: data/whizzylang.php:55
-msgid "Add row below"
-msgstr "Aggiungi riga sotto"
-
-#: data/whizzylang.php:56
-msgid "Delete row"
-msgstr "Elimina riga"
-
-#: data/whizzylang.php:57
-msgid "Add column before"
-msgstr "Aggiungi colonna prima"
-
-#: data/whizzylang.php:58
-msgid "Add column after"
-msgstr "Aggiungi colonna dopo"
-
-#: data/whizzylang.php:59
-msgid "click below or enter a"
-msgstr "clicca sotto o inserisci un"
-
-#: data/whizzylang.php:60
-msgid "color name"
-msgstr "nome colore"
-
-#: data/whizzylang.php:61
-msgid "Delete column"
-msgstr "Elimina colonna"
-
-#: data/whizzylang.php:62
-msgid "Choose style"
-msgstr "Scegli stile"
-
-#: data/whizzylang.php:63
-msgid "Paragraph"
-msgstr "Paragrafo"
-
-#: data/whizzylang.php:64
-msgid "Heading"
-msgstr "Intestazione"
-
-#: data/whizzylang.php:65
-msgid "Address"
-msgstr "Indirizzo"
-
-#: data/whizzylang.php:66
-msgid "Big"
-msgstr "Grande"
-
-#: data/whizzylang.php:67
-msgid "Small"
-msgstr "Piccolo"
-
-#: data/whizzylang.php:68
-msgid "large"
-msgstr "largo"
-
-#: data/whizzylang.php:70
-msgid "Font"
-msgstr "Carattere"
-
-#: data/whizzylang.php:71
-msgid "Font size"
-msgstr "Grandezza carattere"
-
-#: data/whizzylang.php:72
-msgid "Browse"
-msgstr "Sfoglia"
-
-#: data/whizzylang.php:73
-msgid "OK"
-msgstr ""
-
-#: data/whizzylang.php:75
-msgid "Hide HTML"
-msgstr "Nascondi HTML"
-
-#: data/whizzylang.php:76
-msgid "Image address (URL)"
-msgstr "Indirizzo immagine (URL)"
-
-#: data/whizzylang.php:77
-msgid "Link address (URL)"
-msgstr "Indirizzo collegamento (URL)"
-
-#: data/whizzylang.php:78
-msgid "to display if image unavailable"
-msgstr "per visualizzare se l'immagine non é disponibile"
-
-#: data/whizzylang.php:79
-msgid "Alternate text"
-msgstr "Testo alternativo"
-
-#: data/whizzylang.php:80
-msgid "Align"
-msgstr "Allinea"
-
-#: data/whizzylang.php:81
-msgid "normal"
-msgstr "normale"
-
-#: data/whizzylang.php:82
-msgid "left"
-msgstr "sinistra"
-
-#: data/whizzylang.php:83
-msgid "right"
-msgstr "destra"
-
-#: data/whizzylang.php:84
-msgid "inside"
-msgstr "dentro"
-
-#: data/whizzylang.php:85
-msgid "Border"
-msgstr "Bordo"
-
-#: data/whizzylang.php:86
-msgid "Margin"
-msgstr "Margine"
-
-#: data/whizzylang.php:87
-msgid "Insert image"
-msgstr "Inserisci immagine"
-
-#: data/whizzylang.php:88
-msgid "ieSpell is not installed on your computer."
-msgstr "ieSpell non é installato nel tuo computer."
-
-#: data/whizzylang.php:89
-msgid "Click [OK] to go to download page."
-msgstr "Clicca [OK] per andare alla pagina di scaricamento."
-
-#: data/whizzylang.php:90
-msgid "Click [OK] for instructions to download and install"
-msgstr "Clicca [OK] per le istruzioni per scaricare ed installare"
-
-#: data/whizzylang.php:91
-msgid "SpellBound on your computer."
-msgstr "SpellBound nel tuo computer."
-
-#: data/whizzylang.php:92
-#, fuzzy
-msgid "If you already have it, click [Cancel] then right"
-msgstr "Se lo hai già installato, clicca [Annulla]"
-
-#: data/whizzylang.php:93
-msgid "click in the edit area and select 'Check Spelling'."
-msgstr "clicca nell'area di modifica e seleziona 'Controllo Ortografico'."
-
-#: data/whizzylang.php:94
-msgid "Fullscreen"
-msgstr "Pieno schermo"
-
-#: data/whizzylink.php:17
-msgid "File browser"
-msgstr ""
-
-#: data/whizzylink.php:65
-msgid "Click a name below to select."
-msgstr "Clicca un nome qui sotto da selezionare."
-
-#: data/whizzylink.php:81
-msgid "No files available."
-msgstr "Nessun file disponibile."
-
-#: data/whizzypic.php:17
-msgid "Image browser"
-msgstr ""
-
-#: data/whizzypic.php:80
-msgid "Image preview"
-msgstr "Anteprima immagine"
-
-#: data/whizzypic.php:95
-msgid "Hover over a name below to preview, click it to select."
-msgstr "Passa sopra un nome di seguito per l'anteprima, clicca per selezionarlo."
-
-#: data/whizzypic.php:108
-msgid "No images available."
-msgstr "Nessuna immagine disponibile."
-
+#~ msgid "No images available."
+#~ msgstr "Nessuna immagine disponibile."

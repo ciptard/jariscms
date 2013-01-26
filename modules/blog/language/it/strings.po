@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Jaris CMS Blog Module v1.4\n"
+"Project-Id-Version: Jaris CMS Blog Module v1.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-05 14:20+0100\n"
 "PO-Revision-Date: \n"
