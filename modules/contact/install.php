@@ -23,7 +23,7 @@ function Install()
     $new_type["name"] = "Contact Form";
     $new_type["description"] = "To create a contact form page.";
 
-    JarisCMS\Type\Add("contact-form", $new_type);
+    \JarisCMS\Type\Add("contact-form", $new_type);
 }
 
 ?>
