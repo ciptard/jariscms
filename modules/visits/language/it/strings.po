@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: JarisCMS Visits Counter module v1.5.2\n"
+"Project-Id-Version: JarisCMS Visits Counter module v1.5.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 00:29-0400\n"
+"POT-Creation-Date: 2013-01-26 01:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
 "Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,202 +17,227 @@ msgstr ""
 "X-Poedit-KeywordsList: t\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:24
+#: functions.php:17
+msgid "View Daily"
+msgstr "Visualizza Visite Giornaliere"
+
+#: functions.php:18
+msgid "View Monthly"
+msgstr "Visualizza Visite Mensili"
+
+#: functions.php:19
+msgid "View Yearly"
+msgstr "Visualizza Visite Annuali"
+
+#: functions.php:20
+msgid "View Visitors Data"
+msgstr "Visualizza Informazioni Visitatore"
+
+#: functions.php:22
+#: functions.php:60
+#: data/admin-visits-monthly.php:105
+#: data/admin-visits-monthly.php:146
+#: data/admin-visits-monthly.php:173
+#: data/admin-visits-monthly.php:200
+#: data/admin-visits-yearly.php:89
+#: data/admin-visits-yearly.php:143
+#: data/admin-visits-yearly.php:170
+#: data/admin-visits-yearly.php:197
+msgid "Visits"
+msgstr "Visite"
+
+#: functions.php:47
 msgid "Daily"
 msgstr "Giornaliere"
 
-#: functions.php:24
+#: functions.php:47
 msgid "The running date visit stats."
 msgstr "Statistica delle visite odierne."
 
-#: functions.php:25
+#: functions.php:51
 msgid "Monthly"
 msgstr "Mensili"
 
-#: functions.php:25
+#: functions.php:51
 msgid "The whole month visit stats."
 msgstr "Statistica delle visite mensili."
 
-#: functions.php:26
+#: functions.php:55
 msgid "Yearly"
 msgstr "Annuali"
 
-#: functions.php:26
+#: functions.php:55
 msgid "The whole year visit stats."
 msgstr "Statistica delle visite annuali."
-
-#: functions.php:28
-#: data/admin-visits-monthly.php:97
-#: data/admin-visits-monthly.php:138
-#: data/admin-visits-monthly.php:165
-#: data/admin-visits-monthly.php:192
-#: data/admin-visits-yearly.php:79
-#: data/admin-visits-yearly.php:133
-#: data/admin-visits-yearly.php:160
-#: data/admin-visits-yearly.php:187
-msgid "Visits"
-msgstr "Visite"
 
 #: data/admin-visits-daily.php:17
 msgid "Daily Visitors"
 msgstr "Visitatori Giornalieri"
 
-#: data/admin-visits-daily.php:40
+#: data/admin-visits-daily.php:42
+#: data/admin-visits-visitor.php:47
+#: data/admin-visits-yearly.php:48
 msgid "View Monthly Stats"
 msgstr "Visualizza Statistica Mensile"
 
-#: data/admin-visits-daily.php:67
-#: data/admin-visits-visitor.php:49
+#: data/admin-visits-daily.php:47
+#: data/admin-visits-monthly.php:48
+#: data/admin-visits-visitor.php:52
+msgid "View Yearly Stats"
+msgstr "Visualizza Statistiche Annuali"
+
+#: data/admin-visits-daily.php:75
+#: data/admin-visits-visitor.php:62
 msgid "Date:"
 msgstr "Data:"
 
-#: data/admin-visits-daily.php:67
+#: data/admin-visits-daily.php:75
 msgid "Select the date you want to see the stats."
 msgstr "Seleziona la data di quando vuoi visualizzare le statistiche."
 
-#: data/admin-visits-daily.php:69
-#: data/admin-visits-monthly.php:53
-#: data/admin-visits-yearly.php:84
+#: data/admin-visits-daily.php:77
+#: data/admin-visits-monthly.php:61
+#: data/admin-visits-yearly.php:94
 msgid "January"
 msgstr "Gennaio"
 
-#: data/admin-visits-daily.php:70
-#: data/admin-visits-monthly.php:54
-#: data/admin-visits-yearly.php:85
+#: data/admin-visits-daily.php:78
+#: data/admin-visits-monthly.php:62
+#: data/admin-visits-yearly.php:95
 msgid "February"
 msgstr "Febbraio"
 
-#: data/admin-visits-daily.php:71
-#: data/admin-visits-monthly.php:55
-#: data/admin-visits-yearly.php:86
+#: data/admin-visits-daily.php:79
+#: data/admin-visits-monthly.php:63
+#: data/admin-visits-yearly.php:96
 msgid "March"
 msgstr "Marzo"
 
-#: data/admin-visits-daily.php:72
-#: data/admin-visits-monthly.php:56
-#: data/admin-visits-yearly.php:87
+#: data/admin-visits-daily.php:80
+#: data/admin-visits-monthly.php:64
+#: data/admin-visits-yearly.php:97
 msgid "April"
 msgstr "Aprile"
 
-#: data/admin-visits-daily.php:73
-#: data/admin-visits-monthly.php:57
-#: data/admin-visits-yearly.php:88
+#: data/admin-visits-daily.php:81
+#: data/admin-visits-monthly.php:65
+#: data/admin-visits-yearly.php:98
 msgid "May"
 msgstr "Maggio"
 
-#: data/admin-visits-daily.php:74
-#: data/admin-visits-monthly.php:58
-#: data/admin-visits-yearly.php:89
+#: data/admin-visits-daily.php:82
+#: data/admin-visits-monthly.php:66
+#: data/admin-visits-yearly.php:99
 msgid "June"
 msgstr "Giugno"
 
-#: data/admin-visits-daily.php:75
-#: data/admin-visits-monthly.php:59
-#: data/admin-visits-yearly.php:90
+#: data/admin-visits-daily.php:83
+#: data/admin-visits-monthly.php:67
+#: data/admin-visits-yearly.php:100
 msgid "July"
 msgstr "Luglio"
 
-#: data/admin-visits-daily.php:76
-#: data/admin-visits-monthly.php:60
-#: data/admin-visits-yearly.php:91
+#: data/admin-visits-daily.php:84
+#: data/admin-visits-monthly.php:68
+#: data/admin-visits-yearly.php:101
 msgid "August"
 msgstr "Agosto"
 
-#: data/admin-visits-daily.php:77
-#: data/admin-visits-monthly.php:61
-#: data/admin-visits-yearly.php:92
+#: data/admin-visits-daily.php:85
+#: data/admin-visits-monthly.php:69
+#: data/admin-visits-yearly.php:102
 msgid "September"
 msgstr "Settembre"
 
-#: data/admin-visits-daily.php:78
-#: data/admin-visits-monthly.php:62
-#: data/admin-visits-yearly.php:93
+#: data/admin-visits-daily.php:86
+#: data/admin-visits-monthly.php:70
+#: data/admin-visits-yearly.php:103
 msgid "October"
 msgstr "Ottobre"
 
-#: data/admin-visits-daily.php:79
-#: data/admin-visits-monthly.php:63
-#: data/admin-visits-yearly.php:94
+#: data/admin-visits-daily.php:87
+#: data/admin-visits-monthly.php:71
+#: data/admin-visits-yearly.php:104
 msgid "November"
 msgstr "Novembre"
 
-#: data/admin-visits-daily.php:80
-#: data/admin-visits-monthly.php:64
-#: data/admin-visits-yearly.php:95
+#: data/admin-visits-daily.php:88
+#: data/admin-visits-monthly.php:72
+#: data/admin-visits-yearly.php:105
 msgid "December"
 msgstr "Dicembre"
 
-#: data/admin-visits-daily.php:82
-#: data/admin-visits-monthly.php:66
+#: data/admin-visits-daily.php:90
+#: data/admin-visits-monthly.php:74
 msgid "Month:"
 msgstr "Mese:"
 
-#: data/admin-visits-daily.php:82
-#: data/admin-visits-monthly.php:66
+#: data/admin-visits-daily.php:90
+#: data/admin-visits-monthly.php:74
 msgid "Select the month you want to see the stats."
 msgstr "Seleziona il mese di quando vuoi visualizzare le statistiche."
 
-#: data/admin-visits-daily.php:90
-#: data/admin-visits-monthly.php:74
-#: data/admin-visits-yearly.php:56
+#: data/admin-visits-daily.php:98
+#: data/admin-visits-monthly.php:82
+#: data/admin-visits-yearly.php:66
 msgid "Year:"
 msgstr "Anno:"
 
-#: data/admin-visits-daily.php:90
-#: data/admin-visits-monthly.php:74
-#: data/admin-visits-yearly.php:56
+#: data/admin-visits-daily.php:98
+#: data/admin-visits-monthly.php:82
+#: data/admin-visits-yearly.php:66
 msgid "Select the year you want to see the stats."
 msgstr "Seleziona l'anno di quando vuoi visualizzare le statistiche."
 
-#: data/admin-visits-daily.php:93
-#: data/admin-visits-monthly.php:77
-#: data/admin-visits-yearly.php:59
+#: data/admin-visits-daily.php:101
+#: data/admin-visits-monthly.php:85
+#: data/admin-visits-yearly.php:69
 msgid "View"
 msgstr "Visualizza"
 
-#: data/admin-visits-daily.php:105
+#: data/admin-visits-daily.php:113
 msgid "Total visitors:"
 msgstr "Totale visite:"
 
-#: data/admin-visits-daily.php:116
+#: data/admin-visits-daily.php:124
 msgid "IP"
 msgstr "IP"
 
-#: data/admin-visits-daily.php:117
-#: data/admin-visits-monthly.php:164
-#: data/admin-visits-yearly.php:159
+#: data/admin-visits-daily.php:125
+#: data/admin-visits-monthly.php:172
+#: data/admin-visits-yearly.php:169
 msgid "Country"
 msgstr "Paese"
 
-#: data/admin-visits-daily.php:118
+#: data/admin-visits-daily.php:126
 msgid "Start time"
 msgstr "Inizio"
 
-#: data/admin-visits-daily.php:119
+#: data/admin-visits-daily.php:127
 msgid "End time"
 msgstr "Termine"
 
-#: data/admin-visits-daily.php:120
-#: data/admin-visits-monthly.php:137
-#: data/admin-visits-yearly.php:132
+#: data/admin-visits-daily.php:128
+#: data/admin-visits-monthly.php:145
+#: data/admin-visits-yearly.php:142
 msgid "Browser"
 msgstr "Navigatore"
 
-#: data/admin-visits-daily.php:121
+#: data/admin-visits-daily.php:129
 msgid "Referral"
 msgstr "Referente"
 
-#: data/admin-visits-daily.php:122
+#: data/admin-visits-daily.php:130
 msgid "Search terms"
 msgstr "Criteri ricerca"
 
-#: data/admin-visits-daily.php:123
-#: data/admin-visits-monthly.php:98
-#: data/admin-visits-yearly.php:80
+#: data/admin-visits-daily.php:131
+#: data/admin-visits-monthly.php:106
+#: data/admin-visits-yearly.php:90
 msgid "Page Views"
 msgstr "Pagine Visitate"
 
-#: data/admin-visits-daily.php:135
+#: data/admin-visits-daily.php:143
 msgid "N/A"
 msgstr "N/A"
 
@@ -219,131 +245,129 @@ msgstr "N/A"
 msgid "Monthly Visits"
 msgstr "Visite Mensili"
 
-#: data/admin-visits-monthly.php:41
-msgid "View Yearly Stats"
-msgstr "Visualizza Statistiche Annuali"
+#: data/admin-visits-monthly.php:43
+#: data/admin-visits-visitor.php:42
+#: data/admin-visits-yearly.php:43
+msgid "View Daily Stats"
+msgstr "Visualizza Statistiche Giornaliere"
 
-#: data/admin-visits-monthly.php:86
-#: data/admin-visits-yearly.php:68
+#: data/admin-visits-monthly.php:94
+#: data/admin-visits-yearly.php:78
 msgid "Visits:"
 msgstr "Visite:"
 
-#: data/admin-visits-monthly.php:87
-#: data/admin-visits-yearly.php:69
+#: data/admin-visits-monthly.php:95
+#: data/admin-visits-yearly.php:79
 msgid "Page Views:"
 msgstr "Pagine Visualizzate:"
 
-#: data/admin-visits-monthly.php:91
+#: data/admin-visits-monthly.php:99
 msgid "Daily stats"
 msgstr "Statistiche giornaliere"
 
-#: data/admin-visits-monthly.php:96
+#: data/admin-visits-monthly.php:104
 msgid "Date"
 msgstr "Data"
 
-#: data/admin-visits-monthly.php:132
-#: data/admin-visits-yearly.php:127
+#: data/admin-visits-monthly.php:140
+#: data/admin-visits-yearly.php:137
 msgid "Browser stats"
 msgstr "Statistiche navigatore"
 
-#: data/admin-visits-monthly.php:159
-#: data/admin-visits-yearly.php:154
+#: data/admin-visits-monthly.php:167
+#: data/admin-visits-yearly.php:164
 msgid "Country stats"
 msgstr "Statistiche paese"
 
-#: data/admin-visits-monthly.php:186
-#: data/admin-visits-yearly.php:181
+#: data/admin-visits-monthly.php:194
+#: data/admin-visits-yearly.php:191
 msgid "Most viewed pages stats"
 msgstr "Statistiche pagine più visitate"
 
-#: data/admin-visits-monthly.php:191
-#: data/admin-visits-visitor.php:86
-#: data/admin-visits-yearly.php:186
+#: data/admin-visits-monthly.php:199
+#: data/admin-visits-visitor.php:99
+#: data/admin-visits-yearly.php:196
 msgid "Page"
 msgstr "Pagina"
 
 #: data/admin-visits-visitor.php:17
-#: data/admin-visits-visitor.php:74
+#: data/admin-visits-visitor.php:87
 msgid "Visitor Data"
 msgstr "Informazioni Visitatore"
 
-#: data/admin-visits-visitor.php:40
-msgid "View Daily Stats"
-msgstr "Visualizza Statistiche Giornaliere"
-
-#: data/admin-visits-visitor.php:48
+#: data/admin-visits-visitor.php:61
 msgid "Stats for ip:"
 msgstr "Statistiche per l'IP:"
 
-#: data/admin-visits-visitor.php:57
+#: data/admin-visits-visitor.php:70
 msgid "Location"
 msgstr "Locazione"
 
-#: data/admin-visits-visitor.php:59
+#: data/admin-visits-visitor.php:72
 msgid "Country code:"
 msgstr "Codice paese:"
 
-#: data/admin-visits-visitor.php:60
+#: data/admin-visits-visitor.php:73
 msgid "Country name:"
 msgstr "Nome paese:"
 
-#: data/admin-visits-visitor.php:61
+#: data/admin-visits-visitor.php:74
 msgid "Region code:"
 msgstr "Codice regione:"
 
-#: data/admin-visits-visitor.php:62
+#: data/admin-visits-visitor.php:75
 msgid "Region name:"
 msgstr "Nome regione:"
 
-#: data/admin-visits-visitor.php:63
+#: data/admin-visits-visitor.php:76
 msgid "City:"
 msgstr "Città:"
 
-#: data/admin-visits-visitor.php:64
+#: data/admin-visits-visitor.php:77
 msgid "Zipcode:"
 msgstr "Codice postale:"
 
-#: data/admin-visits-visitor.php:65
+#: data/admin-visits-visitor.php:78
 msgid "Latitude:"
 msgstr "Latitudine:"
 
-#: data/admin-visits-visitor.php:66
+#: data/admin-visits-visitor.php:79
 msgid "Longitude:"
 msgstr "Longitudine:"
 
-#: data/admin-visits-visitor.php:67
+#: data/admin-visits-visitor.php:80
 msgid "Timezone:"
 msgstr "Fuso orario:"
 
-#: data/admin-visits-visitor.php:68
+#: data/admin-visits-visitor.php:81
 msgid "GMT Offset:"
 msgstr "GMT Offset:"
 
-#: data/admin-visits-visitor.php:69
+#: data/admin-visits-visitor.php:82
 msgid "DST Offset:"
 msgstr "DST Offset:"
 
-#: data/admin-visits-visitor.php:76
+#: data/admin-visits-visitor.php:89
 msgid "Start time:"
 msgstr "Ora arrivo:"
 
-#: data/admin-visits-visitor.php:77
+#: data/admin-visits-visitor.php:90
 msgid "End time:"
 msgstr "Ora uscita:"
 
-#: data/admin-visits-visitor.php:78
+#: data/admin-visits-visitor.php:91
 msgid "Http referer:"
 msgstr "Referente HTTP:"
 
-#: data/admin-visits-visitor.php:79
+#: data/admin-visits-visitor.php:92
 msgid "Http user agent:"
 msgstr "Http user agent:"
 
-#: data/admin-visits-visitor.php:81
+#: data/admin-visits-visitor.php:94
 msgid "Viewed Pages"
 msgstr "Pagine Visitate"
 
-#: data/admin-visits-visitor.php:87
+#: data/admin-visits-visitor.php:100
 msgid "View time"
 msgstr "Durata visualizzazione"
 
@@ -351,19 +375,19 @@ msgstr "Durata visualizzazione"
 msgid "Yearly Visits"
 msgstr "Visite Annuali"
 
-#: data/admin-visits-yearly.php:73
+#: data/admin-visits-yearly.php:83
 msgid "Monthly stats"
 msgstr "Statistiche mensili"
 
-#: data/admin-visits-yearly.php:78
+#: data/admin-visits-yearly.php:88
 msgid "Month"
 msgstr "Mese"
 
-#: include/visits.php:638
+#: include/visits.php:706
 msgid "Previous"
 msgstr "Precedente"
 
-#: include/visits.php:663
+#: include/visits.php:731
 msgid "Next"
 msgstr "Successivo"
 
