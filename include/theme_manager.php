@@ -47,6 +47,19 @@ function GetAll()
 }
 
 /**
+ * Gets the list of enabled themes.
+ * @return array
+ */
+function GetEnabled()
+{
+    $themes = unserialize(\JarisCMS\Setting\Get("themes_enabled", "main"));
+    
+    \JarisCMS\Module\Hook("Theme", "GetEnabled", $themes);
+    
+    return $themes;
+}
+
+/**
  * Gets the info of a specific theme
  *
  * @param string $path The name of the theme folder inside the themes main folder.

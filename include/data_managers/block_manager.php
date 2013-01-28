@@ -31,6 +31,7 @@ function Add($fields, $position, $page = "")
     }
     
     $fields["groups"] = serialize($fields["groups"]);
+    $fields["themes"] = serialize($fields["themes"]);
 
     return \JarisCMS\PHPDB\Add($fields, $block_data_path);
 }
@@ -102,6 +103,7 @@ function Edit($id, $position, $new_data, $page = "")
     $block_data_path = GeneratePath($position, $page);
     
     $new_data["groups"] = serialize($new_data["groups"]);
+    $new_data["themes"] = serialize($new_data["themes"]);
 
     return \JarisCMS\PHPDB\Edit($id, $new_data, $block_data_path);
 }
@@ -160,6 +162,7 @@ function GetData($id, $position, $page = "")
     $blocks = \JarisCMS\PHPDB\Parse($block_data_path);
     
     $blocks[$id]["groups"] = unserialize($blocks[$id]["groups"]);
+    $blocks[$id]["themes"] = unserialize($blocks[$id]["themes"]);
 
     return $blocks[$id];
 }
@@ -454,6 +457,154 @@ function GeneratePostContent($uri, $page_uri=null)
     $fields["view_url"] = $view_url;
 
     return $fields;
+}
+
+/**
+ * Move blocks to correct positions depending on theme.
+ * @param array $header
+ * @param array $left
+ * @param array $right
+ * @param array $center
+ * @param array $footer
+ */
+function MoveByTheme(&$header, &$left, &$right, &$center, &$footer)
+{
+    global $theme;
+    
+    $all_blocks = array();
+    $all_blocks["header"] = $header;
+    $all_blocks["left"] = $left;
+    $all_blocks["right"] = $right;
+    $all_blocks["center"] = $center;
+    $all_blocks["footer"] = $footer;
+    
+    foreach($all_blocks as $position=>$blocks)
+    {
+        foreach($blocks as $block_id=>$block_data)
+        {
+            if(isset($block_data["themes"]))
+            {
+                $themes_conf = unserialize($block_data["themes"]);
+                
+                if(is_array($themes_conf))
+                {
+                    if(isset($themes_conf[$theme]))
+                    {
+                        if($themes_conf[$theme] != "" && $themes_conf[$theme] != $position)
+                        {
+                            $block_data["original_position"] = $position;
+                            $block_data["original_id"] = $block_id;
+                            
+                            switch($themes_conf[$theme])
+                            {
+                                case "header":
+                                    $header[] = $block_data;
+                                    break;
+                                case "left":
+                                    $left[] = $block_data;
+                                    break;
+                                case "right":
+                                    $right[] = $block_data;
+                                    break;
+                                case "center":
+                                    $center[] = $block_data;
+                                    break;
+                                case "footer":
+                                    $footer[] = $block_data;
+                                    break;
+                                case "none":
+                                    if($position == "header")
+                                        unset($header[$block_id]);
+                                    elseif($position == "left")
+                                        unset($left[$block_id]);
+                                    elseif($position == "right")
+                                        unset($right[$block_id]);
+                                    elseif($position == "center")
+                                        unset($center[$block_id]);
+                                    elseif($position == "footer")
+                                        unset($footer[$block_id]);
+                                    break;
+                            }
+                            
+                            if($themes_conf[$theme] != "none")
+                            {
+                                if($position == "header")
+                                    unset($header[$block_id]);
+                                elseif($position == "left")
+                                    unset($left[$block_id]);
+                                elseif($position == "right")
+                                    unset($right[$block_id]);
+                                elseif($position == "center")
+                                    unset($center[$block_id]);
+                                elseif($position == "footer")
+                                    unset($footer[$block_id]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Generates an array of select fields for each theme so the user can select
+ * on which position to display a block per theme.
+ * @param array $selected
+ * @return array
+ */
+function GetThemeFields($selected=null)
+{
+	$fields = array();
+	
+	$themes_list = \JarisCMS\Theme\GetEnabled();
+	
+    $index=0;
+    
+	foreach($themes_list as $theme_path)
+	{
+		$theme_info = \JarisCMS\Theme\GetInfo($theme_path);
+        
+        $positions = array();
+        $positions[t("Default")] = "";
+        $positions[t("Header")] = "header";
+        $positions[t("Left")] = "left";
+        $positions[t("Right")] = "right";
+        $positions[t("Center")] = "center";
+        $positions[t("Footer")] = "footer";
+        $positions[t("None")] = "none";
+		
+        $index++;
+        
+        if(is_array($selected))
+        {
+            if(isset($selected[$theme_path]))
+            {
+                $fields[] = array(
+                    "type"=>"select", 
+                    "selected"=>$selected[$theme_path], 
+                    "label"=>t($theme_info["name"]), 
+                    "name"=>"themes[$theme_path]", 
+                    "id"=>"themes-$index", 
+                    "value"=>$positions
+                );
+                
+                continue;
+            }
+        }
+		
+        $fields[] = array(
+            "type"=>"select", 
+            "selected"=>isset($_REQUEST["themes"][$theme_path])?$_REQUEST["themes"][$theme_path]:"", 
+            "label"=>t($theme_info["name"]), 
+            "name"=>"themes[$theme_path]", 
+            "id"=>"themes-$index", 
+            "value"=>$positions
+        );
+
+	}
+	
+	return $fields;
 }
 
 /**

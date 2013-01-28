@@ -31,7 +31,15 @@ row: 0
 
             if(isset($_REQUEST["btnSave"]))
             {
+                if(is_array($_REQUEST["themes_enabled"]))
+                {
+                    if(!in_array($_REQUEST["theme"], $_REQUEST["themes_enabled"]))
+                        $_REQUEST["themes_enabled"][] = $_REQUEST["theme"];
+                }
+                
                 JarisCMS\Setting\Save("theme", $_REQUEST["theme"], "main");
+                
+                JarisCMS\Setting\Save("themes_enabled", serialize($_REQUEST["themes_enabled"]), "main");
 
                 JarisCMS\System\AddMessage(t("Changes successfully saved."));
 
@@ -49,6 +57,7 @@ row: 0
 
             print "<td>" . t("Preview") . "</td>\n";
             print "<td>" . t("Name") . "</td>\n";
+            print "<td>" . t("Enabled") . "</td>\n";
             print "<td>" . t("Default") . "</td>\n";
 
             print  "</tr></thead>\n";
@@ -56,6 +65,7 @@ row: 0
             $themes = JarisCMS\Theme\GetAll();
             
             $default_theme = JarisCMS\Setting\Get("theme", "main");
+            $themes_enabled = unserialize(JarisCMS\Setting\Get("themes_enabled", "main"));
 
             foreach($themes as $theme_path=>$theme_info)
             {
@@ -67,20 +77,30 @@ row: 0
                 $more_url = JarisCMS\URI\PrintURL("admin/themes/view", array("path"=>$theme_path));
                 $thumbnail = $base_url . "/themes/$theme_path/preview.png";
                 $selected = $default_theme == $theme_path?"checked=\"checked\"":"";
+                $checked = "";
+                
+                if(is_array($themes_enabled))
+                {
+                    if(in_array($theme_path, $themes_enabled))
+                        $checked = "checked=\"checked\"";
+                }
 
                 print "<tr>\n";
+                
                 if($theme_info != null)
                 {
                     print "<td><a title=\"$title\" href=\"$more_url\"><img alt=\"$alt\" src=\"$thumbnail\" /></a></td>\n";
                     print "<td>" . t($theme_info['name']) . "</td>\n";
-                    print "<td><input $selected type=\"radio\" name=\"theme\" value=\"$theme_path\" /></td>\n";
                 }
                 else
                 {
                     print "<td><img alt=\"$alt\" src=\"$thumbnail\" /></td>\n";
-                    print "<td>$theme_path</td>\n" .
-                    print "<td><input $selected type=\"radio\" name=\"theme\" value=\"$theme_path\" /></td>\n";
+                    print "<td>$theme_path</td>\n";
                 }
+                
+                print "<td><input $checked type=\"checkbox\" name=\"themes_enabled[]\" value=\"$theme_path\" /></td>\n";
+                print "<td><input $selected type=\"radio\" name=\"theme\" value=\"$theme_path\" /></td>\n";
+                
                 print "</tr>\n";
 
             }

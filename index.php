@@ -95,6 +95,9 @@ $center_data = JarisCMS\PHPDB\Sort(JarisCMS\PHPDB\Parse(dt(JarisCMS\Setting\GetD
 $primary_links_data = JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems(JarisCMS\Menu\GetPrimaryName()), "order");
 $secondary_links_data = JarisCMS\PHPDB\Sort(JarisCMS\Menu\GetSubItems(JarisCMS\Menu\GetSecondaryName()), "order");
 
+//Move blocks to other positions depending on current theme
+JarisCMS\Block\MoveByTheme($header_data, $left_data, $right_data, $center_data, $footer_data);
+
 //In case of page not found
 if(!$page_data[0])
 {

@@ -118,7 +118,13 @@ function MakeBlocks($arrData, $position , $page)
                         
                         if(\JarisCMS\Group\GetPermission("view_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
                         {
-                            $url = \JarisCMS\URI\PrintURL("admin/blocks/edit", array("id"=>$id, "position"=>$position));
+                            $url = \JarisCMS\URI\PrintURL(
+                                "admin/blocks/edit", array(
+                                    "id"=>$field["original_id"]?$field["original_id"]:$id, 
+                                    "position"=>$field["original_position"]?$field["original_position"]:$position
+                                )
+                            );
+                            
                             $content = "<a class=\"instant-block-edit\" href=\"$url\">" . t("edit") . "</a>";
                             $content .= "<div style=\"clear: both\"></div>";
                         }
