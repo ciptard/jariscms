@@ -13,7 +13,7 @@
 $module["name"] = t("Content Listing");
 $module["description"] = t("To create pages that display a list of content by a given set of criteria.");
 $module["namespace"] = "ContentListing";
-$module["version"] = "1.1";
+$module["version"] = "1.2";
 $module["author"] = "Jefferson González";
 $module["email"] = "jgonzalez@jegoyalu.com";
 $module["website"] = "http://www.jegoyalu.com";
@@ -21,6 +21,10 @@ $module["website"] = "http://www.jegoyalu.com";
 /**
 
 =Change Log=
+
+Version 1.2 - Date 27/01/2013
+
+    * Enabled support for positioning blocks per theme.
 
 Version 1.1 - Date 27/09/2012
 

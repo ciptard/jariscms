@@ -32,6 +32,7 @@ row: 0
                 $block_data["display_rule"] = $_REQUEST["display_rule"];
                 $block_data["pages"] = $_REQUEST["pages"];
                 $block_data["groups"] = $_REQUEST["groups"];
+                $block_data["themes"] = $_REQUEST["themes"];
                 
                 if(JarisCMS\Group\GetPermission("return_code_blocks", JarisCMS\Security\GetCurrentUserGroup()) || JarisCMS\Security\IsAdminLogged())
                 {
@@ -172,6 +173,8 @@ row: 0
             $fieldset[] = array("fields"=>$fields_thumbnail, "name"=>t("Thumbnail"), "collapsible"=>true, "collapsed"=>false);
             
             $fieldset[] = array("fields"=>JarisCMS\Group\GetListForFields($block_data["groups"]), "name"=>t("Users Access"), "collapsed"=>true, "collapsible"=>true, "description"=>t("Select the groups that can see the block. Don't select anything to display block to everyone."));
+            
+            $fieldset[] = array("fields"=>JarisCMS\Block\GetThemeFields($block_data["themes"]), "name"=>t("Positions Per Theme"), "collapsed"=>true, "collapsible"=>true, "description"=>t("Select the position where the block is going to be displayed per theme."));
             
             $display_rules[t("Display in all pages except the listed ones.")] = "all_except_listed";
             $display_rules[t("Just display on the listed pages.")] = "just_listed";
