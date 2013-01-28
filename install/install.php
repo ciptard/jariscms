@@ -322,8 +322,11 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "site_details")
                     JarisCMS\Setting\Save("language", $language, "main");
                     JarisCMS\Setting\Save("clean_urls", false, "main");
                     JarisCMS\Setting\Save("theme", "jariscmsv1", "main");
+                    JarisCMS\Setting\Save("themes_enabled", serialize(array("jariscmsv1")), "main");
                     JarisCMS\Setting\Save("primary_menu", "primary", "main");
                     JarisCMS\Setting\Save("secondary_menu", "secondary", "main");
+                    JarisCMS\Setting\Save("image_compression_maxwidth", "640", "main");
+                    JarisCMS\Setting\Save("image_compression_quality", "100", "main");
 
                     header("Location: " . $base_url . "/install.php?action=mailing_details");
                     exit;
