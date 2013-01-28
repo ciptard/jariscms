@@ -8,11 +8,16 @@
  *@file Holds the current version of Jaris CMS as a changelog for reference
  */
 
-define("JARIS_CMS_VERSION", "4.9.6 MS");
+define("JARIS_CMS_VERSION", "4.9.7 MS");
 
 /**
 
 =Change Log=
+
+Version 4.9.7 - Date 27/01/2013
+ 
+	* Now themes gotta be enabled.
+    * Blocks can be positioned per theme.
 
 Version 4.9.6 - Date 02/01/2013
  
