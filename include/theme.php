@@ -332,13 +332,61 @@ function MakeCSSLinks($styles)
     
     $styles_code = "";
     $theme_dir = "themes/" . $theme;
+    $style_dir = $theme_dir . "/css";
+    $style_files = array();
+
+    $exclude_list = array(".", "..");
     
-    //Apped theme style.css if exists
-    if(file_exists($theme_dir . "/style.css"))
+    $theme_files  = array_diff( scandir($theme_dir), $exclude_list );
+    
+    if(is_dir($style_dir))
+        $style_files  = array_diff( scandir($style_dir), $exclude_list );
+    
+    $files = array_merge($theme_files, $style_files);
+
+    foreach($files as $file)
     {
-        $styles[] = \JarisCMS\URI\PrintURL($theme_dir . "/style.css");
+        $file_path = "";
+
+        if( is_file("$theme_dir/$file") )
+        {
+            $file_path = "$theme_dir/$file";
+        }
+        elseif( is_file("$style_dir/$file") )
+        {
+            $file_path = "$style_dir/$file";
+        }
+
+        $file_array = explode( ".", $file_path );
+        $extension  = $file_array[count($file_array)-1];
+
+        if( $extension == "css" )
+        {
+            $styles[] = \JarisCMS\URI\PrintURL("$file_path");
+        }
     }
     
+    if(\JarisCMS\System\GetUserBrowser() == "ie")
+    {
+        if(file_exists($theme_dir."/"."ie"))
+        {
+            if(file_exists("$theme_dir/ie/all.css"))
+            {
+                $styles[] = "$theme_dir/ie/all.css";
+            }
+            
+            // Load specific css file for current ie version if available
+            preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'], $matches);
+            $version = floor($matches[1]);
+            
+            if(file_exists("$theme_dir/ie/$version.css"))
+            {
+                $styles[] = "$theme_dir/ie/$version.css";
+            }
+
+        }
+    }
+
     if(count($styles) > 0)
     {
         foreach($styles as $file)
@@ -361,7 +409,35 @@ function MakeCSSLinks($styles)
  */
 function MakeJSLinks($scripts)
 {
+    global $theme;
+    
     $scripts_code = "";
+    $theme_dir = "themes/" . $theme;
+    $js_dir = $theme_dir . "/js";
+    $js_files = array();
+    
+    $exclude_list = array(".", "..");
+    
+    if(is_dir($js_dir))
+        $js_files  = array_diff( scandir($js_dir), $exclude_list );
+    
+    foreach($js_files as $file)
+    {
+        $file_path = "";
+
+        if( is_file("$js_dir/$file") )
+        {
+            $file_path = "$js_dir/$file";
+        }
+
+        $file_array = explode( ".", $file_path );
+        $extension  = $file_array[count($file_array)-1];
+
+        if( $extension == "js" )
+        {
+            $scripts[] = \JarisCMS\URI\PrintURL("$file_path");
+        }
+    }
 
     if(count($scripts) > 0)
     {
