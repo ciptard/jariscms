@@ -69,9 +69,17 @@ function GetEnabled()
  */
 function GetInfo($path)
 {
-    $themes = GetAll();
+    $theme_info = null;
+    
+	$info_file = "themes/$path/info.php";
+    
+    if(file_exists($info_file))
+    {
+        include($info_file);
+        $theme_info = $theme;
+    }
 
-    return $themes[$path];
+	return $theme_info;
 }
 
 /**

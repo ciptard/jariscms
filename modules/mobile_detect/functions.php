@@ -85,6 +85,24 @@ namespace JarisCMS\Module\MobileDetect\Theme
     use JarisCMS\URI;
     use JarisCMS\Module;
     
+    function GetEnabled(&$themes)
+    {
+        $themes_copy = array();
+    
+        foreach($themes as $theme)
+        {
+            $themes_copy[] = $theme;
+
+            if(is_dir("themes/$theme/mobile"))
+                $themes_copy[] = "$theme/mobile";
+
+            if(is_dir("themes/$theme/tablet"))
+                $themes_copy[] = "$theme/tablet";
+        }
+
+        $themes = $themes_copy;
+    }
+    
     function MakeTabsCode(&$tabs_array)
     {
         if(
