@@ -172,12 +172,12 @@ Other variables used through the page content:
  * **$base_url** - Main url of the site.
  * **$theme_path** - Path to current theme.
  * **$slogan** - Slogan of the site.
- * **$content** - The main content of the page as generated from content.php
- * **$left** - Global blocks for left.
- * **$center** - Global blocks for center.
- * **$right** - Global blocks for right.
- * **$header** - Global blocks for header.
- * **$footer** - Global blocks for footer.
+ * **$content** - The main content of the page, generated with content.php
+ * **$left** - Global blocks for left, generated with blocks.php
+ * **$center** - Global blocks for center, generated with blocks.php
+ * **$right** - Global blocks for right, generated with blocks.php
+ * **$header** - Global blocks for header, generated with blocks.php
+ * **$footer** - Global blocks for footer, generated with blocks.php
  * **$primary_links** - UL HTML code of primary menu.
  * **$secondary_links** - UL HTML code of secondary menu.
  * **$site_title** - Main title of the site.
@@ -196,11 +196,11 @@ Other variables used through the page content:
  * **$content_data** - Array with all the fields of the content.
  * **$images** - Array of images uploaded to the content.
  * **$files** - Array of files uploaded for the content.
- * **$header** - Content blocks for header.
- * **$footer** - Content blocks for footer.
- * **$left** - Content blocks for left.
- * **$right** - Content blocks for right.
- * **$center** - Content blocks for center.
+ * **$header** - Content blocks for header, generated with blocks-content.php
+ * **$footer** - Content blocks for footer, generated with blocks-content.php
+ * **$left** - Content blocks for left, generated with blocks-content.php
+ * **$right** - Content blocks for right, generated with blocks-content.php
+ * **$center** - Content blocks for center, generated with blocks-content.php
 
 ###block.php
 
