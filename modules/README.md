@@ -259,7 +259,7 @@ With some of the basic concepts discussed before you should be able to start dev
 
 ###SQLite
 
-Open($name, $directory, $db)
+* Open($name, $directory, $db)
 
 ###System
 
