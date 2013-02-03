@@ -34,9 +34,7 @@ If your module has a corresponding hook function for User\Add it will be called 
 
 ##Structure
 
-Modules go inside the 'modules' directory, the name given to each module
-directory should be unique. The directory name of the module is used as 
-its machine name. For example:
+Modules go inside the 'modules' directory, the name given to each module directory should be unique. The directory name of the module is used as its machine name. For example:
 
 jaris-src/modules/
 
@@ -105,11 +103,11 @@ jaris-src/modules/mymodule/language
 * es/strings.po
 * it/strings.po
 
-When the module is installed this translations are automatically read depending on current language and appended to core translations.
+When the module is installed these translations are automatically read depending on current language and appended to core translations.
 
 ###functions.php
 
-This files stores each of the hook functions implemented by a module. As mentioned before, when a user account is created a hook process is executed that will check each of the installed modules that define the User\Add function. With some of this hints here is an example for a module that needs to take some actions when a user account is created.
+This file stores each of the hook functions implemented by a module. As mentioned before, when a user account is created a hook process is executed that will check each of the installed modules that define the User\Add function. With some of the given hints here is an example for a module that needs to take some actions when a user account is created.
 
 	<?php
 	namespace JarisCMS\Module\MyModule\User
