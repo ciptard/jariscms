@@ -29,9 +29,9 @@ function IsUserLogged()
        $user_data = \JarisCMS\User\GetData($_SESSION["logged"]["username"]);
     }
     
-    //Remove the optional wwww for problems from www and non www links
-    $logged_site = str_replace("http://www.", "http://", $_SESSION["logged"]["site"]);
-    $base_url_parsed =  str_replace("http://www.", "http://", $base_url);
+    //Remove the optional www for problems from www and non www links
+    $logged_site = str_replace(array("http://", "https://", "www."), "", $_SESSION["logged"]["site"]);
+    $base_url_parsed =  str_replace(array("http://", "https://", "www."), "", $base_url);
     
     if($logged_site == $base_url_parsed && 
        $user_data["password"] == $_SESSION["logged"]["password"] &&
@@ -79,6 +79,20 @@ function IsAdminLogged()
 }
 
 /**
+ * Checks if the current connection is ssl.
+ * @return boolean True on success false otherwise.
+ */
+function IsSSLConnection()
+{
+    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+/**
  * Login a user to the site if username and password
  * is correct on a form submit.
  *
@@ -90,7 +104,11 @@ function LoginUser()
     
     $is_logged = false;
 
-    if($_SESSION["logged"]["site"] != $base_url)
+    //Remove the optional www for problems from www and non www links
+    $logged_site = str_replace(array("http://", "https://", "www."), "", $_SESSION["logged"]["site"]);
+    $base_url_parsed =  str_replace(array("http://", "https://", "www."), "", $base_url);
+
+	if($logged_site != $base_url_parsed)
     {
         $user_data = false;
         

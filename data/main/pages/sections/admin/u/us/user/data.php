@@ -26,6 +26,15 @@ row: 0
                 $_SESSION["return_url"] = $_REQUEST["return"];
             }
             
+            if(
+                !JarisCMS\Security\IsUserLogged() && 
+                JarisCMS\Setting\Get("login_ssl", "main") && 
+                !JarisCMS\Security\IsSSLConnection())
+            {
+                if(JarisCMS\System\IsSSLSupported())
+                    JarisCMS\System\GoToPage("admin/user", null, true);
+            }
+            
             if(JarisCMS\Security\LoginUser() || JarisCMS\Security\IsUserLogged())
             {
                 //Goto return url if it is set

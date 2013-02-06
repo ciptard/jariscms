@@ -55,6 +55,7 @@ row: 0
                 $site_settings["registration_groups"] = "";
                 $site_settings["registration_groups_approval"] = "";
                 $site_settings["validate_ip"] = false;
+                $site_settings["login_ssl"] = false;
                 $site_settings["enable_cache"] = false;
                 $site_settings["cache_php_pages"] = false;
                 $site_settings["cache_ignore_db"] = "";
@@ -101,6 +102,7 @@ row: 0
                     JarisCMS\Setting\Save("registration_benefits", $_REQUEST["registration_benefits"], "main");
                     JarisCMS\Setting\Save("registration_terms", $_REQUEST["registration_terms"], "main");
                     JarisCMS\Setting\Save("validate_ip", $_REQUEST["validate_ip"], "main");
+                    JarisCMS\Setting\Save("login_ssl", $_REQUEST["login_ssl"], "main");
                     JarisCMS\Setting\Save("enable_cache", $_REQUEST["enable_cache"], "main");
                     JarisCMS\Setting\Save("cache_php_pages", $_REQUEST["cache_php_pages"], "main");
                     JarisCMS\Setting\Save("cache_ignore_db", serialize($_REQUEST["cache_ignore_db"]), "main");
@@ -280,9 +282,13 @@ row: 0
             $login_authentication[t("Enable")] = true;
             $login_authentication[t("Disable")] = false;
 
-            $login_authentication_fields[] = array("type"=>"radio", "name"=>"validate_ip", "id"=>"validate_ip", "value"=>$login_authentication, "checked"=>$site_settings["validate_ip"]);
+            $login_authentication_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Enables or disable the validation of user ip address") . "</h4>");
+            $login_authentication_fields[] = array("type"=>"radio", "name"=>"validate_ip", "id"=>"validate_ip", "value"=>$login_authentication, "checked"=>$site_settings["validate_ip"], "description"=>t("This increases security but may result on user logout on dynamic mobile connections that constantly change ip address."));
+            
+            $login_authentication_fields[] = array("type"=>"other", "html_code"=>"<h4>" . t("Force login over encrypted connection (https)") . "</h4>");
+            $login_authentication_fields[] = array("type"=>"radio", "name"=>"login_ssl", "id"=>"login_ssl", "value"=>$login_authentication, "checked"=>$site_settings["login_ssl"]);
 
-            $fieldset[] = array("name"=>t("Login and Authentication"), "fields"=>$login_authentication_fields, "collapsible"=>true, "collapsed"=>true, "description"=>t("Enables or disable the validation of user ip address, this increases security but may result on user logout on dynamic mobile connections that constantly change ip address."));
+            $fieldset[] = array("name"=>t("Login and Authentication"), "fields"=>$login_authentication_fields, "collapsible"=>true, "collapsed"=>true);
             
             $cache[t("Enable")] = true;
             $cache[t("Disable")] = false;

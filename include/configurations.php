@@ -149,18 +149,20 @@ function Override()
                 date_default_timezone_set($settings["timezone"]);
             } 
             
+            $protocol = \JarisCMS\System\IsSSLSupported() ? "https" : "http";
+            
             if($settings["auto_detect_base_url"] || trim($settings["base_url"]) == "")
             {
                 $paths = explode("/", $_SERVER["SCRIPT_NAME"]);
                 unset($paths[count($paths) - 1]); //Remove index.php
                 $path = implode("/", $paths);
                 
-                $base_url = "http://" . $_SERVER["HTTP_HOST"];
+            	$base_url = $protocol . "://" . $_SERVER["HTTP_HOST"];
                 $base_url .= $path;
             }
             else
             {
-                $base_url = $settings["base_url"]?$settings["base_url"]:$base_url;
+                $base_url = str_replace("http://", "$protocol://", $settings["base_url"]?$settings["base_url"]:$base_url);
             }
             
             $user_profiles = $settings["user_profiles"]?$settings["user_profiles"]:$user_profiles;

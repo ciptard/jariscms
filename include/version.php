@@ -8,11 +8,15 @@
  *@file Holds the current version of Jaris CMS as a changelog for reference
  */
 
-define("JARIS_CMS_VERSION", "4.9.7 MS");
+define("JARIS_CMS_VERSION", "4.9.8 MS");
 
 /**
 
 =Change Log=
+
+Version 4.9.8 - Date 05/02/2013
+ 
+	* New option to force logins with ssl if supported.
 
 Version 4.9.7 - Date 27/01/2013
  

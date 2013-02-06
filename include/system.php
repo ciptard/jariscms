@@ -469,15 +469,40 @@ function IsSystemPage($uri=false)
     return $is_system_page;
 }
 
+
+/**
+ * Checks if ssl is supported by current webserver
+ */
+function IsSSLSupported()
+{
+    $file = str_replace(
+        array("http://", "https://"),
+        "ssl://",
+        \JarisCMS\URI\PrintURL("styles/00-system.css")
+    );
+    
+    if(file_get_contents($file))
+    {
+        return true;
+    }
+    
+    return false;
+}
+
 /**
  * Stops php script execution and redirects to a new page.
  *
  * @param string $uri The page we are going to redirect.
  * @param array $arguments Arguments to pass to the url in te format $arguments["name"] = "value"
+ * @param $ssl Use ssl protocol when going to the page.
  */
-function GoToPage($uri, $arguments = null)
+function GoToPage($uri, $arguments = null, $ssl = false)
 {
-    header("Location: " . \JarisCMS\URI\PrintURL($uri, $arguments));
+     if(!$ssl)
+        header("Location: " . \JarisCMS\URI\PrintURL($uri, $arguments));
+    else
+        header("Location: " . str_replace("http://", "https://", \JarisCMS\URI\PrintURL($uri, $arguments)));
+    
     ob_clean();
     exit;
 }
