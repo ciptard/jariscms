@@ -268,8 +268,10 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "check_requirements
 else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "site_details")
 {
     if(isset($_REQUEST["finish"]))
-    {
-        $fields = JarisCMS\User\GetData("admin");
+    {   
+        $username = $_REQUEST["username"];
+        
+        $fields = JarisCMS\User\GetData($username);
         
         $fields["name"] = $_REQUEST["name"];
         $fields["email"] = $_REQUEST["email"];
@@ -291,54 +293,61 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "site_details")
 
         if(!$error)
         {
-            //Mark user account as active
-            $fields["status"] = 1;
-            
-            if(JarisCMS\User\GetData("admin") != null)
+            if(JarisCMS\Form\CheckUserName($username))
             {
-                $fields["password"] = crypt($_REQUEST["password"]);
-                JarisCMS\User\Edit("admin", "administrator", $fields);
-            }
-            else
-            {
-                $fields["register_date"] = time();
-                JarisCMS\User\Add("admin", "administrator", $fields);
-            }
+                //Mark user account as active
+                $fields["status"] = 1;
 
-            if(trim($_REQUEST["title"]) != "" && trim($_REQUEST["base_url"]) != "")
-            {
-                $footer_message = t("Powered by","install.po") . "<img title=\"" . t("File Based CMS","install.po") . "\" src=\"{$_REQUEST['base_url']}/themes/jariscmsv1/images/logo_icon_ie.png\" />";
-
-                //Check if write is possible and continue to write settings
-                if(JarisCMS\Setting\Save("override", true, "main"))
+                if(JarisCMS\User\GetData($username) != null)
                 {
-                    JarisCMS\Setting\Save("site_status", true, "main");
-                    JarisCMS\Setting\Save("title", $_REQUEST["title"], "main");
-                    JarisCMS\Setting\Save("slogan", $_REQUEST["slogan"], "main");
-                    JarisCMS\Setting\Save("timezone", $_REQUEST["timezone"], "main");
-                    JarisCMS\Setting\Save("auto_detect_base_url", $_REQUEST["auto_detect_base_url"], "main");
-                    JarisCMS\Setting\Save("base_url", $_REQUEST["base_url"], "main");
-                    JarisCMS\Setting\Save("footer_message", $footer_message, "main");
-                    JarisCMS\Setting\Save("language", $language, "main");
-                    JarisCMS\Setting\Save("clean_urls", false, "main");
-                    JarisCMS\Setting\Save("theme", "jariscmsv1", "main");
-                    JarisCMS\Setting\Save("themes_enabled", serialize(array("jariscmsv1")), "main");
-                    JarisCMS\Setting\Save("primary_menu", "primary", "main");
-                    JarisCMS\Setting\Save("secondary_menu", "secondary", "main");
-                    JarisCMS\Setting\Save("image_compression_maxwidth", "640", "main");
-                    JarisCMS\Setting\Save("image_compression_quality", "100", "main");
-
-                    header("Location: " . $base_url . "/install.php?action=mailing_details");
-                    exit;
+                    $fields["password"] = crypt($_REQUEST["password"]);
+                    JarisCMS\User\Edit($username, "administrator", $fields);
                 }
                 else
                 {
-                    $error_message = t("Configuration could not be save. Check your write permissions on the data directory.","install.po");
+                    $fields["register_date"] = time();
+                    JarisCMS\User\Add($username, "administrator", $fields);
+                }
+
+                if(trim($_REQUEST["title"]) != "" && trim($_REQUEST["base_url"]) != "")
+                {
+                    $footer_message = t("Powered by","install.po") . "<img title=\"" . t("File Based CMS","install.po") . "\" src=\"{$_REQUEST['base_url']}/themes/jariscmsv1/images/logo_icon_ie.png\" />";
+
+                    //Check if write is possible and continue to write settings
+                    if(JarisCMS\Setting\Save("override", true, "main"))
+                    {
+                        JarisCMS\Setting\Save("site_status", true, "main");
+                        JarisCMS\Setting\Save("title", $_REQUEST["title"], "main");
+                        JarisCMS\Setting\Save("slogan", $_REQUEST["slogan"], "main");
+                        JarisCMS\Setting\Save("timezone", $_REQUEST["timezone"], "main");
+                        JarisCMS\Setting\Save("auto_detect_base_url", $_REQUEST["auto_detect_base_url"], "main");
+                        JarisCMS\Setting\Save("base_url", $_REQUEST["base_url"], "main");
+                        JarisCMS\Setting\Save("footer_message", $footer_message, "main");
+                        JarisCMS\Setting\Save("language", $language, "main");
+                        JarisCMS\Setting\Save("clean_urls", false, "main");
+                        JarisCMS\Setting\Save("theme", "jariscmsv1", "main");
+                        JarisCMS\Setting\Save("themes_enabled", serialize(array("jariscmsv1")), "main");
+                        JarisCMS\Setting\Save("primary_menu", "primary", "main");
+                        JarisCMS\Setting\Save("secondary_menu", "secondary", "main");
+                        JarisCMS\Setting\Save("image_compression_maxwidth", "640", "main");
+                        JarisCMS\Setting\Save("image_compression_quality", "100", "main");
+
+                        header("Location: " . $base_url . "/install.php?action=mailing_details");
+                        exit;
+                    }
+                    else
+                    {
+                        $error_message = t("Configuration could not be save. Check your write permissions on the data directory.","install.po");
+                    }
+                }
+                else
+                {
+                    $error_message = t("You need to provide all the fields","install.po");
                 }
             }
             else
             {
-                $error_message = t("You need to provide all the fields","install.po");
+                $error_message = t("The administrator login name is invalid.","install.po");
             }
         }
         else
@@ -373,6 +382,8 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "site_details")
 
     $fields[] = array("type"=>"text", "name"=>"base_url", "label"=>t("Base url:","install.po"), "required"=>true, "value"=>$_REQUEST["base_url"]?$_REQUEST["base_url"]:str_replace("/install", "", $base_url));
 
+    $fields[] = array("type"=>"text", "name"=>"username", "label"=>t("Administrator login name:","install.po"));
+    
     $fields[] = array("type"=>"text", "name"=>"name", "label"=>t("Administrator full name:","install.po"));
     
     $fields[] = array("type"=>"text", "name"=>"email", "label"=>t("Administrator e-mail:","install.po"));
@@ -525,7 +536,7 @@ else if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "finalize_installat
 
     $content = t("<b>Congratulations,</b> you have successfully installed Jaris content management system. To visit your index site click", "install.po") .
     " <a style=\"font-weight: bold; color: #000000; text-decoration: underline\" href=\"" . str_replace("/install", "", $base_url) . "\">
-    " . t("here","install.po") . "</a> " . t("and login with the username <b>admin</b> and the password you specified","install.po") . ".";
+    " . t("here","install.po") . "</a> " . t("and login with the name and password you specified","install.po") . ".";
 }
 ?>
 
