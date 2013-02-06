@@ -475,13 +475,17 @@ function IsSystemPage($uri=false)
  */
 function IsSSLSupported()
 {
-    $file = str_replace(
+    global $base_url;
+    
+    $hostname = str_replace(
         array("http://", "https://"),
         "ssl://",
-        \JarisCMS\URI\PrintURL("styles/00-system.css")
+        $base_url
     );
     
-    if(file_get_contents($file))
+    $connection = fsockopen($hostname, 443);
+    
+    if($connection)
     {
         return true;
     }
