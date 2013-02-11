@@ -8,11 +8,15 @@
  *@file Holds the current version of Jaris CMS as a changelog for reference
  */
 
-define("JARIS_CMS_VERSION", "4.9.8 MS");
+define("JARIS_CMS_VERSION", "4.9.9 MS");
 
 /**
 
 =Change Log=
+
+Version 4.9.9 - Date 11/02/2013
+ 
+	* Added uri and uriarea as an option for content types custom fields.
 
 Version 4.9.8 - Date 05/02/2013
  

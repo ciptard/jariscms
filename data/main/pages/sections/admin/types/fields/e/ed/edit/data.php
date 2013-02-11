@@ -82,6 +82,8 @@ row: 0
             $types[t("Select")] = "select";
             $types[t("Text")] = "text";
             $types[t("Text area")] = "textarea";
+            $types[t("Uri")] = "uri";
+			$types[t("Uri area")] = "uriarea";
             
             $fields[] = array("type"=>"select", "value"=>$types, "selected"=>$_REQUEST["type"]?$_REQUEST["type"]:$field_data["type"], "name"=>"type", "label"=>t("Type:"), "id"=>"type", "description"=>t("The type of the form field."));
             

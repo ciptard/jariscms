@@ -380,7 +380,7 @@ function GenerateArrayFromType($type, $values=array(), $mode="add")
     
     foreach($fields as $id=>$field)
     {
-        if($field["type"] == "text" || $field["type"] == "password" || $field["type"] == "textarea")
+        if($field["type"] == "text" || $field["type"] == "password" || $field["type"] == "textarea" || $field["type"] == "uri" || $field["type"] == "uriarea")
         {
             if($field["limit"] > 0)
             {
