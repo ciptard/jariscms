@@ -19,8 +19,28 @@ row: 0
     field;
 
     field: content
+        <script>
+			$(document).ready(function(){
+				var fixHelper = function(e, ui) {
+					ui.children().each(function() {
+						$(this).width($(this).width());
+					});
+					return ui;
+				};
+			
+				$(".types-list tbody").sortable({ 
+					cursor: 'crosshair', 
+					helper: fixHelper,
+					handle: "a.sort-handle"
+				});
+			});
+		</script>
+        
         <?php
             JarisCMS\Security\ProtectPage(array("view_types_fields"));
+            
+            JarisCMS\System\AddScript("scripts/jquery-ui/jquery.ui.js");
+			JarisCMS\System\AddScript("scripts/jquery-ui/jquery.ui.touch-punch.min.js");
 
             JarisCMS\System\AddTab(t("Add Field"), "admin/types/fields/add", array("type_name"=>$_REQUEST["type"]));
             JarisCMS\System\AddTab(t("Manage Types"), "admin/types");
@@ -39,7 +59,7 @@ row: 0
                 for($i=0; $i<count($_REQUEST["id"]); $i++)
                 {
                     $new_field_data = JarisCMS\Field\GetTypeData($_REQUEST["id"][$i], $_REQUEST["type"]);
-                    $new_field_data["position"] = $_REQUEST["position"][$i];
+                    $new_field_data["position"] = $i;
 
                     if(!JarisCMS\Field\EditType($_REQUEST["id"][$i], $new_field_data, $_REQUEST["type"]))
                     {
@@ -72,24 +92,26 @@ row: 0
     
                 print "<thead><tr>\n";
     
+                print "<td>" . t("Order") . "</td>\n";
                 print "<td>" . t("Name") . "</td>\n";
                 print "<td>" . t("Description") . "</td>\n";
-                print "<td>" . t("Order") . "</td>\n";
                 print "<td>" . t("Operation") . "</td>\n";
     
                 print  "</tr></thead>\n";
+                
+                print  "<tbody>\n";
     
                 foreach($fields_array as $id=>$fields)
                 {
                     print "<tr>\n";
     
+                    print "<td>" . 
+                    "<a class=\"sort-handle\"></a>" .
+                    "<input type=\"hidden\" name=\"id[]\" value=\"$id\" />" .
+                    "</td>\n";
+                    
                     print "<td>" . t($fields["name"]) . "</td>\n";
                     print "<td>" . t($fields["description"]) . "</td>\n";
-                    
-                    print "<td>" . 
-                    "<input type=\"hidden\" name=\"id[]\" value=\"$id\" />" .
-                    "<input type=\"text\" style=\"width: 30px;\" name=\"position[]\" value=\"{$fields['position']}\" />" .
-                    "</td>\n";
     
                     $edit_url = JarisCMS\URI\PrintURL("admin/types/fields/edit",array("id"=>$id, "type_name"=>$_REQUEST["type"]));
                     $delete_url = JarisCMS\URI\PrintURL("admin/types/fields/delete", array("id"=>$id, "type_name"=>$_REQUEST["type"]));
@@ -104,6 +126,8 @@ row: 0
     
                     print "</tr>\n";
                 }
+                
+                print  "</tbody>\n";
                 
                 print "</table>\n";
             }
