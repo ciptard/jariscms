@@ -54,6 +54,7 @@ row: 0
 
                 $fields["name"] = substr(JarisCMS\Search\StripHTMLTags($_REQUEST["name"]), 0, 65);
                 $fields["email"] = JarisCMS\Search\StripHTMLTags($_REQUEST["email"]);
+                $fields["website"] = trim(JarisCMS\Search\StripHTMLTags($_REQUEST["website"]));
                 $fields["gender"] = JarisCMS\Search\StripHTMLTags($_REQUEST["gender"]);
                 $fields["personal_text"] = substr(JarisCMS\Search\StripHTMLTags($_REQUEST["personal_text"]), 0, 300);
                 $fields["birth_date"] = mktime(0, 0, 0, $_REQUEST["month"], $_REQUEST["day"], $_REQUEST["year"]);
@@ -160,6 +161,7 @@ row: 0
             $fields[] = array("type"=>"text", "value"=>$user_data["email"], "name"=>"email", "label"=>t("Email:"), "id"=>"email", "required"=>true, "description"=>t("The email used in case you forgot your password or to contact you."));
             $fields[] = array("type"=>"password", "name"=>"password", "label"=>t("New password:"), "id"=>"password", "description"=>t("You can enter a new password to change actual one."));
             $fields[] = array("type"=>"password", "name"=>"verify_password", "label"=>t("Verify password:"), "id"=>"verify_password", "description"=>t("Re-enter the new password to verify it."));
+            $fields[] = array("type"=>"text", "value"=>$user_data["website"], "name"=>"website", "label"=>t("Website:"), "id"=>"website", "description"=>t("Corporate or personal website."));
 
             $fieldset[] = array("fields"=>$fields);
             

@@ -163,6 +163,8 @@ row: 0
                     JarisCMS\System\AddMessage(t("The e-mail and verify e-mail doesn't match."), "error");
                     $error = true;
                 }
+                
+                $fields["website"] = trim(JarisCMS\Search\StripHTMLTags($_REQUEST["website"]));
 
                 if(!$error)
                 {
@@ -222,6 +224,8 @@ row: 0
             $fields[] = array("type"=>"text", "value"=>$_REQUEST["email"], "name"=>"email", "label"=>t("E-mail:"), "id"=>"email", "required"=>true, "description"=>t("The email used in case you forgot your password."));
             
             $fields[] = array("type"=>"text", "name"=>"verify_email", "label"=>t("Verify the e-mail:"), "id"=>"verify_email", "required"=>true, "description"=>t("Re-enter the e-mail to verify is correct."));
+            
+            $fields[] = array("type"=>"text", "value"=>$_REQUEST["website"], "name"=>"website", "label"=>t("Website:"), "id"=>"website", "description"=>t("Corporate or personal website."));
             
             $fieldset[] = array("fields"=>$fields);
             
