@@ -18,6 +18,7 @@ Version 4.9.9 - Date 11/02/2013
  
 	* Added uri and uriarea as an option for content types custom fields.
     * Included website as part of user account.
+    * New javascript/jquery effect for blocks edit button.
 
 Version 4.9.8 - Date 05/02/2013
  

@@ -118,6 +118,8 @@ function MakeBlocks($arrData, $position , $page)
                         
                         if(\JarisCMS\Group\GetPermission("view_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
                         {
+                            \JarisCMS\System\AddScript("scripts/admin/blocks.js");
+                            
                             $url = \JarisCMS\URI\PrintURL(
                                 "admin/blocks/edit", array(
                                     "id"=>$field["original_id"]?$field["original_id"]:$id, 
@@ -209,6 +211,8 @@ function MakeContentBlocks($arrData, $position, $page, $page_type)
                     
                     if(\JarisCMS\Group\GetPermission("view_content_blocks", \JarisCMS\Security\GetCurrentUserGroup()) && \JarisCMS\Group\GetPermission("edit_content_blocks", \JarisCMS\Security\GetCurrentUserGroup()))
                     {
+                        \JarisCMS\System\AddScript("scripts/admin/blocks.js");
+                        
                         $url = \JarisCMS\URI\PrintURL("admin/pages/blocks/edit", array("uri"=>$page, "id"=>$id, "position"=>$position));
                         $content = "<a class=\"instant-content-block-edit\" href=\"$url\">" . t("edit") . "</a>";
                         $content .= "<div style=\"clear: both\"></div>";
