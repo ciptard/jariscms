@@ -48,6 +48,8 @@ Each theme consist of a basic set of base files that constitute the skeleton nee
  * **style.css** - The main style of the theme automatically appended to the head section of the page.
 
  * **user-profile.php** - If user profiles are enabled on the cms settings then this template is used for that purpose.
+
+* **functions.php** - A file where you can write custom functions that can be called from page.php. (optional)
  
 ###Mixing it all together
 
