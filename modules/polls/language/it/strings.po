@@ -1,0 +1,292 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JarisCMS Polls module v1.5.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-06 18:17+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andrea Zanellato <zanellato.andrea@gmail.com>\n"
+"Language-Team: Andrea Zanellato <italian.jariscms@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:53
+#: data/admin-polls-add.php:17
+msgid "Add Poll"
+msgstr "Aggiungi Votazione"
+
+#: functions.php:53
+msgid "Create a poll where users can vote."
+msgstr "Crea un sondaggio dove gli utenti possano votare."
+
+#: functions.php:54
+msgid "View All Polls"
+msgstr "Visualizza Tutte le Votazioni"
+
+#: functions.php:54
+msgid "View created polls on the system."
+msgstr "Visualizza le votazioni presenti nel sistema."
+
+#: functions.php:56
+#: data/admin-polls.php:17
+msgid "Polls"
+msgstr "Votazioni"
+
+#: functions.php:98
+#: data/admin-polls-edit.php:17
+msgid "Edit Poll"
+msgstr "Modifica Votazione"
+
+#: install.php:16
+msgid "Poll"
+msgstr "Votazione"
+
+#: install.php:17
+msgid "A poll where users can vote."
+msgstr "Un sondaggio dove gli utenti possano votare."
+
+#: install.php:18
+msgid "More Details"
+msgstr "Visualizza Dettagli"
+
+#: data/admin-polls-add.php:29
+#: data/admin-polls-add.php:168
+#: data/admin-polls-edit.php:30
+#: data/admin-polls-edit.php:234
+msgid "remove"
+msgstr "rimuovi"
+
+#: data/admin-polls-add.php:126
+msgid "The poll was successfully added."
+msgstr "Votazione aggiunta con successo."
+
+#: data/admin-polls-add.php:149
+#: data/admin-polls-edit.php:208
+msgid "Categories"
+msgstr "Categorie"
+
+#: data/admin-polls-add.php:152
+#: data/admin-polls-add.php:180
+#: data/admin-polls-edit.php:212
+#: data/admin-polls-edit.php:248
+msgid "Title:"
+msgstr "Titolo:"
+
+#: data/admin-polls-add.php:153
+#: data/admin-polls-edit.php:213
+msgid "Content:"
+msgstr "Contenuto:"
+
+#: data/admin-polls-add.php:154
+#: data/admin-polls-edit.php:214
+msgid "Duration:"
+msgstr "Durata:"
+
+#: data/admin-polls-add.php:154
+#: data/admin-polls-edit.php:214
+msgid "The amount of days the poll is going to be active. Leave blank for unlimited time."
+msgstr "Ammontare di giorni nei quali la votazione rimarrà attiva. Lascia vuoto per tempo illimitato."
+
+#: data/admin-polls-add.php:161
+#: data/admin-polls-edit.php:221
+msgid "Name"
+msgstr "Nome"
+
+#: data/admin-polls-add.php:172
+#: data/admin-polls-edit.php:240
+msgid "Add another option"
+msgstr "Aggiungi altra opzione"
+
+#: data/admin-polls-add.php:176
+#: data/admin-polls-edit.php:244
+msgid "Options"
+msgstr "Opzioni"
+
+#: data/admin-polls-add.php:180
+#: data/admin-polls-edit.php:248
+msgid "Overrides the original page title on search engine results. Leave blank for default."
+msgstr "Sovrascrive il titolo originale della pagina dei risultati del motore di ricerca. Lascia vuoto per il valore predefinito."
+
+#: data/admin-polls-add.php:181
+#: data/admin-polls-edit.php:249
+msgid "Description:"
+msgstr "Descrizione:"
+
+#: data/admin-polls-add.php:181
+#: data/admin-polls-edit.php:249
+msgid "Used to generate the meta description for search engines. Leave blank for default."
+msgstr "Utilizzato per generare la meta descrizione per i motori di ricerca. Lascia vuoto per il valore predefinito."
+
+#: data/admin-polls-add.php:182
+#: data/admin-polls-edit.php:250
+msgid "Keywords:"
+msgstr "Parole chiave:"
+
+#: data/admin-polls-add.php:182
+#: data/admin-polls-edit.php:250
+msgid "List of words seperated by comma (,) used to generate the meta keywords for search engines. Leave blank for default."
+msgstr "Lista di parole separate da virgola utilizzata per generare le parole chiave per i motori di ricerca. Lascia vuoto per il valore predefinito."
+
+#: data/admin-polls-add.php:184
+#: data/admin-polls-edit.php:252
+msgid "Meta tags"
+msgstr "Meta etichette"
+
+#: data/admin-polls-add.php:195
+#: data/admin-polls-edit.php:263
+msgid "Input Format"
+msgstr "Formato di Ingresso"
+
+#: data/admin-polls-add.php:207
+#: data/admin-polls-edit.php:275
+msgid "Users Access"
+msgstr "Accesso Utenti"
+
+#: data/admin-polls-add.php:207
+#: data/admin-polls-edit.php:275
+msgid "Select the groups that can see this content. Don't select anything to display content to everyone."
+msgstr "Seleziona i gruppi autorizzati alla visualizzazione di questo contenuto. Non selezionare nulla per permetterla a tutti."
+
+#: data/admin-polls-add.php:212
+#: data/admin-polls-edit.php:280
+msgid "Uri:"
+msgstr "URI:"
+
+#: data/admin-polls-add.php:212
+#: data/admin-polls-edit.php:280
+msgid "The relative path to access the page, for example: section/page, section. Leave empty to auto-generate."
+msgstr "Percorso relativo per accedere alla pagina, per esempio: section/page, section. Lascia vuoto per auto-generarlo."
+
+#: data/admin-polls-add.php:215
+#: data/admin-polls-edit.php:283
+msgid "Save"
+msgstr "Salva"
+
+#: data/admin-polls-add.php:216
+#: data/admin-polls-edit.php:284
+msgid "Cancel"
+msgstr "Annulla"
+
+#: data/admin-polls-edit.php:60
+msgid "The content you was trying to edit is a system page."
+msgstr "Il contenuto che stai tentando di modificare appartiene a una pagina di sistema."
+
+#: data/admin-polls-edit.php:144
+msgid "Translations repositioned."
+msgstr "Traduzioni riposizionate."
+
+#: data/admin-polls-edit.php:152
+msgid "Your changes have been successfully saved."
+msgstr "Le tue modifiche sono state salvate con successo."
+
+#: data/admin-polls-edit.php:171
+#: data/admin-polls.php:101
+msgid "Edit"
+msgstr "Modifica"
+
+#: data/admin-polls-edit.php:173
+msgid "View"
+msgstr "Visualizza"
+
+#: data/admin-polls-edit.php:176
+msgid "Blocks"
+msgstr "Blocchi"
+
+#: data/admin-polls-edit.php:180
+msgid "Images"
+msgstr "Immagini"
+
+#: data/admin-polls-edit.php:184
+msgid "Files"
+msgstr "Files"
+
+#: data/admin-polls-edit.php:188
+msgid "Translate"
+msgstr "Traduci"
+
+#: data/admin-polls-edit.php:192
+#: data/admin-polls.php:102
+msgid "Delete"
+msgstr "Elimina"
+
+#: data/admin-polls-edit.php:222
+msgid "Value"
+msgstr "Valori"
+
+#: data/admin-polls-vote.php:17
+msgid "Polls Vote"
+msgstr "Votazioni"
+
+#: data/admin-polls-vote.php:40
+msgid "Your vote was successfully submited."
+msgstr "Il tuo voto è stato inviato con successo."
+
+#: data/admin-polls-vote.php:45
+msgid "You have already voted!"
+msgstr "Hai già votato!"
+
+#: data/admin-polls.php:70
+msgid "Total polls:"
+msgstr "Totale votazioni:"
+
+#: data/admin-polls.php:79
+msgid "Date"
+msgstr "Data"
+
+#: data/admin-polls.php:80
+msgid "Title"
+msgstr "Titolo:"
+
+#: data/admin-polls.php:81
+msgid "Actions"
+msgstr "Azioni"
+
+#: include/poll_sqlite.php:66
+msgid "Previous"
+msgstr "Precedente"
+
+#: include/poll_sqlite.php:91
+msgid "Next"
+msgstr "Successivo"
+
+#: templates/content-poll.php:50
+msgid "Vote"
+msgstr "Vota"
+
+#: templates/content-poll.php:60
+msgid "Results:"
+msgstr "Risultati:"
+
+#: templates/content-poll.php:88
+msgid "of"
+msgstr "di"
+
+#: templates/content-poll.php:88
+msgid "votes"
+msgstr "voti"
+
+#: templates/content-poll.php:100
+msgid "Total votes:"
+msgstr "Totale voti:"
+
+#~ msgid "View Results"
+#~ msgstr "Ver Resultados:"
+
+#, fuzzy
+#~ msgid "A poll system that where users can vote."
+#~ msgstr "Crea una encuesta donde los usuarios puedan votar."
+
+#~ msgid "Delete Poll"
+#~ msgstr "Borrar Encuesta"
+
+#~ msgid "Poll successfully deleted."
+#~ msgstr "Encuesta eliminada exitosamente."
+
+#~ msgid "Are you sure you want to delete the poll?"
+#~ msgstr "¿Esta seguro que desea borrar la encuesta?"

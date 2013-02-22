@@ -1,0 +1,41 @@
+<?php
+/**
+ *Copyright 2008, Jefferson González (JegoYalu.com)
+ *This file is part of Jaris CMS and licensed under the GPL,
+ *check the license.txt file for version and details or visit
+ *http://www.gnu.org/licenses/gpl.html.
+*/
+?>
+<div style="margin-top: 15px;"></div>
+
+<div class="content">
+
+<?php if($header){?><div class="content-header"><?php print $header ?></div><?php } ?>
+
+    <table>
+        <tr>
+            <?php if($left){?><td class="content-left"><?php print $left ?></td><?php } ?>
+            <td class="content">
+                <?php if($center){?>
+                <div class="content-center">
+                    <?php print $center ?>
+                </div>
+                <?php } ?>
+
+
+                <div>
+                    <?php 
+                        print $content;
+                        
+                        print JarisCMS\Module\Polls\Core\PrintPollsContent(JarisCMS\URI\Get(), $content_data);
+                    ?>
+                </div>
+
+            </td>
+            <?php if($right){?><td class="content-right"><?php print $right ?></td><?php } ?>
+        </tr>
+    </table>
+
+<?php if($footer){?><div class="content-footer"><?php print $footer ?></div><?php } ?>
+
+</div>
